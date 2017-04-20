@@ -1,0 +1,8 @@
+  <div class="archives__item">
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      <span class="archive__item-date">{% include date.html format="%b %d" %}</span>
+      <a href="{{ base_path }}{{ post.url }}">
+        <span class="archive__item-title" itemprop="headline">{{ post.title }}</span>
+      </a>
+    </article>
+  </div>

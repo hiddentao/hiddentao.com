@@ -1,0 +1,35 @@
+---
+layout: page
+header:
+  overlay_image: 'home-header.jpg'
+  overlay_filter: rgba(0, 0, 0, 0.7)
+title: 'Ramesh Nair'
+excerpt: 'Full stack developer, tech enthusiast, budding enterpreneur'
+---
+<!-- https://unsplash.com/collections/159602/the-writers-collection?photo=aOC7TSLb1o8 -->
+
+<div class="page-home">
+  {% capture md %}
+  I'm Ram, a full stack developer originally from the UK. I've been [helping people build better products](http://uk.linkedin.com/in/hiddentao) since 2005. Please [contact me](mailto:{{ site.author.email | encode_email}}) to discuss your project.
+
+  * **I am from:** UK
+  * **I am in:** London, UK
+  * **I studied:** Computer Science @ [Imperial College London](http://www3.imperial.ac.uk/computing/)
+  * **I worked with:** Ethereum Foundation, IBM, Symbian, NBC Universal, [more...](http://uk.linkedin.com/in/hiddentao)
+  * **I build with:** Javascript, Node.js, Phonegap, Ethereum, [more...](https://github.com/hiddentao)
+  * **I built:** [Heartnotes](http://heartnotes.me)
+  * **And...** [Waigo](http://waigojs.com), [Squel](http://squeljs.org), [Melkor](https://github.com/hiddentao/melkor), [more...](/code/)
+  * **I used to teach with:** [Block](http://bloc.io), [Thinkful](http://thinkful.com)
+  * **I used to run:** [Taipei Javascript Enthusiasts](http://meetup.com/javascript-enthusiasts/)
+
+  ...[read more](/about/) about me.
+
+  ---
+  {% endcapture %}{{ md | markdownify }}
+
+  <h2>Recent blog posts</h2>
+
+  {% for post in site.posts limit:10 %}
+    {% include archive-single.html %}
+  {% endfor %}
+</div>

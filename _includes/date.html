@@ -1,0 +1,16 @@
+{% if post %}
+  {% assign theDate = post.date %}
+{% elsif page %}
+  {% assign theDate = page.date %}
+{% endif %}
+
+{% if include.format %}
+  {% assign format = include.format %}
+{% else %} 
+  {% assign format = "%B %-d, %Y" %}
+{% endif %}
+
+{% if theDate %}
+  <time datetime="{{ theDate | date_to_xmlschema }}">{{ theDate | date: format }}</time>
+{% endif %}
+

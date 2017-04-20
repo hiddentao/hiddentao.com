@@ -1,0 +1,11 @@
+.page-about {
+  img {
+    display: block;
+    margin: 0 auto;
+
+    & + em {
+      display: block;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+---
+layout: page-archives
+title: Archives
+excerpt: All my past posts
+header:
+  overlay_image: 'archives-header.jpg'
+  overlay_filter: rgba(0, 0, 0, 0.6)
+---
+
+{% assign currentYear = '' %}
+
+{% for post in site.posts %}
+  {% capture postYear %}{{ post.date | date: "%Y" }}{% endcapture %}
+  {% if currentYear != postYear %}
+    {% assign currentYear = postYear %}
+    <h3 class="archive__subtitle">{{ currentYear }}</h3>
+  {% endif %}
+  {% include archive-single.html %}
+{% endfor %}
+

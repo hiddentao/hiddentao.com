@@ -1,0 +1,21 @@
+.blog-posts {
+  .posts {
+    margin-bottom: 2em;
+    clear: both;    
+  }
+
+  .pagination {
+    margin-bottom: 2em;
+  }
+
+  .archive__item-date {
+    font-size: $type-size-7;
+    color: $light-gray;
+  }
+
+  .archive__item-excerpt {
+    font-size: $type-size-5;
+  }
+
+}
+

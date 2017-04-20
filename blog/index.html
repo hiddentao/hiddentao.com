@@ -1,0 +1,23 @@
+---
+layout: page-blog
+title: Blog
+excerpt: Musings and technical writing
+header:
+  overlay_image: 'blog-header.jpg'
+---
+
+{% include base_path %}
+
+
+<div class="blog-posts">
+  {% if paginator.page > 1 %}
+    {% include paginator.html %}
+  {% endif %}
+  <div class="posts">
+    {% for post in paginator.posts %}
+      {% include blog-single.html %}
+    {% endfor %}
+  </div>
+  {% include paginator.html %}
+</div>
+
