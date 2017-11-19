@@ -201,8 +201,30 @@ Although we use a string to refer to the method in the `bind()` function we
 could modify it to take a reference, i.e:
 
 ```js
-this.bind(this.onLinkClick, index)
+import { PureComponent } from 'react'
+import { createHash } from 'crypto'
+
+const sha256 = str => createHash('sha256').update(str).digest('hex')
+
+export class CachePureComponent extends PureComponent {
+  cache = {}
+
+  bind = (fn, ...args) => {
+    const fnSig = sha256(fn.toString())
+
+    const key = JSON.stringify({ fnSig, args })
+
+    if (!this.cache[key]) {
+      this.cache[key] = fn.bind(this, ...args)
+    }
+
+    return this.cache[key]
+  }
+}
 ```
 
-The `bind()` method could then [extract the function name from its signature](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/toString) in
-order to generate the cache key.
+Then we can change the invocation of `bind()` to:
+
+```js
+this.bind(this.onLinkClick, index)
+```
