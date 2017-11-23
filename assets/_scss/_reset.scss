@@ -4,7 +4,7 @@
 
 @include border-box-sizing;
 
-*, html {
+html {
   /* apply a natural box layout model to all elements */
   box-sizing: border-box;
   background-color: $background-color;
