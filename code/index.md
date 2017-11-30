@@ -27,6 +27,8 @@ _You can find all my NPM packages at [https://www.npmjs.com/~hiddentao](https://
 
 [Thinodium](https://thinodium.github.io/ "Node.js ODM") - a light-weight Object Document Mapper (ODM) for Node.js with pluggable adapters.
 
+[React.js plugins](https://github.com/hiddentao?utf8=%E2%9C%93&tab=repositories&q=react&type=source&language=) - a collection of React.js and React Native plugins I've written.
+
 [Google-TTS](https://github.com/hiddentao/google-tts "Google Text-to-speech API") - an API for the Google text-to-speech service.
 
 [Linear-algebra](https://github.com/hiddentao/linear-algebra "Linear algebra") - an efficient linear-algebra implementation in Javascript. Designed for use in machine learning algorithms.
