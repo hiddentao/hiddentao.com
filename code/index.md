@@ -11,6 +11,8 @@ These are some of my own projects. For more of my work and to see contributions 
 
 ## Javascript/Node.js ##
 
+_You can find all my NPM packages at [https://www.npmjs.com/~hiddentao](https://www.npmjs.com/~hiddentao)._
+
 [Waigo](http://waigojs.com) - a next-gen MVC framework for Node.js using ES6 generators.
 
 [Heartnotes](https://heartnotes.me) - encrypted, cross-platform personal diary with cloud backup and sync.
@@ -21,9 +23,9 @@ These are some of my own projects. For more of my work and to see contributions 
 
 [BrowserMail](https://github.com/hiddentao/browsermail) - a proof-of-concept IMAP email client written in Javascript, for the Chrome browser.
 
-[Clockmaker](https://github.com/hiddentao/clockmaker) - flexible timer management API for Javascript.
-
 [Squel](http://squeljs.org/ "SQL query string builder") - a light-weight SQL query string builder for Javascript which can be used with node.js or in the browser.
+
+[Thinodium](https://thinodium.github.io/ "Node.js ODM") - a light-weight Object Document Mapper (ODM) for Node.js with pluggable adapters.
 
 [Google-TTS](https://github.com/hiddentao/google-tts "Google Text-to-speech API") - an API for the Google text-to-speech service.
 
