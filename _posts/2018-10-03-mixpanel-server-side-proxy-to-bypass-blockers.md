@@ -13,7 +13,7 @@ tags:
 comments: []
 ---
 
-For my new startup - [Kickback](https://kickback.com?utm_source=hiddentao_blog&utm_medium=post) - we decided to launch a static landing page as a precursor to the full product
+For my new startup - [Kickback](https://kickback.events?utm_source=hiddentao_blog&utm_medium=post) - we decided to launch a static landing page as a precursor to the full product
 (which will be ready in a few weeks). On our landing page we have a
 call-to-action button near the bottom for users who wish to register their
 interest in our service:
