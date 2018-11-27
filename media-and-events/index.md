@@ -9,6 +9,7 @@ header:
 ## Tech talks
 _(I co-hosted the [Taipei Javascript Enthusiasts](http:&#47;&#47;www.meetup.com&#47;javascript-enthusiasts&#47;) meetup until March 2015)_
 
+* Nov 2018 (London): [Kickback - incentivizing event attendance through crypto economics](https://www.slideshare.net/RameshNair6/kickback-incentivizing-event-attendance-through-crypto-economics)
 * Oct 2014 (Taipei): [Introduction to PhoneGap](http:&#47;&#47;www.slideshare.net&#47;RameshNair6&#47;phonegap-introduction-40538416)
 * Aug 2014 (Taipei): [ES6 generators](http:&#47;&#47;www.slideshare.net&#47;RameshNair6&#47;es6-generators)
 * May 2014 (Taipei): [Introduction to Dart](http:&#47;&#47;www.slideshare.net&#47;RameshNair6&#47;introduction-to-dart-35252146)
