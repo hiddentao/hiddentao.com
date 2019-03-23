@@ -94,7 +94,7 @@ const MyForm = () => {
 
   return (
     <form>
-      {Object.keys(stateAsObj).forEach(field => (
+      {fieldNames.forEach(field => (
         <input key={field} type="text" value={stateAsObj[field]} onChange={handlers[field]} />
       ))}
     </form>
