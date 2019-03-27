@@ -45,7 +45,7 @@ code.
 
 To ease this burden you may choose to use a [monorepo structure](https://hackernoon.com/one-vs-many-why-we-moved-from-multiple-git-repos-to-a-monorepo-and-how-we-set-it-up-f4abb0cfe469). Essentially, all your
 services would sit in a single source repository but still be deployed
-separately. And Monorepos aren't just useful for to backend services, they can be
+separately. And Monorepos aren't just useful for backend services, they can be
 used to organize any collection of repositories that are closely related, e.g.
 [Babel](https://github.com/babel/babel), [Truffle](https://github.com/trufflesuite/truffle),
 [React](https://github.com/facebook/react).
@@ -58,7 +58,7 @@ hell that would otherwise be present with a repo-per-service code structure. The
 remaining problem is that the local development story is no longer straightforward.
 
 Ideally, when developing the frontend you should be able to run your entire
-backend stack locally. When our backend is a single monolithic service, you
+backend stack locally. When your backend is a single monolithic service, you
 can just start an instance of that locally and...hey presto. If you have tonnes
 of micro services which all need to be run locally and need to be configured
 to talk to each other then it's not as easy. Monorepos don't help much here.
@@ -70,11 +70,11 @@ the micro services with a single command:
 
 ![screenshot](/assets/img/docker-compose.png)
 
-This makes it easy to start up our stack locally - and indeed, with the right
-tooling you could probably re-use our docker composition configuration for our
+This makes it easy to start up your stack locally - and indeed, with the right
+tooling you could probably re-use your docker composition configuration for your
 actual deployed instances too.
 
-And yet, our docker composition still isn't as easy as simply running a
+And yet, your docker composition still isn't as easy as simply running a
 monolothic server.
 
 **How about we run the backend in monolith mode during development and in micro
