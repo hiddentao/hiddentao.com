@@ -11,7 +11,7 @@ commands:
           key: npm-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Update npm
-          command: 'if [ "$(npm -v)" = "6.9.0" ]; then echo "Up to date"; else npm i -g npm@6.9.0; fi'
+          command: 'if [ "$(npm -v)" = "6.9.0" ]; then echo "Up to date"; else sudo npm i -g npm@6.9.0; fi'
       - run:
           name: Install dependencies
           command: npm ci
