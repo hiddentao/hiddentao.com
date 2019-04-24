@@ -13,6 +13,9 @@ commands:
           name: Update npm
           command: 'if [ "$(npm -v)" = "6.9.0" ]; then echo "Up to date"; else sudo npm i -g npm@6.9.0; fi'
       - run:
+          name: Install gatsby cli
+          command: sudo npm i -g gatsby-cli
+      - run:
           name: Install dependencies
           command: npm ci
       - save_cache:
@@ -32,6 +35,15 @@ jobs:
       - run:
           name: Build code
           command: npm run build
+      - run:
+          name: Clone master branch
+          command: git clone --depth 1 --single-branch --branch master git@github.com:hiddentao/hiddentao.github.io.git ./deploy
+      - run:
+          name: Copy over built items
+          command: rm -rf ./deploy/* && cp -rf ./public/* ./deploy && find ./deploy -type f -name '*.map' -delete
+      - run:
+          name: Push built items to master branch
+          command: cd ./deploy && git add . && git commit -m "Release" && git push -f origin master
 
 workflows:
   version: 2
