@@ -43,7 +43,7 @@ jobs:
           command: git clone --depth 1 --single-branch --branch master git@github.com:hiddentao/hiddentao.github.io.git ./deploy
       - run:
           name: Copy over built items
-          command: rm -rf ./deploy/* && cp -rf ./public/* ./deploy && find ./deploy -type f -name '*.map' -delete
+          command: rm -rf ./deploy/* && cp -rf ./public/* ./deploy && find ./deploy -type f -name '*.map' -delete && echo "hiddentao.com" > ./deploy/CNAME
       - run:
           name: Push built items to master branch
           command: cd ./deploy && git add . && git commit -m "Release" && git push -f origin master
