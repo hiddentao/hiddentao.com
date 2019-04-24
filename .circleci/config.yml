@@ -27,8 +27,8 @@ jobs:
       - checkout
       - update_npm_and_install_deps
       - run:
-        name: Build code
-        command: npm run build
+          name: Build code
+          command: npm run build
 
 workflows:
   version: 2
