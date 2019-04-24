@@ -1,0 +1,35 @@
+---
+title: 3D demo
+date: '2010-01-20'
+summary: "A while back I decided to write a simple 3D graphics engine in Java after being inspired by [Daniel Tebbutt's Bedlam solver](http:&#47;&#47;danieltebbutt.com&#47;bedlam.html). Essentially I wanted to show a cube like his but with the added ability to split it apart so that you could see how the pieces fit together. As I got going with this I was enjoying it so much I put aside the puzzle algorithm and just started adding more 3D rendering features.\r\n\r\nFast forward many hours of coding and here is a simple demo (click the image to launch it):\r\n"
+tags:
+  - Java
+  - 3D
+---
+A while back I decided to write a simple 3D graphics engine in Java after being inspired by [Daniel Tebbutt's Bedlam solver](http://danieltebbutt.com/bedlam.html). Essentially I wanted to show a cube like his but with the added ability to split it apart so that you could see how the pieces fit together. As I got going with this I was enjoying it so much I put aside the puzzle algorithm and just started adding more 3D rendering features.
+
+Fast forward many hours of coding and we have a simple demo:
+
+![](http://farm3.static.flickr.com/2770/4289736971_b0f35bc880.jpg)
+
+[Try it in your browser!](/code/3d-graphics/)
+
+*The demo consists of 3 separate scenes. You can switch between by simply clicking in the window. Further mouse and keyboard controls are listed in the demo window itself. Debug output from the demo is viewable in the Java applet console*
+
+**Architecture**
+
+I've tried to use good object-oriented programming as much as possible throughout. For example, each scene is represented as a hierarchical scenegraph and a [Visitor](http://en.wikipedia.org/wiki/Visitor_pattern) model to perform rendering. The renderer itself is obtained from a [Factory](http://en.wikipedia.org/wiki/Factory_pattern) which allows for different types of renderers (OpenGL, DirectX, Software, etc.). As is standard practice with scenegraphs, a matrix stack is used to allow for model-level transformations independent to world-level transformations.
+
+At the moment the only available renderer is software-based. But the architecture allows for OpenGL or DirectX-based rendering to be added in future. I use the ``Graphics2D.drawLine()`` API call in Java to render the pixels. Everything else (e.g. z-buffer) is manually implemented. The engine supports wireframe-mode rendering and backface culling. There is a single source light in the scene whose direction can be modified (in the demo it's always pointing forwards from the camera). The rasterizer currently uses flat shading - next would be to add [Gouraud and Phong](http://en.wikipedia.org/wiki/Gouraud_shading), not to mention texturing.
+
+3D rotation on world objects are performed using matrix multiplication. The camera is rotated using Quaternions since this made it simpler to use the [UVN](http://www.devmaster.net/articles/viewing-systems/) camera model. The third scene in the demo above is animated; this is accomplished using a simple timer thread using which any number of events can be scheduled for execution at given time intervals.
+
+**Performance**
+
+When programming in Java it's easy to not worry about memory usage and allocations since the garbage collector handles the freeing up of memory. But for graphics engines every allocation or garbage collection run will impact performance. So from the outset I've tried to pre-allocate memory where possible, by constructing temporary vectors and matrices for use during calculations later on. Thus, the vast majority of the matrix and vector multiplication which take place in the render loop don't allocate any new memory when doing so.
+
+However, when I finally started rendering things I found that the performance bottleneck was actually the rasterizer. The more polygons (triangles) that needed to be drawn and the larger they appeared on screen, the longer each frame took to render. Perhaps I can improve this by optimising the polygon order (e.g. render from farthest to nearest) and improving the raster algorithms. Eventually I want to switch to using OpenGL as the rendering system but since I've come so far with the software renderer it would be nice to see if I can improve it a bit more first.
+
+**Download**
+
+The engine code is licensed under the LGPL and is available [here](/code/3d-graphics/).

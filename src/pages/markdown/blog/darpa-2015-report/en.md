@@ -1,0 +1,84 @@
+---
+title: DARPA 2015 report
+date: '2015-03-30'
+summary: "I noticed articles talking [DARPA's](http:&#47;&#47;www.defenseone.com&#47;technology&#47;2015&#47;03&#47;world-2020-according-darpa&#47;108517&#47;) [plans](http:&#47;&#47;www.extremetech.com&#47;extreme&#47;202111-darpa-to-re-invent-gps-navigation-without-satellites) and was curious to go and read from [their original report](http:&#47;&#47;go.usa.gov&#47;3rut4). It's quite an interesting read, covering what DARPA do, what they're working on for the future and some of the success stories they've had from the past. Below I've given highlights, specifically the parts I found most interesting.\r\n"
+tags:
+  - DARPA
+  - Military
+  - Technology
+---
+I noticed articles talking [DARPA's](http://www.defenseone.com/technology/2015/03/world-2020-according-darpa/108517/) [plans](http://www.extremetech.com/extreme/202111-darpa-to-re-invent-gps-navigation-without-satellites) and was curious to go and read from [their original report](http://go.usa.gov/3rut4). It's quite an interesting read, covering what DARPA do, what they're working on for the future and some of the success stories they've had from the past. Below I've given highlights, specifically the parts I found most interesting.  
+
+## What they've accomplished
+
+DARPA either kickstarted or had a big hand in developing:
+
+* GPS  
+* Miniature GPS receivers that can fit into hand-held devices  
+* Internet  
+* Speech recognition  
+* Automated language translation  
+* Precision-guided munitions  
+* Stealth aircraft  
+* UAVs (i.e. drones)  
+* Infra-red night-vision
+
+## What they're working on now
+
+**Computing hardware**
+
+> ...advanced applications of formal methods and related mathematics-based verification techniques to produce operating systems for embedded devices that are unhackable for specified security properties
+
+**Machine learning / AI**
+
+> DARPAâ€™s Probabilistic Programming for Advancing Machine Learning (PPAML) program aims to create user-friendly programming languages to simplify and democratize the now-arcane art of building machine-learning applications
+
+> DARPAâ€™s Visual Media Reasoning (VMR) program is working to enable queries of photo content, such as â€œWhat make and model of vehicle is that?â€ or â€œWhere is this building located?â€
+
+> DARPAâ€™s Cyber Genome program is developing automated machine intelligence techniques for malware analysis. By clustering related malwares into representative families and generating detailed lineage graphs, Cyber Genome is revealing how hackers have modified earlier generations of malware to achieve new goals, providing timely insights into the specific purpose of newly discovered nefarious sequences.
+
+> DARPAâ€™s Cyber Grand Challenge (CGC) is a competition that seeks to create automated cyber defense systems capable of reasoning about program flaws, formulating patches and deploying them on a network in real time.
+
+**Under-sea deployments**
+
+> The Upward Falling Payloads (UFP) program centers on developing deployable, unmanned, distributed systems that could lie on the deep-ocean floor for years at a time. These deep-sea nodes could then be recalled remotely when needed and â€œfall upwardâ€ to the surface.
+
+> DARPAâ€™s Distributed Agile Submarine Hunting (DASH) program is creating fixed and mobile underwater observing systems that look up from the ocean floor. Just as satellites provide a wide-area view of the ground from space, these systems can see submarine threats passing overhead across vast volumes of ocean. This deep-ocean system has as a goal the ability to track a submarine until other platforms can arrive to track, trail or prosecute the threat.
+
+**Position, navigation, timing**
+
+> DARPA is developing a family of highly precise and accurate navigation and timing technologies that can function in GPS-denied environments and enable new cooperative and coherent effects from distributed systems.
+
+**Human body**
+
+> DARPAâ€™s Electrical Prescriptions (ElectRx, pronounced â€œelectricsâ€) program aims to develop ultraminiaturized feedback-controlled neuromodulation technologies that would monitor health status and intervene as needed to deliver patient-specific therapeutic patterns of stimulation designed to restore a healthy physiological state. Peripheral neuromodulation therapies based on ElectRx research could help maximize the immunological, physical and mental health of military Service members and veterans.
+
+**Imaging**
+
+> DARPAâ€™s Intense and Compact Neutron Sources (ICONS) program seeks to develop portable, next-generation imaging tools that combine the complementary benefits of X-ray and neutron radiography to enable highly detailed scanning in field settings. Neutron scanning provides the capability to see through many otherwise visually impenetrable objects.
+
+They had a photo next to the above showing this new scanner would even be able to see through lead (something X-rays can't do).
+
+**UAVs**
+
+> In 2005, DARPA pushed the UAV envelope again under its Nano Air Vehicle program by developing flapping-wing-based hovering systems with a hummingbird-like appearance for indoor and outdoor ISR missions. Featuring wingspans of just six inches and weighing under an ounce, these systems demonstrated the first-ever controlled hovering and fast forward flight of any air vehicle system carrying its own energy source and using only flapping wings for propulsion and control.
+
+They're also working on [small ships each with their own UAV](http://nextbigfuture.com/2015/03/darpa-progress-to-small-ships-with.html) forces.
+
+**Space**
+
+> DARPA is developing new approaches to launching satellites into orbit on short notice and at low cost, including by means of reusable firststage and space-plane systems, which have the potential to enable launch of satellites from virtually anywhere with just 24 hoursâ€™ notice and at a fraction of current costs.
+
+Hmmm, SpaceX probably get funding from DARPA for their re-usable first stage research.
+
+> The Airborne Launch Assist Space Access (ALASA) program seeks to propel 100-pound satellites into orbit for less than $1 million per flight by using low-cost, expendable upper stages launched from unmodified conventional aircraft. ALASA aims to provide more affordable, flexible and reliable access to space.
+
+And to avoid collisions in orbit...
+
+> DARPAâ€™s Space Surveillance Telescope (SST) promises to enable  
+much faster discovery and tracking of previously unseen, hard-to-find objects in geosynchronous orbits,  
+about 22,000 miles above the surface of the Earth
+
+**And more...**
+
+They're also involved in new types of aircraft, materials, hypersonic missiles, modularizing military hardware upgrades, etc. It's worth reading their full report if you're interested.
