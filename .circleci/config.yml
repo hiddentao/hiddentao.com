@@ -1,0 +1,39 @@
+build_environment: &build_environment
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.11.4
+
+commands:
+  update_npm_and_install_deps:
+    steps:
+      - restore_cache:
+          name: Restore npm cache
+          key: npm-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - save_cache:
+          name: Save npm cache
+          key: npm-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+
+version: 2.1
+
+jobs:
+  build_and_deploy:
+    <<: *build_environment
+    steps:
+      - checkout
+      - update_npm_and_install_deps
+      - npm run build
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - build_and_deploy:
+          filters:
+            branches:
+              only:
+                - gatsby
