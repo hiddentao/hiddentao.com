@@ -9,7 +9,7 @@ import { mq } from '../styles/breakpoints'
 import resetStyles from '../styles/reset'
 import globalStyles from '../styles/global'
 import Header from "./header"
-import Aside from "./Aside"
+import Aside from "./aside"
 import Footer from "./footer"
 
 const Content = styled.div`
