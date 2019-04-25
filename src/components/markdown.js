@@ -59,10 +59,19 @@ const ImgDiv = styled.div(() => mq({
 }))
 
 const RenderParagraph = ({ children }) => {
-  if (safeGet(children, '0.type.displayName') === 'RenderImage') {
-    return <ImgDiv>{children}</ImgDiv>
-  } else {
-    return <P>{children}</P>
+  const imgSrc = safeGet(children, '0.props.src', '')
+  const dotPos = imgSrc.lastIndexOf('.')
+  const ext = (dotPos ? imgSrc.substring(dotPos + 1) : '').toLowerCase()
+
+  switch (ext) {
+    case 'jpg':
+    case 'jpeg':
+    case 'gif':
+    case 'png':
+    case 'bmp':
+      return <ImgDiv>{children}</ImgDiv>
+    default:
+      return <P>{children}</P>
   }
 }
 
