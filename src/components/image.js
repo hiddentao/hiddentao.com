@@ -22,6 +22,7 @@ const Image = ({ src, ...props }) => {
           childImageSharp {
             fluid {
               ...GatsbyImageSharpFluid_noBase64
+              presentationWidth
             }
           }
         }
@@ -38,6 +39,10 @@ const Image = ({ src, ...props }) => {
   return fluid ? (
     <Img
       fluid={fluid}
+      style={{
+        maxWidth: fluid.presentationWidth,
+        margin: "0 auto",
+      }}
       Tag='div'
       {...props}
     />
