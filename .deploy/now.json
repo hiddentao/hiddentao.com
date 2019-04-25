@@ -1,19 +1,13 @@
 {
   "version": 2,
-  "name": "hiddentao-live",
+  "name": "hiddentao-com-live",
   "alias": "hiddentao.com",
   "regions": [ "all" ],
   "builds": [
-    { "src": "public/**", "use": "@now/static" },
-  ],
-  "routes": [
     {
-      "src": "/",
-      "dest": "build/index.html"
-    },
-    {
-      "src": "/(.+)",
-      "dest": "build/$1"
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "public" }
     }
   ]
 }

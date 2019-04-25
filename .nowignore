@@ -1,5 +1,5 @@
-*.map
+.cache
+.circleci
+.deploy
 node_modules
-src
 public
-README.md
