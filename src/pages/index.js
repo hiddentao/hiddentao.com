@@ -35,7 +35,7 @@ const PostsHeading = styled.h3`
 const Page = ({ lang, location }) => {
   const data = useStaticQuery(graphql`
     query {
-      allFile( filter: { fields: { page: { type: { eq: "blog" } } } }, sort: { order:DESC, fields: fields___page___date }, limit: 10 ) {
+      allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date }, limit: 10 ) {
         nodes {
           ...FileFields
         }
