@@ -40,6 +40,7 @@
     "rimraf": "^2.6.3"
   },
   "devDependencies": {
+    "now": "^15.0.6",
     "prettier": "^1.17.0"
   },
   "keywords": [
@@ -52,7 +53,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "deploy": "npm run now -- --target production -f --local-config .deploy/now.json --public && npm run now -- rm hiddentao-live --safe --yes",
+    "now": "now --token $NOW_TOKEN --scope hiddentao"
   },
   "repository": {
     "type": "git",

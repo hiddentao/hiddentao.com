@@ -1,0 +1,5 @@
+*.map
+node_modules
+src
+public
+README.md

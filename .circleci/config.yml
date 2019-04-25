@@ -36,17 +36,8 @@ jobs:
           name: Build code
           command: npm run build
       - run:
-          name: Git config
-          command: git config --global user.email "dev-bot@hiddentao.com" && git config --global user.name "hiddentao-dev-bot"
-      - run:
-          name: Clone master branch
-          command: git clone --depth 1 --single-branch --branch master git@github.com:hiddentao/hiddentao.github.io.git ./deploy
-      - run:
-          name: Copy over built items
-          command: rm -rf ./deploy/* && cp -rf ./public/* ./deploy && find ./deploy -type f -name '*.map' -delete && echo "hiddentao.com" > ./deploy/CNAME
-      - run:
-          name: Push built items to master branch
-          command: cd ./deploy && git add . && git commit -m "Release" && git push -f origin master
+          name: Deploy code
+          command: npm run deploy
 
 workflows:
   version: 2
