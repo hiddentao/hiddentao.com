@@ -41,7 +41,7 @@ const SocialLinks = ({ className }) => {
         </a>
       </SocialListItem>
       <SocialListItem title="Twitter">
-        <a href="https://twitter.com/hidentao">
+        <a href="https://twitter.com/hiddentao">
           <Icon name={['fab', 'twitter']} /><span>Twitter</span>
         </a>
       </SocialListItem>
@@ -51,7 +51,7 @@ const SocialLinks = ({ className }) => {
         </a>
       </SocialListItem>
       <SocialListItem title="Linked-in">
-        <a href="https://linked.com/in/hiddentao">
+        <a href="https://www.linkedin.com/in/hiddentao/">
           <Icon name={['fab', 'linkedin']} /><span>Linked-in</span>
         </a>
       </SocialListItem>
