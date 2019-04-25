@@ -85,7 +85,7 @@ export default injectIntl(Template)
 
 export const pageQuery = graphql`
   query {
-    allFile( filter: { fields: { page: { type: { eq: "blog" } } } }, sort: { order:DESC, fields: fields___page___date } ) {
+    allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date } ) {
       nodes {
         ...FileFields
       }

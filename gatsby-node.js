@@ -63,7 +63,7 @@ exports.onCreateNode = ({ node, actions, getNodes }) => {
 
   if (_isMarkdownNode(node)) {
     const { pageType, pageId, lang } = _getMarkdownNodeIdAndLanguage(node)
-    const { data: { title, date }, content: body } = _loadMarkdownFile(node)
+    const { data: { title, date, draft }, content: body } = _loadMarkdownFile(node)
 
     const pageData = {
       pageId,
@@ -71,6 +71,7 @@ exports.onCreateNode = ({ node, actions, getNodes }) => {
       path: _generatePagePath({ pageType, pageId, date }),
       lang,
       date,
+      draft: !!draft,
       versions: []
     }
 
@@ -114,7 +115,7 @@ exports.createPages = async ({ actions, graphql, getNode }) => {
   // them know where they sit in the chain
   const { data: { allFile: { nodes: blogPages } } } = await _graphql(`
     {
-      allFile( filter: { fields: { page: { type: { eq: "blog" } } } }, sort: { order:DESC, fields: fields___page___date } ) {
+      allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date } ) {
         nodes {
           id
           relativePath

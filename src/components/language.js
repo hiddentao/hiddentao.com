@@ -35,7 +35,69 @@ const LanguageButton = styled(Button)`
   width: 100%;
 `
 
-const Language = ({ intl, className, availableLanguages }) => {
+const LanguageList = styled.div`
+  button {
+    display: inline;
+    margin-right: 0.5rem;
+    width: auto;
+    font-size: 0.5rem;
+  }
+`
+
+const LangList = ({ intl, defaultLanguage, currentLanguage, availableLanguages }) => {
+  return (
+    <LanguageList>
+      {availableLanguages.map(l => (
+        <LanguageButton
+          key={l}
+          onClick={() => changeLocale(l, { defaultLanguage })}
+        >
+          {intl.formatMessage({ id: l })}
+        </LanguageButton>
+      ))}
+    </LanguageList>
+  )
+}
+
+const LangPopup = ({ intl, defaultLanguage, currentLanguage, availableLanguages }) => {
+  return (
+    <Popup
+      trigger={
+        <ChangeButton title={intl.formatMessage({ id: 'change-language' })}>
+          {intl.formatMessage({ id: currentLanguage })} ↵
+        </ChangeButton>
+      }
+      position="top center"
+      modal={true}
+      overlayStyle={{
+        backgroundColor: 'rgba(0,0,0,0.5)',
+      }}
+      contentStyle={{
+        padding: '1em',
+        width: '300px',
+        borderRadius: '5px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+      }}
+    >
+      <>
+        <ModalTitle>{intl.formatMessage({ id: 'change-language' })}</ModalTitle>
+        {availableLanguages.map(language => (
+          <LanguageButton
+            key={language}
+            onClick={() => changeLocale(language, { defaultLanguage })}
+          >
+            {intl.formatMessage({ id: language })}
+          </LanguageButton>
+        ))}
+      </>
+    </Popup>
+  )
+}
+
+const Language = ({ showAsList, className, ...props }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -54,42 +116,13 @@ const Language = ({ intl, className, availableLanguages }) => {
   return (
     <IntlContextConsumer>
       {({ language: currentLanguage }) => (
-        <Popup
-          trigger={
-            <ChangeButton
-              className={className}
-              title={intl.formatMessage({ id: 'change-language' })}
-            >
-              {intl.formatMessage({ id: currentLanguage })} ↵
-            </ChangeButton>
-          }
-          position="top center"
-          modal={true}
-          overlayStyle={{
-            backgroundColor: 'rgba(0,0,0,0.5)',
-          }}
-          contentStyle={{
-            padding: '1em',
-            width: '300px',
-            borderRadius: '5px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-          }}
-        >
-          <>
-            <ModalTitle>{intl.formatMessage({ id: 'change-language' })}</ModalTitle>
-            {availableLanguages.map(language => (
-              <LanguageButton
-                key={language}
-                onClick={() => changeLocale(language, { defaultLanguage })}
-              >
-                {intl.formatMessage({ id: language })}
-              </LanguageButton>
-            ))}
-          </>
-        </Popup>
+        <div className={className}>{
+          showAsList ? (
+            <LangList {...props} currentLanguage={currentLanguage} defaultLanguage={defaultLanguage} />
+          ) : (
+            <LangPopup {...props} currentLanguage={currentLanguage} defaultLanguage={defaultLanguage} />
+          )
+        }</div>
       )}
     </IntlContextConsumer>
   )

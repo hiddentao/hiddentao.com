@@ -42,7 +42,7 @@ const Main = styled.main(() => mq({
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     {
-      blog: allFile( filter: { fields: { page: { type: { eq: "blog" } } } }, sort: { order:DESC, fields: fields___page___date }, limit: 1 ) {
+      blog: allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date }, limit: 1 ) {
         nodes {
           fields {
             page {
