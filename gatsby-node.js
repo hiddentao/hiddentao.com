@@ -3,7 +3,7 @@ const path = require("path")
 const grayMatter = require('gray-matter')
 
 const PATH_TO_MD_PAGES = path.resolve('src/pages/markdown')
-const { siteMetadata: { supportedLanguages, defaultLanguage } } = require('./gatsby-config')
+const { siteMetadata: { defaultLanguage } } = require('./gatsby-config')
 
 const PAGE_TEMPLATE = path.resolve(`src/templates/pageTemplate.js`)
 const ARCHIVES_TEMPLATE = path.resolve(`src/templates/archivesTemplate.js`)

@@ -16,7 +16,7 @@ in the WebSphere team, building with Java Enterprise Edition tech.
 
 Post-graduation I  spent a year and a half working at Symbian Ltd, on
 low-level libraries for the real-time Symbian mobile OS. I then moved onto
-work at Blue Whale Systems Ltd, an angle-backed startup focussing on brining
+work at Blue Whale Systems Ltd, an angel-backed startup focussing on bringing
 the Blackberry email experience to every other mobile.
 
 In 2009 I moved into web development contracting, initially as a PHP developer
@@ -46,6 +46,4 @@ incubator. Along with this I am now focussed on building my own products and
 services in a quest to leave contracting behind and live a more remote-friendly
 lifestyle.
 
-_I also have an interest in philosophy and how it can help us live happier lives.
-The [HalfAtheist](https://halfatheist.com) is my foray into doing something in
-this area._
+_I also like to talk about life, see [HalfAtheist](https://halfatheist.com)._

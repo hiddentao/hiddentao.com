@@ -7,7 +7,8 @@ import { IntlContextConsumer, Link } from "gatsby-plugin-intl"
 import { DiscussionEmbed } from "disqus-react"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
-import { pageBottomNavBorderColor } from '../styles/common'
+import { calculateReadTimeInMinutes } from '../utils/string'
+import { pageBottomNavBorderColor, metaColor } from '../styles/common'
 import Layout from "../components/layout"
 import Language from "../components/language"
 import PageLastUpdatedDate from "../components/pageLastUpdatedDate"
@@ -19,8 +20,15 @@ const StyledPageLastUpdatedDate = styled(PageLastUpdatedDate)`
   margin: 0.8rem 0 0;
 `
 
+const PostReadTime = styled.p`
+  margin: 0.8rem 0 0;
+  font-size: 0.7rem;
+  font-style: italic;
+  color: ${metaColor}
+`
+
 const StyledMarkdown = styled(Markdown)`
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 `
 
 const Heading = styled.h1``
@@ -100,18 +108,14 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
     getResolvedVersionForLanguage(versions, currentLanguage, fallbackLang)
   ), [ versions, currentLanguage, fallbackLang ])
 
-  console.warn(versions)
-
   return (
     <Layout>
       <SEO title={fields.title} />
       <Heading>{fields.title}</Heading>
       <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
+      <PostReadTime>({calculateReadTimeInMinutes(fields.markdown)} minute read)</PostReadTime>
       {versions.length > 1 ? (
-        <StyledLanguage
-          showAsList={true}
-          availableLanguages={versions.map(v => v.lang)}
-        />
+        <StyledLanguage availableLanguages={versions.map(v => v.lang)} />
       ) : null}
       <StyledMarkdown markdown={fields.markdown} />
       <PageBottomNav {...nav} />

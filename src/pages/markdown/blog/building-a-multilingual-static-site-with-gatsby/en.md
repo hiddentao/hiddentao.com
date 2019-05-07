@@ -1,6 +1,6 @@
 ---
-title: Building a continuously deployed multi-lingual static site with Gatsby
-date: '2019-04-27'
+title: Building a multi-lingual static site with Gatsby
+date: '2019-05-07'
 ---
 
 This past week I ported hiddentao.com (the site you're reading this on)
@@ -51,7 +51,10 @@ back to showing the default language (English) version.
 Inside `gatsby-config.js` I setup `gatsby-plugin-intl`:
 
 ```js
-const supportedLanguages = ['en', 'zh-TW']
+const supportedLanguages = [
+  { id: 'en', label: 'English' },
+  { id: 'zh-TW', label: '中文 (繁體)' },
+]
 const defaultLanguage = 'en'
 
 module.exports = {
@@ -290,6 +293,157 @@ where needed.
 
 ## Generating multi-lingual pages
 
+Inside `gatsby-node.js` I implement the [createPages API](https://www.gatsbyjs.org/docs/node-apis/#createPages) to generates pages from the node objects:
 
+```js
+exports.createPages = async ({ actions, graphql, getNode }) => {
+  const { createPage, createNodeField } = actions
+
+  // fetch the blog posts in reverse chronological order so that we can have
+  // them know where they sit in the chain
+  const { data: { allFile: { nodes: blogPages } } } = await graphql(`
+    {
+      allFile( filter: { fields: { page: { type: { eq: "blog" } } } }, sort: { order:DESC, fields: fields___page___date } ) {
+        nodes {
+          id
+          relativePath
+        }
+      }
+    }
+  `)
+  _createMarkdownPages({ pages: blogPages, getNode, createPage }, index => {
+    const newerPageId = 0 < index ? blogPages[index - 1].id : null
+    const olderPageId = (blogPages.length - 1) > index ? blogPages[index + 1].id : null
+    return { newerPageId, olderPageId }
+  })
+
+  // now let's generate the static pages
+  const { data: { allFile: { nodes: staticPages } } } = await graphql(`
+    {
+      allFile( filter: { fields: { page: { type: { eq: "static" } } } } ) {
+        nodes {
+          id
+          relativePath
+        }
+      }
+    }
+  `)
+  _createMarkdownPages({ pages: staticPages, getNode, createPage })
+}
+```
+
+The first thing to note is that even if there are multiple language versions of a
+given page, the code only generates a single page - one representing the
+default language version. Thus, taking our example _about_ page above, the code
+tells Gatsb to generate the `/about` version but not the `/zh-TW/about` version.
+This is because the `gatsby-plugin-intl` plugin internally ensures that
+the `/zh-TW/about` relative URL will be available regardless.
+
+```js
+const _createMarkdownPages = ({ pages, getNode, createPage }, cb) => {
+  pages.forEach(({ id, relativePath }, index) => {
+    const node = getNode(id)
+    const { fields: { page: { path: pagePath, lang } } } = node
+
+    if (defaultLanguage === lang) {
+      createPage({
+        path: pagePath,
+        component: path.resolve(`src/templates/pageTemplate.js`),
+        context: {
+          relativePath,
+          ...(cb ? cb(index, node) : null)
+        },
+      })
+    }
+  })
+}
+```
+
+The `_createMarkdownPages` function above uses the page template to actually
+generate the pages. It accepts a callback as a final parameter - the output
+of this callback is merged into the page `context`. This context can then be
+used in the graphql query within the page template load in additional data for
+the page:
+
+```js
+export const pageQuery = graphql`
+  fragment FileFields on File {
+    fields {
+      page {
+        path
+        type
+        lang
+        versions {
+          lang
+          date
+          title
+          markdown
+        }
+      }
+    }
+  }
+
+  query($relativePath: String!, $newerPageId: String, $olderPageId: String) {
+    current: file( relativePath: {  eq: $relativePath } ) {
+      ...FileFields
+    }
+    newer: file( id: { eq: $newerPageId } ) {
+      ...FileFields
+    }
+    older: file( id: { eq: $olderPageId } ) {
+      ...FileFields
+    }
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+  }
+`
+```
+
+As you can see, for each blog post I load in the next and previous blog posts
+according to chronological ordering - this is what lets me generate the
+navigation links at the bottom (see the bottom of this post for an example).
 
 ## Multi-lingual rendering
+
+The page template rendering function needs to take into account the currently
+selected language, and fallback to rendering the default language if necessary:
+
+```js
+import { IntlContextConsumer } from "gatsby-plugin-intl"
+
+export default function Template({ data }) {
+  return (
+    <IntlContextConsumer>
+      {({ language: currentLanguage }) => (
+        <Page
+          siteUrl={data.site.siteMetadata.siteUrl}
+          currentLanguage={currentLanguage}
+          current={data.current.fields.page}
+          newer={safeGet(data.newer, 'fields.page')}
+          older={safeGet(data.older, 'fields.page')}
+        />
+      )}
+    </IntlContextConsumer>
+  )
+}
+```
+
+The `IntlContextConsumer` context provider from `gatsby-plugin-intl` will
+always provide the active language. Using this the `Page` component
+([see code](https://github.com/hiddentao/hiddentao.com/blob/master/src/templates/pageTemplate.js))
+can loop through the `versions` of the page and find the matching
+language version to display at the time of display.
+
+Finally, if you look at the [about](/about/) page on this site, you will see a language
+switcher ([see code](https://github.com/hiddentao/hiddentao.com/blob/master/src/components/language.js)). This utilises `gatsby-plugin-intl` to make switching between language versions
+very easy.
+
+## What can be improved?
+
+I use the `Link` component from `gatsby-plugin-intl` to generate internal page
+links. This component will generate the correct link for the current language
+but it doesn't check to see if the page being linked to has a version in the
+current language - it would be good to add logic for this!

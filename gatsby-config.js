@@ -1,4 +1,8 @@
-const supportedLanguages = ['en', 'zh-TW', 'ml']
+const supportedLanguages = [
+  { id: 'en', label: 'English' },
+  { id: 'zh-TW', label: '中文 (繁體)' },
+  { id: 'ml', label: 'മലയാളം' },
+]
 const defaultLanguage = 'en'
 
 module.exports = {
@@ -51,7 +55,7 @@ module.exports = {
       resolve: `gatsby-plugin-intl`,
       options: {
         path: `${__dirname}/src/intl`,
-        languages: supportedLanguages,
+        languages: supportedLanguages.map(l => l.id),
         defaultLanguage,
         redirect: false,
       },

@@ -44,7 +44,12 @@ const LanguageList = styled.div`
   }
 `
 
-const LangList = ({ intl, defaultLanguage, currentLanguage, availableLanguages }) => {
+const getLanguageLabel = (supportedLanguages, id) => {
+  const r = supportedLanguages.find(l => l.id === id)
+  return r ? r.label : null
+}
+
+const LangList = ({ intl, defaultLanguage, currentLanguage, availableLanguages, supportedLanguages }) => {
   return (
     <LanguageList>
       {availableLanguages.map(l => (
@@ -52,19 +57,19 @@ const LangList = ({ intl, defaultLanguage, currentLanguage, availableLanguages }
           key={l}
           onClick={() => changeLocale(l, { defaultLanguage })}
         >
-          {intl.formatMessage({ id: l })}
+          {getLanguageLabel(supportedLanguages, currentLanguage)}
         </LanguageButton>
       ))}
     </LanguageList>
   )
 }
 
-const LangPopup = ({ intl, defaultLanguage, currentLanguage, availableLanguages }) => {
+const LangPopup = ({ intl, defaultLanguage, currentLanguage, availableLanguages, supportedLanguages }) => {
   return (
     <Popup
       trigger={
         <ChangeButton title={intl.formatMessage({ id: 'change-language' })}>
-          {intl.formatMessage({ id: currentLanguage })} ↵
+          {getLanguageLabel(supportedLanguages, currentLanguage)} ✍
         </ChangeButton>
       }
       position="top center"
@@ -89,7 +94,7 @@ const LangPopup = ({ intl, defaultLanguage, currentLanguage, availableLanguages 
             key={language}
             onClick={() => changeLocale(language, { defaultLanguage })}
           >
-            {intl.formatMessage({ id: language })}
+            {getLanguageLabel(supportedLanguages, language)}
           </LanguageButton>
         ))}
       </>
@@ -103,7 +108,10 @@ const Language = ({ showAsList, className, ...props }) => {
       query {
         site {
           siteMetadata {
-            supportedLanguages
+            supportedLanguages {
+              id
+              label
+            }
             defaultLanguage
           }
         }
@@ -111,19 +119,28 @@ const Language = ({ showAsList, className, ...props }) => {
     `
   )
 
-  const { defaultLanguage } = data.site.siteMetadata
+  const { defaultLanguage, supportedLanguages } = data.site.siteMetadata
 
   return (
     <IntlContextConsumer>
-      {({ language: currentLanguage }) => (
-        <div className={className}>{
-          showAsList ? (
-            <LangList {...props} currentLanguage={currentLanguage} defaultLanguage={defaultLanguage} />
-          ) : (
-            <LangPopup {...props} currentLanguage={currentLanguage} defaultLanguage={defaultLanguage} />
-          )
-        }</div>
-      )}
+      {({ language: currentLanguage }) => {
+        const p = {
+          ...props,
+          currentLanguage,
+          defaultLanguage,
+          supportedLanguages,
+        }
+
+        return (
+          <div className={className}>{
+            showAsList ? (
+              <LangList {...p} />
+            ) : (
+              <LangPopup {...p} />
+            )
+          }</div>
+        )
+      }}
     </IntlContextConsumer>
   )
 }
