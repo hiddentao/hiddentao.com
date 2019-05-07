@@ -36,4 +36,4 @@ Whale Systems工作，這是一個投資人支持的創業公司，專注於將B
 朋友，最初由一家公司資助孵化器。而且，我現在專注於建立自己的產品和尋求生活更加偏遠的服務
 生活方式。
 
-_我也想談談生活，見[HalfAtheist](https://halfatheist.com)。_
+_我也想談談生活，請看[HalfAtheist](https://halfatheist.com)。_
