@@ -113,7 +113,9 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
       <SEO title={fields.title} />
       <Heading>{fields.title}</Heading>
       <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
-      <PostReadTime>({calculateReadTimeInMinutes(fields.markdown)} minute read)</PostReadTime>
+      {type === 'blog' ? (
+        <PostReadTime>({calculateReadTimeInMinutes(fields.markdown)} minute read)</PostReadTime>
+      ) : null}
       {versions.length > 1 ? (
         <StyledLanguage availableLanguages={versions.map(v => v.lang)} />
       ) : null}
