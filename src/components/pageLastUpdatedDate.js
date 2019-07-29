@@ -2,7 +2,7 @@ import Color from 'color'
 import React from "react"
 import styled from '@emotion/styled'
 
-import { isYearsOld } from '../utils/date'
+import { isMonthsOld } from '../utils/date'
 import { metaColor } from '../styles/common'
 import Alert from './alert'
 
@@ -20,9 +20,9 @@ const WarningAlert = styled(Alert)`
 const PageLastUpdatedDate = ({ date, showOldDateWarning, className }) => (
   <Container className={className}>
     <Date>{date}</Date>
-    {(showOldDateWarning && isYearsOld(date, 2)) ? (
+    {(showOldDateWarning && isMonthsOld(date, 6)) ? (
       <WarningAlert>
-        Note: This post is over 2 years old and may now be out of date.
+        Note: This post is over 6 months old and may now be out of date.
         Some of the links not work anymore.
       </WarningAlert>
     ) : null}

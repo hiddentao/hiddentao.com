@@ -1,4 +1,4 @@
-import { format, isBefore, subYears } from 'date-fns'
+import { format, isBefore, subYears, subMonths } from 'date-fns'
 
 export const formatDate = format
 
@@ -8,3 +8,5 @@ export const parseDate = str => {
 }
 
 export const isYearsOld = (date, years) => isBefore(date, subYears(new Date(), years))
+
+export const isMonthsOld = (date, months) => isBefore(date, subMonths(new Date(), months))
