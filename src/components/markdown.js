@@ -1,7 +1,8 @@
 import safeGet from 'lodash.get'
 import React, { useMemo } from "react"
 import styled from '@emotion/styled'
-import remark from 'remark'
+import unified from 'unified'
+import parse from 'remark-parse'
 import remark2react from 'remark-react'
 import { Link } from 'gatsby-plugin-intl'
 
@@ -99,9 +100,8 @@ const RenderCode = ({ children }) => {
   return <CodeSpan>{children}</CodeSpan>
 }
 
-const RenderPre = args => {
+const generateRenderPre = bodyMarkdown => args => {
   // hack to get the code fence language
-  const bodyMarkdown = safeGet(args, 'children.0._owner.memoizedProps.markdown')
   const codeSrc = safeGet(args, 'children.0.props.children.0')
 
   /*
@@ -132,13 +132,14 @@ const RenderPre = args => {
 
 const Markdown = ({ markdown, className }) => {
   const output = useMemo(() => (
-    remark()
+    unified()
+      .use(parse)
       .use(remark2react, {
         remarkReactComponents: {
           p: RenderParagraph,
           img: RenderImage,
           a: RenderAnchor,
-          pre: RenderPre,
+          pre: generateRenderPre(markdown),
           code: RenderCode,
         }
       })
