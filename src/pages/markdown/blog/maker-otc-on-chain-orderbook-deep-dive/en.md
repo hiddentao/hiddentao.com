@@ -11,7 +11,7 @@ backend service. This is different to other projects such as [0x](https://github
 typically require additional infrastructure to manage the orderbook off-chain.
 
 The contracts can be found at: https://github.com/makerdao/maker-otc. I will
-be reference the latest code [(d1c5e3f52258295252fabc78652a1a55ded28bc6)](https://github.com/makerdao/maker-otc/tree/d1c5e3f52258295252fabc78652a1a55ded28bc6).
+be referencing the code at commit [d1c5e3f52258295252fabc78652a1a55ded28bc6](https://github.com/makerdao/maker-otc/tree/d1c5e3f52258295252fabc78652a1a55ded28bc6) (August 7th, 2019).
 
 The contract hierarchy is as follows:
 
@@ -237,3 +237,60 @@ if (offers[id].pay_amt == 0) {
   delete offers[id];
 }
 ```
+
+## ExpiringMarket
+
+`ExpiringMarket` extends `SimpleMarket` with the ability to automatically "close"
+itself at a set point in future such that no more trades are allowed after that
+point in time.
+
+The modifiers declared in `SimpleMarket` get upgraded with this additional check:
+
+```solidity
+modifier can_offer {
+  require(!isClosed());
+  _;
+}
+
+modifier can_buy(uint id) {
+  require(isActive(id));
+  require(!isClosed());
+  _;
+}
+
+modifier can_cancel(uint id) {
+  require(isActive(id));
+  require((msg.sender == getOwner(id)) || isClosed());
+  _;
+}
+```
+
+_Note: once a market is closed, anyone can call `cancel()` to cancel an offer,
+not just the offer owner_.
+
+The `isClosed()` method checks whether the market's closing time has passed or
+whether it has manually been stopped earlier (see below):
+
+```solidity
+uint64 public close_time;
+bool public stopped;
+
+function isClosed() public constant returns (bool closed) {
+  return stopped || getTime() > close_time;
+}
+```
+
+The _close_time_ gets set during construction, and there is no means of
+changing this value once the contract has been deployed (one must choose this
+wisely!).
+
+However it can always be stopped earlier than _close_time_ by an admin:
+
+```solidity
+function stop() public auth {
+  stopped = true;
+}
+```
+
+_Note: the `auth` modifier is beyond the scope of this post, please refer to
+https://github.com/dapphub/ds-auth/blob/master/src/auth.sol to understand it._
