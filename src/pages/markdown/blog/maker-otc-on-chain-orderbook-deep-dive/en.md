@@ -39,6 +39,9 @@ liquidity. Likewise, takers are seen as decreasing a market's liquidity since
 they remove offers from a market. This is why many exchanges charge lower
 fees to makers than they do to takers.
 
+_Note: These contracts do not at present charge trading fees or have a provision
+to do so._
+
 ## SimpleMarket
 
 `SimpleMarket` actually inherits from [EventfulMarket](https://github.com/makerdao/maker-otc/blob/d1c5e3f52258295252fabc78652a1a55ded28bc6/src/simple_market.sol), which defines events which can be emitted by a market. Here are the key ones:
@@ -445,7 +448,7 @@ In the code a double-linked list is used in the form of a mapping:
 struct sortInfo {
     uint next;  // points to id of next higher offer
     uint prev;  // points to id of previous lower offer
-    /* ... */
+    uint delb;  // block number where this entry is marked for deletion
 }
 
 mapping(uint => sortInfo) public _rank; // double-linked list
@@ -508,16 +511,35 @@ function _isPricedLtOrEq(
 }
 ```
 
-The calculation is as follows...
+The calculation shown above is arrived at as follows:
 
-* `mS = offer.pay_amt` _(amount maker is selling)_
-* `mB = offer.buy_amt` _(amount maker is buying)_
-* `tS = t_pay_amt` _(amount taker is selling)_
-* `tB = t_buy_amt` _(amount taker is buying)_
-* `mS ÷ mB` _(price per unit of what maker is selling)_
-* `tB ÷ tS` _(price per unit of what taker is willing to pay)_
-* `(tB ÷ tS) ≥ (mS ÷ mB)` _()
+* **lS = low.pay_amt** _(amount lower offer is selling)_
+* **lB = low.buy_amt** _(amount lower offer is buying)_
+* **lS ÷ lB** _(price per unit of what lower is buying)_
 
+* **hS = high.pay_amt** _(amount higher offer is selling)_
+* **hB = high.buy_amt** _(amount higher offer is buying)_
+* **hS ÷ hB** _(price per unit of what higher is buying)_
+
+* **(lS ÷ lB) ≤ (hS ÷ hB)** _(true if lower comes before higher in sorted list)_
+* **(lS × hB) ≤ (hS × lB)** _(true if lower comes before higher in sorted list)_
+* **(lS × hB) > (hS × lB)** _(true if lower comes after higher in sorted list)_
+
+_Note: We [prefer multiplication to division](https://medium.com/@soliditydeveloper.com/solidity-design-patterns-multiply-before-dividing-407980646f7) due to floating-point
+and rounding imprecision, hence why the above calculation's final form
+involves multiplications._
+
+Example of sorting in action based on above algorithm:
+
+1. Initial list: **`[]`**
+2. Sell 1 ETH for 2 DGX -> **`[ 1-2 ]`**
+3. Sell 9 ETH for 2 DGX -> **`[ 1-2, 9-2 ]`**
+4. Sell 1 ETH for 3 DGX -> **`[ 1-3, 1-2, 9-2 ]`**
+1. Sell 5 ETH for 1 DGX -> **`[ 1-3, 1-2, 9-2, 5-1 ]`**
+
+The lowest price for the ETH-DGX pair is at the top of the list
+(`5 ETH per DGX`) where ETH is thus at its cheapest. And
+vice versa for the highest price (`⅓ ETH per DGX`).
 
 ### Matching algorithm
 
@@ -534,66 +556,196 @@ function _matcho(
   bool rounding      // match "close enough" orders?
 )
   internal
-  returns (uint id)
-{
-  uint best_maker_id;    // highest maker id
-  uint t_buy_amt_old;    // taker buy how much saved
-  uint m_buy_amt;        // maker offer wants to buy this much token
-  uint m_pay_amt;        // maker offer wants to sell this much token
-
-  // there is at least one offer stored for token pair
-  while (_best[t_buy_gem][t_pay_gem] > 0) {
-    best_maker_id = _best[t_buy_gem][t_pay_gem];
-    m_buy_amt = offers[best_maker_id].buy_amt;
-    m_pay_amt = offers[best_maker_id].pay_amt;
-
-    // Ugly hack to work around rounding errors. Based on the idea that
-    // the furthest the amounts can stray from their "true" values is 1.
-    // Ergo the worst case has t_pay_amt and m_pay_amt at +1 away from
-    // their "correct" values and m_buy_amt and t_buy_amt at -1.
-    // Since (c - 1) * (d - 1) > (a + 1) * (b + 1) is equivalent to
-    // c * d > a * b + a + b + c + d, we write...
-    if (mul(m_buy_amt, t_buy_amt) > mul(t_pay_amt, m_pay_amt) +
-        (rounding ? m_buy_amt + t_buy_amt + t_pay_amt + m_pay_amt : 0))
-    {
-      break;
-    }
-    // ^ The `rounding` parameter is a compromise borne of a couple days
-    // of discussion.
-    buy(best_maker_id, min(m_pay_amt, t_buy_amt));
-    t_buy_amt_old = t_buy_amt;
-    t_buy_amt = sub(t_buy_amt, min(m_pay_amt, t_buy_amt));
-    t_pay_amt = mul(t_buy_amt, t_pay_amt) / t_buy_amt_old;
-
-    if (t_pay_amt == 0 || t_buy_amt == 0) {
-      break;
-    }
-  }
-
-  if (t_buy_amt > 0 && t_pay_amt > 0 && t_pay_amt >= _dust[t_pay_gem]) {
-    /* add new offer to sorted list */
-  }
-}
+  returns (uint id) { /* ... */ }
 ```
 
 The calculation is as follows...
 
-* `mS = offer.pay_amt` _(amount maker is selling)_
-* `mB = offer.buy_amt` _(amount maker is buying)_
-* `tS = t_pay_amt` _(amount taker is selling)_
-* `tB = t_buy_amt` _(amount taker is buying)_
-* `mS ÷ mB` _(price per unit of what maker is selling)_
-* `tB ÷ tS` _(price per unit of what taker is willing to pay)_
-* `(tB ÷ tS) ≥ (mS ÷ mB)` _()
+* **tS = t_pay_amt** _(amount of `pay_gem` taker is selling)_
+* **tB = t_buy_amt** _(amount of `buy_gem` taker is buying)_
+* **tS ÷ tB** _(highest `buy_gem` price per unit taker is willing to pay)_
 
+* **mS = offers[best_maker_id].pay_amt** _(amount of `buy_gem` maker is selling)_
+* **mB = offers[best_maker_id].buy_amt** _(amount of `pay_gem` maker is buying)_
+* **mS ÷ mB** _(highest `pay_gem` price per unit maker is willing to pay)_
+* **mB ÷ mS** _(lowest `buy_gem` price per unit maker is willing to sell at)_
 
-The matching loop ensures multiple, consecutive offers in the sorted list can
-be matched in one transaction, just how a normal matching market is expected to
-work.
+* **(tS ÷ tB) ≥ (mB ÷ mS)** _(true if taker price is high enough)_
+* **(tS × mS) ≥ (mB × tB)** _(true if taker price is high enough)_
+* **(mB × tB) > (tS × mS)** _(true if taker price is NOT high enough)_
 
-The `rounding` parameter should be set to `true` by default to reduce the
-chances
+_Note: For the sake of calculation simplicity I will ignore the `rounding`
+parameter for now and deal with it in the next section._
+
+If the taker is able to pay for the current best offer then the quantity taken
+equals the minimum of `tS` and `mB`:
+
+```solidity
+buy(best_maker_id, min(m_pay_amt, t_buy_amt));
+```
+
+The taker's parameters get updated accordingly so that in the next iteration
+of the loop the process can try to fulfil the remaining part of the taker's
+order:
+
+```solidity
+t_buy_amt_old = t_buy_amt;
+t_buy_amt = sub(t_buy_amt, min(m_pay_amt, t_buy_amt));  // new tB
+t_pay_amt = mul(t_buy_amt, t_pay_amt) / t_buy_amt_old;  // new tS
+```
+
+Continuing from the previous example, let's say we are selling ETH for DGX and
+have the following order list at present:
+
+1. `[5-1] = 5 ETH per DGX`  _(`_best[ETH][DGX]`, i.e. the lowest price of ETH)_
+1. `[9-2] = 4.5 ETH per DGX`
+1. `[1-2] = 0.5 ETH per DGX`
+1. `[1-3] = 0.3333 ETH per DGX`**
+
+Let the incoming taker order be: `Sell 2 DGX for 6 ETH`.
+
+The taker order is willing to buy at 3 ETH per DGX. This is higher than the
+lowest sell price (5 ETH per DGX). Since the lowest sell-price offer only has 5 ETH,
+the internal call to make the trade will be `buy(id, 1)`, leaving 1 taker DGX for the
+next iteration:
+
+```solidity
+// do the trade
+buy(best_maker_id, min(m_pay_amt, t_buy_amt));        
+
+// update taker parameters, ready for next iteration
+t_buy_amt_old = t_buy_amt;
+t_buy_amt = sub(t_buy_amt, min(m_pay_amt, t_buy_amt));
+t_pay_amt = mul(t_buy_amt, t_pay_amt) / t_buy_amt_old;
+```
+
+In the second iteration, the incoming taker order would then be: `Sell 1 DGX for 1 ETH`.
+
+Although the `[1-2]` list item is trade-able at this price, the loop would
+never reach this item since it will already break at the second list item (`[9-2]`),
+according to the calculation above:
+
+```solidity
+if (mul(m_buy_amt, t_buy_amt) > mul(t_pay_amt, m_pay_amt)) {
+  break;
+}
+```
+
+**Thus, the matching loop is structured such that only immediately consecutive
+offers can be matched to an incoming offer.**
+
+### Rounding
+
+The calculation from earlier which decided if a match wasn't possible was:
+
+**(mB × tB) > (tS × mS)** _(true if taker price is NOT high enough)_
+
+Due to calculations being done in Solidity, it is possible small rounding errors
+may occur at times. Thus, if we are taking rounding into account then we want
+to be more optimistic in making matches. We want to err towards
+making the above comparison less likely to succeed:
+
+**((mB - 1) × (tB - 1)) > ((tS + 1) × (mS + 1))**
+
+This is reflected in the matching algorithm with the following code:
+
+```solidity
+// Ugly hack to work around rounding errors. Based on the idea that
+// the furthest the amounts can stray from their "true" values is 1.
+// Ergo the worst case has t_pay_amt and m_pay_amt at +1 away from
+// their "correct" values and m_buy_amt and t_buy_amt at -1.
+// Since (c - 1) * (d - 1) > (a + 1) * (b + 1) is equivalent to
+// c * d > a * b + a + b + c + d, we write...
+if (mul(m_buy_amt, t_buy_amt) > mul(t_pay_amt, m_pay_amt) +
+  (rounding ? m_buy_amt + t_buy_amt + t_pay_amt + m_pay_amt : 0))
+{
+  break;
+}
+```
+
+By default it is recommended to set `rounding` to `true`, and indeed one of the
+`offer()` method polymorphic variants does just this:
+
+```solidity
+function offer(
+  uint pay_amt,    // maker (ask) sell how much
+  ERC20 pay_gem,   // maker (ask) sell which token
+  uint buy_amt,    // maker (ask) buy how much
+  ERC20 buy_gem,   // maker (ask) buy which token
+  uint pos         // position to insert offer, 0 should be used if unknown
+)
+  public
+  can_offer
+  returns (uint)
+{
+  // rounding = true
+  return offer(pay_amt, pay_gem, buy_amt, buy_gem, pos, true);
+}
+```
 
 ### "List-Keepers"
 
-### offer()
+There is a notion of a _keeper_ in the contrats - any third-party who can
+perform useful admin tasks on the market.
+
+Keepers can move items from the unsorted list to the sorted list:
+
+```solidity
+function insert(
+  uint id,   // maker (ask) id
+  uint pos   // position to insert into
+)
+  public
+  returns (bool)
+{
+  /* ... */
+  _hide(id);                      // remove offer from unsorted offers list
+  _sort(id, pos);                 // put offer into the sorted offers list
+  /* ... */
+}
+```
+
+They can also remove an offer from the sorted list if it has been marked for
+removal in the near future:
+
+```solidity
+function del_rank(uint id)
+  public
+  returns (bool)
+{
+  /* ... */
+  require(!isActive(id) && _rank[id].delb != 0 && _rank[id].delb < block.number - 10);
+  delete _rank[id];
+  /* ... */
+}
+```
+
+_Note: Offers in the sorted list get marked for removal when they are fulfilled or
+cancelled._
+
+### Trade at market price
+
+If a taker wishes to simply trade at market price (i.e. buy/sell at whatever
+the current best prices are) they can do so using the following methods.
+
+* Sell as much of `pay_gem` as possible until a limit of `pay_amt`, ensuring
+at least `min_fill_amount` of `buy_gem` has been obtained so that a fair price
+was obtained for `buy_gem` bought:
+
+```solidity
+function sellAllAmount(ERC20 pay_gem, uint pay_amt, ERC20 buy_gem, uint min_fill_amount)
+  public
+  returns (uint fill_amt)
+{ /* ... */ }
+```
+
+* Buy as much of `buy_gem` as possible until a limit of `buy_amt`, ensuring at
+most `max_fill_amount` of `pay_gem` was sold so that a fair price was obtained
+for `pay_gem` sold:
+
+```solidity
+function buyAllAmount(ERC20 buy_gem, uint buy_amt, ERC20 pay_gem, uint max_fill_amount)
+  public
+  returns (uint fill_amt)
+{ /* ... */ }
+```

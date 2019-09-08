@@ -19,12 +19,15 @@ const Container = styled.div(() => mq({
   'em, i': {
     fontStyle: 'italic',
   },
-  ul: {
+  'ol, ul': {
     margin: '1.2rem 0 1.2rem 2rem',
     listStyleType: 'disc',
     li: {
       margin: '0.5rem 0',
     },
+  },
+  ol: {
+    listStyleType: 'decimal',
   },
   img: {
     maxWidth: '100%',
