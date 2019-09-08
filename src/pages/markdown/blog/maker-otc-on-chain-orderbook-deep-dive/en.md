@@ -18,8 +18,7 @@ The contract hierarchy is as follows:
 * [MatchingMarket](https://github.com/makerdao/maker-otc/blob/d1c5e3f52258295252fabc78652a1a55ded28bc6/src/matching_market.sol) - this is the main contract, and inherits from ...
 * ...[ExpiringMarket](https://github.com/makerdao/maker-otc/blob/d1c5e3f52258295252fabc78652a1a55ded28bc6/src/expiring_market.sol) - this is a market which runs until a set time in the
 future, but can be stopped at any time. This inherits from ...
-* ... [SimpleMarket](https://github.com/makerdao/maker-otc/blob/d1c5e3f52258295252fabc78652a1a55ded28bc6/src/simple_market.sol) - this is the base class which provides the ability to
-make, take and cancel offers and emits events accordingly.
+* ... [SimpleMarket](https://github.com/makerdao/maker-otc/blob/d1c5e3f52258295252fabc78652a1a55ded28bc6/src/simple_market.sol) - this is the base class which provides the ability to make, take and cancel offers.
 
 ## Maker-taker liquidity
 
@@ -292,5 +291,309 @@ function stop() public auth {
 }
 ```
 
-_Note: the `auth` modifier is beyond the scope of this post, please refer to
-https://github.com/dapphub/ds-auth/blob/master/src/auth.sol to understand it._
+_Note: the `auth` modifier ensures that only the market owner (i.e. the contract
+  deployer) or an authorized admin can call the `stop()` method. Please refer to
+[auth.sol](https://github.com/dapphub/ds-auth/blob/5ab34511f57dd0c8a0859fe6260bc6a6b329c0d4/src/auth.sol) for details._
+
+## MatchingMarket
+
+`MatchingMarket` extends `ExpiringMarket` with bi-directional orderbooks with
+automatic order matching as well as convenience methods to make it easier for a
+participant to take multiple, consecutive, sorted orders in one go.
+
+As the repository [README](https://github.com/makerdao/maker-otc/blob/d1c5e3f52258295252fabc78652a1a55ded28bc6/README.md) file states, there is legacy
+code in this contract which is likely to be removed in future versions. I will
+thus focus solely on the code that is recommended for use today. I will also
+skip over read-only methods which are purely there for convenience purposes.
+
+### Events
+
+This contract adds a number of events the existing list, the key ones being:
+
+* `LogMatchingEnabled` - whether matching market is enabled or not.
+* `LogSortedOffer` - when a new offer gets added to the sorted list.
+* `LogUnsortedOffer` - when a new offer gets added to the un-sorted list.
+
+### Matching vs non-matching modes
+
+Matching is turned on by default:
+
+```solidity
+bool public matchingEnabled = true;
+```
+
+In non-matching mode the market reverts to the `ExpiringMarket` behaviour.
+Matching can be toggled on/off at any point:
+
+```solidity
+function setMatchingEnabled(bool matchingEnabled_) public auth returns (bool) {
+  matchingEnabled = matchingEnabled_;
+  LogMatchingEnabled(matchingEnabled);
+  return true;
+}
+```
+
+I'm not entirely sure why this functionality is available, except perhaps it's
+to enable users of this contract to decide whether they
+wish to use on-chain or off-chain matching mechanisms.
+
+### Dust handling
+
+In this context `dust` refers to such tiny asset quantities that the gas cost of
+making/taking an offer is higher than the amount being traded. The market
+enables a _minimum sell-amount_ to be set for all tokens:
+
+```solidity
+mapping(address => uint) public _dust;       
+```
+
+This value is always checked prior to the creation of a new offer. On the
+flip-side, if a take succeeds and an offer is left with a `pay_amt` lower
+than `_dust[pay_gem]` then the offer gets cancelled:
+
+```solidity
+function _buys(uint id, uint amount) internal returns (bool) {
+  /* ... */
+
+  // If offer has become dust during buy, we cancel it
+  if (isActive(id) && offers[id].pay_amt < _dust[offers[id].pay_gem]) {
+    /* ... */
+    cancel(id);
+  }
+
+  return true;
+}
+```
+
+### Unsorted list
+
+The market provides both a sorted and unsorted list of offers. The unsorted
+list is useful for applications which to provide an OTC trading service where
+traders manually pick offers to trade, rather than an exchange which
+automatically matches offers.
+
+The unsorted list represented as a uni-directional linked list which maps a
+given offer id to the next offer id in the list:
+
+```solidity
+uint _head;                            // first unsorted offer id
+mapping(uint => uint) public _near;    // next unsorted offer id
+```
+
+The `offer()` method is overloaded in this contract. Here is the variant to add
+an offer to the unsorted list:
+
+```solidity
+function offer(
+  uint pay_amt,    // maker (ask) sell how much
+  ERC20 pay_gem,   // maker (ask) sell which token
+  uint buy_amt,    // maker (ask) buy how much
+  ERC20 buy_gem,   // maker (ask) buy which token
+)
+  public
+returns (uint) { /* ... */ }
+```
+
+It internally calls through to the following code:
+
+```solidity
+// check min. sell amount
+require(_dust[pay_gem] <= pay_amt);
+
+// SimpleMarket.offer(...)
+id = super.offer(pay_amt, pay_gem, buy_amt, buy_gem);
+
+// add to unsorted list
+_near[id] = _head;
+_head = id;
+```
+
+The `buy()` and `cancel()` base class methods are overridden to ensure that
+offers in the unsorted list are differentiated from ones in the sorted list
+(see below):
+
+```solidity
+function cancel(uint id) public can_cancel(id) returns (bool success) {
+  /* ... */
+
+  if (isOfferSorted(id)) {
+      require(_unsort(id));   // <-- remove from sorted list
+  } else {
+      require(_hide(id));     // <-- remove from unsorted list
+  }
+
+  /* ... */
+
+  return super.cancel(id);
+}
+```
+
+### Bi-directional sorted list
+
+For every pair of tokens which can be traded, two sorted lists need to be
+maintained. Each list represents the best price obtainable for a given token.
+
+![screenshot](binance-orderbook.png)
+
+In the above image, the bottom of the red list represents the lowest
+BNB sell price (aka the highest ETH buy price) and the top of the green list
+lower represents the highest BNB buy price (aka the lowest ETH sell price).
+
+In the code a double-linked list is used in the form of a mapping:
+
+```solidity
+struct sortInfo {
+    uint next;  // points to id of next higher offer
+    uint prev;  // points to id of previous lower offer
+    /* ... */
+}
+
+mapping(uint => sortInfo) public _rank; // double-linked list
+
+mapping(address => mapping(address => uint)) public _best;  // id of the highest offer for a token pair
+```
+
+The `_best` mapping maps `pay_gem` to `buy_gem` to offer id. The `_rank`
+mapping keeps track of where a given offer sits in the sorted list of offers.
+
+The overloaded `offer()` method is used to add an offer to the sorted list:
+
+```solidity
+function offer(
+  uint pay_amt,    // maker (ask) sell how much
+  ERC20 pay_gem,   // maker (ask) sell which token
+  uint buy_amt,    // maker (ask) buy how much
+  ERC20 buy_gem,   // maker (ask) buy which token
+  uint pos,        // position to insert offer, 0 should be used if unknown
+  bool rounding    // match "close enough" orders?
+)
+  public
+  can_offer
+returns (uint) { /* ... */ }
+```
+
+This first attempts to match the offer to an existing offer in the sorted list
+(see below) before adding it to the list itself:
+
+```solidity
+id = super.offer(t_pay_amt, t_pay_gem, t_buy_amt, t_buy_gem);
+_sort(id, pos);
+```
+
+The `pos` parameter should be the id of the offer closest to the new offer in
+terms of sort order. If instead it's set to 0 then the sorting algorithm will
+start the at the top of the list (represented by the `_best` member variable)
+and walk down the list it finds the correct spot to insert the offer.
+
+Otherwise, it will start at `pos` and iterate down until it finds the first
+active offer; it will then iterate up or down the sorted list until find the
+right spot to insert the offer.
+
+**Thus, an accurate pre-calculated `pos` value should be provided if
+possible to save on gas costs.**
+
+The sorting is based on how offer prices compare:
+
+```solidity
+function _isPricedLtOrEq(
+    uint low,   // lower priced offer's id
+    uint high   // higher priced offer's id
+)
+  internal
+  view
+  returns (bool)
+{
+  return mul(offers[low].buy_amt, offers[high].pay_amt)
+    >= mul(offers[high].buy_amt, offers[low].pay_amt);
+}
+```
+
+The calculation is as follows...
+
+* `mS = offer.pay_amt` _(amount maker is selling)_
+* `mB = offer.buy_amt` _(amount maker is buying)_
+* `tS = t_pay_amt` _(amount taker is selling)_
+* `tB = t_buy_amt` _(amount taker is buying)_
+* `mS ÷ mB` _(price per unit of what maker is selling)_
+* `tB ÷ tS` _(price per unit of what taker is willing to pay)_
+* `(tB ÷ tS) ≥ (mS ÷ mB)` _()
+
+
+### Matching algorithm
+
+Before inserting a new offer into the sorted list, the The `_matcho()` method
+attempts to match it to existing offers:
+
+```solidity
+function _matcho(
+  uint t_pay_amt,    // taker sell how much
+  ERC20 t_pay_gem,   // taker sell which token
+  uint t_buy_amt,    // taker buy how much
+  ERC20 t_buy_gem,   // taker buy which token
+  uint pos,          // position id
+  bool rounding      // match "close enough" orders?
+)
+  internal
+  returns (uint id)
+{
+  uint best_maker_id;    // highest maker id
+  uint t_buy_amt_old;    // taker buy how much saved
+  uint m_buy_amt;        // maker offer wants to buy this much token
+  uint m_pay_amt;        // maker offer wants to sell this much token
+
+  // there is at least one offer stored for token pair
+  while (_best[t_buy_gem][t_pay_gem] > 0) {
+    best_maker_id = _best[t_buy_gem][t_pay_gem];
+    m_buy_amt = offers[best_maker_id].buy_amt;
+    m_pay_amt = offers[best_maker_id].pay_amt;
+
+    // Ugly hack to work around rounding errors. Based on the idea that
+    // the furthest the amounts can stray from their "true" values is 1.
+    // Ergo the worst case has t_pay_amt and m_pay_amt at +1 away from
+    // their "correct" values and m_buy_amt and t_buy_amt at -1.
+    // Since (c - 1) * (d - 1) > (a + 1) * (b + 1) is equivalent to
+    // c * d > a * b + a + b + c + d, we write...
+    if (mul(m_buy_amt, t_buy_amt) > mul(t_pay_amt, m_pay_amt) +
+        (rounding ? m_buy_amt + t_buy_amt + t_pay_amt + m_pay_amt : 0))
+    {
+      break;
+    }
+    // ^ The `rounding` parameter is a compromise borne of a couple days
+    // of discussion.
+    buy(best_maker_id, min(m_pay_amt, t_buy_amt));
+    t_buy_amt_old = t_buy_amt;
+    t_buy_amt = sub(t_buy_amt, min(m_pay_amt, t_buy_amt));
+    t_pay_amt = mul(t_buy_amt, t_pay_amt) / t_buy_amt_old;
+
+    if (t_pay_amt == 0 || t_buy_amt == 0) {
+      break;
+    }
+  }
+
+  if (t_buy_amt > 0 && t_pay_amt > 0 && t_pay_amt >= _dust[t_pay_gem]) {
+    /* add new offer to sorted list */
+  }
+}
+```
+
+The calculation is as follows...
+
+* `mS = offer.pay_amt` _(amount maker is selling)_
+* `mB = offer.buy_amt` _(amount maker is buying)_
+* `tS = t_pay_amt` _(amount taker is selling)_
+* `tB = t_buy_amt` _(amount taker is buying)_
+* `mS ÷ mB` _(price per unit of what maker is selling)_
+* `tB ÷ tS` _(price per unit of what taker is willing to pay)_
+* `(tB ÷ tS) ≥ (mS ÷ mB)` _()
+
+
+The matching loop ensures multiple, consecutive offers in the sorted list can
+be matched in one transaction, just how a normal matching market is expected to
+work.
+
+The `rounding` parameter should be set to `true` by default to reduce the
+chances
+
+### "List-Keepers"
+
+### offer()
