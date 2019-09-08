@@ -1,7 +1,6 @@
 ---
 title: Maker OTC on-chain orderbook deep-dive
 date: '2019-09-08'
-draft: true
 ---
 
 This post is a deep-dive into MakerDAO's Over-the-counter (OTC) Ethereum
