@@ -20,7 +20,7 @@ export default mq({
     }
   },
   'h1, h2, h3': {
-    margin: '1em 0',
+    margin: '1.8em 0 1em',
     fontWeight: 'bolder',
   },
   'h1': {
@@ -31,6 +31,7 @@ export default mq({
     fontSize: '1.5rem',
   },
   'h3': {
+    fontWeight: '300',
     fontSize: '1.2rem',
   },
 })
