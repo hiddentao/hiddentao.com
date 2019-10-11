@@ -74,6 +74,9 @@ import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml'
 registerLanguage('yaml', yaml)
 registerLanguage('yml', yaml)
 
+import solidity from './syntax-highlighting/solidity'
+registerLanguage('solidity', solidity)
+
 import prism from 'react-syntax-highlighter/dist/esm/styles/prism/prism'
 
 const SyntaxHighlighter = ({ language, children }) => (
