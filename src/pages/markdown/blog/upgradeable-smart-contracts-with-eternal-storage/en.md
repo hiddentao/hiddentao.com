@@ -7,7 +7,7 @@ tags:
 ---
 
 For the [Nayms](http://nayms.io/) project we've opted to build upgradeable smart contracts so that we can do
-permissions upgrades of our smart contract logic whilst keeping our on-chain data
+permissioned upgrades of our smart contract logic whilst keeping our on-chain data
 unchanged.
 
 In attempting to figure out how to design for upgradeable contracts I looked
@@ -24,7 +24,7 @@ problem to solve - that of controlling access to the data.
 
 Thus, the proxy pattern (using [delegatecall](https://blog.nucypher.com/upgradeable-smart-contracts-in-defense-of-delegatecall/)) became the preferred option. In this pattern the _proxy_ contract forwards
 all incoming calls to an _logic_ contract which actually has the
-business logic. Because the forwarding is done using `delegatecall`, the _logic_
+business logic. Because the forwarding is done using `delegatecall`, the _logic_ contract 
 gets run in the context of the _proxy_ contract's memory space, meaning it
 operates on the data in the _proxy_ contract rather than its own:
 
@@ -90,7 +90,7 @@ _Note: I've deliberately omitted authorisation code to keep things simple!_.
 
 When using a proxy pattern the approaches can be broken up into two types:
 
-* "Shared" storage structure_ - both the _proxy_ and _logic_
+* "Shared" storage structure - both the _proxy_ and _logic_
 contracts have the same storage data structures. This ensures that the _logic_
 contract does not overwrite important _proxy_ member variables when storing data:
 
@@ -162,8 +162,8 @@ contract LogicVersion2 {
 ```
 
 After considering the options available, I felt that the "shared" storage
-structure approach would work just fine; but instead of inflexible, fixed member
-variables an _eternal storage_ approach made more sense:
+structure approach would work just fine; but instead of inflexible member
+variables, an _eternal storage_ approach made more sense:
 
 ```solidity
 pragma solidity >=0.5.8;
@@ -213,13 +213,11 @@ The beauty of this approach is that the _logic_ contracts do not need to
 explicitly define any member variables since the mappings in the
 `EternalStorage` base class in effect define all possible storage slots already.
 
-This, I believe, is the most flexible storage structure, though code
+This, I believe, is the most flexible storage structure though code
 readability and ease-of-use is slightly sacrificed.
 
 And this is how the [Nayms contracts](https://github.com/nayms/contracts) are
 built. We added some code to ensure upgrades are only possible when authorised:
-
-Our proxy contract base class:
 
 ```solidity
 pragma solidity >=0.5.8;
