@@ -618,7 +618,8 @@ t_buy_amt = sub(t_buy_amt, min(m_pay_amt, t_buy_amt));
 t_pay_amt = mul(t_buy_amt, t_pay_amt) / t_buy_amt_old;
 ```
 
-In the second iteration, the incoming taker order would then be: `Sell 0 DGX for 1 ETH`.
+In the second iteration, the incoming taker order would then be: `Sell 0 DGX for 1 ETH` 
+_(thanks to [Wenhua Zhang](https://twitter.com/shiziwen1986) for pointing out an earlier mistake)_.
 
 This will immediately cause the loop to exit thanks to the line:
 
