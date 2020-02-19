@@ -10,10 +10,6 @@ const GIFS = {
 }
 
 const Image = ({ src, ...props }) => {
-  if (src.endsWith('gif')) {
-    return <img src={GIFS[src]} alt={props.alt} title={props.title} />
-  }
-
   const data = useStaticQuery(graphql`
     query {
       allFile( filter: { internal: { mediaType: { regex: "/image/" } } } ) {
@@ -36,17 +32,23 @@ const Image = ({ src, ...props }) => {
 
   const fluid = safeGet(match, 'childImageSharp.fluid')
 
-  return fluid ? (
-    <Img
-      fluid={fluid}
-      style={{
-        maxWidth: fluid.presentationWidth,
-        margin: "0 auto",
-      }}
-      Tag='div'
-      {...props}
-    />
-  ) : null
+  if (src.endsWith('gif')) {
+    return <img src={GIFS[src]} alt={props.alt} title={props.title} />
+  } if (fluid) {
+    return (
+      <Img
+        fluid={fluid}
+        style={{
+          maxWidth: fluid.presentationWidth,
+          margin: "0 auto",
+        }}
+        Tag='div'
+        {...props}
+      />
+    )
+  } else {
+    return null
+  }
 }
 
 export default Image

@@ -55,7 +55,7 @@ const Page = ({ intl, lang, data }) => {
     })
 
     return ret
-  }, [ data ])
+  }, [ data, lang ])
 
   return (
     <Layout>
