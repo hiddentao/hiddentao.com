@@ -251,7 +251,15 @@ knowledgeable enough of the tech to utilise it better. Initiatives like the
 [Opera](https://www.opera.com/crypto) are a step in this direction. I think the
 jury is still out on these developments though. Besides, what would the
 equivalent desktop solution would be? or would these solutions be mobile-only?
-It will be interesting to see how this space evolves.
+
+--
+
+Both of these factors will help educate people as to the benefits of decentralized
+currencies and computing platforms and why they're increasingly important.
+
+
+
+
 
 
 
