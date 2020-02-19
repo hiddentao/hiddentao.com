@@ -606,8 +606,7 @@ Let the incoming taker order be: `Sell 2 DGX for 6 ETH`.
 
 The taker order is willing to buy at 3 ETH per DGX. This is higher than the
 lowest sell price (5 ETH per DGX). Since the lowest sell-price offer only has 5 ETH,
-the internal call to make the trade will be `buy(id, 1)`, leaving 1 taker DGX for the
-next iteration:
+the internal call to make the trade will be `buy(id, 5)`:
 
 ```solidity
 // do the trade
@@ -619,9 +618,20 @@ t_buy_amt = sub(t_buy_amt, min(m_pay_amt, t_buy_amt));
 t_pay_amt = mul(t_buy_amt, t_pay_amt) / t_buy_amt_old;
 ```
 
-In the second iteration, the incoming taker order would then be: `Sell 1 DGX for 1 ETH`.
+In the second iteration, the incoming taker order would then be: `Sell 0 DGX for 1 ETH` 
+_(thanks to [Wenhua Zhang](https://twitter.com/shiziwen1986) for pointing out an earlier mistake)_.
 
-Although the `[1-2]` list item is trade-able at this price, the loop would
+This will immediately cause the loop to exit thanks to the line:
+
+```solidity
+if (t_pay_amt == 0 || t_buy_amt == 0) {
+  break;
+}
+```
+
+If on the other hand, we had started with different initial values and the 
+next iteration of the loop had the order as `Sell 1 DGX for 1 ETH`, then
+although the `[1-2]` list item is trade-able at this price, the loop would
 never reach this item since it will already break at the second list item (`[9-2]`),
 according to the calculation above:
 
