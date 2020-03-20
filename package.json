@@ -44,7 +44,7 @@
     "unified": "^8.3.2"
   },
   "devDependencies": {
-    "now": "^15.0.6",
+    "now": "^17.0.4",
     "prettier": "^1.17.0"
   },
   "keywords": [
