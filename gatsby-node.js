@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require("path")
 const grayMatter = require('gray-matter')
+const { format: formatDate } = require('date-fns')
 
 const PATH_TO_MD_PAGES = path.resolve('src/pages/markdown')
 const { siteMetadata: { defaultLanguage } } = require('./gatsby-config')
@@ -19,7 +20,9 @@ const _getMarkdownNodeIdAndLanguage = node => {
   return { pageType, pageId, lang }
 }
 
-const _isMarkdownNode = n => n.internal.mediaType === `text/markdown`
+const _isContentfulBlogPostNode = n => (n.internal.type === `ContentfulBlogPost`)
+
+const _isLocalMarkdownNode = n => (n.internal.mediaType === `text/markdown` && !n.internal.owner.includes('contentful'))
 
 const _loadMarkdownFile = n => grayMatter(fs.readFileSync(n.absolutePath, 'utf-8').toString())
 
@@ -41,16 +44,16 @@ const _wrapGraphql = graphql => async str => {
 }
 
 const _createMarkdownPages = ({ pages, getNode, createPage }, cb) => {
-  pages.forEach(({ id, relativePath }, index) => {
+  pages.forEach(({ id }, index) => {
     const node = getNode(id)
-    const { fields: { page: { path: pagePath, lang } } } = node
+    const { path: pagePath, lang } = node
 
     if (defaultLanguage === lang) {
       createPage({
         path: pagePath,
         component: PAGE_TEMPLATE,
         context: {
-          relativePath,
+          id,
           ...(cb ? cb(index, node) : null)
         },
       })
@@ -58,67 +61,99 @@ const _createMarkdownPages = ({ pages, getNode, createPage }, cb) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNodes }) => {
-  const { createNodeField } = actions
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes }) => {
+  const { createNode} = actions
 
-  if (_isMarkdownNode(node)) {
-    const { pageType, pageId, lang } = _getMarkdownNodeIdAndLanguage(node)
-    const { data: { title, date, draft }, content: body } = _loadMarkdownFile(node)
+  getNodes().forEach(node => {
+    let pageType
+    let lang
+    let pageId
+    let title
+    let date
+    let draft
+    const versions = []
 
-    const pageData = {
-      pageId,
-      type: pageType,
-      path: _generatePagePath({ pageType, pageId, date }),
-      lang,
-      date,
-      draft: !!draft,
-      versions: []
+    if (_isContentfulBlogPostNode(node)) {
+      pageType = 'blog'
+      lang = 'en'
+      title = node.title
+      pageId = node.slug
+      date = formatDate(node.createdAt, 'YYYY-MM-DD'),
+      draft = false
+
+      versions.push({
+        lang,
+        title,
+        date,
+        summary: getNodes().find(n => n.id === node.summary___NODE).summary,
+        markdown: getNodes().find(n => n.id === node.body___NODE).body,
+      })
+
+    } else if (_isLocalMarkdownNode(node)) {
+      ; ({ pageType, pageId, lang } = _getMarkdownNodeIdAndLanguage(node))
+      ; ({ data: { title, date, draft } } = _loadMarkdownFile(node))
+
+      // if is default language node
+      if (lang === defaultLanguage) {
+        // generate all versions of the node (including itself)
+        getNodes().forEach(n => {
+          if (_isLocalMarkdownNode(n)) {
+            const r = _getMarkdownNodeIdAndLanguage(n)
+
+            if (r.pageId === pageId) {
+              const gm = _loadMarkdownFile(n)
+
+              versions.push({
+                lang: r.lang,
+                summary: gm.data.summary,
+                title: gm.data.title,
+                date: gm.data.date,
+                markdown: gm.content,
+              })
+            }
+          }
+        })
+      }
     }
 
-    // if is default language node
-    if (lang === defaultLanguage) {
-      // generate all versions of the node (including itself)
-      getNodes().forEach(n => {
-        if (_isMarkdownNode(n)) {
-          const r = _getMarkdownNodeIdAndLanguage(n)
+    if (title) {
+      const pageData = {
+        pageId,
+        type: pageType,
+        path: _generatePagePath({ pageType, pageId, date }),
+        lang,
+        date: formatDate(date, 'YYYY-MM-DD'),
+        draft: !!draft,
+        versions,
+      }
 
-          if (r.pageId === pageId) {
-            const gm = _loadMarkdownFile(n)
-
-            pageData.versions.push({
-              lang: r.lang,
-              summary: gm.data.summary,
-              title: gm.data.title,
-              date: gm.data.date,
-              markdown: gm.content,
-            })
-          }
+      createNode({
+        id: createNodeId(node.id),
+        parent: node.id,
+        children: [],
+        ...pageData,
+        internal: {
+          mediaType: 'x-markdown',
+          type: 'MarkdownPage',
+          contentDigest: createContentDigest(pageData),
+          description: `Markdown page: ${title}`,
         }
       })
     }
-
-    createNodeField({
-      node,
-      name: 'page',
-      value: pageData,
-    })
-  }
-
-  return node
+  })
 }
 
 exports.createPages = async ({ actions, graphql, getNode }) => {
-  const { createPage, createNodeField } = actions
+  const { createPage } = actions
   const _graphql = _wrapGraphql(graphql)
 
   // fetch the blog posts in reverse chronological order so that we can have
   // them know where they sit in the chain
-  const { data: { allFile: { nodes: blogPages } } } = await _graphql(`
+  const { data: { allMarkdownPage: { nodes: blogPages } } } = await _graphql(`
     {
-      allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date } ) {
+      allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }) {
         nodes {
           id
-          relativePath
         }
       }
     }
@@ -129,12 +164,11 @@ exports.createPages = async ({ actions, graphql, getNode }) => {
     return { newerPageId, olderPageId }
   })
 
-  const { data: { allFile: { nodes: staticPages } } } = await _graphql(`
+  const { data: { allMarkdownPage: { nodes: staticPages } } } = await _graphql(`
     {
-      allFile( filter: { fields: { page: { type: { eq: "static" } } } } ) {
+      allMarkdownPage(filter: { type: { eq: "static" } }) {
         nodes {
           id
-          relativePath
         }
       }
     }

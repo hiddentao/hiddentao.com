@@ -32,22 +32,22 @@ const PostsHeading = styled.h3`
   margin-top: 2rem;
 `
 
-const Page = ({ lang, location }) => {
+const Page = ({ lang }) => {
   const data = useStaticQuery(graphql`
     query {
-      allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date }, limit: 10 ) {
+      allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }, limit: 10 ) {
         nodes {
-          ...FileFields
+          ...MarkdownPageFields
         }
       }
     }
   `)
 
   const posts = useMemo(() => {
-    return data.allFile.nodes
+    return data.allMarkdownPage.nodes
       .map(n => ({
-        ...getResolvedVersionForLanguage(n.fields.page.versions, lang, n.fields.page.lang),
-        path: n.fields.page.path,
+        ...getResolvedVersionForLanguage(n.versions, lang, n.lang),
+        path: n.path,
       }))
   }, [ data, lang ])
 

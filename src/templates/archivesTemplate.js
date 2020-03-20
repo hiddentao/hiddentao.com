@@ -23,13 +23,11 @@ const YearContainer = styled.div`
 const Page = ({ intl, lang, data }) => {
   // sort blog post and categorize by year
   const postsByYear = useMemo(() => {
-    const blogPosts = data.allFile.nodes
+    const blogPosts = data.allMarkdownPage.nodes
       .map(n => {
-        const postData = n.fields.page
-
         return {
-          ...getResolvedVersionForLanguage(postData.versions, lang, postData.lang),
-          path: postData.path,
+          ...getResolvedVersionForLanguage(n.versions, lang, n.lang),
+          path: n.path,
         }
       })
 
@@ -85,9 +83,9 @@ export default injectIntl(Template)
 
 export const pageQuery = graphql`
   query {
-    allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date } ) {
+    allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }) {
       nodes {
-        ...FileFields
+        ...MarkdownPageFields
       }
     }
   }

@@ -1,4 +1,3 @@
-import safeGet from 'lodash.get'
 import styled from '@emotion/styled'
 import { Location } from '@reach/router'
 import React, { useMemo } from "react"
@@ -143,9 +142,9 @@ export default function Template({ data }) {
         <Page
           siteUrl={data.site.siteMetadata.siteUrl}
           currentLanguage={currentLanguage}
-          current={data.current.fields.page}
-          newer={safeGet(data.newer, 'fields.page')}
-          older={safeGet(data.older, 'fields.page')}
+          current={data.current}
+          newer={data.newer}
+          older={data.older}
         />
       )}
     </IntlContextConsumer>
@@ -153,31 +152,27 @@ export default function Template({ data }) {
 }
 
 export const pageQuery = graphql`
-  fragment FileFields on File {
-    fields {
-      page {
-        path
-        type
-        lang
-        versions {
-          lang
-          date
-          title
-          markdown
-        }
-      }
+  fragment MarkdownPageFields on MarkdownPage {
+    path
+    type
+    lang
+    versions {
+      lang
+      date
+      title
+      markdown
     }
   }
 
-  query($relativePath: String!, $newerPageId: String, $olderPageId: String) {
-    current: file( relativePath: {  eq: $relativePath } ) {
-      ...FileFields
+  query($id: String!, $newerPageId: String, $olderPageId: String) {
+    current: markdownPage( id: {  eq: $id } ) {
+      ...MarkdownPageFields
     }
-    newer: file( id: { eq: $newerPageId } ) {
-      ...FileFields
+    newer: markdownPage( id: { eq: $newerPageId } ) {
+      ...MarkdownPageFields
     }
-    older: file( id: { eq: $olderPageId } ) {
-      ...FileFields
+    older: markdownPage( id: { eq: $olderPageId } ) {
+      ...MarkdownPageFields
     }
     site {
       siteMetadata {

@@ -4,6 +4,20 @@ Live: https://hiddentao.com
 
 ## Development
 
+To start dev server:
+
 ```shell
 npm start
+```
+
+To just build:
+
+```shell
+npm run build
+```
+
+## Deploy to production
+
+```shell
+npm run deploy
 ```

@@ -42,12 +42,21 @@ module.exports = {
         theme_color_in_head: false,
       },
     },
-    // markdown-driven pages
+    // local pages
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown`,
         path: `${__dirname}/src/pages/markdown`,
+      },
+    },
+    // contentful pages
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: 'ose1kq2edaem',
+        environment: 'master',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     // i18n
@@ -87,10 +96,10 @@ module.exports = {
         }),
         feeds: [
           {
-            serialize: ({ query: { site, allFile } }) => {
-              return allFile.nodes.map(node => {
-                const { path: pagePath, lang } = node.fields.page
-                const { title, date, summary } = node.fields.page.versions.find(v => {
+            serialize: ({ query: { site, allMarkdownPage } }) => {
+              return allMarkdownPage.nodes.map(node => {
+                const { path: pagePath, lang } = node
+                const { title, date, summary } = node.versions.find(v => {
                   return v.lang === lang
                 })
 
@@ -105,19 +114,15 @@ module.exports = {
             },
             query: `
               {
-                allFile( limit:1000, filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date } ) {
+                allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }, limit: 1000) {
                   nodes {
-                    fields {
-                      page {
-                        path
-                        lang
-                        versions {
-                          lang
-                          date
-                          title
-                          summary
-                        }
-                      }
+                    path
+                    lang
+                    versions {
+                      lang
+                      date
+                      title
+                      summary
                     }
                   }
                 }
@@ -129,5 +134,12 @@ module.exports = {
         ],
       },
     },
+    // robots.txt
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    }
   ],
 }

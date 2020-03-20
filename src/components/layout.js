@@ -42,13 +42,9 @@ const Main = styled.main(() => mq({
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     {
-      blog: allFile( filter: { fields: { page: { type: { eq: "blog" }, draft: { ne: true } } } }, sort: { order:DESC, fields: fields___page___date }, limit: 1 ) {
+      blog: allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }, limit: 1) {
         nodes {
-          fields {
-            page {
-              path
-            }
-          }
+          path
         }
       }
       site {
@@ -63,7 +59,7 @@ const Layout = ({ children }) => {
     {
       regexTest: /archives\//,
       label: 'Blog',
-      path: data.blog.nodes[0].fields.page.path
+      path: data.blog.nodes[0].path
     },
     {
       regexTest: /archives$/,

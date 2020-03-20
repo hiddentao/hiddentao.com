@@ -82,11 +82,13 @@ const RenderParagraph = ({ children }) => {
 const RenderImage = arg => {
   const { src, alt, title } = arg
 
+  const finalSrc = (src.startsWith('//')) ? `https://${src}` : src
+
   // external image links should be rendered using normal image tag
-  if (src.startsWith('http')) {
-    return <img src={src} alt={alt} title={title} />
+  if (finalSrc.startsWith('http')) {
+    return <img src={finalSrc} alt={alt} title={title} />
   } else {
-    return <Image src={src} alt={alt} title={title} />
+    return <Image src={finalSrc} alt={alt} title={title} />
   }
 }
 
