@@ -57,7 +57,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "deploy": "npm run now -- --target production -f --local-config .deploy/now.json --public && npm run now -- rm hiddentao-com-live --safe --yes",
+    "deploy": "npm run now -- --confirm --prod -f && npm run now -- rm hiddentao-com-live --safe --yes",
     "now": "now --token $NOW_TOKEN --scope hiddentao",
     "now-build": "npm run build"
   },

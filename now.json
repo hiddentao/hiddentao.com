@@ -6,10 +6,14 @@
     {
       "src": "package.json",
       "use": "@now/static-build",
-      "config": { "distDir": "public" },
-      "env": {
-        "CONTENTFUL_ACCESS_TOKEN": "@hiddentao_contentful_access_token"
+      "config": {
+        "distDir": "public"
       }
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "CONTENTFUL_ACCESS_TOKEN": "@hiddentao_contentful_access_token"
+    }
+  }
 }
