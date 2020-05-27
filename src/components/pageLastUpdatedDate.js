@@ -23,7 +23,6 @@ const PageLastUpdatedDate = ({ date, showOldDateWarning, className }) => (
     {(showOldDateWarning && isMonthsOld(date, 6)) ? (
       <WarningAlert>
         Note: This post is over 6 months old and may now be out of date.
-        Some of the links not work anymore.
       </WarningAlert>
     ) : null}
   </Container>
