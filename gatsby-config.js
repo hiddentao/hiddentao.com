@@ -50,14 +50,16 @@ module.exports = {
         path: `${__dirname}/src/pages/markdown`,
       },
     },
-    // contentful pages
+    // prismic pages
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: 'gatsby-source-prismic',
       options: {
-        spaceId: 'ose1kq2edaem',
-        environment: 'master',
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
+        repositoryName: 'hiddentao',
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        schemas: {
+          blog_post: require('./src/prismic/blog_post.json')
+        }
+      }
     },
     // i18n
     {

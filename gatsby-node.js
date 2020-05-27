@@ -1,4 +1,5 @@
 const fs = require('fs')
+const get = require('lodash.get')
 const path = require("path")
 const grayMatter = require('gray-matter')
 const { format: formatDate } = require('date-fns')
@@ -11,7 +12,7 @@ const ARCHIVES_TEMPLATE = path.resolve(`src/templates/archivesTemplate.js`)
 
 const _getMarkdownNodeIdAndLanguage = node => {
   const relativePath = path.relative(PATH_TO_MD_PAGES, node.absolutePath)
-  // e.g. static/code/my-project/en.md => { pageType: static, pageId: code/my-project, lang: en }
+  // e.g. static/code/my-project/en-gb.md => { pageType: static, pageId: code/my-project, lang: en-gb }
   const tok = relativePath.split('/')
   const pageType = tok[0]
   const mdfile = tok[tok.length - 1]
@@ -20,9 +21,44 @@ const _getMarkdownNodeIdAndLanguage = node => {
   return { pageType, pageId, lang }
 }
 
-const _isContentfulBlogPostNode = n => (n.internal.type === `ContentfulBlogPost`)
+const _resolvePrismicLang = l => {
+  switch (l) {
+    case 'en-gb':
+      return 'en'
+    case 'zh-tw':
+      return 'zh-TW'
+    default:
+      return l
+  }
+}
 
-const _isLocalMarkdownNode = n => (n.internal.mediaType === `text/markdown` && !n.internal.owner.includes('contentful'))
+const _convertPrismicRawTextArrayToMarkdownString = lines => {
+  let str = ''
+  let inCodeBlock = false
+
+  lines.forEach(({ text }) => {
+    if (str.length) {
+      str = `${str}${(inCodeBlock ? "\n" : "\n\n")}${text}`
+    } else {
+      str = text
+    }
+
+    if (text.includes('```')) {
+      // end of code block
+      if (text === '```') {
+        inCodeBlock = false
+      } else {
+        inCodeBlock = true
+      }
+    }
+  })
+
+  return str
+}
+
+const _isPrismicBlogPostNode = n => (get(n, 'internal.type') === `PrismicBlogPost`)
+
+const _isLocalMarkdownNode = n => (get(n, 'internal.mediaType') === `text/markdown` && !_isPrismicBlogPostNode(n))
 
 const _loadMarkdownFile = n => grayMatter(fs.readFileSync(n.absolutePath, 'utf-8').toString())
 
@@ -73,22 +109,38 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
     let draft
     const versions = []
 
-    if (_isContentfulBlogPostNode(node)) {
-      pageType = 'blog'
-      lang = 'en'
-      title = node.title
-      pageId = node.slug
-      date = formatDate(node.createdAt, 'YYYY-MM-DD'),
-      draft = false
+    if (_isPrismicBlogPostNode(node)) {
+      lang = _resolvePrismicLang(node.lang)
 
-      versions.push({
-        lang,
-        title,
-        date,
-        summary: getNodes().find(n => n.id === node.summary___NODE).summary,
-        markdown: getNodes().find(n => n.id === node.body___NODE).body,
-      })
+      if (defaultLanguage === lang) {
+        pageType = 'blog'
+        title = node.data.title.text
+        pageId = node.data.slug.text
+        date = formatDate(node.data.original_publish_date || node.first_publication_date, 'YYYY-MM-DD'),
+        draft = false
 
+        versions.push({
+          lang,
+          title,
+          date,
+          summary: _convertPrismicRawTextArrayToMarkdownString(node.data.summary.raw),
+          markdown: _convertPrismicRawTextArrayToMarkdownString(node.data.body.raw),
+        })
+
+        get(node, 'alternate_languages', []).forEach(({ id }) => {
+          const n = getNodes().find(({ prismicId }) => prismicId === id)
+
+          if (n) {
+            versions.push({
+              lang: _resolvePrismicLang(n.lang),
+              title: n.data.title.text,
+              date: formatDate(n.data.original_publish_date || n.first_publication_date, 'YYYY-MM-DD'),
+              summary: _convertPrismicRawTextArrayToMarkdownString(n.data.summary.raw),
+              markdown: _convertPrismicRawTextArrayToMarkdownString(n.data.body.raw),
+            })
+          }
+        })
+      }
     } else if (_isLocalMarkdownNode(node)) {
       ; ({ pageType, pageId, lang } = _getMarkdownNodeIdAndLanguage(node))
       ; ({ data: { title, date, draft } } = _loadMarkdownFile(node))
