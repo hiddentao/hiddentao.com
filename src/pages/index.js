@@ -14,7 +14,7 @@ const StyledMarkdown = styled(Markdown)`
 `
 
 const CONTENT = `
-I’m Ram, a full stack developer from the UK. I’ve been helping
+I’m Ram, a full stack developer from the UK, and I run HiddenTao Labs. I’ve been helping
 people build better products since 2005.
 
 * I am from: UK
