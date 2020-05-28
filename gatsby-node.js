@@ -36,7 +36,18 @@ const _convertPrismicRawTextArrayToMarkdownString = lines => {
   let str = ''
   let inCodeBlock = false
 
-  lines.forEach(({ text }) => {
+  lines.forEach(line => {
+    let text = ''
+
+    switch (line.type) {
+      case 'paragraph':
+        text = line.text
+        break
+      case 'image':
+        text = `![${line.alt || ''}](${line.url})`
+        break
+    }
+
     if (str.length) {
       str = `${str}${(inCodeBlock ? "\n" : "\n\n")}${text}`
     } else {
