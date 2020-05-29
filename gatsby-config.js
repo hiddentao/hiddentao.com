@@ -77,7 +77,7 @@ module.exports = {
       options: {
         query: `
           {
-            posts: allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, limit: 10000) {
+            posts: allSitemapNode(filter: { type: { eq: "blog" } }) {
               edges {
                 node {
                   id
@@ -85,8 +85,7 @@ module.exports = {
                 }
               }
             }
-
-            pages: allMarkdownPage(filter: { type: { eq: "static" } }) {
+            pages: allSitemapNode(filter: { type: { eq: "static" } }) {
               edges {
                 node {
                   id
@@ -110,7 +109,7 @@ module.exports = {
           `/404.html`,
         ],
         createLinkInHead: true, // optional: create a link in the `<head>` of your site
-        addUncaughtPages: true, // optional: will fill up pages that are not caught by queries and mapping and list them under `sitemap-pages.xml`
+        addUncaughtPages: false, // optional: will fill up pages that are not caught by queries and mapping and list them under `sitemap-pages.xml`
       },
     },
     // feed

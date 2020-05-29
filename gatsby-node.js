@@ -108,14 +108,34 @@ const _createMarkdownPages = ({ pages, getNode, createPage }, cb) => {
   })
 }
 
+const _createSitemapNode = ({ createNode, createNodeId, createContentDigest, slug, lang, pageType }) => {
+  const id = createNodeId(`${slug}${lang}`)
+  const finalSlug = (lang !== defaultLanguage ? `/${lang}${slug}` : slug)
+
+  createNode({
+    id,
+    slug: finalSlug,
+    type: pageType,
+    children: [],
+    internal: {
+      mediaType: 'x-sitemap-node',
+      type: 'SitemapNode',
+      contentDigest: createContentDigest({ id, finalSlug }),
+      description: `Sitemap node: ${finalSlug}`,
+    }
+  })
+}
+
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes }) => {
   const { createNode} = actions
+  const sitemapNodeCallProps = { createNode, createNodeId, createContentDigest }
 
   getNodes().forEach(node => {
     let pageType
     let lang
     let pageId
     let title
+    let slug
     let date
     let draft
     const versions = []
@@ -129,6 +149,9 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
         pageId = node.data.slug.text
         date = formatDate(node.data.original_publish_date || node.first_publication_date, 'YYYY-MM-DD'),
         draft = false
+        slug = _generatePagePath({ pageType, pageId, date })
+
+        _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
 
         versions.push({
           lang,
@@ -140,10 +163,13 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
 
         get(node, 'alternate_languages', []).forEach(({ id }) => {
           const n = getNodes().find(({ prismicId }) => prismicId === id)
+          const l = _resolvePrismicLang(n.lang)
 
           if (n) {
+            _createSitemapNode({ ...sitemapNodeCallProps, slug, lang: l, pageType })
+
             versions.push({
-              lang: _resolvePrismicLang(n.lang),
+              lang: l,
               title: n.data.title.text,
               date: formatDate(n.data.original_publish_date || n.first_publication_date, 'YYYY-MM-DD'),
               summary: _convertPrismicRawTextArrayToMarkdownString(n.data.summary.raw),
@@ -153,11 +179,17 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
         })
       }
     } else if (_isLocalMarkdownNode(node)) {
-      ; ({ pageType, pageId, lang } = _getMarkdownNodeIdAndLanguage(node))
-      ; ({ data: { title, date, draft } } = _loadMarkdownFile(node))
+      const ln = _getMarkdownNodeIdAndLanguage(node)
 
       // if is default language node
-      if (lang === defaultLanguage) {
+      if (ln.lang === defaultLanguage) {
+        ; ({ pageType, pageId, lang } = ln)
+        ; ({ data: { title, date, draft } } = _loadMarkdownFile(node))
+
+        slug = _generatePagePath({ pageType, pageId, date })
+
+        _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
+
         // generate all versions of the node (including itself)
         getNodes().forEach(n => {
           if (_isLocalMarkdownNode(n)) {
@@ -165,6 +197,8 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
 
             if (r.pageId === pageId) {
               const gm = _loadMarkdownFile(n)
+
+              _createSitemapNode({ ...sitemapNodeCallProps, slug, lang: r.lang, pageType })
 
               versions.push({
                 lang: r.lang,
@@ -179,9 +213,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
       }
     }
 
-    if (title) {
-      const slug = _generatePagePath({ pageType, pageId, date })
-
+    if (title && slug) {
       const pageData = {
         pageId,
         type: pageType,
