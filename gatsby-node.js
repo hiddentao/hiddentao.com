@@ -180,10 +180,13 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
     }
 
     if (title) {
+      const slug = _generatePagePath({ pageType, pageId, date })
+
       const pageData = {
         pageId,
         type: pageType,
-        path: _generatePagePath({ pageType, pageId, date }),
+        path: slug,
+        slug,
         lang,
         date: formatDate(date, 'YYYY-MM-DD'),
         draft: !!draft,

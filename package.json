@@ -17,6 +17,7 @@
     "facepaint": "^1.2.1",
     "gatsby": "^2.19.49",
     "gatsby-image": "^2.0.37",
+    "gatsby-plugin-advanced-sitemap": "^1.5.4",
     "gatsby-plugin-emotion": "^4.0.6",
     "gatsby-plugin-feed": "^2.1.1",
     "gatsby-plugin-intl": "^0.1.7",

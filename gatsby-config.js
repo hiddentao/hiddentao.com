@@ -71,6 +71,48 @@ module.exports = {
         redirect: false,
       },
     },
+    // sitemap
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        query: `
+          {
+            posts: allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, limit: 10000) {
+              edges {
+                node {
+                  id
+                  slug
+                }
+              }
+            }
+
+            pages: allMarkdownPage(filter: { type: { eq: "static" } }) {
+              edges {
+                node {
+                  id
+                  slug
+                }
+              }
+            }
+          }
+        `,
+        mapping: {
+          posts: {
+            sitemap: `posts`,
+          },
+          pages: {
+            sitemap: `pages`,
+          },
+        },
+        exclude: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+        ],
+        createLinkInHead: true, // optional: create a link in the `<head>` of your site
+        addUncaughtPages: true, // optional: will fill up pages that are not caught by queries and mapping and list them under `sitemap-pages.xml`
+      },
+    },
     // feed
     {
       resolve: `gatsby-plugin-feed`,
