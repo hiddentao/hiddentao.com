@@ -20,9 +20,9 @@ const WarningAlert = styled(Alert)`
 const PageLastUpdatedDate = ({ date, showOldDateWarning, className }) => (
   <Container className={className}>
     <Date>{date}</Date>
-    {(showOldDateWarning && isMonthsOld(date, 6)) ? (
+    {(showOldDateWarning && isMonthsOld(date, 24)) ? (
       <WarningAlert>
-        Note: This post is over 6 months old and may now be out of date.
+        Note: This post is over 2 years old and may now be out of date.
       </WarningAlert>
     ) : null}
   </Container>

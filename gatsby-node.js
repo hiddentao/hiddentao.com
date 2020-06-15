@@ -21,55 +21,20 @@ const _getMarkdownNodeIdAndLanguage = node => {
   return { pageType, pageId, lang }
 }
 
-const _resolvePrismicLang = l => {
+const _resolveDatoCmsLang = l => {
   switch (l) {
-    case 'en-gb':
+    case 'en':
       return 'en'
-    case 'zh-tw':
+    case 'zh':
       return 'zh-TW'
     default:
       return l
   }
 }
 
-const _convertPrismicRawTextArrayToMarkdownString = lines => {
-  let str = ''
-  let inCodeBlock = false
+const _isDatoCmsBlogPostNode = n => (get(n, 'internal.type') === `DatoCmsBlogPost`)
 
-  lines.forEach(line => {
-    let text = ''
-
-    switch (line.type) {
-      case 'paragraph':
-        text = line.text
-        break
-      case 'image':
-        text = `![${line.alt || ''}](${line.url})`
-        break
-    }
-
-    if (str.length) {
-      str = `${str}${(inCodeBlock ? "\n" : "\n\n")}${text}`
-    } else {
-      str = text
-    }
-
-    if (text.includes('```')) {
-      // end of code block
-      if (text === '```') {
-        inCodeBlock = false
-      } else {
-        inCodeBlock = true
-      }
-    }
-  })
-
-  return str
-}
-
-const _isPrismicBlogPostNode = n => (get(n, 'internal.type') === `PrismicBlogPost`)
-
-const _isLocalMarkdownNode = n => (get(n, 'internal.mediaType') === `text/markdown` && !_isPrismicBlogPostNode(n))
+const _isLocalMarkdownNode = n => (get(n, 'internal.mediaType') === `text/markdown` && !get(n, 'internal.type').includes('Dato'))
 
 const _loadMarkdownFile = n => grayMatter(fs.readFileSync(n.absolutePath, 'utf-8').toString())
 
@@ -126,11 +91,14 @@ const _createSitemapNode = ({ createNode, createNodeId, createContentDigest, slu
   })
 }
 
+
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes }) => {
   const { createNode} = actions
   const sitemapNodeCallProps = { createNode, createNodeId, createContentDigest }
 
-  getNodes().forEach(node => {
+  const allNodes = getNodes()
+
+  allNodes.forEach(node => {
     let pageType
     let lang
     let pageId
@@ -140,14 +108,14 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
     let draft
     const versions = []
 
-    if (_isPrismicBlogPostNode(node)) {
-      lang = _resolvePrismicLang(node.lang)
+    if (_isDatoCmsBlogPostNode(node)) {
+      lang = _resolveDatoCmsLang(node.locale)
 
       if (defaultLanguage === lang) {
         pageType = 'blog'
-        title = node.data.title.text
-        pageId = node.data.slug.text
-        date = formatDate(node.data.original_publish_date || node.first_publication_date, 'YYYY-MM-DD'),
+        title = node.title
+        pageId = node.slug
+        date = formatDate(node.date, 'YYYY-MM-DD'),
         draft = false
         slug = _generatePagePath({ pageType, pageId, date })
 
@@ -157,25 +125,32 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
           lang,
           title,
           date,
-          summary: _convertPrismicRawTextArrayToMarkdownString(node.data.summary.raw),
-          markdown: _convertPrismicRawTextArrayToMarkdownString(node.data.body.raw),
+          summary: node.summary,
+          markdown: node.body,
         })
 
-        get(node, 'alternate_languages', []).forEach(({ id }) => {
-          const n = getNodes().find(({ prismicId }) => prismicId === id)
-          const l = _resolvePrismicLang(n.lang)
+        // check for other locales
+        const idPrefix = node.id.substr(0, node.id.indexOf(node.locale))
 
-          if (n) {
+        allNodes.forEach(n => {
+          if (n.id.startsWith(idPrefix) && n.id !== node.id && n.title) {
+            console.log(node.id, n.id, n)
+            const l = _resolveDatoCmsLang(n.locale)
+
             _createSitemapNode({ ...sitemapNodeCallProps, slug, lang: l, pageType })
 
             versions.push({
               lang: l,
-              title: n.data.title.text,
-              date: formatDate(n.data.original_publish_date || n.first_publication_date, 'YYYY-MM-DD'),
-              summary: _convertPrismicRawTextArrayToMarkdownString(n.data.summary.raw),
-              markdown: _convertPrismicRawTextArrayToMarkdownString(n.data.body.raw),
+              title: n.title,
+              date: formatDate(n.date, 'YYYY-MM-DD'),
+              summary: n.summary,
+              markdown: n.body,
             })
           }
+        })
+
+        get(node, 'alternate_languages', []).forEach(({ id }) => {
+          const n = getNodes().find(({ prismicId }) => prismicId === id)
         })
       }
     } else if (_isLocalMarkdownNode(node)) {

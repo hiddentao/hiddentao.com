@@ -108,6 +108,7 @@ const RenderCode = ({ children }) => {
 const generateRenderPre = bodyMarkdown => args => {
   // hack to get the code fence language
   const codeSrc = safeGet(args, 'children.0.props.children.0')
+  const codeSrcTrimmed = codeSrc.substr(0, 50).trim()
 
   /*
   Structure is usually:
@@ -124,7 +125,8 @@ const generateRenderPre = bodyMarkdown => args => {
     if (m.index === regex.lastIndex) {
       regex.lastIndex++
     }
-    if (bodyMarkdown.substring(m.index + m[0].length).startsWith(codeSrc)) {
+    const snippet = bodyMarkdown.substring(m.index + m[0].length).substr(0, 50).trim()
+    if (snippet.localeCompare(codeSrcTrimmed) === 0) {
       lang = m[0].substring(3).trim()
       break
     }
