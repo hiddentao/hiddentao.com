@@ -13,8 +13,7 @@
   ],
   "build": {
     "env": {
-      "CONTENTFUL_ACCESS_TOKEN": "@hiddentao_contentful_access_token",
-      "PRISMIC_ACCESS_TOKEN": "@hiddentao_prismic_access_token"
+      "DATOCMS_ACCESS_TOKEN": "@hiddentao_datocms_access_token"
     }
   }
 }
