@@ -56,7 +56,7 @@ function SEO({ description, lang, meta, keywords, title }) {
           property: `og:image`,
           content: `https://ogi.sh?${qs.stringify({
             title: title || site.siteMetadata.title,
-            imageUrl: 'http://backgroundlabs.com/wp-content/uploads/2013/06/seamless-pattern-of-circuit-board.png',
+            imageUrl: 'https://hiddentao.com/bg.png',
           })}`,
         },
         {
