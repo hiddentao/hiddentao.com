@@ -39,7 +39,6 @@ const HeaderWrapper = styled.div`
 const Content = styled(MaxContentWidth)`
   padding: 2rem 1rem 3rem;
   position: relative;
-  min-height: 100vh;
 `
 
 const Layout = ({ children, noHeader }) => {
@@ -120,6 +119,7 @@ const Layout = ({ children, noHeader }) => {
         backgroundAttachment: 'fixed',
         backgroundRepeat: 'repeat',
         backgroundSize: 'auto',
+        minHeight: '100vh',
       }}>
         <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
           <HeaderWrapper floating={floatingHeader} noStaticHeader={noHeader}>
@@ -131,7 +131,9 @@ const Layout = ({ children, noHeader }) => {
         <Content>
           {children}
         </Content>
-        <Footer navLinks={navLinks} />
+        <MaxContentWidth>
+          <Footer navLinks={navLinks} />
+        </MaxContentWidth>
       </Container>
     </ThemeProvider>
   )

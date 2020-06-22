@@ -153,7 +153,9 @@ const KeyPoint = styled(Section)`
   }
 `
 
-const Testimonials = styled.div``
+const Testimonials = styled.div`
+  margin-bottom: 6rem;
+`
 
 const StyledTestimonial = styled(Testimonial)`
   margin: 4rem auto;
@@ -261,7 +263,7 @@ He’s centered, diligent and whip-smart. There’d be funny times when a partne
             company='Bananas'
           />
           <MoreTestimonials>
-            <LinkedInLink>See more testimonials...</LinkedInLink>
+            <LinkedInLink>See more testimonials</LinkedInLink>
           </MoreTestimonials>
         </Testimonials>
         <h2>Latest blog posts</h2>

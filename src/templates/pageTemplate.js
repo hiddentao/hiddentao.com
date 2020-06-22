@@ -20,7 +20,7 @@ const StyledPageLastUpdatedDate = styled(PageLastUpdatedDate)`
 
 const PostReadTime = styled.p`
   margin: 0.8rem 0 0;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-style: italic;
   color: ${({ theme }) => theme.readTime.textColor};
 `
@@ -39,7 +39,7 @@ const StyledMarkdown = styled(Markdown)`
 `
 
 const Heading = styled.h1`
-  margin-bottom: 0;
+  margin: 1rem 0 0;
 `
 
 const StyledLanguage = styled(Language)`

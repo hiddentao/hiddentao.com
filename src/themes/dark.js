@@ -141,6 +141,7 @@ export default {
     textColor: lightGrey,
   },
   footer: {
+    borderColor: darkGrey,
     anchor: {
       textColor: anchorColor,
       hoverTextColor: white,

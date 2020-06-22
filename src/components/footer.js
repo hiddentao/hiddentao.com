@@ -7,8 +7,9 @@ import SocialLinks from './socialLinks'
 
 const Container = styled.footer`
   background-color: ${({ theme }) => theme.footer.bgColor};
-  padding: 1rem;
-  border-top: 1px solid #999;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: 1px dashed ${({ theme }) => theme.footer.borderColor};;
   font-size: 1.3rem;
 
   ${({ theme }) => childAnchors(theme.footer.anchor)};
