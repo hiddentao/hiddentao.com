@@ -199,7 +199,7 @@ const Page = ({ lang }) => {
       <Content>
         <Splash>
           <SplashTop>
-            <SplashAvatarImage size='300px' />
+            <SplashAvatarImage size={300} />
             <SplashText>
               Hey! I'm <em>Ram</em>, a full-stack developer based in London, UK
             </SplashText>
