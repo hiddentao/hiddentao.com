@@ -38,6 +38,9 @@ jobs:
       - run:
           name: Deploy code
           command: npm run deploy
+      - run:
+          name: Ping google
+          command: npm run ping-google
 
 
 workflows:
