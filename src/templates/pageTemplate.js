@@ -1,3 +1,4 @@
+import trunc from 'lodash.truncate'
 import styled from '@emotion/styled'
 import { Location } from '@reach/router'
 import React, { useMemo } from "react"
@@ -117,9 +118,15 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
     getResolvedVersionForLanguage(versions, currentLanguage, fallbackLang)
   ), [ versions, currentLanguage, fallbackLang ])
 
+  const summary = useMemo(() => {
+    const src = fields.summary || fields.markdown
+
+    return src ? trunc(src, { length: 100 }) : null
+  }, [ fields ])
+
   return (
     <Layout>
-      <SEO title={fields.title} />
+      <SEO title={fields.title} description={summary} />
       <Heading>{fields.title}</Heading>
       <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
       {type === 'blog' ? (
@@ -170,6 +177,7 @@ export const pageQuery = graphql`
       lang
       date
       title
+      summary
       markdown
     }
   }
