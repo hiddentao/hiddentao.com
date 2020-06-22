@@ -66,6 +66,7 @@
     "start": "npm run dev",
     "serve": "gatsby serve",
     "deploy": "npm run now -- --confirm --prod -f && npm run now -- rm hiddentao-com-live --safe --yes",
+    "ping-google": "curl http://www.google.com/ping?sitemap=https://hiddentao.com/sitemap.xml",
     "now": "now --token $NOW_TOKEN --scope hiddentao",
     "now-build": "npm run build"
   },
