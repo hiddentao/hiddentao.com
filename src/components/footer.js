@@ -1,9 +1,10 @@
 import { Link } from "gatsby-plugin-intl"
 import React from "react"
-import { childAnchors } from 'emotion-styled-utils'
+import { flex, childAnchors } from 'emotion-styled-utils'
 import styled from '@emotion/styled'
 
 import SocialLinks from './socialLinks'
+import Button from './button'
 
 const Container = styled.footer`
   background-color: ${({ theme }) => theme.footer.bgColor};
@@ -16,11 +17,25 @@ const Container = styled.footer`
 `
 
 const Top = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 1.7rem;
+  ${flex({ direction: 'column', justify: 'flex-start', align: 'flex-start' })};
+  margin-bottom: 2.5rem;
+
+  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
+    ${flex({ direction: 'row', justify: 'space-between', align: 'flex-start' })};
+  }
+`
+
+const TopLeft = styled.div`
+  ${flex({ direction: 'row', justify: 'flex-start', align: 'flex-start' })};
+  margin-bottom: 3rem;
+
+  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
+    margin-bottom: 0;
+  }
+`
+
+const TopRight = styled.div`
+  text-align: right;
 `
 
 const Nav = styled.ul`
@@ -53,20 +68,43 @@ const StyledSocialLinks = styled(SocialLinks)`
   }
 `
 
+const BuyMeACoffee = styled.a`
+  display: inline-block;
+
+  img {
+    height: 34px;
+    width: 35px;
+    vertical-align: middle;
+  }
+`
+
 const Footer = ({ navLinks }) => (
   <Container>
     <Top>
-      <Nav>
-        <TopNavItem><Link to='/'>Home</Link></TopNavItem>
-        {navLinks.map(navLink => (
-          <NavItem key={navLink.label}>
-            <Link to={navLink.path}>{navLink.label}</Link>
-          </NavItem>
-        ))}
-      </Nav>
-      <Social>
-        <StyledSocialLinks />
-      </Social>
+      <TopLeft>
+        <Nav>
+          <TopNavItem><Link to='/'>Home</Link></TopNavItem>
+          {navLinks.map(navLink => (
+            <NavItem key={navLink.label}>
+              <Link to={navLink.path}>{navLink.label}</Link>
+            </NavItem>
+          ))}
+        </Nav>
+        <Social>
+          <StyledSocialLinks />
+        </Social>
+      </TopLeft>
+      <TopRight>
+        <BuyMeACoffee
+          target='_blank'
+          href='https://www.buymeacoffee.com/hiddentao'
+        >
+          <Button>
+            <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" />
+            <span>Buy me a coffee</span>
+          </Button>
+        </BuyMeACoffee>
+      </TopRight>
     </Top>
     <Copyright>
       © Hiddentao Ltd

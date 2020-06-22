@@ -46,7 +46,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           property: `og:description`,
-          content: description || metaDescription,
+          content: description || title,
         },
         {
           property: `og:type`,
