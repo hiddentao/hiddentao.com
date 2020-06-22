@@ -1,20 +1,17 @@
 import { Link } from "gatsby-plugin-intl"
 import React from "react"
+import { childAnchors } from 'emotion-styled-utils'
 import styled from '@emotion/styled'
 
-import { footerBgColor, footerLinkColor, anchorHoverColor } from '../styles/common'
 import SocialLinks from './socialLinks'
 
 const Container = styled.footer`
-  background-color: ${footerBgColor};
+  background-color: ${({ theme }) => theme.footer.bgColor};
   padding: 1rem;
   border-top: 1px solid #999;
-  a {
-    color: ${footerLinkColor};
-    &:hover {
-      color: ${anchorHoverColor};
-    }
-  }
+  font-size: 1.3rem;
+
+  ${({ theme }) => childAnchors(theme.footer.anchor)};
 `
 
 const Top = styled.div`
@@ -28,13 +25,12 @@ const Top = styled.div`
 const Nav = styled.ul`
   list-style: none;
   display: block;
-  font-size: 0.7rem;
   min-width: 7rem;
 `
 
 const NavItem = styled.li`
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 `
 
 const TopNavItem = styled(NavItem)`
@@ -42,16 +38,17 @@ const TopNavItem = styled(NavItem)`
 `
 
 const Copyright = styled.div`
-  font-size: 0.6rem;
+  font-size: 60%;
+  color: ${({ theme }) => theme.footer.copyright.textColor};
 `
 
 const Social = styled.div``
 
 const StyledSocialLinks = styled(SocialLinks)`
   li {
-    color: ${footerLinkColor};
-    font-size: 0.7rem;
-    margin-bottom: 0.3rem;
+    color: ${({ theme }) => theme.footer.anchor.textColor};
+    font-size: 70%;
+    margin-bottom: 0.4rem;
   }
 `
 
@@ -71,7 +68,7 @@ const Footer = ({ navLinks }) => (
       </Social>
     </Top>
     <Copyright>
-      © HiddenTao Ltd. <a href="https://github.com/hiddentao/hiddentao.github.io">Source on Github</a>.
+      © Hiddentao Ltd
     </Copyright>
   </Container>
 )

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-import { bodyColor } from '../styles/common'
 import Icon from './icon'
 
 const SocialList = styled.ul`
@@ -16,7 +15,7 @@ const SocialListItem = styled.li`
   }
   svg {
     min-width: 2em;
-    color: ${bodyColor};
+    color: ${({ theme }) => theme.textColor};
   }
   a {
     text-decoration: none;
@@ -26,39 +25,73 @@ const SocialListItem = styled.li`
   }
 `
 
+export const TwitterLink = ({ children }) => (
+  <a href="https://twitter.com/hiddentao">
+    {children || (
+      <React.Fragment>
+        <Icon name={['fab', 'twitter']} /><span>Twitter</span>
+      </React.Fragment>
+    )}
+  </a>
+)
+
+export const GithubLink = ({ children }) => (
+  <a href="https://github.com/hiddentao">
+    {children || (
+      <React.Fragment>
+        <Icon name={['fab', 'github']} /><span>Github</span>
+      </React.Fragment>
+    )}
+  </a>
+)
+
+export const LinkedInLink = ({ children }) => (
+  <a href="https://www.linkedin.com/in/hiddentao/">
+    {children || (
+      <React.Fragment>
+        <Icon name={['fab', 'linkedin']} /><span>Linked-in</span>
+      </React.Fragment>
+    )}
+  </a>
+)
+
+export const EmailLink = ({ children }) => (
+  <a href="mailto:ram@hiddentao.com">
+    {children || (
+      <React.Fragment>
+        <Icon name={['fas', 'envelope']} /><span>Email</span>
+      </React.Fragment>
+    )}
+  </a>
+)
+
+export const FeedLink = ({ children }) => (
+  <a href="http://feedpress.me/hiddentao">
+    {children || (
+      <React.Fragment>
+        <Icon name={['fas', 'rss']} /><span>RSS</span>
+      </React.Fragment>
+    )}
+  </a>
+)
 
 const SocialLinks = ({ className }) => {
   return (
     <SocialList className={className}>
-      <SocialListItem title="RSS">
-        <a href="http://feedpress.me/hiddentao">
-          <Icon name={['fas', 'rss']} /><span>Feed</span>
-        </a>
-      </SocialListItem>
-      <SocialListItem title="Email">
-        <a href="mailto:ram@hiddentao.com">
-          <Icon name={['fas', 'envelope']} /><span>Email</span>
-        </a>
-      </SocialListItem>
       <SocialListItem title="Twitter">
-        <a href="https://twitter.com/hiddentao">
-          <Icon name={['fab', 'twitter']} /><span>Twitter</span>
-        </a>
+        <TwitterLink />
       </SocialListItem>
       <SocialListItem title="Github">
-        <a href="https://github.com/hiddentao">
-          <Icon name={['fab', 'github']} /><span>Github</span>
-        </a>
+        <GithubLink />
       </SocialListItem>
       <SocialListItem title="Linked-in">
-        <a href="https://www.linkedin.com/in/hiddentao/">
-          <Icon name={['fab', 'linkedin']} /><span>Linked-in</span>
-        </a>
+        <LinkedInLink />
       </SocialListItem>
-      <SocialListItem title="Stack Overflow">
-        <a href="https://stackoverflow.com/users/207619/hiddentao">
-          <Icon name={['fab', 'stack-overflow']} /><span>Stack Overflow</span>
-        </a>
+      <SocialListItem title="Email">
+        <EmailLink />
+      </SocialListItem>
+      <SocialListItem title="RSS">
+        <FeedLink />
       </SocialListItem>
     </SocialList>
   )

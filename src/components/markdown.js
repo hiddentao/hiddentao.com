@@ -6,61 +6,79 @@ import parse from 'remark-parse'
 import remark2react from 'remark-react'
 import { Link } from 'gatsby-plugin-intl'
 
-import { mq } from '../styles/breakpoints'
 import SyntaxHighlighter from './syntaxHighlighter'
 import Image from './image'
 
-const Container = styled.div(() => mq({
-  fontSize: '1rem',
-  lineHeight: '1.3em',
-  'strong, b': {
-    fontWeight: 'bolder',
-  },
-  'em, i': {
-    fontStyle: 'italic',
-  },
-  'ol, ul': {
-    margin: '1.2rem 0 1.2rem 2rem',
-    listStyleType: 'disc',
-    li: {
-      margin: '0.5rem 0',
-    },
-  },
-  ol: {
-    listStyleType: 'decimal',
-  },
-  img: {
-    maxWidth: '100%',
-  },
-  pre: {
-    fontSize: '0.8rem'
+const Container = styled.div`
+  ${({ theme }) => theme.font('text', 'regular')};
+  line-height: 1.3em;
+
+  strong, b {
+    font-weight: bolder;
   }
-}))
+
+  em, i {
+    font-style: italic;
+  }
+
+  ol, ul {
+    margin: 1.2em 0 1.2em 2em;
+    list-style-type: disc;
+    li {
+      margin: 0.5em 0;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  pre {
+    font-size: 70%;
+    background-color: ${({ theme }) => theme.code.bgColor};
+  }
+`
 
 const CodeSpan = styled.span`
   font-family: monospace;
+  font-size: 80%;
+  padding: 0.1em;
+  background-color: ${({ theme }) => theme.code.bgColor};
 `
 
-const P = styled.p(() => mq({
-  margin: '1rem 0',
-  '&:first-of-type': {
-    marginTop: '0',
-  }
-}))
+const P = styled.p`
+  margin: 1em 0;
 
-const ImgDiv = styled.div(() => mq({
-  margin: '2rem 0',
-  textAlign: 'center',
-  '& > img, & > div': {
-    display: 'block',
-    margin: '0 auto',
-    maxWidth: ['90%', '500px'],
-  },
-  em: {
-    marginTop: '0.2rem',
-    fontSize: '90%',
+  &:first-of-type {
+    margin-top: 0;
   }
-}))
+`
+
+const ImgDiv = styled.div`
+  margin: 2em 0;
+  text-align: center;
+
+  & > img, & > div {
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  em {
+    margin-top: 0.2em;
+    font-size: 90%;
+  }
+
+  ${({ theme }) => theme.media.when({ minW: 'mobile' })} {
+    & > img, & > div {
+      max-width: 500px;
+    }
+  }
+`
 
 const RenderParagraph = ({ children }) => {
   const imgSrc = safeGet(children, '0.props.src', '')

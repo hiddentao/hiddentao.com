@@ -15,6 +15,8 @@ import {
   faRss,
   faEnvelope,
   faMapPin,
+  faHome,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons'
 
 config.autoAddCss = false
@@ -27,6 +29,8 @@ library.add(
   faRss,
   faEnvelope,
   faMapPin,
+  faHome,
+  faBars,
 )
 
 export default ({ name }) => <FontAwesomeIcon icon={name} />

@@ -7,7 +7,6 @@ import { DiscussionEmbed } from "disqus-react"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
 import { calculateReadTimeInMinutes } from '../utils/string'
-import { pageBottomNavBorderColor, metaColor } from '../styles/common'
 import Layout from "../components/layout"
 import Language from "../components/language"
 import PageLastUpdatedDate from "../components/pageLastUpdatedDate"
@@ -16,21 +15,32 @@ import Markdown from "../components/markdown"
 
 const StyledPageLastUpdatedDate = styled(PageLastUpdatedDate)`
   font-size: 1.2rem;
-  margin: 0.8rem 0 0;
+  margin: 1rem 0 0;
 `
 
 const PostReadTime = styled.p`
   margin: 0.8rem 0 0;
   font-size: 0.7rem;
   font-style: italic;
-  color: ${metaColor}
+  color: ${({ theme }) => theme.readTime.textColor};
 `
 
 const StyledMarkdown = styled(Markdown)`
-  margin-top: 1rem;
+  font-size: 1.4rem;
+  background-color: ${({ theme }) => theme.contentSection.bgColor};
+  color: ${({ theme }) => theme.contentSection.textColor};
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 2.5rem;
+
+  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
+    font-size: 1.4rem;
+  }
 `
 
-const Heading = styled.h1``
+const Heading = styled.h1`
+  margin-bottom: 0;
+`
 
 const StyledLanguage = styled(Language)`
   margin-top: 0.8rem;
@@ -43,8 +53,8 @@ const Comments = styled.div`
 const BottomNav = styled.div`
   margin-top: 1.5rem;
   padding: 1rem 0;
-  border-top: 1px dashed ${pageBottomNavBorderColor};
-  border-bottom: 1px dashed ${pageBottomNavBorderColor};
+  border-top: 1px dashed ${({ theme }) => theme.pageBottomNav.borderColor};
+  border-bottom: 1px dashed ${({ theme }) => theme.pageBottomNav.borderColor};
   font-size: 0.8rem;
   line-height: 1rem;
   ul {
@@ -119,7 +129,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
         <StyledLanguage availableLanguages={versions.map(v => v.lang)} />
       ) : null}
       <StyledMarkdown markdown={fields.markdown} />
-      <PageBottomNav {...nav} />
+      {type === 'blog' ? <PageBottomNav {...nav} /> : null}
       {type === 'blog' ? (
         <Comments>
           <Location>

@@ -1,0 +1,12 @@
+// standard colours
+export const white = '#fff'
+export const black = '#000'
+export const darkestGrey = '#333'
+export const darkGrey = '#666'
+export const green = '#0a0'
+export const red = '#f00'
+export const yellow = '0ff'
+export const grey = '#999'
+export const lightGrey = '#ccc'
+export const lighterGrey = '#eee'
+export const transparent = 'transparent'

@@ -249,7 +249,7 @@ exports.createPages = async ({ actions, graphql, getNode }) => {
   _createMarkdownPages({ pages: staticPages, getNode, createPage })
 
   createPage({
-    path: '/archives',
+    path: '/blog',
     component: ARCHIVES_TEMPLATE,
     context: {},
   })

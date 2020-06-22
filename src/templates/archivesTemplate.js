@@ -3,7 +3,6 @@ import React, { useMemo } from "react"
 import { graphql } from "gatsby"
 import { IntlContextConsumer, injectIntl } from "gatsby-plugin-intl"
 
-import { archivesYearColor, archivesYearBorderColor } from '../styles/common'
 import { getResolvedVersionForLanguage } from '../utils/node'
 import { parseDate } from "../utils/date"
 import Layout from "../components/layout"
@@ -12,11 +11,9 @@ import SEO from "../components/seo"
 
 const YearContainer = styled.div`
   h3 {
-    color: ${archivesYearColor};
-    font-size: 1rem;
     padding-bottom: 0.7rem;
-    border-bottom: 1px solid ${archivesYearBorderColor};
-    margin: 1.7rem 0 1rem;
+    border-bottom: 1px solid ${({ theme }) => theme.archives.year.borderColor};
+    margin: 3rem 0 1rem;
   }
 `
 
@@ -58,7 +55,7 @@ const Page = ({ intl, lang, data }) => {
   return (
     <Layout>
       <SEO title='Blog archive' />
-      <h1>Blog archive</h1>
+      <h1>Blog</h1>
       {postsByYear.map(( { year, posts }) => (
         <YearContainer key={year}>
           <h3>{year}</h3>

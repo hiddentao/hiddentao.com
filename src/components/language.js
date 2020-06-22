@@ -23,11 +23,12 @@ const changeLocale = (language, { defaultLanguage }) => {
 }
 
 const ModalTitle = styled.h3`
-  margin-top: 0;
+  margin: 0 0 2rem;
+  color: ${({ theme }) => theme.languageModal.title.textColor};
 `
 
 const ChangeButton = styled(Button)`
-  font-size: 0.5rem;
+  font-size: 1rem;
 `
 
 const LanguageButton = styled(Button)`
@@ -75,7 +76,7 @@ const LangPopup = ({ intl, defaultLanguage, currentLanguage, availableLanguages,
       position="top center"
       modal={true}
       overlayStyle={{
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,0,0,0.65)',
       }}
       contentStyle={{
         padding: '1em',

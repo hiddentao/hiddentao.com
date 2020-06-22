@@ -2,77 +2,62 @@ import { Link } from "gatsby-plugin-intl"
 import React, { useCallback, useState } from "react"
 import styled from '@emotion/styled'
 import { Location } from '@reach/router'
+import { childAnchors, buttonStyles, boxShadow, flex } from 'emotion-styled-utils'
 
-import { mq } from '../styles/breakpoints'
 import Button from './button'
-import {
-  anchorColor,
-  navLinkActiveBgColor,
-  navLinkHoverColor,
-  navLinkColor,
-  headerBgColor
-} from '../styles/common'
+import Icon from './icon'
 
 const Container = styled.header`
-  background-color: ${headerBgColor};
   padding: 0.5rem 1.2rem;
   height: 4rem;
-  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-  a {
-    border: none;
-    color: ${navLinkColor};
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    &:hover {
-      color: ${navLinkHoverColor};
-      background-color: transparent;
-      border-bottom: 1px solid ${anchorColor};
-    }
-  }
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  ${({ theme }) => theme.font('header')};
+
+  ${flex({ direction: 'row', justify: 'space-between', align: 'center' })};
 `
 
 const Brand = styled.div`
   font-size: 1rem;
   font-weight: bolder;
-  a {
-    color: #eee;
+
+  ${({ theme }) => childAnchors(theme.header.nav.anchor)};
+`
+
+const Nav = styled.ul`
+  display: none;
+  font-size: 1.2rem;
+  list-style: none;
+
+  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
+    display: block;
   }
 `
 
-const Nav = styled.ul(() => mq({
-  fontSize: '1.2rem',
-  listStyle: 'none',
-  display: ['none', 'none', 'block'],
-}))
+const MobileNavButton = styled(Button)`
+  display: block;
+  ${({ theme }) => buttonStyles(theme.header.nav.mobileButton)};
 
-const MobileNavButton = styled(Button)(({ open }) => mq({
-  display: ['block', 'block', 'none'],
-  borderColor: navLinkColor,
-  color: navLinkColor,
-  '&:hover': {
-    color: navLinkHoverColor,
-    borderColor: navLinkHoverColor,
-    backgroundColor: 'transparent',
-  },
-  transform: `rotate(${open ? '180deg': '0deg'})`,
-  transition: 'all 0.2s',
-}))
+  transform: rotate(${({ open }) => open ? 90 : 0}deg);
+  transition: all 0.2s;
+
+  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
+    display: none;
+  }
+`
 
 const NavItem = styled.li`
-  padding: 1em;
   display: inline-block;
   font-size: 1rem;
-  background-color: ${({ selected }) => selected ? navLinkActiveBgColor : 'transparent'};
-  border-radius: 5px;
-  a {
-    text-transform: lowercase;
-    color: ${({ selected }) => selected ? navLinkHoverColor : navLinkColor};
-  }
+
+  ${({ theme, selected }) => childAnchors({
+    ...theme.header.nav.anchor,
+    inHoverState: selected,
+    extraStyles: `
+      padding: 1em;
+      border-radius: 5px;
+      text-transform: lowercase;
+    `,
+  })};
 `
 
 const MobileNav = styled.ul`
@@ -80,25 +65,43 @@ const MobileNav = styled.ul`
   z-index: 2;
   top: 4rem;
   right: 0;
-  background-color: ${headerBgColor};
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  border-radius: 5px;
+  ${({ theme }) => boxShadow({ color: theme.header.mobileNav.shadowColor })};
+`
+
+const roundedCorners = `
+  &:first-of-type {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 `
 
 const MobileNavItem = styled.li`
-  padding: 1em 2em;
   display: block;
   font-size: 1rem;
-  background-color: ${({ selected }) => selected ? navLinkActiveBgColor : 'transparent'};
-  border-bottom: 1px solid ${navLinkColor};
+  background-color: ${({ theme, selected }) => selected ? theme.header.mobileNav.hoverBgColor : theme.header.mobileNav.bgColor};
+  border-bottom: 1px solid ${({ theme }) => theme.header.mobileNav.borderColor};
   text-align: center;
+
   &:last-of-type {
-    border-bottom: none;
+    border-color: transparent;
   }
-  a {
-    color: ${({ selected }) => selected ? navLinkHoverColor : navLinkColor};
-  }
+
+  ${roundedCorners};
+
+  ${({ theme }) => childAnchors({
+    ...theme.header.nav.anchor,
+    extraStyles: `
+      display: block;
+      padding: 1em 2em;
+      ${roundedCorners};
+    `
+  })};
 `
 
 const _isViewingUrl = (location, regex) => !!location.pathname.match(regex)
@@ -115,7 +118,7 @@ const NavLinks = ({ children: links, Component }) => (
   </Location>
 )
 
-const Header = ({ navLinks, siteTitle }) => {
+const Header = ({ navLinks, ...props }) => {
   const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
 
   const toggleMobileMenu = useCallback(() => setMobileMenuOpen(!mobileMenuOpen),
@@ -123,14 +126,18 @@ const Header = ({ navLinks, siteTitle }) => {
   )
 
   return (
-    <Container>
+    <Container {...props}>
       <Brand>
-        <Link to="/">{siteTitle}</Link>
+        <Link to="/">
+          <Icon name={['fas', 'home']} />
+        </Link>
       </Brand>
       <Nav>
         <NavLinks Component={NavItem}>{navLinks}</NavLinks>
       </Nav>
-      <MobileNavButton onClick={toggleMobileMenu} open={mobileMenuOpen}>↓</MobileNavButton>
+      <MobileNavButton onClick={toggleMobileMenu} open={mobileMenuOpen}>
+        <Icon name={['fas', 'bars']} />
+      </MobileNavButton>
       {mobileMenuOpen ? (
         <MobileNav>
           <NavLinks Component={MobileNavItem}>{navLinks}</NavLinks>

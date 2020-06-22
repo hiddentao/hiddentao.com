@@ -1,52 +1,90 @@
-import React, { useMemo } from "react"
-import { Global } from '@emotion/core'
-import PropTypes from "prop-types"
+import React, { useState, useEffect, useMemo, useCallback } from "react"
 import styled from '@emotion/styled'
 import { useStaticQuery, graphql } from 'gatsby'
+import { ThemeProvider } from 'emotion-theming'
+import Headroom from 'react-headroom'
+import { flex, loadFonts, boxShadow } from 'emotion-styled-utils'
 
-import { asideBorderColor } from '../styles/common'
-import { mq } from '../styles/breakpoints'
-import resetStyles from '../styles/reset'
-import globalStyles from '../styles/global'
+import { setupThemes } from '../themes'
+import GlobalStyles from './globalStyles'
 import Header from "./header"
-import Aside from "./aside"
+import Image from "./image"
+import MaxContentWidth from "./maxContentWidth"
 import Footer from "./footer"
 
-const Content = styled.div`
-  padding: 2rem 1rem 3rem;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+const themes = setupThemes({
+  width: {
+    mobile: '450px',
+    desktop: '750px',
+  },
+  height: {
+    tall: '800px',
+  }
+})
+
+const Container = styled(Image)`
+  color: ${({ theme }) => theme.textColor};
 `
 
-const asideBarWidth = 200
+const HeaderWrapper = styled.div`
+  transition: all 0.3s linear;
+  background: ${ ({ floating, theme }) => (floating ? theme.header.floating.wrapper.bgColor : theme.header.wrapper.bgColor) };
+  ${({ theme, floating }) => floating ? boxShadow({ color: theme.header.floating.wrapper.shadowColor }) : ''};
+  ${({ floating, noStaticHeader }) => (noStaticHeader && !floating) ? `
+    opacity: 0;
+    pointer-events: none;
+  ` : ``};
+`
 
-const StyledAside = styled(Aside)(() => mq({
-  flex: '0',
-  display: ['none', 'none', 'block'],
-  width: `${asideBarWidth}px`,
-  minWidth: `${asideBarWidth}px`,
-  fontSize: '0.7rem',
-  borderRight: `1px dashed ${asideBorderColor}`,
-  marginRight: '50px',
-  paddingTop: '0.5rem',
-}))
+const Content = styled(MaxContentWidth)`
+  padding: 2rem 1rem 3rem;
+  position: relative;
+  min-height: 100vh;
+`
 
-const Main = styled.main(() => mq({
-  flex: 1,
-  maxWidth: ['100%', '100%', `calc(100vw - ${asideBarWidth + 100}px)`],
-}))
+const Layout = ({ children, noHeader }) => {
+  const [floatingHeader, setFloatingHeader] = useState(false)
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    {
-      blog: allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }, limit: 1) {
-        nodes {
-          path
+  const onHeaderFloat = useCallback(() => {
+    setFloatingHeader(true)
+  }, [])
+
+  const onHeaderUnfloat = useCallback(() => {
+    setFloatingHeader(false)
+  }, [])
+
+  const [ , forceUpdate ] = useState()
+
+  useEffect(() => {
+    loadFonts({
+      header: {
+        name: 'Raleway',
+        weights: {
+          thin: 300,
+          regular: 400,
+          bold: 700,
+        }
+      },
+      body: {
+        name: 'Roboto',
+        weights: {
+          thin: 300,
+          regular: 400,
+          bold: 700,
+        }
+      },
+      text: {
+        name: 'Crimson Text',
+        weights: {
+          regular: 400,
+          bold: 700,
         }
       }
+    }, window.document).then(forceUpdate, err => console.error(err))
+  }, [])
+
+  const data = useStaticQuery(graphql`
+    {
       site {
         siteMetadata {
           title
@@ -57,19 +95,9 @@ const Layout = ({ children }) => {
 
   const navLinks = useMemo(() => [
     {
-      regexTest: /archives\//,
+      regexTest: /blog$/,
       label: 'Blog',
-      path: data.blog.nodes[0].path
-    },
-    {
-      regexTest: /archives$/,
-      label: 'Archives',
-      path: '/archives'
-    },
-    {
-      regexTest: /code/,
-      label: 'Code',
-      path: '/code'
+      path: '/blog'
     },
     {
       regexTest: /talks/,
@@ -84,21 +112,29 @@ const Layout = ({ children }) => {
   ], [ data ])
 
   return (
-    <>
-      <Global styles={resetStyles}/>
-      <Global styles={globalStyles}/>
-      <Header navLinks={navLinks} siteTitle={data.site.siteMetadata.title} />
-      <Content>
-        <StyledAside />
-        <Main>{children}</Main>
-      </Content>
-      <Footer navLinks={navLinks} />
-    </>
+    <ThemeProvider theme={themes.get('default')}>
+      <GlobalStyles />
+      <Container bg={true} src='bg.png' style={{
+        backgroundPosition: 'auto',
+        backgroundColor: 'black',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'repeat',
+        backgroundSize: 'auto',
+      }}>
+        <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
+          <HeaderWrapper floating={floatingHeader} noStaticHeader={noHeader}>
+            <MaxContentWidth>
+              <Header navLinks={navLinks} />
+            </MaxContentWidth>
+          </HeaderWrapper>
+        </Headroom>
+        <Content>
+          {children}
+        </Content>
+        <Footer navLinks={navLinks} />
+      </Container>
+    </ThemeProvider>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

@@ -6,6 +6,7 @@
  */
 
 import React from "react"
+import qs from 'query-string'
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
@@ -32,8 +33,8 @@ function SEO({ description, lang, meta, keywords, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={title || site.siteMetadata.title}
+      titleTemplate={title ? `%s | ${site.siteMetadata.title}` : site.siteMetadata.title}
       meta={[
         {
           name: `description`,
@@ -50,6 +51,13 @@ function SEO({ description, lang, meta, keywords, title }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:image`,
+          content: `https://ogi.sh?${qs.stringify({
+            title: title || site.siteMetadata.title,
+            imageUrl: 'http://backgroundlabs.com/wp-content/uploads/2013/06/seamless-pattern-of-circuit-board.png',
+          })}`,
         },
         {
           name: `twitter:card`,
@@ -90,7 +98,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO

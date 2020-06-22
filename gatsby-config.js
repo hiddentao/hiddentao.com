@@ -8,8 +8,8 @@ const defaultLanguage = 'en'
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://hiddentao.com',
-    title: `Hiddentao`,
-    description: `Ramesh Nair's personal blog on technology and programming.`,
+    title: `Hiddentao Labs`,
+    description: `Ram (Hiddentao Labs) is a software developer based in London, UK.`,
     author: `@hiddentao`,
     defaultLanguage,
     supportedLanguages,

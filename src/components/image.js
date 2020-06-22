@@ -2,6 +2,7 @@ import safeGet from 'lodash.get'
 import React, { useMemo } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import BgImg from 'gatsby-background-image'
 
 import reactNativeTabbedNavGif from '../images/react-native-tabbed-nav.gif'
 
@@ -9,7 +10,7 @@ const GIFS = {
   'react-native-tabbed-nav.gif': reactNativeTabbedNavGif
 }
 
-const Image = ({ src, ...props }) => {
+const Image = ({ src, bg, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
       allFile( filter: { internal: { mediaType: { regex: "/image/" } } } ) {
@@ -35,7 +36,12 @@ const Image = ({ src, ...props }) => {
   if (src.endsWith('gif')) {
     return <img src={GIFS[src]} alt={props.alt} title={props.title} />
   } if (fluid) {
-    return (
+    return bg ? (
+      <BgImg
+        fluid={fluid}
+        {...props}
+      />
+    ) : (
       <Img
         fluid={fluid}
         style={{
