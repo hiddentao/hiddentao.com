@@ -129,6 +129,7 @@ const KeyPoints = styled.div`
 
 const KeyPoint = styled(Section)`
   margin: 2rem 0;
+  width: 100%;
 
   h2 {
     margin-top: 0;
@@ -148,7 +149,7 @@ const KeyPoint = styled(Section)`
   }
 
   ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    width: 40%;
+    max-width: 40%;
     margin: 1.8rem;
   }
 `
