@@ -67,6 +67,10 @@ import ruby from 'react-syntax-highlighter/dist/esm/languages/prism/ruby'
 registerLanguage('ruby', ruby)
 registerLanguage('rb', ruby)
 
+import rust from 'react-syntax-highlighter/dist/esm/languages/prism/rust'
+registerLanguage('rust', rust)
+registerLanguage('rs', rust)
+
 import sql from 'react-syntax-highlighter/dist/esm/languages/prism/sql'
 registerLanguage('sql', sql)
 
