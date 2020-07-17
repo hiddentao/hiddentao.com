@@ -42,6 +42,9 @@ registerLanguage('js', jsx)
 registerLanguage('jsx', jsx)
 registerLanguage('solidity', jsx)
 
+import json from 'react-syntax-highlighter/dist/esm/languages/prism/json'
+registerLanguage('json', json)
+
 import makefile from 'react-syntax-highlighter/dist/esm/languages/prism/makefile'
 registerLanguage('makefile', makefile)
 registerLanguage('make', makefile)
