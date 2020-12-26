@@ -246,11 +246,11 @@ date: '2019-01-01'
 
 ```md
 ---
-title: 关于我
+title: 關於我
 summary: 我
 date: '2019-01-02'
 ---
-**这** 是 _我_.
+**這** 是 _我_.
 ```
 
 The `onCreateNode` method described above would generate the following `pageData`:
@@ -274,9 +274,9 @@ The `onCreateNode` method described above would generate the following `pageData
     {
       lang: "zh-TW",
       summary: "我",
-      title: "关于我"
+      title: "關於我"
       date: "2019-01-02",,
-      markdown: "**这** 是 _我_."
+      markdown: "**這** 是 _我_."
     }
   ]
 }
