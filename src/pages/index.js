@@ -202,7 +202,7 @@ const Page = ({ lang }) => {
           <SplashTop>
             <SplashAvatarImage size={300} />
             <SplashText>
-              Hey! I'm <em>Ram</em>, a full-stack developer based in London, UK
+              Hey! I'm <em>Ram</em>, a software developer and investor based in London, UK
             </SplashText>
           </SplashTop>
           <SplashDivider />
@@ -241,33 +241,15 @@ const Page = ({ lang }) => {
               <li><a href="https://msk.sh">Mailmask</a> - stop unwanted email.</li>
             </ul>
           </KeyPoint>
+          <KeyPoint>
+            <h2>Investments</h2>
+            <ul>
+              <li><a href="https://rentify.com">Rentify</a>, <a href="https://www.buffalogrid.com/">BuffaloGrid</a>, <a href="https://shopmove.co/">Move</a>, etc.... see <a href="https://angel.co/u/ramesh-nair">my AngelList profile</a>.</li>
+              <li>I have also invested in cryptocurrency since 2014.</li>
+            </ul>
+          </KeyPoint>
         </KeyPoints>
-        <h2>What other people say</h2>
-        <Testimonials>
-          <StyledTestimonial
-            text='Ram is an exceptionally talented Senior Engineer. His role at Photobox was to lead efforts in replatforming the core website (full-stack node.js and React), not only through his wealth of experience in quality programming, but also by acting as a mentor to less experienced members on the team. Several months on he is still fondly remembered by those that had the pleasure to work with him, setting a very high standard for others to follow.'
-            name='Ersan Hakki'
-            company='Photobox'
-          />
-          <StyledTestimonial
-            text='I unreservedly recommend Ram for any position, specifically full stack, nodejs, reactjs and especially smart contract/blockchain development. Ram joined our team at Nayms Limited to assist by developing a complex set of smart contracts on the Ethereum network. He is self motivated and takes personal pride in the software he creates. As the space is rapidly advancing, he was able to guide us through evolving best practices while consistently delivering ahead of schedule. He not only exceeded our expectations with the specific task he was assigned, but also happily assisted other team members with tasks in other areas whenever there was a problem that required a team effort. He is thorough in his deliverables and happily explains and documents his work.'
-            name='Theodore Georgas'
-            company='Nayms'
-          />
-          <StyledTestimonial
-            text={`If I'd known Ram growing up, I would have wanted to become an Engineer.
-
-Across four projects, I'm humbled that Ram has served as a technical lead. With exceptional complexity, incredibly high standards and strenuous 3rd party dependencies - Ram always delivered on time, on budget and on scope.
-
-He’s centered, diligent and whip-smart. There’d be funny times when a partner would blast off an ill tempered message and I’d just chuckle because I knew Ram would elevate the conversation to a higher place of respect, temperament and action.`}
-            name='James Shamenski'
-            company='Bananas'
-          />
-          <MoreTestimonials>
-            <LinkedInLink>See more testimonials</LinkedInLink>
-          </MoreTestimonials>
-        </Testimonials>
-        <h2>Latest blog posts</h2>
+        <h2>Latest writings</h2>
         <StyledPostList posts={posts} />
       </Content>
     </Layout>
@@ -284,3 +266,30 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+
+//   < h2 > What other people say</h2 >
+//     <Testimonials>
+//       <StyledTestimonial
+//         text='Ram is an exceptionally talented Senior Engineer. His role at Photobox was to lead efforts in replatforming the core website (full-stack node.js and React), not only through his wealth of experience in quality programming, but also by acting as a mentor to less experienced members on the team. Several months on he is still fondly remembered by those that had the pleasure to work with him, setting a very high standard for others to follow.'
+//         name='Ersan Hakki'
+//         company='Photobox'
+//       />
+//       <StyledTestimonial
+//         text='I unreservedly recommend Ram for any position, specifically full stack, nodejs, reactjs and especially smart contract/blockchain development. Ram joined our team at Nayms Limited to assist by developing a complex set of smart contracts on the Ethereum network. He is self motivated and takes personal pride in the software he creates. As the space is rapidly advancing, he was able to guide us through evolving best practices while consistently delivering ahead of schedule. He not only exceeded our expectations with the specific task he was assigned, but also happily assisted other team members with tasks in other areas whenever there was a problem that required a team effort. He is thorough in his deliverables and happily explains and documents his work.'
+//         name='Theodore Georgas'
+//         company='Nayms'
+//       />
+//       <StyledTestimonial
+//         text={`If I'd known Ram growing up, I would have wanted to become an Engineer.
+
+// Across four projects, I'm humbled that Ram has served as a technical lead. With exceptional complexity, incredibly high standards and strenuous 3rd party dependencies - Ram always delivered on time, on budget and on scope.
+
+// He’s centered, diligent and whip-smart. There’d be funny times when a partner would blast off an ill tempered message and I’d just chuckle because I knew Ram would elevate the conversation to a higher place of respect, temperament and action.`}
+//         name='James Shamenski'
+//         company='Bananas'
+//       />
+//       <MoreTestimonials>
+//         <LinkedInLink>See more testimonials</LinkedInLink>
+//       </MoreTestimonials>
+//     </Testimonials>

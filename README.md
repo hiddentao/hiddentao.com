@@ -7,6 +7,7 @@ Live: https://hiddentao.com
 To start dev server:
 
 ```shell
+export DATOCMS_ACCESS_TOKEN=...
 npm start
 ```
 
