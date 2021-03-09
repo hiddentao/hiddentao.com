@@ -13,9 +13,6 @@ commands:
           name: Update npm
           command: 'if [ "$(npm -v)" = "6.9.0" ]; then echo "Up to date"; else sudo npm i -g npm@6.9.0; fi'
       - run:
-          name: Install gatsby cli
-          command: sudo npm i -g gatsby-cli
-      - run:
           name: Install dependencies
           command: npm ci
       - save_cache:
