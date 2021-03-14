@@ -46,5 +46,5 @@ incubator. I did a few contracts (blockchain-related and otherwise) and ended up
 
 ## 2021 - present
 
-Having now reached a point where I can choose what I work on without financial burden I've decided to explore some other areas of life that I've long been interested in, aside from coding. This includes [angel investing](https://angel.co/u/ramesh-nair) and [creating content](https://halfatheist.com), amongst other things.
+Having now reached a point where I can choose what I work on without financial burden I've decided to explore some other areas of life that I've long been interested in, aside from coding. This includes [angel investing](https://hiddentao.vc) and [creating content](https://halfatheist.com), amongst other things.
 

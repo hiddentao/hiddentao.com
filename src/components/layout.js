@@ -104,6 +104,11 @@ const Layout = ({ children, noHeader }) => {
       path: '/talks'
     },
     {
+      regexTest: /investments/,
+      label: 'Investing',
+      path: 'https://hiddentao.vc'
+    },
+    {
       regexTest: /about/,
       label: 'About',
       path: '/about'

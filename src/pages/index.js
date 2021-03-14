@@ -244,8 +244,8 @@ const Page = ({ lang }) => {
           <KeyPoint>
             <h2>Investments</h2>
             <ul>
-              <li><a href="https://rentify.com">Rentify</a>, <a href="https://www.buffalogrid.com/">BuffaloGrid</a>, <a href="https://shopmove.co/">Move</a>, etc.... see <a href="https://angel.co/u/ramesh-nair">my AngelList profile</a>.</li>
-              <li>I have also invested in cryptocurrency since 2014.</li>
+              <li><a href="https://rentify.com">Rentify</a>, <a href="https://www.buffalogrid.com/">BuffaloGrid</a>, <a href="https://shopmove.co/">Move</a>, ....<a href="https://angel.co/u/ramesh-nair">many more</a>.</li>
+              <li>More info at <a href="https://hiddentao.vc">Hiddentao Ventures</a>.</li>
             </ul>
           </KeyPoint>
         </KeyPoints>

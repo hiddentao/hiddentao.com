@@ -6,6 +6,7 @@ import { childAnchors, buttonStyles, boxShadow, flex } from 'emotion-styled-util
 
 import Button from './button'
 import Icon from './icon'
+import NavLink from './navLink'
 
 const Container = styled.header`
   padding: 0.5rem 1.2rem;
@@ -110,8 +111,8 @@ const NavLinks = ({ children: links, Component }) => (
   <Location>
     {({ location }) => (
       links.map(navLink => (
-        <Component key={navLink.label} selected={_isViewingUrl(location, navLink.regexTest)}>
-          <Link to={navLink.path}>{navLink.label}</Link>
+        <Component key = {navLink.label} selected={_isViewingUrl(location, navLink.regexTest)}>
+          <NavLink navLink={navLink} />
         </Component>
       ))
     )}

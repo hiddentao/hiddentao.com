@@ -17,11 +17,13 @@ import {
   faMapPin,
   faHome,
   faBars,
+  faExternalLinkAlt,
 } from '@fortawesome/free-solid-svg-icons'
 
 config.autoAddCss = false
 
 library.add(
+  faExternalLinkAlt,
   faTwitter,
   faLinkedin,
   faGithub,

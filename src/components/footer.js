@@ -5,6 +5,7 @@ import styled from '@emotion/styled'
 
 import SocialLinks from './socialLinks'
 import Button from './button'
+import NavLink from './navLink'
 
 const Container = styled.footer`
   background-color: ${({ theme }) => theme.footer.bgColor};
@@ -42,6 +43,7 @@ const Nav = styled.ul`
   list-style: none;
   display: block;
   min-width: 7rem;
+  margin-right: 2rem;
 `
 
 const NavItem = styled.li`
@@ -86,7 +88,7 @@ const Footer = ({ navLinks }) => (
           <TopNavItem><Link to='/'>Home</Link></TopNavItem>
           {navLinks.map(navLink => (
             <NavItem key={navLink.label}>
-              <Link to={navLink.path}>{navLink.label}</Link>
+              <NavLink navLink={navLink} />
             </NavItem>
           ))}
         </Nav>
