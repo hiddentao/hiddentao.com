@@ -41,6 +41,19 @@ const Container = styled.div`
     font-size: 70%;
     background-color: ${({ theme }) => theme.code.bgColor};
   }
+
+  blockquote {
+    font-style: italic;
+    padding: 1em;
+    background-color: ${({ theme }) => theme.blockquote.bgColor};
+    color: ${({ theme }) => theme.blockquote.textColor};
+    width: 80%;
+    margin: 0.5em auto;
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 `
 
 const CodeSpan = styled.span`

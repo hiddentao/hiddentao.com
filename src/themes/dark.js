@@ -123,6 +123,10 @@ export default {
       hoverBorderColor: sectionAnchorColor,
     },
   },
+  blockquote: {
+    bgColor: lighterGrey,
+    textColor: darkGrey,
+  },
   contentSection: {
     bgColor: white,
     textColor: black,
