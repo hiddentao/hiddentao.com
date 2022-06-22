@@ -31,7 +31,7 @@
     "gatsby-source-datocms": "^2.2.6",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-sharp": "^2.1.17",
-    "got": "^9.6.0",
+    "got": "^11.8.5",
     "gray-matter": "^4.0.2",
     "lodash.get": "^4.4.2",
     "lodash.truncate": "^4.4.2",
