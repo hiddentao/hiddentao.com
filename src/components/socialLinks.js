@@ -66,7 +66,7 @@ export const EmailLink = ({ children }) => (
 )
 
 export const FeedLink = ({ children }) => (
-  <a href="http://feedpress.me/hiddentao">
+  <a href="https://hiddentao.com/feed.xml">
     {children || (
       <React.Fragment>
         <Icon name={['fas', 'rss']} /><span>RSS</span>
