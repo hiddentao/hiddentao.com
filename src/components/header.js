@@ -1,4 +1,4 @@
-import { Link } from "gatsby-plugin-intl"
+import { Link } from "gatsby"
 import React, { useCallback, useState } from "react"
 import styled from '@emotion/styled'
 import { Location } from '@reach/router'

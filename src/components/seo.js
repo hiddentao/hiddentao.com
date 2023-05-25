@@ -11,7 +11,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ description, lang, meta, keywords, title, ogi }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -54,10 +54,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           property: `og:image`,
-          content: `https://ogi.sh?${qs.stringify({
-            title: title || site.siteMetadata.title,
-            imageUrl: 'https://hiddentao.com/bg.png',
-          })}`,
+          content: ogi || `/bg.png`,
         },
         {
           name: `twitter:card`,

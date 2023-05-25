@@ -2,14 +2,13 @@ import trunc from 'lodash.truncate'
 import styled from '@emotion/styled'
 import { Location } from '@reach/router'
 import React, { useMemo } from "react"
-import { graphql } from "gatsby"
-import { IntlContextConsumer, Link } from "gatsby-plugin-intl"
+import { graphql, Link } from "gatsby"
+// import { IntlContextConsumer, Link } from "gatsby-plugin-intl"
 import { DiscussionEmbed } from "disqus-react"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
-import { calculateReadTimeInMinutes } from '../utils/string'
 import Layout from "../components/layout"
-import Language from "../components/language"
+// import Language from "../components/language"
 import PageLastUpdatedDate from "../components/pageLastUpdatedDate"
 import SEO from "../components/seo"
 import Markdown from "../components/markdown"
@@ -43,9 +42,9 @@ const Heading = styled.h1`
   margin: 1rem 0 0;
 `
 
-const StyledLanguage = styled(Language)`
-  margin-top: 0.8rem;
-`
+// const StyledLanguage = styled(Language)`
+//   margin-top: 0.8rem;
+// `
 
 const Comments = styled.div`
   margin-top: 2.5rem;
@@ -126,15 +125,15 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
 
   return (
     <Layout>
-      <SEO title={fields.title} description={summary} />
+      <SEO title={fields.title} description={summary} ogi={fields.ogi} />
       <Heading>{fields.title}</Heading>
       <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
       {type === 'blog' ? (
-        <PostReadTime>({calculateReadTimeInMinutes(fields.markdown)} minute read)</PostReadTime>
+        <PostReadTime>({fields.readtime} minute read)</PostReadTime>
       ) : null}
-      {versions.length > 1 ? (
+      {/*versions.length > 1 ? (
         <StyledLanguage availableLanguages={versions.map(v => v.lang)} />
-      ) : null}
+      ) : null*/}
       <StyledMarkdown markdown={fields.markdown} />
       {type === 'blog' ? <PageBottomNav {...nav} /> : null}
       {type === 'blog' ? (
@@ -154,17 +153,13 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
 
 export default function Template({ data }) {
   return (
-    <IntlContextConsumer>
-      {({ language: currentLanguage }) => (
-        <Page
-          siteUrl={data.site.siteMetadata.siteUrl}
-          currentLanguage={currentLanguage}
-          current={data.current}
-          newer={data.newer}
-          older={data.older}
-        />
-      )}
-    </IntlContextConsumer>
+    <Page
+      siteUrl={data.site.siteMetadata.siteUrl}
+      currentLanguage='en'
+      current={data.current}
+      newer={data.newer}
+      older={data.older}
+    />
   )
 }
 
@@ -179,6 +174,8 @@ export const pageQuery = graphql`
       title
       summary
       markdown
+      readtime
+      ogi
     }
   }
 

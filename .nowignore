@@ -1,5 +1,0 @@
-.cache
-.circleci
-.deploy
-node_modules
-public

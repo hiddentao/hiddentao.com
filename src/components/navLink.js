@@ -1,4 +1,4 @@
-import { Link } from "gatsby-plugin-intl"
+import { Link } from "gatsby"
 import styled from '@emotion/styled'
 import React from 'react'
 

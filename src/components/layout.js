@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react"
 import styled from '@emotion/styled'
 import { useStaticQuery, graphql } from 'gatsby'
-import { ThemeProvider } from 'emotion-theming'
+import { ThemeProvider } from '@emotion/react'
 import Headroom from 'react-headroom'
 import { flex, loadFonts, boxShadow } from 'emotion-styled-utils'
 
@@ -11,6 +11,8 @@ import Header from "./header"
 import Image from "./image"
 import MaxContentWidth from "./maxContentWidth"
 import Footer from "./footer"
+
+global.process = require('process')
 
 const themes = setupThemes({
   width: {

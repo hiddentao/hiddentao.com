@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import unified from 'unified'
 import parse from 'remark-parse'
 import remark2react from 'remark-react'
-import { Link } from 'gatsby-plugin-intl'
+import { Link } from 'gatsby'
 
 import SyntaxHighlighter from './syntaxHighlighter'
 import Image from './image'

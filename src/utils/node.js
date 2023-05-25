@@ -12,8 +12,10 @@ export const getResolvedVersionForLanguage = (versions, lang, fallbackLang) => {
     'lang',
     'date',
     'title',
+    'ogi',
     'summary',
     'markdown',
+    'readtime',
   ].reduce((m, f) => {
     m[f] = safeGet(current, f, fallback[f])
     return m

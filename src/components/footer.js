@@ -1,4 +1,4 @@
-import { Link } from "gatsby-plugin-intl"
+import { Link } from "gatsby"
 import React from "react"
 import { flex, childAnchors } from 'emotion-styled-utils'
 import styled from '@emotion/styled'

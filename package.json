@@ -5,8 +5,8 @@
   "author": "Ramesh Nair <ram@hiddentao.com>",
   "dependencies": {
     "@babel/compat-data": "^7.10.1",
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.10",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.8.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-brands-svg-icons": "^5.8.1",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
@@ -15,26 +15,29 @@
     "date-fns": "^1.30.1",
     "disqus-react": "^1.0.5",
     "emotion-styled-utils": "^2.2.3",
-    "emotion-theming": "^10.0.27",
-    "gatsby": "^2.19.49",
+    "gatsby": "^4.12.1",
     "gatsby-background-image": "^1.1.1",
-    "gatsby-image": "^2.0.37",
-    "gatsby-plugin-advanced-sitemap": "^1.5.4",
-    "gatsby-plugin-emotion": "^4.0.6",
-    "gatsby-plugin-feed": "^2.1.1",
-    "gatsby-plugin-intl": "^0.1.7",
-    "gatsby-plugin-manifest": "^2.0.28",
-    "gatsby-plugin-offline": "^2.0.25",
-    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-image": "^3.11.0",
+    "gatsby-plugin-advanced-sitemap": "^2.1.0",
+    "gatsby-plugin-disqus": "^1.2.2",
+    "gatsby-plugin-emotion": "^7.12.1",
+    "gatsby-plugin-feed": "^4.12.1",
+    "gatsby-plugin-manifest": "^4.12.1",
+    "gatsby-plugin-offline": "^5.12.1",
+    "gatsby-plugin-react-helmet": "^5.12.1",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-robots-txt": "^1.5.0",
-    "gatsby-plugin-sharp": "^2.0.32",
-    "gatsby-source-datocms": "^2.2.6",
-    "gatsby-source-filesystem": "^2.0.29",
-    "gatsby-transformer-sharp": "^2.1.17",
+    "gatsby-plugin-sharp": "^4.12.1",
+    "gatsby-source-datocms": "^3.0.19",
+    "gatsby-source-filesystem": "^4.12.1",
+    "gatsby-transformer-sharp": "^4.12.1",
     "got": "^9.6.0",
     "gray-matter": "^4.0.2",
     "lodash.get": "^4.4.2",
     "lodash.truncate": "^4.4.2",
+    "mkdirp": "^3.0.1",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.1",
     "react": "^16.8.6",
@@ -49,10 +52,10 @@
     "rimraf": "^2.6.3",
     "save": "^2.4.0",
     "strip-markdown": "^3.0.3",
+    "ultimate-text-to-image": "^1.0.1",
     "unified": "^8.3.2"
   },
   "devDependencies": {
-    "now": "^17.0.4",
     "prettier": "^1.17.0"
   },
   "keywords": [
@@ -75,7 +78,7 @@
     "url": "https://github.com/hiddentao/hiddentao.com/issues"
   },
   "engines": {
-    "node": "12"
+    "node": ">=18.0.0"
   },
   "engineStrict": true
 }

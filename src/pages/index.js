@@ -1,8 +1,8 @@
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 import React, { useMemo } from "react"
 import styled from '@emotion/styled'
-import { useStaticQuery, graphql } from 'gatsby'
-import { IntlContextConsumer, Link } from 'gatsby-plugin-intl'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+// import { IntlContextConsumer, Link } from 'gatsby-plugin-intl'
 import { flex, childAnchors } from 'emotion-styled-utils'
 
 import Layout from "../components/layout"
@@ -258,11 +258,7 @@ const Page = ({ lang }) => {
 
 
 const IndexPage = () => (
-  <IntlContextConsumer>
-    {({ language: lang }) => (
-      <Page lang={lang} />
-    )}
-  </IntlContextConsumer>
+  <Page lang='en' />
 )
 
 export default IndexPage

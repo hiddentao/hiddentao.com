@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby-plugin-intl'
+import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 import { flex } from 'emotion-styled-utils'
 

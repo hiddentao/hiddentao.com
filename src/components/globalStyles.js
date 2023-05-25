@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { css, Global } from '@emotion/core'
-import { useTheme } from 'emotion-theming'
+import { css, Global } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 import { resetStyles, childAnchors } from 'emotion-styled-utils'
 
 const GlobalStyles = () => {

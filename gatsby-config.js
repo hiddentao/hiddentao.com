@@ -1,7 +1,7 @@
 const supportedLanguages = [
   { id: 'en', label: 'English' },
-  { id: 'zh-TW', label: '中文 (繁體)' },
-  { id: 'ml', label: 'മലയാളം' },
+  // { id: 'zh-TW', label: '中文 (繁體)' },
+  // { id: 'ml', label: 'മലയാളം' },
 ]
 const defaultLanguage = 'en'
 
@@ -40,6 +40,7 @@ module.exports = {
         legacy: false,
         include_favicon: false,
         theme_color_in_head: false,
+        icons: [],
       },
     },
     // local pages
@@ -70,15 +71,15 @@ module.exports = {
       },
     },
     // i18n
-    {
-      resolve: `gatsby-plugin-intl`,
-      options: {
-        path: `${__dirname}/src/intl`,
-        languages: supportedLanguages.map(l => l.id),
-        defaultLanguage,
-        redirect: false,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-intl`,
+    //   options: {
+    //     path: `${__dirname}/src/intl`,
+    //     languages: supportedLanguages.map(l => l.id),
+    //     defaultLanguage,
+    //     redirect: false,
+    //   },
+    // },
     // sitemap
     {
       resolve: `gatsby-plugin-advanced-sitemap`,

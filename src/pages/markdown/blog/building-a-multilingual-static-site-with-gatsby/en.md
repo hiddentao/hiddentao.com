@@ -3,6 +3,9 @@ title: Building a multi-lingual static site with Gatsby
 date: '2019-05-07'
 ---
 
+**NOTE: The [gatsby-plugin-intl](https://www.gatsbyjs.org/packages/gatsby-plugin-intl/) plugin no longer works 
+with the latest version of Gatsby, so I've disabled it for now.**
+
 This past week I ported hiddentao.com (the site you're reading this on)
 from Jekyll + Github pages over to
 [Gatsby](https://www.gatsbyjs.org) + [Zeit](https://zeit.co). This change had been a

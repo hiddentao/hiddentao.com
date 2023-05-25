@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React, { useMemo } from "react"
 import { graphql } from "gatsby"
-import { IntlContextConsumer, injectIntl } from "gatsby-plugin-intl"
+// import { IntlContextConsumer, injectIntl } from "gatsby-plugin-intl"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
 import { parseDate } from "../utils/date"
@@ -17,7 +17,7 @@ const YearContainer = styled.div`
   }
 `
 
-const Page = ({ intl, lang, data }) => {
+const Page = ({ lang, data }) => {
   // sort blog post and categorize by year
   const postsByYear = useMemo(() => {
     const blogPosts = data.allMarkdownPage.nodes
@@ -66,17 +66,13 @@ const Page = ({ intl, lang, data }) => {
   )
 }
 
-const Template = ({ intl, data }) => {
+const Template = ({ data }) => {
   return (
-    <IntlContextConsumer>
-      {({ language: lang }) => (
-        <Page lang={lang} data={data} intl={intl} />
-      )}
-    </IntlContextConsumer>
+    <Page lang='en' data={data} />
   )
 }
 
-export default injectIntl(Template)
+export default Template
 
 export const pageQuery = graphql`
   query {
