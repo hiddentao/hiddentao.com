@@ -3,7 +3,7 @@ const fs = require('fs')
 const { UltimateTextToImage, getCanvasImage } = require("ultimate-text-to-image")
 const { mkdirp } = require('mkdirp')
 
-const { siteMetadata: { defaultLanguage } } = require('../gatsby-config')
+const { siteMetadata: { siteUrl, defaultLanguage } } = require('../gatsby-config')
 
 const generated = {}
 
@@ -46,7 +46,7 @@ exports.generateOgImage = ({ title, pageId, lang }) => {
       ]
     }).render().toFile(path.join(dPath, `${finalPageId}.png`)) 
 
-    generated[finalPageId] = `/ogi/${finalPageId}.png`
+    generated[finalPageId] = `${siteUrl}/ogi/${finalPageId}.png`
   }
 
   return generated[finalPageId]
