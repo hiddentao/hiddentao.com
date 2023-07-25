@@ -77,6 +77,11 @@ registerLanguage('rs', rust)
 import sql from 'react-syntax-highlighter/dist/esm/languages/prism/sql'
 registerLanguage('sql', sql)
 
+import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript'
+registerLanguage('typescript', typescript)
+registerLanguage('ts', typescript)
+
+
 import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml'
 registerLanguage('yaml', yaml)
 registerLanguage('yml', yaml)
