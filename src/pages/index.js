@@ -9,7 +9,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import MaxContentWidth from "../components/maxContentWidth"
 import PostList from "../components/postList"
-import RamImage from "../components/ramImage"
 import Section from "../components/section"
 import Testimonial from "../components/testimonial"
 import { TwitterLink, GithubLink, LinkedInLink, EmailLink, FeedLink } from '../components/socialLinks'
@@ -27,11 +26,11 @@ const Content = styled(MaxContentWidth)`
 
 const Splash = styled.div`
   ${flex({ direction: 'column', justify: 'center', align: 'center' })};
-  margin-top: 2rem;
+  margin-top: 0rem;
   margin-bottom: 3rem;
 
   ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    margin-top: 4rem;
+    margin-top: 0rem;
   }
 `
 
@@ -40,7 +39,7 @@ const SplashTop = styled.div`
   margin-bottom: 3rem;
 
   ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
 `
 
@@ -52,7 +51,7 @@ const SplashDivider = styled.div`
 
 const SplashBottom = styled.div`
   ${flex({ direction: 'row', justify: 'center', align: 'center', wrap: 'wrap' })};
-  margin-top: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
   max-width: 80%;
 
@@ -80,14 +79,6 @@ const SplashBottom = styled.div`
       font-size: 2.7rem;
       margin: 2rem;
     }
-  }
-`
-
-const SplashAvatarImage = styled(RamImage)`
-  display: none;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    display: block;
   }
 `
 
@@ -200,12 +191,10 @@ const Page = ({ lang }) => {
       <Content>
         <Splash>
           <SplashTop>
-            <SplashAvatarImage size={300} />
             <SplashText>
-              Hey! I'm <em>Ram</em>, a software developer and investor based in London, UK
+              Hey! I'm <em>Ram</em>, a software builder and creative individual.
             </SplashText>
           </SplashTop>
-          <SplashDivider />
           <SplashBottom>
             <TwitterLink />
             <GithubLink />
@@ -213,42 +202,8 @@ const Page = ({ lang }) => {
             <EmailLink />
             <FeedLink />
           </SplashBottom>
+          <SplashDivider />
         </Splash>
-        <KeyPoints>
-          <KeyPoint>
-            <h2>Started coding at 11</h2>
-            <ul>
-              <li>Started with BASIC/QBasic.</li>
-              <li>Have used C/C++, Java, Python, PHP, Ruby, Javascript, Solidity.</li>
-              <li>Currently in blockchain space, learning ML/AI.</li>
-              <li>...see <GithubLink>my open source code</GithubLink>.</li>
-            </ul>
-          </KeyPoint>
-          <KeyPoint>
-            <h2>Pro since 2005</h2>
-            <ul>
-              <li>Imperial College London graduate.</li>
-              <li>Freelance since 2009, worked with 15+ clients.</li>
-              <li>Given <Link to='/talks'>talks</Link>, ran <a href="https://www.meetup.com/javascript-enthusiasts/">meetups</a> and mentored people.</li>
-              <li>...see <LinkedInLink>my work</LinkedInLink>.</li>
-            </ul>
-          </KeyPoint>
-          <KeyPoint>
-            <h2>Budding entrepreneur</h2>
-            <ul>
-              <li><a href="https://kickback.events">Kickback</a> - incentivizing event attendance.</li>
-              <li><a href="https://solui.dev">solUI</a> - generate Dapps without coding.</li>
-              <li><a href="https://msk.sh">Mailmask</a> - stop unwanted email.</li>
-            </ul>
-          </KeyPoint>
-          <KeyPoint>
-            <h2>Investments</h2>
-            <ul>
-              <li><a href="https://rentify.com">Rentify</a>, <a href="https://www.buffalogrid.com/">BuffaloGrid</a>, <a href="https://shopmove.co/">Move</a>, ....<a href="https://angel.co/u/ramesh-nair">many more</a>.</li>
-              <li>More info at <a href="https://hiddentao.vc">Hiddentao Ventures</a>.</li>
-            </ul>
-          </KeyPoint>
-        </KeyPoints>
         <h2>Latest writings</h2>
         <StyledPostList posts={posts} />
       </Content>
