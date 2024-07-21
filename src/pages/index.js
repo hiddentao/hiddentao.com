@@ -195,8 +195,15 @@ const Page = ({ lang }) => {
               Hey! I'm <em>Ram</em>, a software builder and creative individual.
             </SplashText>
           </SplashTop>
+          <SplashBottom>
+            <TwitterLink />
+            <GithubLink />
+            <LinkedInLink />
+            <EmailLink />
+          </SplashBottom>
           <SplashDivider />
         </Splash>
+        <h2>Latest writings</h2>
         <StyledPostList posts={posts} />
       </Content>
     </Layout>
