@@ -9,7 +9,7 @@ _Note: pre-builds for `node-canvas` aren't available for arm64 MacOS, so you'll 
 To start dev server:
 
 ```shell
-export DATOCMS_ACCESS_TOKEN=...
+export DATOCMS_API_TOKEN=...
 npm start
 ```
 

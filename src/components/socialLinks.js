@@ -25,16 +25,6 @@ const SocialListItem = styled.li`
   }
 `
 
-export const TwitterLink = ({ children }) => (
-  <a href="https://twitter.com/hiddentao">
-    {children || (
-      <React.Fragment>
-        <Icon name={['fab', 'twitter']} /><span>Twitter</span>
-      </React.Fragment>
-    )}
-  </a>
-)
-
 export const GithubLink = ({ children }) => (
   <a href="https://github.com/hiddentao">
     {children || (
@@ -78,9 +68,6 @@ export const FeedLink = ({ children }) => (
 const SocialLinks = ({ className }) => {
   return (
     <SocialList className={className}>
-      <SocialListItem title="Twitter">
-        <TwitterLink />
-      </SocialListItem>
       <SocialListItem title="Github">
         <GithubLink />
       </SocialListItem>

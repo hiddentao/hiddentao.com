@@ -57,7 +57,7 @@ module.exports = {
       options: {
         // You can find your read-only API token under the Settings > API tokens
         // section of your administrative area:
-        apiToken: process.env.DATOCMS_ACCESS_TOKEN,
+        apiToken: process.env.DATOCMS_API_TOKEN,
 
         // If you are working on development/staging environment, you might want to
         // preview the latest version of records instead of the published one:

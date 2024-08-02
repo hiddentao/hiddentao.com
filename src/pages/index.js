@@ -11,7 +11,7 @@ import MaxContentWidth from "../components/maxContentWidth"
 import PostList from "../components/postList"
 import Section from "../components/section"
 import Testimonial from "../components/testimonial"
-import { TwitterLink, GithubLink, LinkedInLink, EmailLink, FeedLink } from '../components/socialLinks'
+import { GithubLink, LinkedInLink, EmailLink, FeedLink } from '../components/socialLinks'
 import { getResolvedVersionForLanguage } from '../utils/node'
 
 
@@ -196,7 +196,6 @@ const Page = ({ lang }) => {
             </SplashText>
           </SplashTop>
           <SplashBottom>
-            <TwitterLink />
             <GithubLink />
             <LinkedInLink />
             <EmailLink />

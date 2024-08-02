@@ -6,7 +6,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config, library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faTwitter,
   faLinkedin,
   faGithub,
   faStackOverflow
@@ -24,7 +23,6 @@ config.autoAddCss = false
 
 library.add(
   faExternalLinkAlt,
-  faTwitter,
   faLinkedin,
   faGithub,
   faStackOverflow,
