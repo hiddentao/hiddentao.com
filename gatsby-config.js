@@ -1,3 +1,8 @@
+const rehypeStringify = require('rehype-stringify')
+const parse = require('remark-parse')
+const remarkRehype = require('remark-rehype')
+const unified = require('unified')
+
 const supportedLanguages = [
   { id: 'en', label: 'English' },
   // { id: 'zh-TW', label: '中文 (繁體)' },
@@ -151,16 +156,20 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownPage } }) => {
               return allMarkdownPage.nodes.map(node => {
                 const { path: pagePath, lang } = node
-                const { title, date, summary } = node.versions.find(v => {
+                const { title, date, markdown } = node.versions.find(v => {
                   return v.lang === lang
                 })
+
+                // convert markdown to html
+                const html = unified().use(parse).use(remarkRehype).use(rehypeStringify).processSync(markdown).toString()
+                console.log(html)
 
                 return Object.assign({}, {
                   date: new Date(date).toISOString(),
                   url: `${site.siteMetadata.siteUrl}${pagePath}`,
                   guid: `${site.siteMetadata.siteUrl}${pagePath}`,
                   title,
-                  description: summary || title,
+                  description: html,
                 })
               })
             },
@@ -174,7 +183,7 @@ module.exports = {
                       lang
                       date
                       title
-                      summary
+                      markdown
                     }
                   }
                 }
