@@ -162,7 +162,6 @@ module.exports = {
 
                 // convert markdown to html
                 const html = unified().use(parse).use(remarkRehype).use(rehypeStringify).processSync(markdown).toString()
-                console.log(html)
 
                 return Object.assign({}, {
                   date: new Date(date).toISOString(),
