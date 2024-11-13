@@ -1,5 +1,5 @@
-import React from 'react'
 import styled from '@emotion/styled'
+import React from 'react'
 
 import Icon from './icon'
 
@@ -50,6 +50,16 @@ export const EmailLink = ({ children }) => (
     {children || (
       <React.Fragment>
         <Icon name={['fas', 'envelope']} /><span>Email</span>
+      </React.Fragment>
+    )}
+  </a>
+)
+
+export const InvestmentLink = ({ children }) => (
+  <a href="https://hiddentao.vc">
+    {children || (
+      <React.Fragment>
+        <Icon name={['fas', 'torii-gate']} /><span>Investments</span>
       </React.Fragment>
     )}
   </a>

@@ -4,20 +4,22 @@ import React from 'react'
 import "@fortawesome/fontawesome-svg-core/styles.css"
 
 import { config, library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faLinkedin,
   faGithub,
+  faLinkedin,
   faStackOverflow
 } from '@fortawesome/free-brands-svg-icons'
 import {
-  faRss,
-  faEnvelope,
-  faMapPin,
-  faHome,
   faBars,
+  faEnvelope,
   faExternalLinkAlt,
+  faFolder,
+  faHome,
+  faMapPin,
+  faRss,
+  faToriiGate,
 } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 config.autoAddCss = false
 
@@ -31,6 +33,7 @@ library.add(
   faMapPin,
   faHome,
   faBars,
+  faToriiGate,
 )
 
 export default ({ name }) => <FontAwesomeIcon icon={name} />

@@ -1,17 +1,17 @@
 import { keyframes } from '@emotion/react'
-import React, { useMemo } from "react"
 import styled from '@emotion/styled'
-import { useStaticQuery, graphql, Link } from 'gatsby'
 // import { IntlContextConsumer, Link } from 'gatsby-plugin-intl'
-import { flex, childAnchors } from 'emotion-styled-utils'
+import { childAnchors, flex } from 'emotion-styled-utils'
+import { Link, graphql, useStaticQuery } from 'gatsby'
+import React, { useMemo } from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import MaxContentWidth from "../components/maxContentWidth"
 import PostList from "../components/postList"
 import Section from "../components/section"
+import SEO from "../components/seo"
+import { EmailLink, GithubLink, InvestmentLink, LinkedInLink } from '../components/socialLinks'
 import Testimonial from "../components/testimonial"
-import { GithubLink, LinkedInLink, EmailLink, FeedLink } from '../components/socialLinks'
 import { getResolvedVersionForLanguage } from '../utils/node'
 
 
@@ -199,6 +199,7 @@ const Page = ({ lang }) => {
             <GithubLink />
             <LinkedInLink />
             <EmailLink />
+            <InvestmentLink />
           </SplashBottom>
           <SplashDivider />
         </Splash>

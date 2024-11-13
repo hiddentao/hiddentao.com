@@ -1,11 +1,11 @@
+import styled from '@emotion/styled'
+import { childAnchors, flex } from 'emotion-styled-utils'
 import { Link } from "gatsby"
 import React from "react"
-import { flex, childAnchors } from 'emotion-styled-utils'
-import styled from '@emotion/styled'
 
-import SocialLinks from './socialLinks'
 import Button from './button'
 import NavLink from './navLink'
+import SocialLinks from './socialLinks'
 
 const Container = styled.footer`
   background-color: ${({ theme }) => theme.footer.bgColor};
@@ -109,7 +109,7 @@ const Footer = ({ navLinks }) => (
       </TopRight>
     </Top>
     <Copyright>
-      © Hiddentao Ltd
+      © Ramesh Nair
     </Copyright>
   </Container>
 )
