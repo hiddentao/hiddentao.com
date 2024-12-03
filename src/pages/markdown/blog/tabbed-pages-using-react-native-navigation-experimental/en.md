@@ -10,7 +10,7 @@ tags:
   - Experimental
 ---
 
-In a [previous post](/archives/2017/02/23/using-react-native-navigation-cardstack-with-redux/)
+In a [previous post](/archives/2017/02/22/using-react-native-navigation-cardstack-with-redux/)
 I outlined how to use React Native's [NavigationExperimental CardStack](https://facebook.github.io/react-native/docs/navigation.html) with
 Redux in your app. In this post I will expand on this further to show how you
 can do in-page "tabbed" navigation for certain pages whilst working within the same Redux
@@ -26,7 +26,7 @@ As you can see, the tabbed pages can be navigated to as first-class pages (with 
 
 Let's see how to set this up...
 
-_Note: I will build on [previous code I've shown](/archives/2017/02/23/using-react-native-navigation-cardstack-with-redux/)
+_Note: I will build on [previous code I've shown](/archives/2017/02/22/using-react-native-navigation-cardstack-with-redux/)
 so please refer to that as well._
 
 ### Page components

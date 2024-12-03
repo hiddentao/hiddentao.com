@@ -14,7 +14,7 @@ tags:
   - Websockets
   - Gaming
 ---
-Introducing [wuPlay.com](wuPlay.com), an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent [Connect6](http://en.wikipedia.org/wiki/Connect6) game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).
+Introducing [wuPlay.com](https://wuPlay.com), an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent [Connect6](http://en.wikipedia.org/wiki/Connect6) game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).
 
 I started working on wuPlay mainly as a way of learning [Tornado](http://www.tornadoweb.org/). Tornado was still quite new then and I was very interested in the idea of a non-blocking event-driven server and what it could do. I was also learning about Websockets and AJAX long-polling and other techniques of simulating a "push" from server to client. At the same time I was also wanting to make a multiplayer game from my droid device and figured that it would be better to build it as a web app so that it straight away ran on all devices. Finally, I wanted to improve my Javascript skills so all the client-side code is written in an object-oriented fashion.
 
@@ -53,7 +53,7 @@ As outlined above, every client maintains a long-polling connection to the serve
 
 ## Javascript-driven UI
 
-The client UI is completely Javascript-driven. All the popup dialogs and message boxes are also re-usable Javascript "classes" which get used throughout. Once you load the initial [wuPlay.com](wuPlay.com) site from there on in all subsequent page changes are driven through Javascript. You'll notice this by virtue of the loading graphic which shows for a moment or two whenever you click on a link. If something takes longer than a second or so to load you'll see a "Waiting for server" message in the top right part of the page. All these notifications are coded in a re-usable fashion such that every AJAX request can be made with such progress notification if necessary.
+The client UI is completely Javascript-driven. All the popup dialogs and message boxes are also re-usable Javascript "classes" which get used throughout. Once you load the initial [wuPlay.com](https://wuPlay.com) site from there on in all subsequent page changes are driven through Javascript. You'll notice this by virtue of the loading graphic which shows for a moment or two whenever you click on a link. If something takes longer than a second or so to load you'll see a "Waiting for server" message in the top right part of the page. All these notifications are coded in a re-usable fashion such that every AJAX request can be made with such progress notification if necessary.
 
 There is a page loader which is responsible for loading a given page from the server. It passes the name of a page to the server and is given back a JSON object similar to the following representing *meta data* about the page:
 

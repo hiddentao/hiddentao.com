@@ -69,20 +69,28 @@ module.exports = async ({ actions, graphql, getNode }) => {
   })
 
   const { createRedirect } = actions;
-  createRedirect({
-    fromPath: '/squel/api.html',
-    toPath: 'https://hiddentao.github.io/squel/api.html',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/squel',
-    toPath: 'https://hiddentao.github.io/squel',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/archives',
-    toPath: '/blog',
-    isPermanent: true,
-  });
+
+  // Redirects
+  const redirectPaths = {
+    '/squel/api.html': 'https://hiddentao.github.io/squel/api.html',
+    '/squel': 'https://hiddentao.github.io/squel',
+    '/archives': '/blog',
+    '/code/wordpress-page-tagger-plugin/': 'https://github.com/hiddentao/page-tagger',
+    '/code/wordpress-page-tags-plugin/': 'https://github.com/hiddentao/page-tagger',
+    '/code/wordpress-server-info-plugin/': 'https://github.com/hiddentao',
+    '/code/common-utils/': 'https://github.com/hiddentao',
+    '/code/wordpress-randomhello-plugin/': 'https://github.com/hiddentao',
+    '/archives/tag/code/': '/blog',
+    '/code/3d-graphics/': 'https://github.com/hiddentao',
+    '/about/': '/',
+  }
+  for (const [fromPath, toPath] of Object.entries(redirectPaths)) {
+    createRedirect({
+      fromPath,
+      toPath,
+      isPermanent: true,
+    })
+  }
 }
+
 

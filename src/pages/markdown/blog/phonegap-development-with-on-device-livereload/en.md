@@ -33,7 +33,7 @@ I ensured that my app successfully compiled using `phonegap build`. The next ste
 1. Start up a server which would serve the app and tell the browser to reload the page when resources changed, and  
 2. Have my app automatically call up the server URL to fetch the web app.
 
-I was using [gulp](gulpjs.com) to build my code. So it was simply a matter of picking one of the available livereload plugins to run a server:
+I was using [gulp](https://gulpjs.com) to build my code. So it was simply a matter of picking one of the available livereload plugins to run a server:
 
 ```js  
 var server = require('gulp-server-livereload');

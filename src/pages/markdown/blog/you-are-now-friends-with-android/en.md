@@ -20,4 +20,3 @@ My T-Mobile contract is about to expire and I started seriously thinking about w
 
 If you read around you'll find that the Android Market and consequent ecosystem for paid apps is almost miniscule compared to the AppStore (see [article and comments](http://larvalabs.com/blog/iphone/android-market-sales/) and [follow-up](http://larvalabs.com/blog/iphone/android-market-sales-follow-up/)), but I'm hoping that this will improve in the near future. And anyway, if the Android app platform doesn't really take off then atleast I'll already have some mobile app development experience by the time I get my iPhone ;)
 
-**Update (Sep19): I've shifted the instructions for updating the HTC Hero/T-Mobile G2 Touch firmware into a [new post](/archives/2009/09/19/upgrading-your-htc-herot-mobile-g2-touch-to-the-latest-htc-firmware/)**

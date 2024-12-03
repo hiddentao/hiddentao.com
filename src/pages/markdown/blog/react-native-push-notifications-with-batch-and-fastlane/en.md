@@ -12,7 +12,7 @@ tags:
 ---
 
 Following on my previous post on setting up
-[Continuous Deployment for React Native](/archives/2017/02/01/continuous-integration-for-react-native-with-testfairy-testflight-deploy/),
+[Continuous Deployment for React Native](/archives/2017/02/17/continuous-integration-for-react-native-with-testfairy-testflight-deploy/),
 this post outlines how to get push notifications working reliably for both
 Android and iOS using [Batch](https://batch.com) as the intermediary that sits
 between your server and Google's and Apple's push servers.

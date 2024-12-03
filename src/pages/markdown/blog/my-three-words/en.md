@@ -36,7 +36,7 @@ I also had a go at providing notification when other users are typing. How it wo
 ![See when others are typing](http://farm5.static.flickr.com/4043/4478118047_f2be451f7e_o.png)
 
 
-Only upto 5 unique ids are stored on the server so that the array search complexity never exceeds [O(5)](en.wikipedia.org/wiki/Big_O_notation) (clients show this as _4 typing_). The array data is automatically cleared after 5 seconds of no change to avoid stale data. And clients don't inform the server that they're typing more frequently than once every 5 seconds.
+Only upto 5 unique ids are stored on the server so that the array search complexity never exceeds [O(5)](https://en.wikipedia.org/wiki/Big_O_notation) (clients show this as _4 typing_). The array data is automatically cleared after 5 seconds of no change to avoid stale data. And clients don't inform the server that they're typing more frequently than once every 5 seconds.
 
 If you want to understand the internal workings of the site better use [Firebug](https://addons.mozilla.org/en-US/firefox/addon/1843) (or your preferred tool) to eavesdrop on the AJAX calls.
 

@@ -91,7 +91,7 @@ config.vm.box_url = "http://files.vagrantup.com/lucid64.box"
 end
 ```
 
-As you can see we've set the name of the VM to be *lucid64*. This will be its hostname too. For the base [pre-packaged box](vagrantup.com/docs/boxes.html) we've opted for a 64-bit Ubuntu 10.04 ("Lucid Lynx") distribution.
+As you can see we've set the name of the VM to be *lucid64*. This will be its hostname too. For the base [pre-packaged box](https://vagrantup.com/docs/boxes.html) we've opted for a 64-bit Ubuntu 10.04 ("Lucid Lynx") distribution.
 
 Once you've created this file you're ready to boot the VM. You should see something like the following:
 
