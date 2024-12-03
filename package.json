@@ -19,6 +19,7 @@
     "gatsby-background-image": "^1.1.1",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-advanced-sitemap": "^2.1.0",
+    "gatsby-plugin-client-side-redirect": "^1.1.0",
     "gatsby-plugin-disqus": "^1.2.2",
     "gatsby-plugin-emotion": "^7.12.1",
     "gatsby-plugin-feed": "^4.12.1",

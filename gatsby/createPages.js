@@ -67,5 +67,22 @@ module.exports = async ({ actions, graphql, getNode }) => {
     component: ARCHIVES_TEMPLATE,
     context: {},
   })
+
+  const { createRedirect } = actions;
+  createRedirect({
+    fromPath: '/squel/api.html',
+    toPath: 'https://hiddentao.github.io/squel/api.html',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/squel',
+    toPath: 'https://hiddentao.github.io/squel',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/archives',
+    toPath: '/blog',
+    isPermanent: true,
+  });
 }
 

@@ -1,8 +1,8 @@
+import { graphql, useStaticQuery } from "gatsby"
+import BgImg from 'gatsby-background-image'
+import Img from "gatsby-image"
 import safeGet from 'lodash.get'
 import React, { useMemo } from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
-import BgImg from 'gatsby-background-image'
 
 import reactNativeTabbedNavGif from '../images/react-native-tabbed-nav.gif'
 
@@ -52,9 +52,9 @@ const Image = ({ src, bg, ...props }) => {
         {...props}
       />
     )
-  } else {
-    return null
   }
+  
+  return null
 }
 
 export default Image
