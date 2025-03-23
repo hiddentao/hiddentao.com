@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { childAnchors, flex } from 'emotion-styled-utils'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import React, { useMemo } from "react"
+import Helmet from "react-helmet"
 
 import Layout from "../components/layout"
 import MaxContentWidth from "../components/maxContentWidth"
@@ -187,6 +188,21 @@ const Page = ({ lang }) => {
 
   return (
     <Layout noHeader={true} noAside={true}>
+      <Helmet>
+        <script>{`
+          var _paq = window._paq = window._paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="//matomo.hiddentao.com/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+          })();
+        `}</script>
+      </Helmet>
       <SEO />
       <Content>
         <Splash>
