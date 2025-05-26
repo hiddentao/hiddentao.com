@@ -3,7 +3,6 @@ import { childAnchors, flex } from 'emotion-styled-utils'
 import { Link } from "gatsby"
 import React from "react"
 
-import Button from './button'
 import NavLink from './navLink'
 import SocialLinks from './socialLinks'
 
@@ -12,7 +11,7 @@ const Container = styled.footer`
   padding: 2rem;
   margin-top: 3rem;
   border-top: 1px dashed ${({ theme }) => theme.footer.borderColor};;
-  font-size: 1.3rem;
+  font-size: 1rem;
 
   ${({ theme }) => childAnchors(theme.footer.anchor)};
 `
@@ -33,10 +32,6 @@ const TopLeft = styled.div`
   ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
     margin-bottom: 0;
   }
-`
-
-const TopRight = styled.div`
-  text-align: right;
 `
 
 const Nav = styled.ul`
@@ -65,18 +60,7 @@ const Social = styled.div``
 const StyledSocialLinks = styled(SocialLinks)`
   li {
     color: ${({ theme }) => theme.footer.anchor.textColor};
-    font-size: 70%;
     margin-bottom: 0.4rem;
-  }
-`
-
-const BuyMeACoffee = styled.a`
-  display: inline-block;
-
-  img {
-    height: 34px;
-    width: 35px;
-    vertical-align: middle;
   }
 `
 
@@ -96,17 +80,6 @@ const Footer = ({ navLinks }) => (
           <StyledSocialLinks />
         </Social>
       </TopLeft>
-      <TopRight>
-        <BuyMeACoffee
-          target='_blank'
-          href='https://www.buymeacoffee.com/hiddentao'
-        >
-          <Button>
-            <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" />
-            <span>Buy me a coffee</span>
-          </Button>
-        </BuyMeACoffee>
-      </TopRight>
     </Top>
     <Copyright>
       © Ramesh Nair

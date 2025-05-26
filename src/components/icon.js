@@ -7,7 +7,8 @@ import { config, library } from "@fortawesome/fontawesome-svg-core"
 import {
   faGithub,
   faLinkedin,
-  faStackOverflow
+  faStackOverflow,
+  faTwitter
 } from '@fortawesome/free-brands-svg-icons'
 import {
   faBars,
@@ -34,6 +35,7 @@ library.add(
   faHome,
   faBars,
   faToriiGate,
+  faTwitter,
 )
 
 export default ({ name }) => <FontAwesomeIcon icon={name} />

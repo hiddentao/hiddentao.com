@@ -4,10 +4,12 @@ import Img from "gatsby-image"
 import safeGet from 'lodash.get'
 import React, { useMemo } from "react"
 
+import projectCloudsGif from '../images/project-clouds.gif'
 import reactNativeTabbedNavGif from '../images/react-native-tabbed-nav.gif'
 
 const GIFS = {
-  'react-native-tabbed-nav.gif': reactNativeTabbedNavGif
+  'react-native-tabbed-nav.gif': reactNativeTabbedNavGif,
+  'project-clouds.gif': projectCloudsGif
 }
 
 const Image = ({ src, bg, ...props }) => {

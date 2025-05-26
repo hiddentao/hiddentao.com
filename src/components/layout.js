@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react"
-import styled from '@emotion/styled'
-import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeProvider } from '@emotion/react'
+import styled from '@emotion/styled'
+import { boxShadow, flex, loadFonts } from 'emotion-styled-utils'
+import { graphql, useStaticQuery } from 'gatsby'
+import React, { useState, useEffect, useMemo, useCallback } from "react"
 import Headroom from 'react-headroom'
-import { flex, loadFonts, boxShadow } from 'emotion-styled-utils'
 
 import { setupThemes } from '../themes'
+import Footer from "./footer"
 import GlobalStyles from './globalStyles'
 import Header from "./header"
 import Image from "./image"
 import MaxContentWidth from "./maxContentWidth"
-import Footer from "./footer"
 
 global.process = require('process')
 
@@ -35,7 +35,7 @@ const HeaderWrapper = styled.div`
   ${({ floating, noStaticHeader }) => (noStaticHeader && !floating) ? `
     opacity: 0;
     pointer-events: none;
-  ` : ``};
+  ` : ""};
 `
 
 const Content = styled(MaxContentWidth)`
@@ -105,7 +105,12 @@ const Layout = ({ children, noHeader }) => {
       label: 'Talks',
       path: '/talks'
     },
-  ], [ data ])
+    {
+      regexTest: /projects/,
+      label: 'Projects',
+      path: '/projects'
+    },
+  ], [])
 
   return (
     <ThemeProvider theme={themes.get('default')}>

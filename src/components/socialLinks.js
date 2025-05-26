@@ -75,9 +75,22 @@ export const FeedLink = ({ children }) => (
   </a>
 )
 
+export const XLink = ({ children }) => (
+  <a href="https://x.com/TaoOfDev">
+    {children || (
+      <React.Fragment>
+        <Icon name={['fab', 'twitter']} /><span>X</span>
+      </React.Fragment>
+    )}
+  </a>
+)
+
 const SocialLinks = ({ className }) => {
   return (
     <SocialList className={className}>
+      <SocialListItem title="X">
+        <XLink />
+      </SocialListItem>
       <SocialListItem title="Github">
         <GithubLink />
       </SocialListItem>
@@ -86,9 +99,6 @@ const SocialLinks = ({ className }) => {
       </SocialListItem>
       <SocialListItem title="Email">
         <EmailLink />
-      </SocialListItem>
-      <SocialListItem title="RSS">
-        <FeedLink />
       </SocialListItem>
     </SocialList>
   )
