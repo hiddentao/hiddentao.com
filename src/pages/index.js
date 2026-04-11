@@ -1,12 +1,43 @@
-import { Link } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import React from "react"
 import Helmet from "react-helmet"
 
 import Layout from "../components/layout"
 import BookCallButton from "../components/bookCallButton"
+import { getResolvedVersionForLanguage } from "../utils/node"
+import { formatDate } from "../utils/date"
 
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownPage(
+        filter: { type: { eq: "blog" }, draft: { ne: true } }
+        sort: { order: DESC, fields: date }
+        limit: 5
+      ) {
+        nodes {
+          ...MarkdownPageFields
+        }
+      }
+      allGithubRepo(sort: { fields: order, order: ASC }, limit: 3) {
+        nodes {
+          name
+          description
+          url
+          stars
+        }
+      }
+    }
+  `)
+
+  const posts = data.allMarkdownPage.nodes.map(n => ({
+    ...getResolvedVersionForLanguage(n.versions, 'en', n.lang),
+    path: n.path,
+  }))
+
+  const repos = data.allGithubRepo.nodes
+
   return (
     <Layout>
       <Helmet title="Hiddentao Labs — Software Consultant in Singapore and UK">
@@ -38,7 +69,7 @@ const IndexPage = () => {
                 >ls -la ./work</a>
               </div>
             </div>
-            <img className="hero-img" src="/ram.png" alt="Ram Nair" />
+            <img className="hero-img" src="/ram.png" alt="Hiddentao Labs" />
           </div>
 
           <div className="logo-bar mono">
@@ -102,51 +133,39 @@ const IndexPage = () => {
           <section className="cyber-section grid-2">
             <div>
               <div className="section-tag mono"># OPEN_SOURCE</div>
-              <a
-                href="https://github.com/hiddentao/squel"
-                className="repo-card"
+              {repos.map(repo => (
+                <a
+                  key={repo.name}
+                  href={repo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="repo-card"
+                  data-tooltip-id="app-tooltip"
+                  data-tooltip-content={`View ${repo.name} on GitHub — ${repo.stars.toLocaleString()} stars`}
+                >
+                  <h4 className="mono">{repo.name} <span style={{color:"#888"}}>{repo.stars.toLocaleString()}_★</span></h4>
+                  <p>{repo.description}</p>
+                </a>
+              ))}
+              <Link
+                to="/projects"
+                className="mono"
+                style={{textDecoration:"none", display:"inline-block", marginTop:"1.5rem"}}
                 data-tooltip-id="app-tooltip"
-                data-tooltip-content="View squel on GitHub — 1,600+ stars"
-              >
-                <h4 className="mono">squel <span style={{color:"#888"}}>1600_★</span></h4>
-                <p>SQL builder for JavaScript</p>
-              </a>
-              <a
-                href="https://github.com/hiddentao/fast-levenshtein"
-                className="repo-card"
-                data-tooltip-id="app-tooltip"
-                data-tooltip-content="View fast-levenshtein on GitHub — 577+ stars"
-              >
-                <h4 className="mono">fast-levenshtein <span style={{color:"#888"}}>577_★</span></h4>
-                <p>Levenshtein algorithm impl.</p>
-              </a>
-              <a
-                href="https://github.com/hiddentao/chatfall"
-                className="repo-card"
-                data-tooltip-id="app-tooltip"
-                data-tooltip-content="View Chatfall — full-stack app bundled as single executable"
-              >
-                <h4 className="mono">Chatfall <span style={{color:"#888"}}>FULL_STACK</span></h4>
-                <p>Web app compiled to executable</p>
-              </a>
-              <a
-                href="https://hiddentao.vc"
-                className="repo-card"
-                data-tooltip-id="app-tooltip"
-                data-tooltip-content="See my angel investment portfolio"
-              >
-                <h4 className="mono">Hiddentao.vc <span style={{color:"#888"}}>ANGEL_INV</span></h4>
-                <p>Angel investment portfolio — 20+ startups</p>
-              </a>
+                data-tooltip-content="See all projects"
+              >cd /projects && ls -a &rarr;</Link>
             </div>
             <div>
-              <div className="section-tag mono"># TX_LOG (READ)</div>
+              <div className="section-tag mono"># BLOG</div>
               <ul className="writing-list">
-                <li><Link to="/archives/2024/11/16/bundling-your-nodejs-web-app-into-a-single-executable-using-bun" style={{fontSize:"1.2rem"}}>Bundling your Node.js web app into a single executable...<div className="meta"><span className="tag">Full-Stack</span> Nov 2024</div></Link></li>
-                <li><Link to="/archives/2020/05/28/upgradeable-smart-contracts-using-diamond-standard" style={{fontSize:"1.2rem"}}>Upgradeable smart contracts using the Diamond Standard<div className="meta"><span className="tag">Blockchain</span> May 2020</div></Link></li>
-                <li><Link to="/archives/2020/06/17/building-your-nextjs-web-app-using-graphql" style={{fontSize:"1.2rem"}}>Building your Next.js web app using GraphQL<div className="meta"><span className="tag">Full-Stack</span> Jun 2020</div></Link></li>
-                <li><Link to="/archives/2019/03/26/architecting-microservices-for-effective-development-and-deployment" style={{fontSize:"1.2rem"}}>Architecting microservices for effective development...<div className="meta"><span className="tag">Architecture</span> Mar 2019</div></Link></li>
-                <li><Link to="/archives/2020/03/21/advanced-role-based-access-control-in-solidity" style={{fontSize:"1.2rem"}}>Advanced role-based access control in Solidity<div className="meta"><span className="tag">Blockchain</span> Mar 2020</div></Link></li>
+                {posts.map(post => (
+                  <li key={post.path}>
+                    <Link to={post.path} style={{fontSize:"1.2rem"}}>
+                      {post.title}
+                      <div className="meta">{formatDate(new Date(post.date), 'MMM YYYY')}</div>
+                    </Link>
+                  </li>
+                ))}
               </ul>
               <Link
                 to="/blog"

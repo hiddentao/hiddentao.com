@@ -7,6 +7,7 @@ const remark = require('remark')
 const strip = require('strip-markdown')
 
 const { generateOgImage } = require('./common')
+const { fetchExternalData } = require('./fetchExternalData')
 
 const PATH_TO_MD_PAGES = path.resolve(path.join(__dirname, '..', 'src', 'pages', 'markdown'))
 const { siteMetadata: { defaultLanguage } } = require('../gatsby-config')
@@ -73,9 +74,41 @@ const _createSitemapNode = ({ createNode, createNodeId, createContentDigest, slu
   })
 }
 
-module.exports = ({ actions, createNodeId, createContentDigest, getNodes }) => {
+module.exports = async ({ actions, createNodeId, createContentDigest, getNodes }) => {
   const { createNode} = actions
   const sitemapNodeCallProps = { createNode, createNodeId, createContentDigest }
+
+  const { githubRepos, projects: externalProjects } = await fetchExternalData()
+
+  githubRepos.forEach((repo, index) => {
+    const nodeData = { ...repo, order: index }
+    createNode({
+      id: createNodeId(`github-repo-${repo.name}`),
+      parent: null,
+      children: [],
+      ...nodeData,
+      internal: {
+        type: 'GithubRepo',
+        contentDigest: createContentDigest(nodeData),
+        description: `GitHub repo: ${repo.name}`,
+      },
+    })
+  })
+
+  externalProjects.forEach((project, index) => {
+    const nodeData = { ...project, order: index }
+    createNode({
+      id: createNodeId(`external-project-${project.id}`),
+      parent: null,
+      children: [],
+      ...nodeData,
+      internal: {
+        type: 'ExternalProject',
+        contentDigest: createContentDigest(nodeData),
+        description: `External project: ${project.name}`,
+      },
+    })
+  })
 
   const allNodes = getNodes()
 

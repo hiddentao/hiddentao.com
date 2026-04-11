@@ -13,7 +13,7 @@ const Footer = () => (
       </div>
 
       <div className="subfooter mono">
-        <div style={{color:"#888"}}>&copy; RAM_NAIR</div>
+        <div style={{color:"#888"}}>&copy; HIDDENTAO_LABS</div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
           <a
             href="https://linkedin.com/in/hiddentao"

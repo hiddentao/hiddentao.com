@@ -13,7 +13,7 @@ const defaultLanguage = 'en'
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://hiddentao.com',
-    title: `Ram Nair`,
+    title: `Hiddentao Labs`,
     description: `Independent software consultant helping startups ship faster. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore.`,
     author: `@TaoOfDev`,
     defaultLanguage,

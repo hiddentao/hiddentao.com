@@ -12,4 +12,4 @@ These are the various technical talks I've given throughout the years.
 * May 2013 (Taipei): [Introduction to Javascript and its current status](http:&#47;&#47;www.slideshare.net&#47;RameshNair6&#47;javascript-updatemay2013) *
 * Feb 2012 (London): London Node.js User Group (LNUG) talk on Squel.js
 
-_* I founded the [Taipei Javascript Enthusiasts](http:&#47;&#47;www.meetup.com&#47;javascript-enthusiasts&#47;) meetup and co-ran it until March 2015_
+_* I founded the [Taipei Javascript Enthusiasts](https://web.archive.org/web/20150921201304/http://www.meetup.com/javascript-enthusiasts/) meetup and co-ran it until March 2015_

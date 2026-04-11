@@ -73,7 +73,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
             <p className="text-[1.2rem] text-[var(--color-light-grey)]">{fields.title}</p>
           </>
         )}
-        <PageLastUpdatedDate className="text-[1.2rem] mt-4" date={fields.date} showOldDateWarning={type === 'blog'} />
+        <PageLastUpdatedDate className="text-[1.2rem] mt-4" date={fields.date} />
         {type === 'blog' ? (
           <p className="mt-[0.8rem] text-base italic text-[var(--color-light-grey)]">({fields.readtime} minute read)</p>
         ) : null}
