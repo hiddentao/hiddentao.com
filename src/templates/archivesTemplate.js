@@ -1,21 +1,11 @@
-import styled from '@emotion/styled'
 import React, { useMemo } from "react"
 import { graphql } from "gatsby"
-// import { IntlContextConsumer, injectIntl } from "gatsby-plugin-intl"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
 import { parseDate } from "../utils/date"
 import Layout from "../components/layout"
 import PostList from "../components/postList"
 import SEO from "../components/seo"
-
-const YearContainer = styled.div`
-  h3 {
-    padding-bottom: 0.7rem;
-    border-bottom: 1px solid ${({ theme }) => theme.archives.year.borderColor};
-    margin: 3rem 0 1rem;
-  }
-`
 
 const Page = ({ lang, data }) => {
   // sort blog post and categorize by year
@@ -58,10 +48,10 @@ const Page = ({ lang, data }) => {
       <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
         <h1 className="cyber-h1" style={{ marginBottom: '3rem' }}>TX_LOG <span style={{ color: '#888', fontSize: '2rem' }}>// Archive</span></h1>
         {postsByYear.map(( { year, posts }) => (
-          <YearContainer key={year}>
+          <div key={year} className="[&_h3]:pb-[0.7rem] [&_h3]:border-b [&_h3]:border-[var(--color-dark-grey)] [&_h3]:mt-12 [&_h3]:mb-4">
             <h3 className="mono" style={{ color: '#fff' }}>{year}</h3>
             <PostList posts={posts} />
-          </YearContainer>
+          </div>
         ))}
       </div>
     </Layout>
