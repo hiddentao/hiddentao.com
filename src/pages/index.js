@@ -9,9 +9,9 @@ import BookCallButton from "../components/bookCallButton"
 const IndexPage = () => {
   return (
     <Layout>
-      <Helmet title="Ram Nair — Software Consultant in Singapore and London">
+      <Helmet title="Ram Nair — Software Consultant in Singapore and UK">
         <html lang="en" />
-        <meta name="description" content="Independent software consultant helping startups ship faster. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore and London." />
+        <meta name="description" content="Independent software consultant helping startups ship faster. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore and UK." />
       </Helmet>
 
       <div>
@@ -25,7 +25,7 @@ const IndexPage = () => {
           <div className="hero">
             <div className="hero-content">
               <h1 className="cyber-h1">I help startups ship faster and better.</h1>
-              <div className="subtitle mono">{`>>`} Software Consultant {`>>`} Singapore 🇸🇬 London 🇬🇧</div>
+              <div className="subtitle mono">{`>>`} Software Consultant <span className="block sm:inline">{`>>`} Singapore 🇸🇬 UK 🇬🇧</span></div>
               <p className="desc" style={{fontSize: '1.2rem', maxWidth: '600px', lineHeight:1.6}}><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
               
               <div className="btn-container">
@@ -42,12 +42,10 @@ const IndexPage = () => {
           </div>
 
           <div className="logo-bar mono">
-            <span>Ethereum</span>
-            <span>ENS Labs</span>
-            <span>Nayms</span>
-            <span>Kaleidoco</span>
-            <span>Tribally</span>
-            <span>Kickback</span>
+            <a href="https://ethereum.org" target="_blank" rel="noopener noreferrer">Ethereum Foundation</a>
+            <a href="https://ens.domains" target="_blank" rel="noopener noreferrer">ENS Labs</a>
+            <a href="https://www.onre.finance" target="_blank" rel="noopener noreferrer">OnRe</a>
+            <a href="https://www.nbcuniversal.com" target="_blank" rel="noopener noreferrer">NBC Universal</a>
           </div>
 
           <section className="cyber-section" id="work">
@@ -87,7 +85,7 @@ const IndexPage = () => {
               style={{textDecoration:"none", display:"inline-block", marginTop:"1rem"}}
               data-tooltip-id="app-tooltip"
               data-tooltip-content="Read 14 more recommendations on LinkedIn"
-            >+ 14_more_on_LinkedIn()</a>
+            >+ more_on_LinkedIn()</a>
           </section>
           
           <section className="cyber-section">

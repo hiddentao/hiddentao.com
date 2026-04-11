@@ -279,10 +279,18 @@
     .hero {
       padding: 2rem 1.5rem;
       gap: 2rem;
+      flex-direction: column;
+      text-align: center;
     }
 
     .hero-content {
       order: 2;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .hero-content .btn-container {
+      justify-content: center;
     }
 
     .hero-img {
@@ -334,15 +342,26 @@
 
   .logo-bar {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+    justify-content: center;
+    gap: 2rem 3rem;
     flex-wrap: wrap;
     align-items: center;
+    text-align: center;
     padding: 3rem 0;
     border-bottom: 1px dashed var(--color-darkest-grey);
     margin-bottom: 4rem;
     color: #888;
     font-size: 1.25rem;
+  }
+
+  .logo-bar a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .logo-bar a:hover {
+    color: var(--color-caribbean-green);
   }
 
   .cyber-section {
