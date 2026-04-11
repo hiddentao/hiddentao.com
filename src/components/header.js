@@ -1,75 +1,25 @@
 import { Link } from "gatsby"
 import React, { useCallback, useState } from "react"
-import styled from '@emotion/styled'
 import { Location } from '@reach/router'
-import { buttonStyles } from 'emotion-styled-utils'
 
-import Button from './button'
 import Icon from './icon'
 
-const HeaderContainer = styled.div`
-  width: 100%;
-  padding: 1rem 1.2rem;
-`
-
-const NavContainer = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #fff;
-  font-size: 1.1rem;
-`
-
-const NavLinks = styled.div`
-  display: none;
-  gap: 2rem;
-
-  a {
-    color: #fff;
-    text-decoration: none;
-    &[data-selected="true"] {
-      color: var(--caribbean-green);
-    }
-  }
-  a:hover { color: var(--caribbean-green); }
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    display: flex;
-  }
-`
-
-const MobileNavButton = styled(Button)`
-  display: block;
-  ${({ theme }) => buttonStyles(theme.header.nav.mobileButton)};
-
-  transform: rotate(${({ open }) => open ? 90 : 0}deg);
-  transition: all 0.2s;
-  color: #fff;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    display: none;
-  }
-`
-
-const MobileNavContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-top: 1rem;
-  border-top: 1px dashed #333;
-  margin-top: 1rem;
-
-  a {
-    color: #fff;
-    text-decoration: none;
-    &[data-selected="true"] {
-      color: var(--caribbean-green);
-    }
-  }
-  a:hover { color: var(--caribbean-green); }
-`
-
 const _isViewingUrl = (location, regex) => !!location.pathname.match(regex)
+
+const linkClass = "text-white no-underline hover:text-[var(--color-caribbean-green)] data-[selected=true]:text-[var(--color-caribbean-green)]"
+
+const NAV_ITEMS = [
+  { to: '/services', label: '/services', regex: /services/ },
+  { to: '/blog', label: '/blog', regex: /blog/ },
+  { to: '/projects', label: '/projects', regex: /projects/ },
+  { to: '/talks', label: '/talks', regex: /talks/ },
+]
+
+const renderLinks = (location) => NAV_ITEMS.map(({ to, label, regex }) => (
+  <Link key={to} to={to} data-selected={_isViewingUrl(location, regex)} className={linkClass}>
+    {label}
+  </Link>
+))
 
 const Header = ({ navLinks, ...props }) => {
   const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
@@ -79,37 +29,35 @@ const Header = ({ navLinks, ...props }) => {
   )
 
   return (
-    <HeaderContainer {...props}>
-      <NavContainer className="mono">
+    <div {...props} className="w-full py-4 px-5">
+      <nav className="flex justify-between items-center text-white text-[1.1rem] mono">
         <Link to="/" className="brand">hiddentao</Link>
         <Location>
           {({ location }) => (
-            <NavLinks>
-              <Link to="/services" data-selected={_isViewingUrl(location, /services/)}>/services</Link>
-              <Link to="/blog" data-selected={_isViewingUrl(location, /blog/)}>/blog</Link>
-              <Link to="/projects" data-selected={_isViewingUrl(location, /projects/)}>/projects</Link>
-              <Link to="/talks" data-selected={_isViewingUrl(location, /talks/)}>/talks</Link>
-            </NavLinks>
+            <div className="hidden desktop:flex gap-8">
+              {renderLinks(location)}
+            </div>
           )}
         </Location>
-        <MobileNavButton onClick={toggleMobileMenu} open={mobileMenuOpen}>
+        <button
+          onClick={toggleMobileMenu}
+          className="desktop:hidden block bg-transparent text-white border-none cursor-pointer text-[1.2rem] transition-transform duration-200"
+          style={{ transform: mobileMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
+        >
           <Icon name={['fas', 'bars']} />
-        </MobileNavButton>
-      </NavContainer>
-      
+        </button>
+      </nav>
+
       {mobileMenuOpen && (
         <Location>
           {({ location }) => (
-            <MobileNavContainer className="mono">
-              <Link to="/services" data-selected={_isViewingUrl(location, /services/)}>/services</Link>
-              <Link to="/blog" data-selected={_isViewingUrl(location, /blog/)}>/blog</Link>
-              <Link to="/projects" data-selected={_isViewingUrl(location, /projects/)}>/projects</Link>
-              <Link to="/talks" data-selected={_isViewingUrl(location, /talks/)}>/talks</Link>
-            </MobileNavContainer>
+            <div className="flex flex-col gap-4 pt-4 border-t border-dashed border-[var(--color-darkest-grey)] mt-4 mono">
+              {renderLinks(location)}
+            </div>
           )}
         </Location>
       )}
-    </HeaderContainer>
+    </div>
   )
 }
 
