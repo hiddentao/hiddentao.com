@@ -3,7 +3,6 @@ import React, { useState, useMemo, useCallback } from "react"
 import Headroom from 'react-headroom'
 
 import Footer from "./footer"
-import GlobalStyles from './globalStyles'
 import Header from "./header"
 
 import MaxContentWidth from "./maxContentWidth"
@@ -57,7 +56,6 @@ const Layout = ({ children, noHeader, noFooter }) => {
 
   return (
     <>
-      <GlobalStyles />
       <div className="scanline"></div>
       <div
         className="text-white"
