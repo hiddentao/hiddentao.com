@@ -360,10 +360,6 @@
     transition: color 0.2s ease;
   }
 
-  .logo-bar a:hover {
-    color: var(--color-caribbean-green);
-  }
-
   .cyber-section {
     margin-top: 6rem;
   }
@@ -409,9 +405,10 @@
   }
 
   .metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 3rem;
     background: var(--color-surface);
     border: 1px solid var(--color-darkest-grey);
     padding: 2rem;

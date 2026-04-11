@@ -9,7 +9,7 @@ import BookCallButton from "../components/bookCallButton"
 const IndexPage = () => {
   return (
     <Layout>
-      <Helmet title="Ram Nair — Software Consultant in Singapore and UK">
+      <Helmet title="Hiddentao Labs — Software Consultant in Singapore and UK">
         <html lang="en" />
         <meta name="description" content="Independent software consultant helping startups ship faster. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore and UK." />
       </Helmet>
@@ -73,11 +73,11 @@ const IndexPage = () => {
             <div className="section-tag mono"># VERIFICATION</div>
             <div className="testimonial-box">
               <p>"Ram is self-motivated and takes personal pride... He was able to guide us through evolving best practices while consistently delivering ahead of schedule."</p>
-              <div className="testimonial-author mono">-- Theodore_Georgas @ Nayms</div>
+              <div className="testimonial-author mono">-- Theodore_Georgas @ OnRe</div>
             </div>
             <div className="testimonial-box">
-              <p>"Ram brings a wide depth of knowledge across the tech stack, clean and readable code, and is always a good candidate to bounce new ideas off."</p>
-              <div className="testimonial-author mono">-- Colleague @ Nayms</div>
+              <p>"When we started developing a solution in blockchain for lending and needed a lead to guide us through, Ram was there to help out. He was diligent on time and extremely reliable."</p>
+              <div className="testimonial-author mono">-- Abhishek_Agarwal @ Google</div>
             </div>
             <a
               href="https://linkedin.com/in/hiddentao"
@@ -96,7 +96,6 @@ const IndexPage = () => {
               <div className="metric-item"><div className="metric-value mono">2.2k+</div><div className="metric-label mono">GH STARS</div></div>
               <div className="metric-item"><div className="metric-value mono">16</div><div className="metric-label mono">LINKEDIN_RECS</div></div>
               <div className="metric-item"><div className="metric-value mono">100+</div><div className="metric-label mono">TECH_POSTS</div></div>
-              <div className="metric-item"><div className="metric-value mono" style={{fontSize:"2rem"}}>MEng</div><div className="metric-label mono">IMPERIAL COL.</div></div>
             </div>
           </section>
 
