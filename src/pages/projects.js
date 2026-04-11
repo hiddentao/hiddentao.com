@@ -39,8 +39,8 @@ const ProjectsPage = () => {
       <SEO title="Projects" description="Portfolio of projects and creative works by Ram" />
       
       <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
-        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <h1 className="cyber-h1" style={{ fontSize: "2.5rem" }}>Projects</h1>
+        <div style={{ marginBottom: "4rem" }}>
+          <h1 className="cyber-h1 mono">/projects</h1>
         </div>
 
         <div className="grid-3">

@@ -9,6 +9,7 @@ import Layout from "../components/layout"
 import PageLastUpdatedDate from "../components/pageLastUpdatedDate"
 import SEO from "../components/seo"
 import Markdown from "../components/markdown"
+import BookCallButton from "../components/bookCallButton"
 
 const PageBottomNavItemLink = ({ currentLanguage, item }) => {
   const { title } = useMemo(() => (
@@ -48,7 +49,7 @@ const PageBottomNav = ({ currentLanguage, newer, older }) => {
 }
 
 const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
-  const { type, lang: fallbackLang, versions } = current
+  const { type, path, lang: fallbackLang, versions } = current
 
   const fields = useMemo(() => (
     getResolvedVersionForLanguage(versions, currentLanguage, fallbackLang)
@@ -64,7 +65,14 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
     <Layout>
       <SEO title={fields.title} description={summary} ogi={fields.ogi} />
       <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
-        <h1 className="cyber-h1" style={{ fontSize: '3rem', marginBottom: '1rem' }}>{fields.title}</h1>
+        {type === 'blog' ? (
+          <h1 className="cyber-h1" style={{ fontSize: '3rem', marginBottom: '1rem' }}>{fields.title}</h1>
+        ) : (
+          <>
+            <h1 className="cyber-h1 mono" style={{ marginBottom: '1rem' }}>{path}</h1>
+            <p className="text-[1.2rem] text-[var(--color-light-grey)]">{fields.title}</p>
+          </>
+        )}
         <PageLastUpdatedDate className="text-[1.2rem] mt-4" date={fields.date} showOldDateWarning={type === 'blog'} />
         {type === 'blog' ? (
           <p className="mt-[0.8rem] text-base italic text-[var(--color-light-grey)]">({fields.readtime} minute read)</p>
@@ -80,7 +88,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
           }}>
             <h3 style={{ marginTop: 0, fontFamily: "'Fira Code', monospace" }}>Need help shipping your product?</h3>
             <p style={{ marginBottom: '1.5rem', lineHeight: 1.6 }}>I'm an independent software consultant with 20+ years of experience building full-stack apps and smart contracts for startups. Let's talk about your project.</p>
-            <a href="/#book" className="cyber-btn">BOOK_FREE_CALL()</a>
+            <BookCallButton label="BOOK_CALL()" className="cyber-btn" />
           </div>
         ) : null}
         {type === 'blog' ? <PageBottomNav {...nav} /> : null}

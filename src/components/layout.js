@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useState, useMemo, useCallback } from "react"
 import Headroom from 'react-headroom'
+import { Tooltip } from 'react-tooltip'
 
 import Footer from "./footer"
 import Header from "./header"
@@ -56,6 +57,7 @@ const Layout = ({ children, noHeader, noFooter }) => {
 
   return (
     <>
+      <Tooltip id="app-tooltip" place="top" className="app-tooltip" />
       <div className="scanline"></div>
       <div
         className="text-white"

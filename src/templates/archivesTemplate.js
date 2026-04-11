@@ -46,7 +46,7 @@ const Page = ({ lang, data }) => {
     <Layout>
       <SEO title='Blog archive' />
       <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
-        <h1 className="cyber-h1" style={{ marginBottom: '3rem' }}>TX_LOG <span style={{ color: '#888', fontSize: '2rem' }}>// Archive</span></h1>
+        <h1 className="cyber-h1 mono" style={{ marginBottom: '3rem' }}>/blog</h1>
         {postsByYear.map(( { year, posts }) => (
           <div key={year} className="[&_h3]:pb-[0.7rem] [&_h3]:border-b [&_h3]:border-[var(--color-dark-grey)] [&_h3]:mt-12 [&_h3]:mb-4">
             <h3 className="mono" style={{ color: '#fff' }}>{year}</h3>

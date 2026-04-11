@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BookCallButton from "../components/bookCallButton"
 
 const services = [
   {
@@ -29,8 +30,8 @@ const ServicesPage = () => {
       <SEO title="Services" description="Software consulting services, architecture sprints, build phases, and fractional CTO." />
       
       <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
-        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <h1 className="cyber-h1" style={{ fontSize: "2.5rem" }}>Services</h1>
+        <div style={{ marginBottom: "4rem" }}>
+          <h1 className="cyber-h1 mono">/services</h1>
         </div>
 
         <div className="grid-3" style={{ gridTemplateColumns: 'minmax(300px, 800px)', justifyContent: 'center' }}>
@@ -44,9 +45,7 @@ const ServicesPage = () => {
         </div>
         
         <div className="btn-container" style={{ justifyContent: 'center', marginTop: '6rem' }}>
-          <a href="/#book" className="cyber-btn btn-primary">
-            BOOK_FREE_CALL()
-          </a>
+          <BookCallButton label="BOOK_CALL()" />
         </div>
       </div>
     </Layout>

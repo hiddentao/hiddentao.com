@@ -14,7 +14,12 @@ const Testimonial = ({ className, name, company, text }) => {
         {text.length > 200 && !expanded ? (
           <span>
             {trunc(text, { length: 200, omission: ' ' })}
-            <a title="read more" onClick={expand} href="#">...</a>
+            <a
+              onClick={expand}
+              href="#"
+              data-tooltip-id="app-tooltip"
+              data-tooltip-content="Read full testimonial"
+            >...</a>
           </span>
         ) : text}
       </p>

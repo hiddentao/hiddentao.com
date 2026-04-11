@@ -3,6 +3,7 @@ import React from "react"
 import Helmet from "react-helmet"
 
 import Layout from "../components/layout"
+import BookCallButton from "../components/bookCallButton"
 
 
 const IndexPage = () => {
@@ -24,12 +25,17 @@ const IndexPage = () => {
           <div className="hero">
             <div className="hero-content">
               <h1 className="cyber-h1">I help startups ship faster and better.</h1>
-              <div className="subtitle mono">{`>>`} Software Consultant · Singapore 🇸🇬 London 🇬🇧</div>
+              <div className="subtitle mono">{`>>`} Software Consultant {`>>`} Singapore 🇸🇬 London 🇬🇧</div>
               <p className="desc" style={{fontSize: '1.2rem', maxWidth: '600px', lineHeight:1.6}}><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
               
               <div className="btn-container">
-                <a href="#book" className="cyber-btn btn-primary">./book_call.sh</a>
-                <a href="#work" className="cyber-btn btn-secondary">ls -la ./work</a>
+                <BookCallButton label="./book_call.sh" />
+                <a
+                  href="#work"
+                  className="cyber-btn btn-secondary"
+                  data-tooltip-id="app-tooltip"
+                  data-tooltip-content="Scroll to how I work"
+                >ls -la ./work</a>
               </div>
             </div>
             <img className="hero-img" src="/ram.png" alt="Ram Nair" />
@@ -75,7 +81,13 @@ const IndexPage = () => {
               <p>"Ram brings a wide depth of knowledge across the tech stack, clean and readable code, and is always a good candidate to bounce new ideas off."</p>
               <div className="testimonial-author mono">-- Colleague @ Nayms</div>
             </div>
-            <a href="https://linkedin.com/in/hiddentao" className="mono" style={{textDecoration:"none", display:"inline-block", marginTop:"1rem"}}>+ 14_more_on_LinkedIn()</a>
+            <a
+              href="https://linkedin.com/in/hiddentao"
+              className="mono"
+              style={{textDecoration:"none", display:"inline-block", marginTop:"1rem"}}
+              data-tooltip-id="app-tooltip"
+              data-tooltip-content="Read 14 more recommendations on LinkedIn"
+            >+ 14_more_on_LinkedIn()</a>
           </section>
           
           <section className="cyber-section">
@@ -93,19 +105,39 @@ const IndexPage = () => {
           <section className="cyber-section grid-2">
             <div>
               <div className="section-tag mono"># OPEN_SOURCE</div>
-              <a href="https://github.com/hiddentao/squel" className="repo-card">
+              <a
+                href="https://github.com/hiddentao/squel"
+                className="repo-card"
+                data-tooltip-id="app-tooltip"
+                data-tooltip-content="View squel on GitHub — 1,600+ stars"
+              >
                 <h4 className="mono">squel <span style={{color:"#888"}}>1600_★</span></h4>
                 <p>SQL builder for JavaScript</p>
               </a>
-              <a href="https://github.com/hiddentao/fast-levenshtein" className="repo-card">
+              <a
+                href="https://github.com/hiddentao/fast-levenshtein"
+                className="repo-card"
+                data-tooltip-id="app-tooltip"
+                data-tooltip-content="View fast-levenshtein on GitHub — 577+ stars"
+              >
                 <h4 className="mono">fast-levenshtein <span style={{color:"#888"}}>577_★</span></h4>
                 <p>Levenshtein algorithm impl.</p>
               </a>
-              <a href="https://github.com/hiddentao/chatfall" className="repo-card">
+              <a
+                href="https://github.com/hiddentao/chatfall"
+                className="repo-card"
+                data-tooltip-id="app-tooltip"
+                data-tooltip-content="View Chatfall — full-stack app bundled as single executable"
+              >
                 <h4 className="mono">Chatfall <span style={{color:"#888"}}>FULL_STACK</span></h4>
                 <p>Web app compiled to executable</p>
               </a>
-              <a href="https://hiddentao.vc" className="repo-card">
+              <a
+                href="https://hiddentao.vc"
+                className="repo-card"
+                data-tooltip-id="app-tooltip"
+                data-tooltip-content="See my angel investment portfolio"
+              >
                 <h4 className="mono">Hiddentao.vc <span style={{color:"#888"}}>ANGEL_INV</span></h4>
                 <p>Angel investment portfolio — 20+ startups</p>
               </a>
@@ -119,7 +151,13 @@ const IndexPage = () => {
                 <li><Link to="/archives/2019/03/26/architecting-microservices-for-effective-development-and-deployment" style={{fontSize:"1.2rem"}}>Architecting microservices for effective development...<div className="meta"><span className="tag">Architecture</span> Mar 2019</div></Link></li>
                 <li><Link to="/archives/2020/03/21/advanced-role-based-access-control-in-solidity" style={{fontSize:"1.2rem"}}>Advanced role-based access control in Solidity<div className="meta"><span className="tag">Blockchain</span> Mar 2020</div></Link></li>
               </ul>
-              <Link to="/blog" className="mono" style={{textDecoration:"none", display:"inline-block", marginTop:"1.5rem"}}>cd /blog && ls -a &rarr;</Link>
+              <Link
+                to="/blog"
+                className="mono"
+                style={{textDecoration:"none", display:"inline-block", marginTop:"1.5rem"}}
+                data-tooltip-id="app-tooltip"
+                data-tooltip-content="Browse all blog posts"
+              >cd /blog && ls -a &rarr;</Link>
             </div>
           </section>
         </div>
