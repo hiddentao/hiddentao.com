@@ -1,0 +1,91 @@
+.markdown-body {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  line-height: 1.3em;
+}
+
+.markdown-body strong,
+.markdown-body b {
+  font-weight: bolder;
+}
+
+.markdown-body em,
+.markdown-body i {
+  font-style: italic;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  margin: 1.2em 0 1.2em 2em;
+  list-style-type: disc;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+.markdown-body ol li,
+.markdown-body ul li {
+  margin: 0.5em 0;
+}
+
+.markdown-body img {
+  max-width: 100%;
+}
+
+.markdown-body pre {
+  font-size: 70%;
+  background-color: rgba(255, 209, 102, 0.5);
+}
+
+.markdown-body blockquote {
+  font-style: italic;
+  padding: 1em;
+  background-color: var(--color-lighter-grey);
+  color: var(--color-dark-grey);
+  width: 80%;
+  margin: 0.5em auto;
+}
+
+.markdown-body blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+
+.markdown-body .md-code-span {
+  font-family: monospace;
+  font-size: 80%;
+  padding: 0.1em;
+  background-color: rgba(255, 209, 102, 0.5);
+}
+
+.markdown-body .md-paragraph {
+  margin: 1em 0;
+}
+
+.markdown-body .md-paragraph:first-of-type {
+  margin-top: 0;
+}
+
+.markdown-body .md-img-wrapper {
+  margin: 2em 0;
+  text-align: center;
+}
+
+.markdown-body .md-img-wrapper > img,
+.markdown-body .md-img-wrapper > div {
+  display: block;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.markdown-body .md-img-wrapper em {
+  margin-top: 0.2em;
+  font-size: 90%;
+}
+
+@media (min-width: 450px) {
+  .markdown-body .md-img-wrapper > img,
+  .markdown-body .md-img-wrapper > div {
+    max-width: 500px;
+  }
+}
