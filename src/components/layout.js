@@ -1,11 +1,7 @@
-import { ThemeProvider } from '@emotion/react'
-import styled from '@emotion/styled'
-import { boxShadow, flex, loadFonts } from 'emotion-styled-utils'
 import { graphql, useStaticQuery } from 'gatsby'
-import React, { useState, useEffect, useMemo, useCallback } from "react"
+import React, { useState, useMemo, useCallback } from "react"
 import Headroom from 'react-headroom'
 
-import { setupThemes } from '../themes'
 import Footer from "./footer"
 import GlobalStyles from './globalStyles'
 import Header from "./header"
@@ -13,35 +9,6 @@ import Header from "./header"
 import MaxContentWidth from "./maxContentWidth"
 
 global.process = require('process')
-
-const themes = setupThemes({
-  width: {
-    mobile: '450px',
-    desktop: '750px',
-  },
-  height: {
-    tall: '800px',
-  }
-})
-
-const Container = styled.div`
-  color: ${({ theme }) => theme.textColor};
-`
-
-const HeaderWrapper = styled.div`
-  transition: all 0.3s linear;
-  background: ${ ({ floating, theme }) => (floating ? theme.header.floating.wrapper.bgColor : theme.header.wrapper.bgColor) };
-  ${({ theme, floating }) => floating ? boxShadow({ color: theme.header.floating.wrapper.shadowColor }) : ''};
-  ${({ floating, noStaticHeader }) => (noStaticHeader && !floating) ? `
-    opacity: 0;
-    pointer-events: none;
-  ` : ""};
-`
-
-const Content = styled.div`
-  width: 100%;
-  position: relative;
-`
 
 const Layout = ({ children, noHeader, noFooter }) => {
   const [floatingHeader, setFloatingHeader] = useState(false)
@@ -54,35 +21,7 @@ const Layout = ({ children, noHeader, noFooter }) => {
     setFloatingHeader(false)
   }, [])
 
-  const [ , forceUpdate ] = useState()
-
-  useEffect(() => {
-    loadFonts({
-      header: {
-        name: 'Bricolage Grotesque',
-        weights: {
-          regular: 400,
-          bold: 700,
-        }
-      },
-      body: {
-        name: 'Bricolage Grotesque',
-        weights: {
-          regular: 400,
-          bold: 700,
-        }
-      },
-      text: {
-        name: 'Fira Code',
-        weights: {
-          regular: 400,
-          bold: 600,
-        }
-      }
-    }, window.document).then(forceUpdate, err => console.error(err))
-  }, [])
-
-  const data = useStaticQuery(graphql`
+  useStaticQuery(graphql`
     {
       site {
         siteMetadata {
@@ -110,34 +49,43 @@ const Layout = ({ children, noHeader, noFooter }) => {
     },
   ], [])
 
+  const headerWrapperStyle = {
+    backgroundColor: floatingHeader ? 'rgba(6, 214, 160, 0.9)' : 'rgba(6, 214, 160, 0)',
+    boxShadow: floatingHeader ? '0 2px 2px rgba(0,0,0,0.75)' : 'none',
+    ...(noHeader && !floatingHeader ? { opacity: 0, pointerEvents: 'none' } : {}),
+  }
+
   return (
-    <ThemeProvider theme={themes.get('default')}>
+    <>
       <GlobalStyles />
       <div className="scanline"></div>
-      <Container style={{
-        backgroundColor: '#02080a',
-        backgroundImage: 'linear-gradient(rgba(17, 138, 178, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(17, 138, 178, 0.1) 1px, transparent 1px)',
-        backgroundSize: '40px 40px',
-        backgroundAttachment: 'fixed',
-        minHeight: '100vh',
-      }}>
+      <div
+        className="text-white"
+        style={{
+          backgroundColor: '#02080a',
+          backgroundImage: 'linear-gradient(rgba(17, 138, 178, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(17, 138, 178, 0.1) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          backgroundAttachment: 'fixed',
+          minHeight: '100vh',
+        }}
+      >
         <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
-          <HeaderWrapper floating={floatingHeader} noStaticHeader={noHeader}>
+          <div className="transition-all duration-300" style={headerWrapperStyle}>
             <MaxContentWidth>
               <Header navLinks={navLinks} />
             </MaxContentWidth>
-          </HeaderWrapper>
+          </div>
         </Headroom>
-        <Content>
+        <div className="w-full relative">
           {children}
-        </Content>
+        </div>
         {!noFooter && (
           <MaxContentWidth>
             <Footer navLinks={navLinks} />
           </MaxContentWidth>
         )}
-      </Container>
-    </ThemeProvider>
+      </div>
+    </>
   )
 }
 
