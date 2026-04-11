@@ -55,13 +55,15 @@ const Page = ({ lang, data }) => {
   return (
     <Layout>
       <SEO title='Blog archive' />
-      <h1>Blog</h1>
-      {postsByYear.map(( { year, posts }) => (
-        <YearContainer key={year}>
-          <h3>{year}</h3>
-          <PostList posts={posts} />
-        </YearContainer>
-      ))}
+      <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
+        <h1 className="cyber-h1" style={{ marginBottom: '3rem' }}>TX_LOG <span style={{ color: '#888', fontSize: '2rem' }}>// Archive</span></h1>
+        {postsByYear.map(( { year, posts }) => (
+          <YearContainer key={year}>
+            <h3 className="mono" style={{ color: '#fff' }}>{year}</h3>
+            <PostList posts={posts} />
+          </YearContainer>
+        ))}
+      </div>
     </Layout>
   )
 }

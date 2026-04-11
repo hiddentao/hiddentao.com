@@ -13,9 +13,9 @@ const defaultLanguage = 'en'
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://hiddentao.com',
-    title: `Hiddentao Labs`,
-    description: `Ram (Hiddentao Labs) is a software developer based in London, UK.`,
-    author: `@hiddentao`,
+    title: `Ram Nair`,
+    description: `Independent software consultant helping startups ship faster. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore.`,
+    author: `@TaoOfDev`,
     defaultLanguage,
     supportedLanguages,
   },

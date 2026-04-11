@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ram Nair | Premium Minimal</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paradise-pink: #ef476f;
+    --crayola: #ffd166;
+    --caribbean-green: #06d6a0;
+    --blue-ncs: #118ab2;
+    --midnight: #073b4c;
+    --violet: #6a4c93;
+    --bg-dark: #041f29;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255,255,255,0.7);
+  }
+  
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.5;
+  }
+  .orb-1 { top: -10vw; left: -10vw; width: 50vw; height: 50vw; background: var(--blue-ncs); }
+  .orb-2 { bottom: 20vh; right: -10vw; width: 40vw; height: 40vw; background: var(--violet); opacity: 0.4; }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 2rem;
+  }
+  .nav .brand {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Instrument Serif', serif;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.05em;}
+  .nav-links a:hover { color: #fff; }
+
+  .serif { font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; }
+
+  header {
+    margin-top: 6rem; margin-bottom: 6rem;
+    display: grid; grid-template-columns: 1fr; gap: 4rem;
+  }
+  @media (min-width: 768px) { header { grid-template-columns: 1.2fr 1fr; align-items: center; } }
+
+  h1 { font-size: 4rem; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 1rem 0; line-height: 1.1; }
+
+  .label { text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem; color: var(--caribbean-green); margin-bottom: 1.5rem; display: inline-block; }
+
+  .hero-p { font-size: 1.3rem; color: var(--text-secondary); font-weight: 300; margin-bottom: 2rem;}
+
+  .headshot {
+    width: 200px; height: 200px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-ncs) 0%, var(--violet) 100%);
+    box-shadow: 0 0 40px rgba(17, 138, 178, 0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Instrument Serif', serif; font-size: 4rem; color: #fff;
+    margin: 0 auto;
+  }
+
+  .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { padding: 1rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 500; transition: all 0.4s ease; font-size: 0.95rem; letter-spacing: 0.05em; }
+  .btn-primary { background: var(--text-primary); color: var(--bg-dark); }
+  .btn-primary:hover { background: var(--caribbean-green); box-shadow: 0 0 30px rgba(6, 214, 160, 0.4); }
+  .btn-secondary { border: 1px solid rgba(255,255,255,0.3); color: var(--text-primary); }
+  .btn-secondary:hover { border-color: var(--text-primary); background: rgba(255,255,255,0.05); }
+
+  .logo-bar {
+    display: flex; flex-wrap: wrap; gap: 3rem; opacity: 0.6;
+    font-family: 'Instrument Serif', serif; font-size: 1.8rem; justify-content: space-between;
+    padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  section { padding: 5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);}
+  .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--caribbean-green); margin-bottom: 2rem; }
+
+  .services { display: flex; flex-direction: column; gap: 2rem; }
+  .service-item {
+    padding: 3rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px;
+    display: grid; grid-template-columns: 1fr; gap: 2rem; transition: transform 0.3s ease;
+  }
+  @media (min-width: 768px) { .service-item { grid-template-columns: 1fr 2fr; } }
+  .service-item h3 { font-size: 1.8rem; margin: 0; font-weight: 400; font-family: 'Instrument Serif', serif;}
+  .service-item span.duration { display: block; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+  .service-item p { color: var(--text-secondary); margin: 0; font-size: 1.15rem; font-weight: 300; line-height:1.6;}
+
+  .testimonials { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+  @media(min-width:768px){ .testimonials{grid-template-columns:1fr 1fr;} }
+  .testimonial { border-left: 2px solid var(--caribbean-green); padding-left: 2rem; }
+  .testimonial p { font-size: 1.25rem; font-weight: 300; color: var(--text-primary); margin-bottom: 1.5rem; line-height: 1.6; font-family: 'Instrument Serif', serif; font-style: italic;}
+  .testimonial .author { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
+  .testimonial .author span { font-weight: 300; opacity: 0.7;}
+  .more-link { display: inline-block; margin-top: 1rem; font-size: 0.9rem; color: var(--caribbean-green); text-decoration: none;}
+
+  .numbers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+  .stat-block .num { font-size: 3.5rem; font-weight: 400; color: #fff; line-height: 1.2; font-family: 'Instrument Serif', serif; }
+  .stat-block .desc { margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;}
+
+  .writing-list { list-style: none; padding: 0;}
+  .writing-list li { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0;}
+  .writing-list li:last-child { border-bottom: none; }
+  .writing-list a { display: block; text-decoration: none; color: #fff; font-size: 1.3rem; font-weight: 400;}
+  .writing-list a:hover { color: var(--caribbean-green); }
+  .writing-list .meta { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);}
+  .writing-list .tag { background: rgba(6, 214, 160, 0.1); color: var(--caribbean-green); padding: 2px 8px; border-radius: 4px; font-weight: 500;}
+
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .project-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; text-decoration: none; color: #fff; transition: all 0.3s;}
+  .project-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-5px);}
+  .project-card h4 { font-size: 1.3rem; font-weight: 500; margin: 0 0 0.5rem 0; font-family: 'Instrument Serif', serif;}
+  .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin: 0 0 1rem 0;}
+  .project-card .stars { font-size: 0.85rem; color: var(--caribbean-green); font-weight: 500;}
+
+  footer { padding: 4rem 0; font-size: 0.9rem; color: var(--text-secondary); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;}
+  footer a { color: var(--text-secondary); text-decoration: none; margin-left: 1.5rem; transition: color 0.2s;}
+  footer a:hover { color: #fff; }
+
+</style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="container">
+    <div class="nav">
+      <a href="/" class="brand">Ram Nair</a>
+      <div class="nav-links">
+        <a href="/consulting">Services</a>
+        <a href="/blog">Blog</a>
+        <a href="/projects">Projects</a>
+        <a href="/talks">Talks</a>
+      </div>
+    </div>
+
+    <header>
+      <div>
+        <div class="label">Software Consultant · Singapore</div>
+        <h1>Ram Nair</h1>
+        <p class="hero-p">I help startups ship faster and better. <strong>20+ years</strong> building full-stack apps, smart contracts, and technical teams. From Ethereum to production SaaS.</p>
+        
+        <div class="cta-group">
+          <a href="#book" class="btn btn-primary">Book a Free Call</a>
+          <a href="#work" class="btn btn-secondary">See My Work ↓</a>
+        </div>
+      </div>
+      <div class="headshot">RN</div>
+    </header>
+
+    <div class="logo-bar">
+      <span>Ethereum</span>
+      <span>ENS Labs</span>
+      <span>Nayms</span>
+      <span>Kaleidoco</span>
+      <span>Tribally</span>
+      <span>Kickback</span>
+    </div>
+
+    <section>
+      <div class="section-label">How I Work</div>
+      <div class="services">
+        <div class="service-item">
+          <div>
+            <h3>Architecture Sprint</h3>
+            <span class="duration">1–2 Weeks</span>
+          </div>
+          <p>You have a product idea or codebase and need a senior engineer's perspective. I'll review your architecture, identify risks, and deliver a concrete roadmap you can execute on.</p>
+        </div>
+        <div class="service-item">
+          <div>
+            <h3>Build Phase</h3>
+            <span class="duration">1–3 Months</span>
+          </div>
+          <p>You need core features shipped. I'll design the architecture and build it — smart contracts, APIs, web apps — or embed with your team to accelerate delivery.</p>
+        </div>
+        <div class="service-item">
+          <div>
+            <h3>Fractional CTO</h3>
+            <span class="duration">Ongoing</span>
+          </div>
+          <p>Part-time technical leadership without a full-time CTO salary. I'll set your tech strategy, mentor developers, make build-vs-buy decisions, and be the technical voice in the room.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">What People Say</div>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>"Ram is self-motivated and takes personal pride in the software he creates. He guided us through evolving best practices while consistently delivering ahead of schedule..."</p>
+          <div class="author">Theodore Georgas <span>· Nayms</span></div>
+        </div>
+        <div class="testimonial">
+          <p>"Ram brings a wide depth of knowledge across the tech stack, clean and readable code, and is always a good candidate to bounce new ideas off."</p>
+          <div class="author">Colleague <span>· Nayms</span></div>
+        </div>
+        <div class="testimonial" style="border:none;">
+          <a href="https://linkedin.com/in/hiddentao" class="more-link">+ 14 more recommendations on LinkedIn →</a>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <div class="section-label">Track Record</div>
+      <div class="numbers-grid">
+        <div class="stat-block"><div class="num">20<span class="serif">+</span></div><div class="desc">years shipping software</div></div>
+        <div class="stat-block"><div class="num">20<span class="serif">+</span></div><div class="desc">angel investments</div></div>
+        <div class="stat-block"><div class="num">2,200<span class="serif">+</span></div><div class="desc">GitHub stars on<br>open-source projects</div></div>
+        <div class="stat-block"><div class="num">16</div><div class="desc">LinkedIn recommendations</div></div>
+        <div class="stat-block"><div class="num">100<span class="serif">+</span></div><div class="desc">technical blog posts<br>since 2008</div></div>
+        <div class="stat-block"><div class="num">MEng</div><div class="desc">Computing<br>Imperial College London</div></div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-label">Writing</div>
+      <ul class="writing-list">
+        <li><a href="/archives/2024/11/16/bundling-your-nodejs-web-app-into-a-single-executable-using-bun">Bundling your Node.js web app into a single executable using Bun<div class="meta"><span class="tag">Full-Stack</span> Nov 2024</div></a></li>
+        <li><a href="/archives/2020/05/28/upgradeable-smart-contracts-using-diamond-standard">Upgradeable smart contracts using the Diamond Standard<div class="meta"><span class="tag">Blockchain</span> May 2020</div></a></li>
+        <li><a href="/archives/2020/06/17/building-your-nextjs-web-app-using-graphql">Building your Next.js web app using GraphQL<div class="meta"><span class="tag">Full-Stack</span> Jun 2020</div></a></li>
+        <li><a href="/archives/2019/03/26/architecting-microservices-for-effective-development-and-deployment">Architecting microservices for effective development and deployment<div class="meta"><span class="tag">Architecture</span> Mar 2019</div></a></li>
+        <li><a href="/archives/2020/03/21/advanced-role-based-access-control-in-solidity">Advanced role-based access control in Solidity<div class="meta"><span class="tag">Blockchain</span> Mar 2020</div></a></li>
+      </ul>
+      <a href="/blog" class="more-link" style="margin-top:2rem;">View all 100+ posts →</a>
+    </section>
+
+    <section>
+      <div class="section-label">Open Source / Investing</div>
+      <div class="projects-grid">
+        <a href="https://github.com/hiddentao/squel" class="project-card">
+          <h4>squel</h4><p>SQL query builder for JavaScript</p><div class="stars">★ 1,600</div>
+        </a>
+        <a href="https://github.com/hiddentao/fast-levenshtein" class="project-card">
+          <h4>fast-levenshtein</h4><p>Levenshtein algorithm implementation</p><div class="stars">★ 577</div>
+        </a>
+        <a href="https://github.com/hiddentao/chatfall" class="project-card">
+          <h4>Chatfall</h4><p>Full-stack app bundled to simple executable</p><div class="stars">Node.js · Bun</div>
+        </a>
+        <a href="https://hiddentao.vc" class="project-card">
+          <h4 style="color:var(--paradise-pink);">Hiddentao.vc</h4><p>Angel investment portfolio — 20+ startups</p><div class="stars">Ethereum, Varda, ConsenSys...</div>
+        </a>
+      </div>
+    </section>
+    
+    <section id="book" style="text-align: center; border-bottom: none; padding: 8rem 0;">
+      <h2 style="font-family:'Instrument Serif',serif; font-size:3rem; color:#fff; margin-bottom:1rem;">Let's talk about your project.</h2>
+      <p style="font-size: 1.1rem; color:var(--text-secondary); margin-bottom: 2rem;">Based in Singapore. Available for new engagements.</p>
+      <a href="#" class="btn btn-primary" style="padding: 1.25rem 3rem;">Book a Free Call</a>
+    </section>
+
+    <footer>
+      <div>&copy; Ram Nair</div>
+      <div>
+        <a href="https://www.linkedin.com/in/hiddentao/">LinkedIn</a>
+        <a href="https://github.com/hiddentao">GitHub</a>
+        <a href="https://x.com/TaoOfDev">X</a>
+        <a href="mailto:ram@hiddentao.com">Email</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

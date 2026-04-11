@@ -2,35 +2,39 @@ import { Link } from "gatsby"
 import React, { useCallback, useState } from "react"
 import styled from '@emotion/styled'
 import { Location } from '@reach/router'
-import { childAnchors, buttonStyles, boxShadow, flex } from 'emotion-styled-utils'
+import { buttonStyles } from 'emotion-styled-utils'
 
 import Button from './button'
 import Icon from './icon'
-import NavLink from './navLink'
 
-const Container = styled.header`
-  padding: 0.5rem 1.2rem;
-  height: 4rem;
-
-  ${({ theme }) => theme.font('header')};
-
-  ${flex({ direction: 'row', justify: 'space-between', align: 'center' })};
+const HeaderContainer = styled.div`
+  width: 100%;
+  padding: 1rem 1.2rem;
 `
 
-const Brand = styled.div`
-  font-size: 1rem;
-  font-weight: bolder;
-
-  ${({ theme }) => childAnchors(theme.header.nav.anchor)};
+const NavContainer = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 1.1rem;
 `
 
-const Nav = styled.ul`
+const NavLinks = styled.div`
   display: none;
-  font-size: 1.2rem;
-  list-style: none;
+  gap: 2rem;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    &[data-selected="true"] {
+      color: var(--caribbean-green);
+    }
+  }
+  a:hover { color: var(--caribbean-green); }
 
   ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    display: block;
+    display: flex;
   }
 `
 
@@ -40,84 +44,32 @@ const MobileNavButton = styled(Button)`
 
   transform: rotate(${({ open }) => open ? 90 : 0}deg);
   transition: all 0.2s;
+  color: #fff;
 
   ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
     display: none;
   }
 `
 
-const NavItem = styled.li`
-  display: inline-block;
-  font-size: 1rem;
+const MobileNavContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #333;
+  margin-top: 1rem;
 
-  ${({ theme, selected }) => childAnchors({
-    ...theme.header.nav.anchor,
-    inHoverState: selected,
-    extraStyles: `
-      padding: 1em;
-      border-radius: 5px;
-      text-transform: lowercase;
-    `,
-  })};
-`
-
-const MobileNav = styled.ul`
-  position: absolute;
-  z-index: 2;
-  top: 4rem;
-  right: 0;
-  border-radius: 5px;
-  ${({ theme }) => boxShadow({ color: theme.header.mobileNav.shadowColor })};
-`
-
-const roundedCorners = `
-  &:first-of-type {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+  a {
+    color: #fff;
+    text-decoration: none;
+    &[data-selected="true"] {
+      color: var(--caribbean-green);
+    }
   }
-
-  &:last-of-type {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-`
-
-const MobileNavItem = styled.li`
-  display: block;
-  font-size: 1rem;
-  background-color: ${({ theme, selected }) => selected ? theme.header.mobileNav.hoverBgColor : theme.header.mobileNav.bgColor};
-  border-bottom: 1px solid ${({ theme }) => theme.header.mobileNav.borderColor};
-  text-align: center;
-
-  &:last-of-type {
-    border-color: transparent;
-  }
-
-  ${roundedCorners};
-
-  ${({ theme }) => childAnchors({
-    ...theme.header.nav.anchor,
-    extraStyles: `
-      display: block;
-      padding: 1em 2em;
-      ${roundedCorners};
-    `
-  })};
+  a:hover { color: var(--caribbean-green); }
 `
 
 const _isViewingUrl = (location, regex) => !!location.pathname.match(regex)
-
-const NavLinks = ({ children: links, Component }) => (
-  <Location>
-    {({ location }) => (
-      links.map(navLink => (
-        <Component key = {navLink.label} selected={_isViewingUrl(location, navLink.regexTest)}>
-          <NavLink navLink={navLink} />
-        </Component>
-      ))
-    )}
-  </Location>
-)
 
 const Header = ({ navLinks, ...props }) => {
   const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
@@ -127,24 +79,37 @@ const Header = ({ navLinks, ...props }) => {
   )
 
   return (
-    <Container {...props}>
-      <Brand>
-        <Link to="/">
-          <Icon name={['fas', 'home']} />
-        </Link>
-      </Brand>
-      <Nav>
-        <NavLinks Component={NavItem}>{navLinks}</NavLinks>
-      </Nav>
-      <MobileNavButton onClick={toggleMobileMenu} open={mobileMenuOpen}>
-        <Icon name={['fas', 'bars']} />
-      </MobileNavButton>
-      {mobileMenuOpen ? (
-        <MobileNav>
-          <NavLinks Component={MobileNavItem}>{navLinks}</NavLinks>
-        </MobileNav>
-      ) : null}
-    </Container>
+    <HeaderContainer {...props}>
+      <NavContainer className="mono">
+        <Link to="/" className="brand">hiddentao</Link>
+        <Location>
+          {({ location }) => (
+            <NavLinks>
+              <Link to="/services" data-selected={_isViewingUrl(location, /services/)}>/services</Link>
+              <Link to="/blog" data-selected={_isViewingUrl(location, /blog/)}>/blog</Link>
+              <Link to="/projects" data-selected={_isViewingUrl(location, /projects/)}>/projects</Link>
+              <Link to="/talks" data-selected={_isViewingUrl(location, /talks/)}>/talks</Link>
+            </NavLinks>
+          )}
+        </Location>
+        <MobileNavButton onClick={toggleMobileMenu} open={mobileMenuOpen}>
+          <Icon name={['fas', 'bars']} />
+        </MobileNavButton>
+      </NavContainer>
+      
+      {mobileMenuOpen && (
+        <Location>
+          {({ location }) => (
+            <MobileNavContainer className="mono">
+              <Link to="/services" data-selected={_isViewingUrl(location, /services/)}>/services</Link>
+              <Link to="/blog" data-selected={_isViewingUrl(location, /blog/)}>/blog</Link>
+              <Link to="/projects" data-selected={_isViewingUrl(location, /projects/)}>/projects</Link>
+              <Link to="/talks" data-selected={_isViewingUrl(location, /talks/)}>/talks</Link>
+            </MobileNavContainer>
+          )}
+        </Location>
+      )}
+    </HeaderContainer>
   )
 }
 

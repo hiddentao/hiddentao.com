@@ -1,90 +1,29 @@
-import styled from '@emotion/styled'
-import { childAnchors, flex } from 'emotion-styled-utils'
-import { Link } from "gatsby"
 import React from "react"
+// import styled from '@emotion/styled'
+// import { Link } from "gatsby"
 
-import NavLink from './navLink'
-import SocialLinks from './socialLinks'
-
-const Container = styled.footer`
-  background-color: ${({ theme }) => theme.footer.bgColor};
-  padding: 2rem;
-  margin-top: 3rem;
-  border-top: 1px dashed ${({ theme }) => theme.footer.borderColor};;
-  font-size: 1rem;
-
-  ${({ theme }) => childAnchors(theme.footer.anchor)};
-`
-
-const Top = styled.div`
-  ${flex({ direction: 'column', justify: 'flex-start', align: 'flex-start' })};
-  margin-bottom: 2.5rem;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    ${flex({ direction: 'row', justify: 'space-between', align: 'flex-start' })};
-  }
-`
-
-const TopLeft = styled.div`
-  ${flex({ direction: 'row', justify: 'flex-start', align: 'flex-start' })};
-  margin-bottom: 3rem;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    margin-bottom: 0;
-  }
-`
-
-const Nav = styled.ul`
-  list-style: none;
-  display: block;
-  min-width: 7rem;
-  margin-right: 2rem;
-`
-
-const NavItem = styled.li`
-  display: block;
-  margin-bottom: 0.4rem;
-`
-
-const TopNavItem = styled(NavItem)`
-  font-weight: bolder;
-`
-
-const Copyright = styled.div`
-  font-size: 60%;
-  color: ${({ theme }) => theme.footer.copyright.textColor};
-`
-
-const Social = styled.div``
-
-const StyledSocialLinks = styled(SocialLinks)`
-  li {
-    color: ${({ theme }) => theme.footer.anchor.textColor};
-    margin-bottom: 0.4rem;
-  }
-`
-
-const Footer = ({ navLinks }) => (
-  <Container>
-    <Top>
-      <TopLeft>
-        <Nav>
-          <TopNavItem><Link to='/'>Home</Link></TopNavItem>
-          {navLinks.map(navLink => (
-            <NavItem key={navLink.label}>
-              <NavLink navLink={navLink} />
-            </NavItem>
-          ))}
-        </Nav>
-        <Social>
-          <StyledSocialLinks />
-        </Social>
-      </TopLeft>
-    </Top>
-    <Copyright>
-      © Ramesh Nair
-    </Copyright>
-  </Container>
+const Footer = () => (
+  <div className="cyber-footer" id="book">
+    <div className="cyber-container">
+      <div style={{textAlign: "center"}}>
+        <h2 style={{color: "#fff", fontSize: "2.5rem", marginBottom: "0.5rem"}}>Let's initialize.</h2>
+        <p style={{color: "#888", fontSize: "1.2rem", marginBottom: "3rem"}}>Based in Singapore and London. Available for new engagements.</p>
+        <div className="btn-container" style={{justifyContent: "center"}}>
+          <a href="mailto:ram@hiddentao.com" className="cyber-btn btn-primary">BOOK_CALL()</a>
+        </div>
+      </div>
+      
+      <div className="subfooter mono">
+        <div style={{color:"#888"}}>&copy; RAM_NAIR</div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
+          <a href="https://linkedin.com/in/hiddentao" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+          <a href="https://github.com/hiddentao" target="_blank" rel="noopener noreferrer">GITHUB</a>
+          <a href="https://x.com/TaoOfDev" target="_blank" rel="noopener noreferrer">X_TWITTER</a>
+          <a href="mailto:ram@hiddentao.com">EMAIL</a>
+        </div>
+      </div>
+    </div>
+  </div>
 )
 
 export default Footer

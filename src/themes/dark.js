@@ -24,10 +24,10 @@ const midnightGreenEagleGreen = '#073b4c'
 const violet = '#6a4c93'
 
 const textColor = white
-const anchorColor = paradisePink
+const anchorColor = caribbeanGreen
 
-const sectionBgColor = opacify(violet, 0.9)//Color(caribbeanGreen).alpha(0.3).hex()
-const sectionAnchorColor = anchorColor//Color(anchorColor).lighten(0.1).hex()
+const sectionBgColor = darkestGrey
+const sectionAnchorColor = anchorColor
 
 const shadowColor = 'rgba(0,0,0,0.75)'
 
@@ -36,19 +36,19 @@ export default {
   anchor: {
     textColor: anchorColor,
     hoverTextColor: white,
-    hoverBgColor: anchorColor,
-    borderColor: anchorColor,
-    hoverBorderColor: anchorColor,
+    hoverBgColor: transparent,
+    borderColor: transparent,
+    hoverBorderColor: transparent,
   },
   button: {
     disabledBgColor: grey,
     disabledTextColor: darkGrey,
     disabledBorderColor: grey,
-    bgColor: anchorColor,
-    textColor: white,
+    bgColor: transparent,
+    textColor: anchorColor,
     borderColor: anchorColor,
-    hoverBgColor: opacify(anchorColor, 0.9),
-    hoverTextColor: white,
+    hoverBgColor: anchorColor,
+    hoverTextColor: black,
     hoverBorderColor: anchorColor,
     shadowColor,
   },

@@ -9,7 +9,7 @@ import { setupThemes } from '../themes'
 import Footer from "./footer"
 import GlobalStyles from './globalStyles'
 import Header from "./header"
-import Image from "./image"
+
 import MaxContentWidth from "./maxContentWidth"
 
 global.process = require('process')
@@ -24,7 +24,7 @@ const themes = setupThemes({
   }
 })
 
-const Container = styled(Image)`
+const Container = styled.div`
   color: ${({ theme }) => theme.textColor};
 `
 
@@ -38,12 +38,12 @@ const HeaderWrapper = styled.div`
   ` : ""};
 `
 
-const Content = styled(MaxContentWidth)`
-  padding: 2rem 1rem 3rem;
+const Content = styled.div`
+  width: 100%;
   position: relative;
 `
 
-const Layout = ({ children, noHeader }) => {
+const Layout = ({ children, noHeader, noFooter }) => {
   const [floatingHeader, setFloatingHeader] = useState(false)
 
   const onHeaderFloat = useCallback(() => {
@@ -59,26 +59,24 @@ const Layout = ({ children, noHeader }) => {
   useEffect(() => {
     loadFonts({
       header: {
-        name: 'Raleway',
+        name: 'Bricolage Grotesque',
         weights: {
-          thin: 300,
           regular: 400,
           bold: 700,
         }
       },
       body: {
-        name: 'Roboto',
+        name: 'Bricolage Grotesque',
         weights: {
-          thin: 300,
           regular: 400,
           bold: 700,
         }
       },
       text: {
-        name: 'Crimson Text',
+        name: 'Fira Code',
         weights: {
           regular: 400,
-          bold: 700,
+          bold: 600,
         }
       }
     }, window.document).then(forceUpdate, err => console.error(err))
@@ -115,12 +113,12 @@ const Layout = ({ children, noHeader }) => {
   return (
     <ThemeProvider theme={themes.get('default')}>
       <GlobalStyles />
-      <Container bg={true} src='bg.png' style={{
-        backgroundPosition: 'auto',
-        backgroundColor: 'black',
+      <div className="scanline"></div>
+      <Container style={{
+        backgroundColor: '#02080a',
+        backgroundImage: 'linear-gradient(rgba(17, 138, 178, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(17, 138, 178, 0.1) 1px, transparent 1px)',
+        backgroundSize: '40px 40px',
         backgroundAttachment: 'fixed',
-        backgroundRepeat: 'repeat',
-        backgroundSize: 'auto',
         minHeight: '100vh',
       }}>
         <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
@@ -133,9 +131,11 @@ const Layout = ({ children, noHeader }) => {
         <Content>
           {children}
         </Content>
-        <MaxContentWidth>
-          <Footer navLinks={navLinks} />
-        </MaxContentWidth>
+        {!noFooter && (
+          <MaxContentWidth>
+            <Footer navLinks={navLinks} />
+          </MaxContentWidth>
+        )}
       </Container>
     </ThemeProvider>
   )

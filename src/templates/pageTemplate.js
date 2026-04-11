@@ -126,8 +126,9 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
   return (
     <Layout>
       <SEO title={fields.title} description={summary} ogi={fields.ogi} />
-      <Heading>{fields.title}</Heading>
-      <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
+      <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
+        <h1 className="cyber-h1" style={{ fontSize: '3rem', marginBottom: '1rem' }}>{fields.title}</h1>
+        <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
       {type === 'blog' ? (
         <PostReadTime>({fields.readtime} minute read)</PostReadTime>
       ) : null}
@@ -135,6 +136,19 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
         <StyledLanguage availableLanguages={versions.map(v => v.lang)} />
       ) : null*/}
       <StyledMarkdown markdown={fields.markdown} />
+      {type === 'blog' ? (
+        <div style={{
+          marginTop: '3rem',
+          padding: '2rem',
+          backgroundColor: 'rgba(255, 255, 255, 0.03)',
+          borderLeft: '4px solid #333',
+          borderRadius: '4px'
+        }}>
+          <h3 style={{ marginTop: 0, fontFamily: "'Fira Code', monospace" }}>Need help shipping your product?</h3>
+          <p style={{ marginBottom: '1.5rem', lineHeight: 1.6 }}>I'm an independent software consultant with 20+ years of experience building full-stack apps and smart contracts for startups. Let's talk about your project.</p>
+          <a href="/#book" className="cyber-btn">BOOK_FREE_CALL()</a>
+        </div>
+      ) : null}
       {type === 'blog' ? <PageBottomNav {...nav} /> : null}
       {type === 'blog' ? (
         <Comments>
@@ -147,6 +161,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
           </Location>
         </Comments>
       ) : null}
+      </div>
     </Layout>
   )
 }

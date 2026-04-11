@@ -66,8 +66,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf ./.cache && rm -rf ./public && gatsby build",
-    "dev": "rm -rf ./.cache && gatsby develop --host 0.0.0.0",
+    "build": "rm -rf ./.cache && rm -rf ./public && mkdir -p ./.cache && gatsby build",
+    "dev": "rm -rf ./.cache && mkdir -p ./.cache && gatsby develop --host 0.0.0.0",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run dev",
     "serve": "gatsby serve",
@@ -81,7 +81,13 @@
     "url": "https://github.com/hiddentao/hiddentao.com/issues"
   },
   "engines": {
-    "node": "18"
+    "node": "24"
+  },
+  "overrides": {
+    "canvas": "^3.2.3",
+    "react-server-dom-webpack": {
+      "react": "$react"
+    }
   },
   "engineStrict": true
 }
