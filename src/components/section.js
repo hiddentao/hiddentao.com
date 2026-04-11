@@ -1,20 +1,11 @@
-import React, { useMemo } from "react"
-import styled from '@emotion/styled'
-import { boxShadow, childAnchors } from 'emotion-styled-utils'
-
-
-const Container = styled.div`
-  background-color: ${({ theme }) => theme.section.bgColor};
-  color: ${({ theme }) => theme.section.textColor};
-  border: 1px solid ${({ theme }) => theme.section.borderColor};
-  padding: 2rem;
-  border-radius: 10px;
-  ${({ theme }) => boxShadow({ color: theme.section.shadowColor })};
-  ${({ theme }) => childAnchors(theme.section.anchor)};
-`
+import React from "react"
 
 const Section = ({ children, className }) => (
-  <Container className={className}>{children}</Container>
+  <div
+    className={`bg-[var(--color-darkest-grey)] text-white border border-[var(--color-darkest-grey)] p-8 rounded-[10px] shadow-[0_2px_2px_rgba(0,0,0,0.75)] [&_a]:text-[var(--color-caribbean-green)] [&_a]:border [&_a]:border-transparent [&_a:hover]:text-white [&_a:hover]:bg-[var(--color-caribbean-green)] [&_a:hover]:border-[var(--color-caribbean-green)] ${className || ''}`}
+  >
+    {children}
+  </div>
 )
 
 export default Section
