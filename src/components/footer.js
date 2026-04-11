@@ -1,6 +1,4 @@
 import React from "react"
-// import styled from '@emotion/styled'
-// import { Link } from "gatsby"
 
 const Footer = () => (
   <div className="cyber-footer" id="book">
