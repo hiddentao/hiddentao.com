@@ -25,6 +25,7 @@
     "gatsby-plugin-feed": "^4.12.1",
     "gatsby-plugin-manifest": "^4.12.1",
     "gatsby-plugin-offline": "^5.12.1",
+    "gatsby-plugin-postcss": "^6.12.1",
     "gatsby-plugin-react-helmet": "^5.12.1",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-robots-txt": "1.4",
@@ -59,7 +60,9 @@
     "unified": "8.3.2"
   },
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "@tailwindcss/postcss": "^4.0.0",
+    "prettier": "^1.17.0",
+    "tailwindcss": "^4.0.0"
   },
   "keywords": [
     "gatsby"
