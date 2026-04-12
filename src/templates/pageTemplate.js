@@ -83,7 +83,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
           <div className="mt-12 px-8 pt-4 pb-8 bg-[color-mix(in_srgb,var(--color-white)_3%,transparent)] border-l-4 border-darkest-grey rounded">
             <h3 className="italic mt-0 mono text-2xl">Need help shipping your product?</h3>
             <p className="mb-10 leading-body">Let's talk about your project and see <a href="/services" className="text-cyan-accent underline">how I can help</a>.</p>
-            <BookCallButton label="BOOK_CALL()" className="cyber-btn" />
+            <BookCallButton className="cyber-btn" />
           </div>
         ) : null}
         {type === 'blog' ? <PageBottomNav {...nav} /> : null}

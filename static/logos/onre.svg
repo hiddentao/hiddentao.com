@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 40" fill="#ffffff">
+  <g transform="translate(4, 0)">
+    <path d="M16,6 A14,14 0 1,0 16,34 A14,14 0 1,0 16,6 Z M16,10 A10,10 0 1,1 16,30 A10,10 0 1,1 16,10 Z"/>
+    <rect x="14" y="2" width="4" height="12" rx="2"/>
+    <text x="36" y="29" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="0.5">nRe</text>
+  </g>
+</svg>

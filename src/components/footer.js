@@ -9,8 +9,9 @@ const Footer = () => (
         <h2 className="text-white text-[2.5rem] mb-4">Let's connect().</h2>
         <p className="text-mid-grey text-md mb-6">Book a free call to see how I can help you.</p>
         <div className="btn-container justify-center">
-          <BookCallButton label="BOOK_CALL()" />
+          <BookCallButton />
         </div>
+        <p className="mono text-mid-grey text-[0.9rem] mt-3">Free 30-minute chat. No commitment.</p>
       </div>
 
       <div className="subfooter mono">

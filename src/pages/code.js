@@ -38,7 +38,7 @@ const CodePage = ({ data }) => {
               </a>
             ))}
           </div>
-          <CyberLink href="https://github.com/hiddentao" tooltip="See all repos on GitHub">cd /github && ls -a &rarr;</CyberLink>
+          <CyberLink href="https://github.com/hiddentao" tooltip="See all repos on GitHub">./view_github.sh</CyberLink>
         </CyberSection>
 
         <CyberSection tag="PROJECTS">

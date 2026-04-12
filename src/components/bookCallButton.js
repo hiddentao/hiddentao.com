@@ -3,8 +3,8 @@ import React from "react"
 const BOOK_CALL_URL = "https://cal.com/hiddentao/30min"
 
 const BookCallButton = ({
-  label = "BOOK_CALL()",
-  className = "cyber-btn",
+  label = "./book_call.sh",
+  className = "cyber-btn cyber-btn-primary",
   tooltip = "Book a free call",
 }) => (
   <a

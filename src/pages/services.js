@@ -124,7 +124,7 @@ const ServicesPage = () => {
             ))}
           </div>
           <div className="btn-container">
-            <BookCallButton label="BOOK_CALL()" />
+            <BookCallButton />
           </div>
         </CyberSection>
 
@@ -141,7 +141,7 @@ const ServicesPage = () => {
           <CyberLink
             href="https://linkedin.com/in/hiddentao"
             tooltip="View past work and recommendations on LinkedIn"
-          >+ more_on_LinkedIn()</CyberLink>
+          >./more_on_linkedin.sh</CyberLink>
         </CyberSection>
       </CyberContainer>
     </Layout>

@@ -61,25 +61,39 @@ const IndexPage = () => {
               <h1 className="cyber-h1">I help startups ship faster and better.</h1>
               <div className="subtitle mono">{`>>`} Software Consultant <span className="block sm:inline">{`>>`} Singapore 🇸🇬 London 🇬🇧</span></div>
               <p className="desc text-md max-w-[600px] leading-body"><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
+              <ul className="hero-benefits mono">
+                <li>Full-stack apps &amp; smart contracts</li>
+                <li>Fractional CTO &amp; technical leadership</li>
+                <li>Architecture reviews &amp; roadmapping</li>
+                <li>Team mentoring &amp; hiring</li>
+              </ul>
 
               <div className="btn-container">
-                <BookCallButton label="./book_call.sh" />
+                <BookCallButton />
                 <a
                   href="#work"
                   className="cyber-btn"
                   data-tooltip-id="app-tooltip"
-                  data-tooltip-content="Scroll to how I work"
-                >ls -la ./work</a>
+                  data-tooltip-content="View my work"
+                >./view_portfolio.sh</a>
               </div>
             </div>
             <img className="hero-img" src="/ram.png" alt="Hiddentao Labs" />
           </div>
 
-          <div className="logo-bar mono">
-            <a href="https://ethereum.org" target="_blank" rel="noopener noreferrer">Ethereum Foundation</a>
-            <a href="https://ens.domains" target="_blank" rel="noopener noreferrer">ENS Labs</a>
-            <a href="https://www.onre.finance" target="_blank" rel="noopener noreferrer">OnRe</a>
-            <a href="https://www.nbcuniversal.com" target="_blank" rel="noopener noreferrer">NBC Universal</a>
+          <div className="logo-bar">
+            <a href="https://ethereum.org" target="_blank" rel="noopener noreferrer" data-tooltip-id="app-tooltip" data-tooltip-content="Ethereum Foundation">
+              <img src="/logos/ethereum.svg" alt="Ethereum Foundation" className="client-logo" />
+            </a>
+            <a href="https://ens.domains" target="_blank" rel="noopener noreferrer" data-tooltip-id="app-tooltip" data-tooltip-content="ENS Labs">
+              <img src="/logos/ens.svg" alt="ENS Labs" className="client-logo" />
+            </a>
+            <a href="https://www.onre.finance" target="_blank" rel="noopener noreferrer" data-tooltip-id="app-tooltip" data-tooltip-content="OnRe">
+              <img src="/logos/onre.svg" alt="OnRe" className="client-logo" />
+            </a>
+            <a href="https://www.nbcuniversal.com" target="_blank" rel="noopener noreferrer" data-tooltip-id="app-tooltip" data-tooltip-content="NBC Universal">
+              <img src="/logos/nbcuniversal.svg" alt="NBC Universal" className="client-logo" />
+            </a>
           </div>
 
           <CyberSection tag="HOW_I_WORK" id="work">
@@ -100,22 +114,28 @@ const IndexPage = () => {
                 <p>Part-time technical leadership. I set tech strategy, mentor developers, make decisions, and act as the technical voice in the room.</p>
               </div>
             </div>
-            <CyberLink to="/services" tooltip="View all service offerings">cd /services &rarr;</CyberLink>
+            <CyberLink to="/services" tooltip="View all service offerings">./view_services.sh</CyberLink>
           </CyberSection>
 
           <CyberSection tag="VERIFICATION">
             <div className="testimonial-box">
               <p>"Ram is self-motivated and takes personal pride... He was able to guide us through evolving best practices while consistently delivering ahead of schedule."</p>
-              <div className="testimonial-author mono">-- Theodore_Georgas @ OnRe</div>
+              <div className="testimonial-author mono">
+                <img src="/logos/onre.svg" alt="OnRe" className="testimonial-logo" />
+                -- Theodore_Georgas @ OnRe
+              </div>
             </div>
             <div className="testimonial-box">
               <p>"When we started developing a solution in blockchain for lending and needed a lead to guide us through, Ram was there to help out. He was diligent on time and extremely reliable."</p>
-              <div className="testimonial-author mono">-- Abhishek_Agarwal @ Google</div>
+              <div className="testimonial-author mono">
+                <img src="/logos/google.svg" alt="Google" className="testimonial-logo" />
+                -- Abhishek_Agarwal @ Google
+              </div>
             </div>
             <CyberLink
               href="https://linkedin.com/in/hiddentao"
               tooltip="Read 14 more recommendations on LinkedIn"
-            >+ more_on_LinkedIn()</CyberLink>
+            >./more_on_linkedin.sh</CyberLink>
           </CyberSection>
 
           <CyberSection tag="SYSTEM_STATS">
@@ -145,7 +165,7 @@ const IndexPage = () => {
                   <p>{repo.description}</p>
                 </a>
               ))}
-              <CyberLink to="/code" tooltip="See all code">cd /code && ls -a &rarr;</CyberLink>
+              <CyberLink to="/code" tooltip="See all code">./view_code.sh</CyberLink>
             </div>
             <div>
               <div className="section-tag mono"># BLOG</div>
@@ -159,7 +179,7 @@ const IndexPage = () => {
                   </li>
                 ))}
               </ul>
-              <CyberLink to="/blog" tooltip="Browse all blog posts">cd /blog && ls -a &rarr;</CyberLink>
+              <CyberLink to="/blog" tooltip="Browse all blog posts">./view_blog.sh</CyberLink>
             </div>
           </CyberSection>
         </CyberContainer>

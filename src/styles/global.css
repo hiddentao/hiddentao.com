@@ -248,6 +248,23 @@
     margin: 1rem 0 2rem 0;
   }
 
+  .hero-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+    color: var(--color-mid-grey);
+    font-size: 0.95rem;
+  }
+
+  .hero-benefits li {
+    padding: 0.3rem 0;
+  }
+
+  .hero-benefits li::before {
+    content: "> ";
+    color: var(--color-caribbean-green);
+  }
+
   @media (max-width: 749px) {
     .hero {
       padding: 2rem 1.5rem;
@@ -257,7 +274,7 @@
     }
 
     .hero-content {
-      order: 2;
+      order: 1;
       min-width: 0;
       width: 100%;
     }
@@ -267,7 +284,7 @@
     }
 
     .hero-img {
-      order: 1;
+      order: 2;
       width: 180px;
       height: 180px;
     }
@@ -321,6 +338,17 @@
     box-shadow: 0 0 25px color-mix(in srgb, var(--color-caribbean-green) 60%, transparent);
   }
 
+  .cyber-btn-primary {
+    background: var(--color-caribbean-green);
+    color: var(--color-base);
+    font-weight: 700;
+  }
+
+  .cyber-btn-primary:hover {
+    background: color-mix(in srgb, var(--color-caribbean-green) 85%, white);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--color-caribbean-green) 50%, transparent);
+  }
+
   .logo-bar {
     display: flex;
     justify-content: center;
@@ -331,14 +359,28 @@
     padding: 3rem 0;
     border-bottom: 1px dashed var(--color-darkest-grey);
     margin-bottom: 4rem;
-    color: var(--color-mid-grey);
-    font-size: 1.25rem;
   }
 
   .logo-bar a {
-    color: var(--color-mid-grey);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-bar a:hover {
+    opacity: 0.8;
+  }
+
+  .client-logo {
+    height: 32px;
+    width: auto;
+    filter: grayscale(1) brightness(0.7);
+    transition: filter 0.2s ease;
+  }
+
+  .client-logo:hover {
+    filter: grayscale(0) brightness(1);
   }
 
   .cyber-section {
@@ -451,6 +493,15 @@
   .testimonial-author {
     color: var(--color-mid-grey);
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .testimonial-logo {
+    height: 22px;
+    width: auto;
+    filter: grayscale(1) brightness(0.7);
   }
 
   .grid-2 {
