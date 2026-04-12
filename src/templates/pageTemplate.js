@@ -27,7 +27,7 @@ const PageBottomNav = ({ currentLanguage, newer, older }) => {
   }
 
   return (
-    <div className="mt-6 py-4 border-y border-dashed border-[var(--color-grey)] text-[0.8rem] leading-4">
+    <div className="mt-6 py-4 border-y border-dashed border-grey text-[0.8rem] leading-4">
       <ul className="list-none flex flex-row justify-between items-start [&_li]:max-w-[40%] [&_li_a]:mx-2">
         <li>
           {newer ? (
@@ -64,30 +64,24 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
   return (
     <Layout>
       <SEO title={fields.title} description={summary} ogi={fields.ogi} />
-      <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
+      <div className="cyber-container mt-12 mb-8">
         {type === 'blog' ? (
-          <h1 className="cyber-h1" style={{ fontSize: '3rem', marginBottom: '1rem' }}>{fields.title}</h1>
+          <h1 className="cyber-h1 text-[3rem] mb-4">{fields.title}</h1>
         ) : (
           <>
-            <h1 className="cyber-h1 mono" style={{ marginBottom: '1rem' }}>{path}</h1>
-            <p className="text-[1.2rem] text-[var(--color-light-grey)]">{fields.title}</p>
+            <h1 className="cyber-h1 mono mb-4">{path}</h1>
+            <p className="text-[1.2rem] text-light-grey">{fields.title}</p>
           </>
         )}
         <PageLastUpdatedDate className="text-[1.2rem] mt-4" date={fields.date} />
         {type === 'blog' ? (
-          <p className="mt-[0.8rem] text-base italic text-[var(--color-light-grey)]">({fields.readtime} minute read)</p>
+          <p className="mt-[0.8rem] text-base italic text-light-grey">({fields.readtime} minute read)</p>
         ) : null}
         <Markdown className="text-[1.4rem] bg-white text-black p-4 rounded-[5px] mt-10" markdown={fields.markdown} />
         {type === 'blog' ? (
-          <div style={{
-            marginTop: '3rem',
-            padding: '2rem',
-            backgroundColor: 'rgba(255, 255, 255, 0.03)',
-            borderLeft: '4px solid #333',
-            borderRadius: '4px'
-          }}>
-            <h3 style={{ marginTop: 0, fontFamily: "'Fira Code', monospace" }}>Need help shipping your product?</h3>
-            <p style={{ marginBottom: '1.5rem', lineHeight: 1.6 }}>Let's talk about your project and see <a href="/services" style={{ color: '#0af', textDecoration: 'underline' }}>how I can help</a>.</p>
+          <div className="mt-12 px-8 pt-4 pb-8 bg-[color-mix(in_srgb,var(--color-white)_3%,transparent)] border-l-4 border-darkest-grey rounded">
+            <h3 className="italic mt-0 mono text-2xl">Need help shipping your product?</h3>
+            <p className="mb-10 leading-[1.6]">Let's talk about your project and see <a href="/services" className="text-cyan-accent underline">how I can help</a>.</p>
             <BookCallButton label="BOOK_CALL()" className="cyber-btn" />
           </div>
         ) : null}

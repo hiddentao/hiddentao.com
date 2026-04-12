@@ -4,6 +4,7 @@ import Helmet from "react-helmet"
 
 import Layout from "../components/layout"
 import BookCallButton from "../components/bookCallButton"
+import CyberLink from "../components/cyberLink"
 import { getResolvedVersionForLanguage } from "../utils/node"
 import { formatDate } from "../utils/date"
 
@@ -57,13 +58,13 @@ const IndexPage = () => {
             <div className="hero-content">
               <h1 className="cyber-h1">I help startups ship faster and better.</h1>
               <div className="subtitle mono">{`>>`} Software Consultant <span className="block sm:inline">{`>>`} Singapore 🇸🇬 UK 🇬🇧</span></div>
-              <p className="desc" style={{fontSize: '1.2rem', maxWidth: '600px', lineHeight:1.6}}><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
-              
+              <p className="desc text-[1.2rem] max-w-[600px] leading-[1.6]"><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
+
               <div className="btn-container">
                 <BookCallButton label="./book_call.sh" />
                 <a
                   href="#work"
-                  className="cyber-btn btn-secondary"
+                  className="cyber-btn"
                   data-tooltip-id="app-tooltip"
                   data-tooltip-content="Scroll to how I work"
                 >ls -la ./work</a>
@@ -83,17 +84,17 @@ const IndexPage = () => {
             <div className="section-tag mono"># HOW_I_WORK</div>
             <div className="grid-3">
               <div className="glass-card">
-                <div className="mono" style={{marginBottom:"1rem"}}>[1-2_WEEKS]</div>
+                <div className="mono mb-4">[1-2_WEEKS]</div>
                 <h3>Architecture Sprint</h3>
                 <p>Product idea or existing codebase needs a senior engineer's eyes. I review architecture, identify risks, and give a technical roadmap.</p>
               </div>
               <div className="glass-card">
-                <div className="mono" style={{marginBottom:"1rem"}}>[1-3_MONTHS]</div>
+                <div className="mono mb-4">[1-3_MONTHS]</div>
                 <h3>Build Phase</h3>
                 <p>You need core features shipped. I design architecture and build it — smart contracts, APIs, web apps — or work with your existing team.</p>
               </div>
               <div className="glass-card">
-                <div className="mono" style={{marginBottom:"1rem"}}>[ONGOING]</div>
+                <div className="mono mb-4">[ONGOING]</div>
                 <h3>Fractional CTO</h3>
                 <p>Part-time technical leadership. I set tech strategy, mentor developers, make decisions, and act as the technical voice in the room.</p>
               </div>
@@ -112,13 +113,12 @@ const IndexPage = () => {
             </div>
             <a
               href="https://linkedin.com/in/hiddentao"
-              className="mono"
-              style={{textDecoration:"none", display:"inline-block", marginTop:"1rem"}}
+              className="mono no-underline inline-block mt-4"
               data-tooltip-id="app-tooltip"
               data-tooltip-content="Read 14 more recommendations on LinkedIn"
             >+ more_on_LinkedIn()</a>
           </section>
-          
+
           <section className="cyber-section">
             <div className="section-tag mono"># SYSTEM_STATS</div>
             <div className="metrics">
@@ -143,37 +143,25 @@ const IndexPage = () => {
                   data-tooltip-id="app-tooltip"
                   data-tooltip-content={`View ${repo.name} on GitHub — ${repo.stars.toLocaleString()} stars`}
                 >
-                  <h4 className="mono">{repo.name} <span style={{color:"#888"}}>{repo.stars.toLocaleString()}_★</span></h4>
+                  <h4 className="mono">{repo.name} <span className="text-mid-grey">{repo.stars.toLocaleString()}_★</span></h4>
                   <p>{repo.description}</p>
                 </a>
               ))}
-              <Link
-                to="/projects"
-                className="mono"
-                style={{textDecoration:"none", display:"inline-block", marginTop:"1.5rem"}}
-                data-tooltip-id="app-tooltip"
-                data-tooltip-content="See all projects"
-              >cd /projects && ls -a &rarr;</Link>
+              <CyberLink to="/projects" tooltip="See all projects">cd /projects && ls -a &rarr;</CyberLink>
             </div>
             <div>
               <div className="section-tag mono"># BLOG</div>
               <ul className="writing-list">
                 {posts.map(post => (
                   <li key={post.path}>
-                    <Link to={post.path} style={{fontSize:"1.2rem"}}>
+                    <Link to={post.path} className="text-[1.2rem]">
                       {post.title}
                       <div className="meta">{formatDate(new Date(post.date), 'MMM YYYY')}</div>
                     </Link>
                   </li>
                 ))}
               </ul>
-              <Link
-                to="/blog"
-                className="mono"
-                style={{textDecoration:"none", display:"inline-block", marginTop:"1.5rem"}}
-                data-tooltip-id="app-tooltip"
-                data-tooltip-content="Browse all blog posts"
-              >cd /blog && ls -a &rarr;</Link>
+              <CyberLink to="/blog" tooltip="Browse all blog posts">cd /blog && ls -a &rarr;</CyberLink>
             </div>
           </section>
         </div>

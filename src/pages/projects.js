@@ -2,12 +2,8 @@ import { graphql } from "gatsby"
 import { emojify } from "node-emoji"
 import React from "react"
 import Layout from "../components/layout"
+import CyberLink from "../components/cyberLink"
 import SEO from "../components/seo"
-
-const cardStyle = { textDecoration: 'none', display: 'block', color: 'inherit' }
-const titleStyle = { color: "var(--caribbean-green)", marginBottom: "0.5rem" }
-const starStyle = { color: "#888", fontSize: "0.9rem", marginLeft: "0.5rem" }
-const moreLinkStyle = { textDecoration: "none", display: "inline-block", marginTop: "1.5rem" }
 
 const ProjectsPage = ({ data }) => {
   const repos = data.allGithubRepo.nodes
@@ -17,8 +13,8 @@ const ProjectsPage = ({ data }) => {
     <Layout>
       <SEO title="Projects" description="Open source libraries and products by Ram" />
 
-      <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
-        <div style={{ marginBottom: "3rem" }}>
+      <div className="cyber-container mt-12 mb-32">
+        <div className="mb-12">
           <h1 className="cyber-h1 mono">/projects</h1>
         </div>
 
@@ -31,28 +27,19 @@ const ProjectsPage = ({ data }) => {
                 href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card"
-                style={cardStyle}
+                className="glass-card no-underline block text-inherit"
                 data-tooltip-id="app-tooltip"
                 data-tooltip-content={emojify(`View ${repo.name} on GitHub — ${repo.stars.toLocaleString()} stars`)}
               >
-                <h3 className="mono" style={titleStyle}>
+                <h3 className="mono text-caribbean-green mb-2">
                   {repo.name}
-                  <span className="mono" style={starStyle}>{repo.stars.toLocaleString()}_★</span>
+                  <span className="mono text-mid-grey text-[0.9rem] ml-2">{repo.stars.toLocaleString()}_★</span>
                 </h3>
                 <p>{emojify(repo.description)}</p>
               </a>
             ))}
           </div>
-          <a
-            href="https://github.com/hiddentao"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mono"
-            style={moreLinkStyle}
-            data-tooltip-id="app-tooltip"
-            data-tooltip-content="See all repos on GitHub"
-          >cd /github && ls -a &rarr;</a>
+          <CyberLink href="https://github.com/hiddentao" tooltip="See all repos on GitHub">cd /github && ls -a &rarr;</CyberLink>
         </section>
 
         <section className="cyber-section">
@@ -64,12 +51,11 @@ const ProjectsPage = ({ data }) => {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card"
-                style={cardStyle}
+                className="glass-card no-underline block text-inherit"
                 data-tooltip-id="app-tooltip"
                 data-tooltip-content={`Visit ${project.name}`}
               >
-                <h3 className="mono" style={titleStyle}>{project.name}</h3>
+                <h3 className="mono text-caribbean-green mb-2">{project.name}</h3>
                 <p>{emojify(project.description)}</p>
               </a>
             ))}

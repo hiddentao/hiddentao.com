@@ -7,6 +7,7 @@ import { Link } from 'gatsby'
 
 import SyntaxHighlighter from './syntaxHighlighter'
 import Image from './image'
+import { cx } from '../utils/cx'
 import '../styles/markdown.css'
 
 const IMAGE_EXTENSIONS = new Set(['jpg', 'jpeg', 'gif', 'png', 'bmp'])
@@ -91,7 +92,7 @@ const Markdown = ({ markdown, className }) => {
   ), [markdown])
 
   return (
-    <div className={`markdown-body${className ? ` ${className}` : ''}`}>{output}</div>
+    <div className={cx("markdown-body", className)}>{output}</div>
   )
 }
 

@@ -4,17 +4,17 @@ import BookCallButton from "./bookCallButton"
 const Footer = () => (
   <div className="cyber-footer">
     <div className="cyber-container">
-      <div style={{textAlign: "center"}}>
-        <h2 style={{color: "#fff", fontSize: "2.5rem", marginBottom: "0.5rem"}}>Let's connect().</h2>
-        <p style={{color: "#888", fontSize: "1.2rem", marginBottom: "3rem"}}>Book a free call to see how I can help you.</p>
-        <div className="btn-container" style={{justifyContent: "center"}}>
+      <div className="text-center">
+        <h2 className="text-white text-[2.5rem] mb-4">Let's connect().</h2>
+        <p className="text-mid-grey text-[1.2rem] mb-6">Book a free call to see how I can help you.</p>
+        <div className="btn-container justify-center">
           <BookCallButton label="BOOK_CALL()" />
         </div>
       </div>
 
       <div className="subfooter mono">
-        <div style={{color:"#888"}}>&copy; HIDDENTAO_LABS</div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
+        <div className="text-mid-grey">&copy; HIDDENTAO_LABS</div>
+        <div className="flex flex-wrap gap-6">
           <a
             href="https://linkedin.com/in/hiddentao"
             target="_blank"

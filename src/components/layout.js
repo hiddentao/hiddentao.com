@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import React, { useState, useMemo, useCallback } from "react"
 import Headroom from 'react-headroom'
 import { Tooltip } from 'react-tooltip'
+import { cx } from '../utils/cx'
 
 import Footer from "./footer"
 import Header from "./header"
@@ -49,28 +50,17 @@ const Layout = ({ children, noHeader, noFooter }) => {
     },
   ], [])
 
-  const headerWrapperStyle = {
-    backgroundColor: floatingHeader ? 'rgba(6, 214, 160, 0.9)' : 'rgba(6, 214, 160, 0)',
-    boxShadow: floatingHeader ? '0 2px 2px rgba(0,0,0,0.75)' : 'none',
-    ...(noHeader && !floatingHeader ? { opacity: 0, pointerEvents: 'none' } : {}),
-  }
-
   return (
     <>
       <Tooltip id="app-tooltip" place="top" className="app-tooltip" />
       <div className="scanline"></div>
-      <div
-        className="text-white"
-        style={{
-          backgroundColor: '#02080a',
-          backgroundImage: 'linear-gradient(rgba(17, 138, 178, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(17, 138, 178, 0.1) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-          backgroundAttachment: 'fixed',
-          minHeight: '100vh',
-        }}
-      >
+      <div className="text-white bg-base [background-image:linear-gradient(color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px),linear-gradient(90deg,color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px)] [background-size:40px_40px] bg-fixed min-h-screen">
         <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
-          <div className="transition-all duration-300" style={headerWrapperStyle}>
+          <div className={cx(
+            "transition-all duration-300",
+            floatingHeader ? "bg-[color-mix(in_srgb,var(--color-caribbean-green)_90%,transparent)] shadow-[0_2px_2px_color-mix(in_srgb,var(--color-black)_75%,transparent)]" : "bg-transparent shadow-none",
+            noHeader && !floatingHeader && "opacity-0 pointer-events-none"
+          )}>
             <MaxContentWidth>
               <Header navLinks={navLinks} />
             </MaxContentWidth>

@@ -4,7 +4,7 @@ const BOOK_CALL_URL = "https://cal.com/hiddentao/30min"
 
 const BookCallButton = ({
   label = "BOOK_CALL()",
-  className = "cyber-btn btn-primary",
+  className = "cyber-btn",
   tooltip = "Book a free call",
 }) => (
   <a

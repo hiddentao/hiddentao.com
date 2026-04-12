@@ -45,11 +45,11 @@ const Page = ({ lang, data }) => {
   return (
     <Layout>
       <SEO title='Blog archive' />
-      <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
-        <h1 className="cyber-h1 mono" style={{ marginBottom: '3rem' }}>/blog</h1>
+      <div className="cyber-container mt-12 mb-8">
+        <h1 className="cyber-h1 mono mb-12">/blog</h1>
         {postsByYear.map(( { year, posts }) => (
-          <div key={year} className="[&_h3]:pb-[0.7rem] [&_h3]:border-b [&_h3]:border-[var(--color-dark-grey)] [&_h3]:mt-12 [&_h3]:mb-4">
-            <h3 className="mono" style={{ color: '#fff' }}>{year}</h3>
+          <div key={year} className="[&_h3]:pb-[0.7rem] [&_h3]:border-b [&_h3]:border-dark-grey [&_h3]:mt-12 [&_h3]:mb-4">
+            <h3 className="mono text-white">{year}</h3>
             <PostList posts={posts} />
           </div>
         ))}

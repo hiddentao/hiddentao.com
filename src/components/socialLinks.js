@@ -1,4 +1,5 @@
 import React from 'react'
+import { cx } from '../utils/cx'
 
 import Icon from './icon'
 
@@ -65,7 +66,7 @@ export const XLink = ({ children }) => (
 )
 
 const SocialLinks = ({ className }) => (
-  <ul className={`list-none block ${className || ''}`}>
+  <ul className={cx("list-none block", className)}>
     <li className={itemClasses} title="X">
       <XLink />
     </li>

@@ -35,7 +35,7 @@
 
 .markdown-body pre {
   font-size: 70%;
-  background-color: rgba(255, 209, 102, 0.5);
+  background-color: color-mix(in srgb, var(--color-crayola) 50%, transparent);
 }
 
 .markdown-body blockquote {
@@ -55,7 +55,7 @@
   font-family: monospace;
   font-size: 80%;
   padding: 0.1em;
-  background-color: rgba(255, 209, 102, 0.5);
+  background-color: color-mix(in srgb, var(--color-crayola) 50%, transparent);
 }
 
 .markdown-body abbr[title] {

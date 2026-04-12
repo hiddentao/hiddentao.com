@@ -28,23 +28,23 @@ const ServicesPage = () => {
   return (
     <Layout>
       <SEO title="Services" description="Software consulting services, architecture sprints, build phases, and fractional CTO." />
-      
-      <div className="cyber-container" style={{ marginTop: '3rem', marginBottom: '8rem' }}>
-        <div style={{ marginBottom: "4rem" }}>
+
+      <div className="cyber-container mt-12 mb-32">
+        <div className="mb-16">
           <h1 className="cyber-h1 mono">/services</h1>
         </div>
 
-        <div className="grid-3" style={{ gridTemplateColumns: 'minmax(300px, 800px)', justifyContent: 'center' }}>
+        <div className="grid-single-centered">
           {services.map(service => (
             <div className="glass-card" key={service.id}>
-              <div className="mono" style={{marginBottom:"1rem"}}>{service.duration}</div>
+              <div className="mono mb-4">{service.duration}</div>
               <h3>{service.name}</h3>
               <p>{service.description}</p>
             </div>
           ))}
         </div>
-        
-        <div className="btn-container" style={{ justifyContent: 'center', marginTop: '6rem' }}>
+
+        <div className="btn-container justify-center mt-24">
           <BookCallButton label="BOOK_CALL()" />
         </div>
       </div>

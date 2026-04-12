@@ -1,5 +1,6 @@
 import trunc from 'lodash.truncate'
 import React, { useState, useCallback } from "react"
+import { cx } from '../utils/cx'
 
 const Testimonial = ({ className, name, company, text }) => {
   const [expanded, setExpanded] = useState()
@@ -9,8 +10,8 @@ const Testimonial = ({ className, name, company, text }) => {
   }, [])
 
   return (
-    <div className={`text-[1.5rem] bg-transparent ${className || ''}`}>
-      <p className="text-[1em] leading-[1.3] font-sans italic font-thin text-[var(--color-grey)] before:content-[open-quote] after:content-[close-quote]">
+    <div className={cx("text-[1.5rem] bg-transparent", className)}>
+      <p className="text-[1em] leading-[1.3] font-sans italic font-thin text-grey before:content-[open-quote] after:content-[close-quote]">
         {text.length > 200 && !expanded ? (
           <span>
             {trunc(text, { length: 200, omission: ' ' })}
