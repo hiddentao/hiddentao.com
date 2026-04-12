@@ -1,7 +1,7 @@
 ---
 title: SMTP server not working for Yahoo UK accounts
 date: '2008-07-12'
-summary: "I've had a [Yahoo!](http:&#47;&#47;www.yahoo.com&#47;) **.co.uk** email address for donkeys years. And I've always been thankful for having POP access to this account so that I can work with it from within my [desktop mail client](no-longer-valid).\r\n\r\nAlthough I check my email every day I don't have the need to send messages that often. But this week I tried to send one and it seemed that the SMTP server didn't like the password I was supplying it. After checking and double-checking my login credentials and still not getting it to work I fired up my browser and logged in at [http:&#47;&#47;mail.yahoo.com&#47;](no-longer-valid) and checked out the server settings for POP and SMTP access:\r\n\r\n"
+summary: "I've had a Yahoo! **.co.uk** email address for donkeys years. And I've always been thankful for having POP access to this account so that I can work with it from within my desktop mail client.\r\n\r\nAlthough I check my email every day I don't have the need to send messages that often. But this week I tried to send one and it seemed that the SMTP server didn't like the password I was supplying it. After checking and double-checking my login credentials and still not getting it to work I fired up my browser and logged in at http:&#47;&#47;mail.yahoo.com&#47; and checked out the server settings for POP and SMTP access:\r\n\r\n"
 tags:
   - Yahoo
   - UK

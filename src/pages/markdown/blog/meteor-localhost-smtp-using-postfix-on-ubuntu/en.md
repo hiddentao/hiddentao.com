@@ -1,7 +1,7 @@
 ---
 title: Meteor localhost smtp using Postfix on Ubuntu
 date: '2014-12-18'
-summary: "For [Youlist](https:&#47;&#47;youlist.io) I had to setup Meteor to use a localhost SMTP server to send out all the emails. In this article I'm going to outline the Postfix and Meteor steps needed to get this running properly.\r\n\r\nI'm going to assume that you have your own domain - let's call it `mydomain.com`. We're going to set it up on a Ubuntu 14.04 64-bit server.\r\n"
+summary: "For Youlist I had to setup Meteor to use a localhost SMTP server to send out all the emails. In this article I'm going to outline the Postfix and Meteor steps needed to get this running properly.\r\n\r\nI'm going to assume that you have your own domain - let's call it `mydomain.com`. We're going to set it up on a Ubuntu 14.04 64-bit server.\r\n"
 tags:
   - SMTP
   - Meteor

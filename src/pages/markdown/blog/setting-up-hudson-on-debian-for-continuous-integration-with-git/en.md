@@ -1,7 +1,7 @@
 ---
 title: Setting up Hudson on Debian for continuous integration with Git
 date: '2010-10-27'
-summary: "For the [Tornado](http:&#47;&#47;www.tornadoweb.org&#47;) project I'm currently working on I decided to get continuous integration setup on my Debian Lenny server. In the past I've used [CruiseControl](http:&#47;&#47;cruisecontrol.sourceforge.net&#47;) for doing automated builds but recently I've been getting to know [Hudson](https://web.archive.org/web/20200117140447/http://www.hudson-ci.org:80/) and I find it to be a superior alternative ([stackoverflow](no-longer-valid) has a good discussion on the respective pros and cons). In this post I'm going to outline the steps I took in order to get Hudson up and running on my box. \r\n"
+summary: "For the Tornado project I'm currently working on I decided to get continuous integration setup on my Debian Lenny server. In the past I've used CruiseControl for doing automated builds but recently I've been getting to know Hudson and I find it to be a superior alternative (stackoverflow has a good discussion on the respective pros and cons). In this post I'm going to outline the steps I took in order to get Hudson up and running on my box. \r\n"
 tags:
   - Git
   - Hudson

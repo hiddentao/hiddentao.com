@@ -1,7 +1,7 @@
 ---
 title: Updated Google text-to-speech library and added to Bower
 date: '2013-06-10'
-summary: "Just pushed a few updates to the Google text-to-speech API library - [google-tts](https:&#47;&#47;github.com&#47;hiddentao&#47;google-tts) - I first put out a while back. Here are the higlights...\r\n"
+summary: "Just pushed a few updates to the Google text-to-speech API library - google-tts - I first put out a while back. Here are the higlights...\r\n"
 tags:
   - Google
   - Javascript

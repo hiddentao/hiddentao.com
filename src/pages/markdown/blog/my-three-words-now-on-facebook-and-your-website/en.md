@@ -1,7 +1,7 @@
 ---
 title: My Three Words now on Facebook and your website
 date: '2010-05-17'
-summary: "Remember [My Three Words](&#47;archives&#47;2010&#47;03&#47;31&#47;my-three-words&#47;)? Over the last month or so we've been busy adding lots more to it. \r\n\r\nYou can now get it on Facebook at [http:&#47;&#47;apps.facebook.com&#47;mythreewords&#47;](http:&#47;&#47;apps.facebook.com&#47;mythreewords&#47;). And you can share your favourite stories on Facebook itself and invite your friends to play with you.\r\n\r\nBut the coolest new thing is the little widget (see below) which can be embedded on your website. "
+summary: "Remember My Three Words? Over the last month or so we've been busy adding lots more to it. \r\n\r\nYou can now get it on Facebook at http:&#47;&#47;apps.facebook.com&#47;mythreewords&#47;. And you can share your favourite stories on Facebook itself and invite your friends to play with you.\r\n\r\nBut the coolest new thing is the little widget (see below) which can be embedded on your website. "
 tags:
   - MyThreeWords
   - Widget

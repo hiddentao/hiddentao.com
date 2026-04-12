@@ -1,7 +1,7 @@
 ---
 title: 'Ember.JS is stupidly easy, and stupidly difficult'
 date: '2013-08-27'
-summary: "*NOTE: This post is a rant*\r\n\r\nI've recently begun working on an [Ember.JS](http:&#47;&#47;emberjs.com&#47;) project for a client. A quick look at the homepage and the associated guides makes it sound really good. Computed and observable properties - if I change one property everything (upto and including UI elements) will automatically be updated. Cool. A view hierarchy that manages itself, including giving me the ability to target URLs to sub-views. Yes, yes, this sounds really good. Until you start coding.\r\n"
+summary: "*NOTE: This post is a rant*\r\n\r\nI've recently begun working on an Ember.JS project for a client. A quick look at the homepage and the associated guides makes it sound really good. Computed and observable properties - if I change one property everything (upto and including UI elements) will automatically be updated. Cool. A view hierarchy that manages itself, including giving me the ability to target URLs to sub-views. Yes, yes, this sounds really good. Until you start coding.\r\n"
 tags:
   - Javascript
   - Ember

@@ -1,7 +1,7 @@
 ---
 title: Creating an archives page like mine
 date: '2009-09-22'
-summary: "A plugin user recently wrote in asking me how to create an [archives page like mine](no-longer-valid). So I thought I'd give everyone the lowdown on how to do this in this post.\r\n"
+summary: "A plugin user recently wrote in asking me how to create an archives page like mine. So I thought I'd give everyone the lowdown on how to do this in this post.\r\n"
 tags:
   - Wordpress
 ---

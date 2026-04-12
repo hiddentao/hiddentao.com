@@ -1,7 +1,7 @@
 ---
 title: Wordpress Flickr Embed 1.1 released
 date: '2013-05-18'
-summary: "I've just pushed out a new release of [Wordpress Flickr Embed](http:&#47;&#47;wordpress.org&#47;support&#47;plugin&#47;wp-flickr-embed), a plugin which makes it really easy to insert Flickr images into your posts. The big new thing is...\r\n"
+summary: "I've just pushed out a new release of Wordpress Flickr Embed, a plugin which makes it really easy to insert Flickr images into your posts. The big new thing is...\r\n"
 tags:
   - Wordpress
   - Plugin

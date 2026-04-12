@@ -1,7 +1,7 @@
 ---
 title: Dropbox on removable media
 date: '2010-02-07'
-summary: "I've been using [Dropbox](http:&#47;&#47;www.dropbox.com&#47;) for a while now. For those who are unfamiliar with it it's an application which makes it easy to share files online with anyone. Essentially, Dropbox creates a \"My Dropbox\" folder on your computer. This folder is automatically kept in sync with your Dropbox account online - thus, anything you put into this folder gets automatically uploaded to your Dropbox online account. If you choose to share your Dropbox folder (or even just a specific file) with somebody else then the changes you make to the folder will show up in their local copy of it (they have to be signed up to Dropbox too) and vice versa. Dropbox simply sits in the background and synchronises the folder - the folder looks and works just like a normal filesystem folder.\r\n"
+summary: "I've been using Dropbox for a while now. For those who are unfamiliar with it it's an application which makes it easy to share files online with anyone. Essentially, Dropbox creates a \"My Dropbox\" folder on your computer. This folder is automatically kept in sync with your Dropbox account online - thus, anything you put into this folder gets automatically uploaded to your Dropbox online account. If you choose to share your Dropbox folder (or even just a specific file) with somebody else then the changes you make to the folder will show up in their local copy of it (they have to be signed up to Dropbox too) and vice versa. Dropbox simply sits in the background and synchronises the folder - the folder looks and works just like a normal filesystem folder.\r\n"
 tags:
   - Dropbox
 ---

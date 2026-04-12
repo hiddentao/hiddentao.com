@@ -1,7 +1,7 @@
 ---
 title: RandomHello plugin - 'Hello' in different languages
 date: '2008-08-09'
-summary: "I've always thought it was cool that Flickr would say \"Hello\" to you in a different language each time you logged in. So a couple of days ago I decided to code up a simple Wordpress plugin which would allow me (and hopefully others!) to do the same on any page or post. And the result is the [RandomHello](&#47;code&#47;wordpress-randomhello-plugin&#47; \"RandomHello plugin page\") plugin. The plugin is currently active on this site and you can see it in action on the [homepage](&#47;). \r\n\r\n"
+summary: "I've always thought it was cool that Flickr would say \"Hello\" to you in a different language each time you logged in. So a couple of days ago I decided to code up a simple Wordpress plugin which would allow me (and hopefully others!) to do the same on any page or post. And the result is the RandomHello plugin. The plugin is currently active on this site and you can see it in action on the homepage. \r\n\r\n"
 tags:
   - Wordpress
   - RandomHello

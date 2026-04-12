@@ -3,7 +3,7 @@ title: >-
   Squel.js - lightweight Javascript library for building SQL query strings in
   node.js or the browser
 date: '2011-12-23'
-summary: "I'd like to announce the immediate availability of [Squel.js](no-longer-valid), a lightweight Javascript library for building SQL query strings. Squel exposes an object-oriented API for building SQL query strings in a server-side or browser-side Javascript environment. It's well tested using [Vows](http:&#47;&#47;vowsjs.org&#47;) and is available for forking on [github](https:&#47;&#47;github.com&#47;hiddentao&#47;squel).\r\n"
+summary: "I'd like to announce the immediate availability of Squel.js, a lightweight Javascript library for building SQL query strings. Squel exposes an object-oriented API for building SQL query strings in a server-side or browser-side Javascript environment. It's well tested using Vows and is available for forking on github.\r\n"
 tags:
   - Javascript
   - CoffeeScript

@@ -1,7 +1,7 @@
 ---
 title: Shippable + Ansible + Docker + Loggly for awesome deployments
 date: '2014-06-03'
-summary: "This post is about how to use Ansible and Docker for both setting up a server environment for your app and then deploying your web app to it, and preserving your logs in case of server crash. Since I wrote my post on [\"Automated deployment with Docker containers\"](http:&#47;&#47;www.hiddentao.com&#47;archives&#47;2013&#47;12&#47;26&#47;automated-deployment-with-docker-lessons-learnt&#47;), both Docker and my own understanding have improved. In this post I'm going to detail my latest deployment setup. One that is more robust than what I had previously. So without further ado, let's get stuck in.\r\n"
+summary: "This post is about how to use Ansible and Docker for both setting up a server environment for your app and then deploying your web app to it, and preserving your logs in case of server crash. Since I wrote my post on \"Automated deployment with Docker containers\", both Docker and my own understanding have improved. In this post I'm going to detail my latest deployment setup. One that is more robust than what I had previously. So without further ado, let's get stuck in.\r\n"
 tags:
   - Build
   - Docker

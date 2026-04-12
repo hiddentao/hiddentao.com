@@ -1,7 +1,7 @@
 ---
 title: Git + Windows Vista + Eclipse
 date: '2010-08-12'
-summary: "I've recently begun using [Git](http:&#47;&#47;git-scm.com&#47;) for some of my software projects. I've also started storing my repository on [GitHub](http:&#47;&#47;github.com&#47;hiddentao), a great way of sharing open source code with other developers. Git was originally developed for use on *nix systems - Windows support came a little bit later and many of the Git GUI tools have yet to reach an equivalent level of maturity to the SVN tools out there (such as [TortoiseSVN](no-longer-valid)). Nevertheless, I needed to Git working on Vista laptop and this post talks about the setup I'm using to get everything working.\r\n"
+summary: "I've recently begun using Git for some of my software projects. I've also started storing my repository on GitHub, a great way of sharing open source code with other developers. Git was originally developed for use on *nix systems - Windows support came a little bit later and many of the Git GUI tools have yet to reach an equivalent level of maturity to the SVN tools out there (such as TortoiseSVN). Nevertheless, I needed to Git working on Vista laptop and this post talks about the setup I'm using to get everything working.\r\n"
 tags:
   - Git
   - Vista

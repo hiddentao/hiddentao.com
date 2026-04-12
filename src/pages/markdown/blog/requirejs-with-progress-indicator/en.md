@@ -2,10 +2,10 @@
 title: RequireJS with progress indicator
 date: '2011-06-23'
 summary: >-
-  I've just started using the excellent [RequireJS](http://requirejs.org/)
-  library with a new Javascript-heavy project I'm working on. This post
-  considers an easy way in which to add a progress indicator to all `require()`
-  calls such that the user is always aware of what's going on.
+  I've just started using the excellent RequireJS library with a new
+  Javascript-heavy project I'm working on. This post considers an easy way in
+  which to add a progress indicator to all `require()` calls such that the user
+  is always aware of what's going on.
 tags:
   - Javascript
   - RequireJS

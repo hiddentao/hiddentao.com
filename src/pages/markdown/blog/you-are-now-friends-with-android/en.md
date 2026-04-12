@@ -1,7 +1,7 @@
 ---
 title: '"You are now friends with Android"'
 date: '2009-09-19'
-summary: "Having worked at [Symbian](http:&#47;&#47;www.symbian.com) a few years ago and gotten to learn about mobile operating systems, I believe that Symbian have the best mobile OS kernel in terms of performance, responsiveness and robustness. Unfortunately almost the opposite can be said for the S60 UI layer (which Nokia makes) that sits on top of it. The end result being that a lot of Symbian phones (a lot of which are Nokias) tend to feel slow and buggy more often than they should. Nevertheless, they do pack a lot of features and thus for the last 3 years I've happily moved around with a Nokia N73, running S60v3 on Symbian 9.1. \r\n"
+summary: "Having worked at Symbian a few years ago and gotten to learn about mobile operating systems, I believe that Symbian have the best mobile OS kernel in terms of performance, responsiveness and robustness. Unfortunately almost the opposite can be said for the S60 UI layer (which Nokia makes) that sits on top of it. The end result being that a lot of Symbian phones (a lot of which are Nokias) tend to feel slow and buggy more often than they should. Nevertheless, they do pack a lot of features and thus for the last 3 years I've happily moved around with a Nokia N73, running S60v3 on Symbian 9.1. \r\n"
 tags:
   - Mobile
   - Android

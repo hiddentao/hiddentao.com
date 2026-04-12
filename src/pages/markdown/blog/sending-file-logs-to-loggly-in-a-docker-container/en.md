@@ -1,7 +1,7 @@
 ---
 title: Sending file logs to Loggly in a Docker container
 date: '2015-05-24'
-summary: "I'm going to outline how I automate the sending of file logs to [Loggly](http:&#47;&#47;loggly.com&#47;) inside my Docker containers. This article is a minor follow-on to my previous article on [automated deployments](http:&#47;&#47;www.hiddentao.com&#47;archives&#47;2014&#47;06&#47;03&#47;shippable-ansible-docker-loggly-for-awesome-deployments&#47;), which gives a good overview of my overall deployment process. In this one I will show you how to use the latest Loggly API to send your file logs across.\r\n\r\nI'm going to assume that you are building your docker container using a [Dockerfile](https:&#47;&#47;docs.docker.com&#47;reference&#47;builder&#47;). If not I recommend doing so, as they provide you ample flexibility and allow you to use version control to track changes to your container setup. \r\n"
+summary: "I'm going to outline how I automate the sending of file logs to Loggly inside my Docker containers. This article is a minor follow-on to my previous article on automated deployments, which gives a good overview of my overall deployment process. In this one I will show you how to use the latest Loggly API to send your file logs across.\r\n\r\nI'm going to assume that you are building your docker container using a Dockerfile. If not I recommend doing so, as they provide you ample flexibility and allow you to use version control to track changes to your container setup. \r\n"
 tags:
   - Docker
   - Loggly

@@ -1,7 +1,7 @@
 ---
 title: Cloud Primecoin mining on Ubuntu 12.04 with auto restart
 date: '2013-11-24'
-summary: "Following [some helpful instructions](https://web.archive.org/web/20160319123120/https://www.peercointalk.org/index.php?topic=937.0), I got myself a [new cloud server at Digital Ocean](no-longer-valid) to start mining [Primecoins](no-longer-valid) with. I wanted to have the miner running automatically and continuously, and being restarted even if the server itself got rebooted for whatever reason. Here is how I got things setup.\r\n"
+summary: "Following some helpful instructions, I got myself a new cloud server at Digital Ocean to start mining Primecoins with. I wanted to have the miner running automatically and continuously, and being restarted even if the server itself got rebooted for whatever reason. Here is how I got things setup.\r\n"
 tags:
   - Ubuntu
   - Cloud

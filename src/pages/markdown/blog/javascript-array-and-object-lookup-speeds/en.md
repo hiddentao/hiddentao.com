@@ -1,7 +1,7 @@
 ---
 title: Javascript array and object lookup speeds
 date: '2011-07-20'
-summary: "I'm currently working on an an implementation of the [LZW algorithm](no-longer-valid) in Javascript and one of the things I need to decide to test out is whether using an `Array` is faster than using an `Object` for storage and retrieval of items which are indexed numerically. I decided to write a little Javascript test to see which was faster and find out how if the choice of browser made a difference to the relative results.\r\n"
+summary: "I'm currently working on an an implementation of the LZW algorithm in Javascript and one of the things I need to decide to test out is whether using an `Array` is faster than using an `Object` for storage and retrieval of items which are indexed numerically. I decided to write a little Javascript test to see which was faster and find out how if the choice of browser made a difference to the relative results.\r\n"
 tags:
   - Javascript
   - Algorithms

@@ -1,7 +1,7 @@
 ---
 title: 'Weber - compile scripts, stylesheets and templates on-the-fly'
 date: '2012-03-15'
-summary: "I'd like to introduce [Weber](https:&#47;&#47;github.com&#47;hiddentao&#47;weber), a slick command-line tool for compiling, concatenating and minifying scripts, stylesheets and templates **on-the-fly**. Weber is a fork of the excellent [Hem](no-longer-valid) tool by [Alex Maccaw](http:&#47;&#47;alexmaccaw.com&#47;) which improves on the original by providing more flexibility.\r\n"
+summary: "I'd like to introduce Weber, a slick command-line tool for compiling, concatenating and minifying scripts, stylesheets and templates **on-the-fly**. Weber is a fork of the excellent Hem tool by Alex Maccaw which improves on the original by providing more flexibility.\r\n"
 tags:
   - Javascript
   - CoffeeScript

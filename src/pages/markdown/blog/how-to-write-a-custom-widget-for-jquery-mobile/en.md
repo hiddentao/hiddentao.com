@@ -1,7 +1,7 @@
 ---
 title: How to write a custom widget for jQuery Mobile
 date: '2011-11-07'
-summary: "I needed to write a custom widget for the [jQuery Mobile](http:&#47;&#47;jquerymobile.com&#47;) library but couldn't find any step-by-step documentation on how to do it in the official docs. A search on Google didn't result in any better luck. In the end it turned out to be quite easy to do - I was able to figure it out by looking at the source code of jQuery Mobile and that of the excellent [DateBox](no-longer-valid) plugin. In this post I outline the essentials to adding your own custom widget to jQuery Mobile.\r\n"
+summary: "I needed to write a custom widget for the jQuery Mobile library but couldn't find any step-by-step documentation on how to do it in the official docs. A search on Google didn't result in any better luck. In the end it turned out to be quite easy to do - I was able to figure it out by looking at the source code of jQuery Mobile and that of the excellent DateBox plugin. In this post I outline the essentials to adding your own custom widget to jQuery Mobile.\r\n"
 tags:
   - Mobile
   - jQuery

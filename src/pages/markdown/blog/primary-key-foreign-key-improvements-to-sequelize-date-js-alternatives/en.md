@@ -1,7 +1,7 @@
 ---
 title: 'Primary key, foreign key improvements to Sequelize + Date.js alternatives'
 date: '2011-11-18'
-summary: "I've created a [patch][&#47;patch](no-longer-valid) for [Sequelize](no-longer-valid) which enables one to use primary key fields as foreign keys too, something I find myself doing often with my relational schemas as I don't like using the standard `id` primary key field unless it's the most sensible primary key to have. In practice the changes mean you can do the following (not currently possible in vanilla Sequelize):\r\n"
+summary: "I've created a [patch]&#47;patch for Sequelize which enables one to use primary key fields as foreign keys too, something I find myself doing often with my relational schemas as I don't like using the standard `id` primary key field unless it's the most sensible primary key to have. In practice the changes mean you can do the following (not currently possible in vanilla Sequelize):\r\n"
 tags:
   - Javascript
   - node.js

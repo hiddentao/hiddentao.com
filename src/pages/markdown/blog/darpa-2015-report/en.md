@@ -1,7 +1,7 @@
 ---
 title: DARPA 2015 report
 date: '2015-03-30'
-summary: "I noticed articles talking [DARPA's](http:&#47;&#47;www.defenseone.com&#47;technology&#47;2015&#47;03&#47;world-2020-according-darpa&#47;108517&#47;) [plans](no-longer-valid) and was curious to go and read from [their original report](http:&#47;&#47;go.usa.gov&#47;3rut4). It's quite an interesting read, covering what DARPA do, what they're working on for the future and some of the success stories they've had from the past. Below I've given highlights, specifically the parts I found most interesting.\r\n"
+summary: "I noticed articles talking DARPA's plans and was curious to go and read from their original report. It's quite an interesting read, covering what DARPA do, what they're working on for the future and some of the success stories they've had from the past. Below I've given highlights, specifically the parts I found most interesting.\r\n"
 tags:
   - DARPA
   - Military

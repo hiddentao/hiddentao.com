@@ -1,7 +1,7 @@
 ---
 title: Parse push notifications for your Android and iOS Cordova app
 date: '2015-04-10'
-summary: "I recently had to get [Parse](http:&#47;&#47;parse.com) push notifications working with a Phonegap&#47;Cordova application. It took of a lot of Google-ing and documentation reading to figure out all the steps needed. I'm documenting what's needed here in case it helps anybody else.\r\n\r\nInstructions are for both Android (Jellybean+) and iOS (8+). I'm running Phonegap v4.2.0-0.24.2.\r\n\r\n## Android\r\n\r\nThese steps are based on what's in Parse's [Quickstart guide](https:&#47;&#47;parse.com&#47;apps&#47;quickstart#parse_push&#47;android&#47;existing).\r\n\r\nFirst of all let's write our application code for handling incoming notifications. We need an `Application` class which will be responsible for registering with Parse.\r\n"
+summary: "I recently had to get Parse push notifications working with a Phonegap&#47;Cordova application. It took of a lot of Google-ing and documentation reading to figure out all the steps needed. I'm documenting what's needed here in case it helps anybody else.\r\n\r\nInstructions are for both Android (Jellybean+) and iOS (8+). I'm running Phonegap v4.2.0-0.24.2.\r\n\r\n## Android\r\n\r\nThese steps are based on what's in Parse's Quickstart guide.\r\n\r\nFirst of all let's write our application code for handling incoming notifications. We need an `Application` class which will be responsible for registering with Parse.\r\n"
 tags:
   - Phonegap
   - Push

@@ -1,7 +1,7 @@
 ---
 title: A simple pager script for Drupal
 date: '2010-08-24'
-summary: "Today I found myself needing to render pager links in [Drupal 6](no-longer-valid) for a list of items. By _pager_ I mean the links you usually see at the bottom of the page which indicate what page you're currently on, what pages comes before and after and where you are in the grand context of the total number of pages available (example: [no-longer-valid
+summary: "Today I found myself needing to render pager links in Drupal 6 for a list of items. By _pager_ I mean the links you usually see at the bottom of the page which indicate what page you're currently on, what pages comes before and after and where you are in the grand context of the total number of pages available (example: no-longer-valid)."
 ---
 Today I found myself needing to render pager links in [Drupal 6](no-longer-valid) for a list of items. By _pager_ I mean the links you usually see at the bottom of the page which indicate what page you're currently on, what pages comes before and after and where you are in the grand context of the total number of pages available (example: [http://drupal.org/search/apachesolr_search/e](no-longer-valid)).
 

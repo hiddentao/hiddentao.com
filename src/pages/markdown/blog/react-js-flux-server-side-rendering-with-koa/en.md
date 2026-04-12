@@ -1,7 +1,7 @@
 ---
 title: React.js + Flux server-side rendering with Koa
 date: '2015-07-15'
-summary: "I recently had to get server-side rendering working on a React.js client project. We had augmented our front-end React app with [flummox](https:&#47;&#47;github.com&#47;acdlite&#47;flummox) and [react-router](https:&#47;&#47;github.com&#47;rackt&#47;react-router) and I wanted to be sure that we could re-use these components on the server-side without much extra work. I'm going to document our final file structure and code in this article.\r\n"
+summary: "I recently had to get server-side rendering working on a React.js client project. We had augmented our front-end React app with flummox and react-router and I wanted to be sure that we could re-use these components on the server-side without much extra work. I'm going to document our final file structure and code in this article.\r\n"
 tags:
   - Javascript
   - node.js

@@ -1,7 +1,7 @@
 ---
 title: Copenhagen target converter
 date: '2009-11-27'
-summary: "As we near the [15th Annual UNFCCC conference](https://web.archive.org/web/20100103211713/http://en.cop15.dk/ \"COP15\") in Copenhagen more and more countries are pledging emissions cuts. But the devil is always in the details, as a [recent article in the Guardian](no-longer-valid) pointed out.\r\n\r\nFor instance, [Russia recently announced](no-longer-valid) that it would cut its greenhouse gas emissions by 25% on 1990 levels. "
+summary: "As we near the 15th Annual UNFCCC conference in Copenhagen more and more countries are pledging emissions cuts. But the devil is always in the details, as a recent article in the Guardian pointed out.\r\n\r\nFor instance, Russia recently announced that it would cut its greenhouse gas emissions by 25% on 1990 levels. "
 tags:
   - Sandbag
   - Climate change

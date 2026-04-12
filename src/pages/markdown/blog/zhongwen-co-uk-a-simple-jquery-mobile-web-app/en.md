@@ -1,7 +1,7 @@
 ---
 title: Zhongwen.co.uk - a simple jQuery Mobile web app
 date: '2012-03-14'
-summary: "I started attending Mandarin language classes recently at the [Meridian Chinese School](no-longer-valid) in London. Studying involves a 2 hour lesson once a week and a few hours spent at home revising what I've learnt. And one of the best ways to study is to practise writing the characters (fun too!) and translating sentences. So I decided to build a web app which would allow me to practise whilst on the go. My aim was to enable character recognition using HTML 5 canvas and get it working on mobiles.\r\n"
+summary: "I started attending Mandarin language classes recently at the Meridian Chinese School in London. Studying involves a 2 hour lesson once a week and a few hours spent at home revising what I've learnt. And one of the best ways to study is to practise writing the characters (fun too!) and translating sentences. So I decided to build a web app which would allow me to practise whilst on the go. My aim was to enable character recognition using HTML 5 canvas and get it working on mobiles.\r\n"
 tags:
   - Mobile
   - jQuery

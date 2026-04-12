@@ -1,7 +1,7 @@
 ---
 title: One Giant Leap!
 date: '2009-09-10'
-summary: "One of my current clients is the [Sandbag Climate Campaign](https://web.archive.org/web/20250813181859/https://www.sandbag.org.uk/ \"Sandbag\"). They're a small organisation primarily focussed on the [European carbon emissions trading scheme](http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;European_Union_Emission_Trading_Scheme) as well as the upcoming global climate conference at Copenhagen ([COP-15](https://web.archive.org/web/20100103211713/http://en.cop15.dk/)). \r\n\r\nOne of their latest projects is a global parkour jam titled [\"One Giant Leap!\"](https://web.archive.org/web/20091130184111/http://www.sandbag.org.uk:80/campaigns/copenhagen?), designed to raise the public's awareness of the importance of the upcoming conference. The jam is scheduled to take place on Saturday, September 26th, 2009 in over 30 countries simultaneously ([see the map](http:&#47;&#47;maps.google.com&#47;maps&#47;ms?ie=UTF8&hl=en&msa=0&msid=108986355714869234623.000471a40042e76d97dc8&ll=26.74561,2.8125&spn=133.559418,303.75&z=2)). \r\n"
+summary: "One of my current clients is the Sandbag Climate Campaign. They're a small organisation primarily focussed on the European carbon emissions trading scheme as well as the upcoming global climate conference at Copenhagen (COP-15). \r\n\r\nOne of their latest projects is a global parkour jam titled \"One Giant Leap!\", designed to raise the public's awareness of the importance of the upcoming conference. The jam is scheduled to take place on Saturday, September 26th, 2009 in over 30 countries simultaneously (see the map). \r\n"
 tags:
   - Sandbag
   - Parkour

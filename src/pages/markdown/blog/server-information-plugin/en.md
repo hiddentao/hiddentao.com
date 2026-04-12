@@ -1,7 +1,7 @@
 ---
 title: Web server information plugin
 date: '2009-03-31'
-summary: "I do all the development work for this site on my local machine, using a mirror copy of the live database and Wordpress installation. Once I'm happy with any changes made I apply them to the live web server (usually via Subversion). I use the <a href=\"http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Hosts_file\">HOSTS file<&#47;a> to redirect all browser calls for <strong>hiddentao.com<&#47;strong> to the local IP address (127.0.0.1) so that I can properly test URL linking and redirection. This way I can experiment as much as I like on my local copy without worrying about causing any damage to the live website.\r\n"
+summary: "I do all the development work for this site on my local machine, using a mirror copy of the live database and Wordpress installation. Once I'm happy with any changes made I apply them to the live web server (usually via Subversion). I use the HOSTS file to redirect all browser calls for hiddentao.com to the local IP address (127.0.0.1) so that I can properly test URL linking and redirection. This way I can experiment as much as I like on my local copy without worrying about causing any damage to the live website.\r\n"
 tags:
   - Wordpress
   - Server-Info

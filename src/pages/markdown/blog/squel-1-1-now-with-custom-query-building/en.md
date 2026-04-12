@@ -1,7 +1,7 @@
 ---
 title: Squel 1.1 - now with custom query building
 date: '2013-03-28'
-summary: "Squel 1.1 is now available. This release was a major rewrite of how Squel works underneath the hood and has been a long time coming. There are two main benefits introduced by this new release:\r\n\r\n* The ability to customize the query building logic\r\n* The ability to build new types of queries\r\n\r\nThe [documentation has been updated](no-longer-valid) with info and demos of the above. I'll talk a bit about the architectural changes in this post.\r\n"
+summary: "Squel 1.1 is now available. This release was a major rewrite of how Squel works underneath the hood and has been a long time coming. There are two main benefits introduced by this new release:\r\n\r\n* The ability to customize the query building logic\r\n* The ability to build new types of queries\r\n\r\nThe documentation has been updated with info and demos of the above. I'll talk a bit about the architectural changes in this post.\r\n"
 tags:
   - Javascript
   - node.js

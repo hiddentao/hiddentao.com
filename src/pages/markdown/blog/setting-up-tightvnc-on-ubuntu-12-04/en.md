@@ -1,7 +1,7 @@
 ---
 title: Setting up TightVNC on Ubuntu 12.04
 date: '2013-09-17'
-summary: "I just got [TightVNC](http:&#47;&#47;www.tightvnc.com&#47;) working properly with Ubuntu 12.04. There are various guides around the web which tell you what to do so what I'm about to give you is nothing new. Nevertheless, some of the guides out there are quite old so I hope that mine provides more up-to-date instructions.\r\n\r\nFirst of all I'm assuming you've installed Ubuntu 12.04 and that you have SSH access into it. In order to make VNC worthwhile you'll need Ubuntu desktop access so go ahead and install it if you haven't already done so:\r\n"
+summary: "I just got TightVNC working properly with Ubuntu 12.04. There are various guides around the web which tell you what to do so what I'm about to give you is nothing new. Nevertheless, some of the guides out there are quite old so I hope that mine provides more up-to-date instructions.\r\n\r\nFirst of all I'm assuming you've installed Ubuntu 12.04 and that you have SSH access into it. In order to make VNC worthwhile you'll need Ubuntu desktop access so go ahead and install it if you haven't already done so:\r\n"
 tags:
   - Ubuntu
   - VNC

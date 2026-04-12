@@ -1,7 +1,7 @@
 ---
 title: wuPlay - real-time multiplayer web gaming on your mobile
 date: '2011-07-15'
-summary: "Introducing [wuPlay.com](wuPlay.com), an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent [Connect6](http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Connect6) game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).\r\n"
+summary: "Introducing wuPlay.com, an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent Connect6 game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).\r\n"
 tags:
   - Mobile
   - AJAX

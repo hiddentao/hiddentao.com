@@ -1,7 +1,7 @@
 ---
 title: Setting up HTTPS for Github organization pages with custom domains
 date: '2016-07-04'
-summary: "_Thanks to Robin Winslow for the [original post](https:&#47;&#47;robinwinslow.uk&#47;2016&#47;02&#47;13&#47;free-https-custom-hosting&#47;)_.\r\n\r\nGithub Organization pages are awesome, but they do not support HTTPS, presumably because doing so would require Github to serve up your domain-specific SSL certificate for incoming requests - which would be a real pain for them to manage.\r\n\r\nRobin Winslow has written a great [tutorial](https:&#47;&#47;robinwinslow.uk&#47;2016&#47;02&#47;13&#47;free-https-custom-hosting&#47;) which explains how get around this limitation by also setting up Cloudflare account and using that to \"layer on\" SSL - all for free. \r\n\r\nMy requirements were slightly different to Robin's, in that I needed to set up an apex domain (i.e. `mydomain.com`) rather than a subdomain, as Robin does. Here is the process I followed...\r\n"
+summary: "_Thanks to Robin Winslow for the original post_.\r\n\r\nGithub Organization pages are awesome, but they do not support HTTPS, presumably because doing so would require Github to serve up your domain-specific SSL certificate for incoming requests - which would be a real pain for them to manage.\r\n\r\nRobin Winslow has written a great tutorial which explains how get around this limitation by also setting up Cloudflare account and using that to \"layer on\" SSL - all for free. \r\n\r\nMy requirements were slightly different to Robin's, in that I needed to set up an apex domain (i.e. `mydomain.com`) rather than a subdomain, as Robin does. Here is the process I followed...\r\n"
 tags:
   - SSL
   - Github

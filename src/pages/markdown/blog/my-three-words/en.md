@@ -1,7 +1,7 @@
 ---
 title: My Three Words
 date: '2010-03-31'
-summary: "I'm currently doing some work for [Miura](http:&#47;&#47;miura.gi&#47;), a digital design agency based in London. A month ago the creative director came up with a silly but fun idea: \"how about a page where different people can come in and type in 3 words a time, building up a short story?\". I told him I could probably knock up a prototype within an hour though I didn't think he'd want me to actually do it!\r\n"
+summary: "I'm currently doing some work for Miura, a digital design agency based in London. A month ago the creative director came up with a silly but fun idea: \"how about a page where different people can come in and type in 3 words a time, building up a short story?\". I told him I could probably knock up a prototype within an hour though I didn't think he'd want me to actually do it!\r\n"
 tags:
   - Kohana
   - AJAX

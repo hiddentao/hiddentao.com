@@ -1,7 +1,7 @@
 ---
 title: Ubuntu 10.04 Lucid 64-bit + PHP 5.2 FastCGI + APC + nginx
 date: '2011-06-24'
-summary: "This post outlines the steps needed to get PHP 5.2 running on Ubuntu 10.04 (\"Lucid Lynx\") 64-bit under nginx and FastCGI with APC enabled. The current Lucid apt repositories contain PHP 5.3 so I needed compile 5.2 from source in order to get this setup working. I also decided to use the new-ish [FastCGI Process Manager](no-longer-valid) that comes with PHP in order to manage FastCGI processes. \r\n"
+summary: "This post outlines the steps needed to get PHP 5.2 running on Ubuntu 10.04 (\"Lucid Lynx\") 64-bit under nginx and FastCGI with APC enabled. The current Lucid apt repositories contain PHP 5.3 so I needed compile 5.2 from source in order to get this setup working. I also decided to use the new-ish FastCGI Process Manager that comes with PHP in order to manage FastCGI processes. \r\n"
 tags:
   - PHP
   - Ubuntu

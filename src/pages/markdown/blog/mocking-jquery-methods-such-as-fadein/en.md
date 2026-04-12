@@ -1,7 +1,7 @@
 ---
 title: Mocking jQuery methods such as fadeIn
 date: '2013-01-29'
-summary: "In writing UI tests for my new web app I hit a snag today. I have a notification system which uses jQuery's [fadeIn()](http:&#47;&#47;docs.jquery.com&#47;Effects&#47;fadeIn) and [fadeOut()](http:&#47;&#47;docs.jquery.com&#47;Effects&#47;fadeOut) methods to control how notification messages get displayed to the user. And I want to test that these methods are being called with right parameters and in the right order. So I should just be able to [sinon.spy()](http:&#47;&#47;sinonjs.org&#47;docs&#47;#sinonspy) them, right? Not quite.\r\n"
+summary: "In writing UI tests for my new web app I hit a snag today. I have a notification system which uses jQuery's fadeIn() and fadeOut() methods to control how notification messages get displayed to the user. And I want to test that these methods are being called with right parameters and in the right order. So I should just be able to sinon.spy() them, right? Not quite.\r\n"
 tags:
   - jQuery
   - Sinon

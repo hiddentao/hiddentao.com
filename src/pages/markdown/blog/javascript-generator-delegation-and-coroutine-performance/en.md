@@ -1,7 +1,7 @@
 ---
 title: Javascript generator delegation and coroutine performance
 date: '2014-02-14'
-summary: "I am currently building a web app framework on top of [Koa](https:&#47;&#47;github.com&#47;koajs&#47;koa), the generator-based middleware framework for node.js. If you are not familiar with Generators then I highly recommend reading [Toby Ho's introduction to Generators](https://web.archive.org/web/20251228165547/https://tobyho.com/2013/06/16/what-are-generators/). Towards the end of that article he mentions [co](https:&#47;&#47;github.com&#47;visionmedia&#47;co), one of the available co-routine methods for use with generator functions. In a nutshell **co** handles the iteration of a generator function so that you don't have to:\r\n"
+summary: "I am currently building a web app framework on top of Koa, the generator-based middleware framework for node.js. If you are not familiar with Generators then I highly recommend reading Toby Ho's introduction to Generators. Towards the end of that article he mentions co, one of the available co-routine methods for use with generator functions. In a nutshell **co** handles the iteration of a generator function so that you don't have to:\r\n"
 tags:
   - Javascript
   - Performance

@@ -1,7 +1,7 @@
 ---
 title: Ansijet - Ansible playbook automation server
 date: '2014-06-20'
-summary: "**Project renamed from Ansibot to Ansijet, to avoid confusion with Github's Ansibot**\r\n\r\nI have just released [Ansijet](http:&#47;&#47;hiddentao.github.io&#47;ansijet), an Ansible playbook automation server. This server exposes a REST API which allows you to automatically trigger Ansible playbooks based on other events within your system. For my purposes I use it to automatically re-deploy to my servers when a successful build completes (I blogged about this [previously](&#47;archives&#47;2014&#47;06&#47;03&#47;shippable-ansible-docker-loggly-for-awesome-deployments&#47;)).\r\n"
+summary: "**Project renamed from Ansibot to Ansijet, to avoid confusion with Github's Ansibot**\r\n\r\nI have just released Ansijet, an Ansible playbook automation server. This server exposes a REST API which allows you to automatically trigger Ansible playbooks based on other events within your system. For my purposes I use it to automatically re-deploy to my servers when a successful build completes (I blogged about this previously).\r\n"
 tags:
   - node.js
   - Deployment

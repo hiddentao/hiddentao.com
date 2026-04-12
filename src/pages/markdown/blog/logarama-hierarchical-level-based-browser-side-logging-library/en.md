@@ -1,7 +1,7 @@
 ---
 title: 'Logarama - hierarchical, level-based browser-side logging library'
 date: '2015-08-20'
-summary: "A few days ago I released [logarama](https:&#47;&#47;github.com&#47;hiddentao&#47;logarama), a Javscript logging library for browser-side code. Logarama came out of my approach to logging in various React apps I've been building lately. None of the existing logging libraries out there (and boy, there are many) did quite what I wanted so I built my own.\r\n"
+summary: "A few days ago I released logarama, a Javscript logging library for browser-side code. Logarama came out of my approach to logging in various React apps I've been building lately. None of the existing logging libraries out there (and boy, there are many) did quite what I wanted so I built my own.\r\n"
 tags:
   - Browsers
   - Javascript

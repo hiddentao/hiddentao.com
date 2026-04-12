@@ -1,7 +1,7 @@
 ---
 title: My first Android Market app purchasing experience
 date: '2010-08-20'
-summary: "Today I decided to make my first purchase on the [Android Market](http:&#47;&#47;www.android.com&#47;market&#47;). Up until now I've been downloading and using free apps. Then recently I came across [KJ Sawka's DrumBanger](http:&#47;&#47;www.youtube.com&#47;watch?v=c9SqPKgLSI4) for the iPhone and decided that I definitely needed to get in on that action on my HTC Hero. The closest thing I could find (atleast I think it's similar) is the [Electrum Drum Machine](https://web.archive.org/web/20230127034240/http://www.nikotwenty.com/). It's been getting great user reviews in the Market and at $4 and between 10-50,000 downloads I figured it had to be somewhat decent. So the next bit was to pay for the app and get hold of it on my phone. And this is where things got interesting...\r\n"
+summary: "Today I decided to make my first purchase on the Android Market. Up until now I've been downloading and using free apps. Then recently I came across KJ Sawka's DrumBanger for the iPhone and decided that I definitely needed to get in on that action on my HTC Hero. The closest thing I could find (atleast I think it's similar) is the Electrum Drum Machine. It's been getting great user reviews in the Market and at $4 and between 10-50,000 downloads I figured it had to be somewhat decent. So the next bit was to pay for the app and get hold of it on my phone. And this is where things got interesting...\r\n"
 tags:
   - Android
   - Google Checkout

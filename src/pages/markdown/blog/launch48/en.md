@@ -1,7 +1,7 @@
 ---
 title: Launch48
 date: '2009-10-20'
-summary: "This weekend just gone I attended [Launch48](http:&#47;&#47;www.launch48.com&#47; \"Launch48 homepage\"), an event where the objective was to build a viable commercial web application in just 48 hours with a diverse group of random people you meet at the event itself.\r\n\r\nThere is already information on the Launch48 site about [how the weekend unfolded](https://web.archive.org/web/20091019030453/http://www.launch48.com:80/4pm-board-meetings-live-blog/) as well [what came out of it](https://web.archive.org/web/20120102222351/http://eu.techcrunch.com:80/2009/10/18/launch48-startups-present-their-ideas-after-a-frantic-48-hours/), so I'm going to talk about my experiences at the event and reflect upon what I learned.\r\n"
+summary: "This weekend just gone I attended Launch48, an event where the objective was to build a viable commercial web application in just 48 hours with a diverse group of random people you meet at the event itself.\r\n\r\nThere is already information on the Launch48 site about how the weekend unfolded as well what came out of it, so I'm going to talk about my experiences at the event and reflect upon what I learned.\r\n"
 tags:
   - Launch48
 ---

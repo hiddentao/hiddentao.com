@@ -1,7 +1,7 @@
 ---
 title: Tag your Wordpress 2.7 pages!
 date: '2009-01-18'
-summary: "A few weeks ago I upgraded to Wordpress 2.7 and was immediately liking the new admin interface and all the other features. But I needed a way of tagging my pages as well as my blog entries. So I went and grabbed the <a href=\"https://web.archive.org/web/20130424093532/http://wordpress.org/extend/plugins/simple-tags/\">Simple Tags plugin<&#47;a> by Amaury Balmer. But for some reason it didn't seem to re-use my existing blog post tags, and its tagging interface (when editing a page) didn't seem to work as well as the blog post tagging interface that comes with Wordpress.\r\n\r\nSo I decided to write my own plugin (both as a learning experience and for fun!) which would let me tag pages "
+summary: "A few weeks ago I upgraded to Wordpress 2.7 and was immediately liking the new admin interface and all the other features. But I needed a way of tagging my pages as well as my blog entries. So I went and grabbed the Simple Tags plugin by Amaury Balmer. But for some reason it didn't seem to re-use my existing blog post tags, and its tagging interface (when editing a page) didn't seem to work as well as the blog post tagging interface that comes with Wordpress.\r\n\r\nSo I decided to write my own plugin (both as a learning experience and for fun!) which would let me tag pages "
 tags:
   - Wordpress
   - Page Tagger

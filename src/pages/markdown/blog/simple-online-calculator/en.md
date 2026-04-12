@@ -1,7 +1,7 @@
 ---
 title: Simple online calculator using HTML and Javascript
 date: '2010-11-25'
-summary: "Last Friday I was looking for a simple online calculator which I could use via a web browser and which was mobile friendly. The best ones I could find were all done in [Flash](http:&#47;&#47;www.adobe.com&#47;products&#47;flashplayer&#47;) which I though kinda sucked since it was perfectly possible to build one using HTML and Javascript. Not to mention that Flash doesn't work on iPhones&#47;iPads. As I was feeling a little creative I decided to build one myself, which you can now see at [calc8.com](http:&#47;&#47;calc8.com&#47;).\r\n"
+summary: "Last Friday I was looking for a simple online calculator which I could use via a web browser and which was mobile friendly. The best ones I could find were all done in Flash which I though kinda sucked since it was perfectly possible to build one using HTML and Javascript. Not to mention that Flash doesn't work on iPhones&#47;iPads. As I was feeling a little creative I decided to build one myself, which you can now see at calc8.com.\r\n"
 tags:
   - Mobile
   - Javascript

@@ -1,7 +1,7 @@
 ---
 title: Redmine plugin which pushes updates to external URL
 date: '2011-07-24'
-summary: "A recent client wished to integrate the [Redmine](http:&#47;&#47;www.redmine.org) issue tracking system with their front-end software change request system. Specifically, they wanted 2-way integration such that changes made in one system were immediately reflected in the other. Redmine provides a REST API for accessing and modifying data which meant it was easy to keep Redmine up-to-date. I needed a way of knowing about Redmine changes as soon as they occurred, separate to the email which Redmine sends out with each change. There were already plugins which would [update specific third-party services when a Redmine issue got updated](https://web.archive.org/web/20260223083613/https://www.redmine.org/boards/3/topics/7117) but I needed one which would call back to a custom URL exposed by our other system. And so the **Updates notifier** plugin was born.\r\n"
+summary: "A recent client wished to integrate the Redmine issue tracking system with their front-end software change request system. Specifically, they wanted 2-way integration such that changes made in one system were immediately reflected in the other. Redmine provides a REST API for accessing and modifying data which meant it was easy to keep Redmine up-to-date. I needed a way of knowing about Redmine changes as soon as they occurred, separate to the email which Redmine sends out with each change. There were already plugins which would update specific third-party services when a Redmine issue got updated but I needed one which would call back to a custom URL exposed by our other system. And so the **Updates notifier** plugin was born.\r\n"
 tags:
   - Redmine
   - Ruby

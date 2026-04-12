@@ -1,7 +1,7 @@
 ---
 title: 3D demo
 date: '2010-01-20'
-summary: "A while back I decided to write a simple 3D graphics engine in Java after being inspired by [Daniel Tebbutt's Bedlam solver](http:&#47;&#47;danieltebbutt.com&#47;bedlam.html). Essentially I wanted to show a cube like his but with the added ability to split it apart so that you could see how the pieces fit together. As I got going with this I was enjoying it so much I put aside the puzzle algorithm and just started adding more 3D rendering features.\r\n\r\nFast forward many hours of coding and here is a simple demo (click the image to launch it):\r\n"
+summary: "A while back I decided to write a simple 3D graphics engine in Java after being inspired by Daniel Tebbutt's Bedlam solver. Essentially I wanted to show a cube like his but with the added ability to split it apart so that you could see how the pieces fit together. As I got going with this I was enjoying it so much I put aside the puzzle algorithm and just started adding more 3D rendering features.\r\n\r\nFast forward many hours of coding and here is a simple demo (click the image to launch it):\r\n"
 tags:
   - Java
   - 3D

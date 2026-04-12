@@ -1,7 +1,7 @@
 ---
 title: Using Gradle + Juicer to minify and GZip Javascript and CSS
 date: '2010-11-10'
-summary: "Recently I've been focussing more and more on performance in the web projects I'm working on. By now the [benefits of merging, minifying and GZipping](no-longer-valid) external Javascript and CSS files are well documented - your web page loads quicker (due to smaller download sizes and less HTTP requests to make). For a web project I'm currently working on I decided to investigate what tools were available out there and particularly, how I could automate the whole process using a build script.\r\n"
+summary: "Recently I've been focussing more and more on performance in the web projects I'm working on. By now the benefits of merging, minifying and GZipping external Javascript and CSS files are well documented - your web page loads quicker (due to smaller download sizes and less HTTP requests to make). For a web project I'm currently working on I decided to investigate what tools were available out there and particularly, how I could automate the whole process using a build script.\r\n"
 tags:
   - Javascript
   - Gradle

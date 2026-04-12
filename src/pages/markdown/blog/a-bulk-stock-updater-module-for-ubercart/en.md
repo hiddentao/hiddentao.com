@@ -1,7 +1,7 @@
 ---
 title: A bulk stock updater module for Ubercart
 date: '2010-08-29'
-summary: "On a recent Drupal project I was asked to build an interface whereby administrators could easily bulk-edit the stock levels for all their [Ubercart](https://web.archive.org/web/20250907021100/https://www.ubercart.org/) products. I had a look on the web for something which already did this. I found [Multiple stock edit](no-longer-valid) - which only really worked with Ubercart 1.x and Drupal 5 (not to mention that it used the standard Drupal form submission mechanism, thus making it difficult to quickly bulk-edit large numbers of items). [Stock and Price updater](https://web.archive.org/web/20170924155109/http://www.ubercart.org:80/contrib/12428) only worked by importing CSV files. And [Views Bulk Operations](https://web.archive.org/web/20251205045431/https://www.drupal.org/project/views_bulk_operations) would only let you set the stock level to the same value across a range of products. \r\n"
+summary: "On a recent Drupal project I was asked to build an interface whereby administrators could easily bulk-edit the stock levels for all their Ubercart products. I had a look on the web for something which already did this. I found Multiple stock edit - which only really worked with Ubercart 1.x and Drupal 5 (not to mention that it used the standard Drupal form submission mechanism, thus making it difficult to quickly bulk-edit large numbers of items). Stock and Price updater only worked by importing CSV files. And Views Bulk Operations would only let you set the stock level to the same value across a range of products. \r\n"
 tags:
   - Drupal
   - Ubercart

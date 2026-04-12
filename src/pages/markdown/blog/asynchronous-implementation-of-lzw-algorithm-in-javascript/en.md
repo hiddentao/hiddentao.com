@@ -1,7 +1,7 @@
 ---
 title: Asynchronous implementation of LZW algorithm in Javascript
 date: '2011-08-01'
-summary: "I'm quite pleased to announce availability of my latest mini-project - an efficient Javascript implementation of the [Lempel-Ziv-Welsh (no-longer-validel%E2%80%93Ziv%E2%80%93Welch). It's **only 4 KB** (minified size) and available right now from [Github](https:&#47;&#47;github.com&#47;hiddentao&#47;lzw-async) where you'll also find instructions on use and the full API. This post provides details of the implementation and discusses some of the design decisions, as well as providing some performance metrics.\r\n"
+summary: "I'm quite pleased to announce availability of my latest mini-project - an efficient Javascript implementation of the Lempel-Ziv-Welsh (no-longer-validel%E2%80%93Ziv%E2%80%93Welch). It's **only 4 KB** (minified size) and available right now from [Github where you'll also find instructions on use and the full API. This post provides details of the implementation and discusses some of the design decisions, as well as providing some performance metrics.\r\n"
 tags:
   - Javascript
   - Algorithms

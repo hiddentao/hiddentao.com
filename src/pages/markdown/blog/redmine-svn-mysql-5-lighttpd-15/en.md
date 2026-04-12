@@ -1,7 +1,7 @@
 ---
 title: Redmine + SVN + MySQL 5 + Lighttpd 1.5 + FastCGI
 date: '2008-12-06'
-summary: "For about a year now I've been using <a href=\"http:&#47;&#47;trac.edgewall.org&#47;\">Trac<&#47;a> as my software project management system. If you haven't heard of Trac then let me say that it's one of the few free open source project management systems that works really well.\r\n\r\nRecently I've come across a different project management system - <a href=\"http:&#47;&#47;www.redmine.org&#47;\">Redmine<&#47;a>. This is very similar to Trac in the way it works, except that it's built using Ruby on Rails. And notably, it has support for a larger variety of version control systems than Trac, and most importantly (for me), it has support for multiple projects (including sub-projects of projects) within a single, cohesive web interface.\r\n"
+summary: "For about a year now I've been using Trac as my software project management system. If you haven't heard of Trac then let me say that it's one of the few free open source project management systems that works really well.\r\n\r\nRecently I've come across a different project management system - Redmine. This is very similar to Trac in the way it works, except that it's built using Ruby on Rails. And notably, it has support for a larger variety of version control systems than Trac, and most importantly (for me), it has support for multiple projects (including sub-projects of projects) within a single, cohesive web interface.\r\n"
 tags:
   - Email
   - Redmine

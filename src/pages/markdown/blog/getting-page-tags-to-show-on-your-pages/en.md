@@ -1,7 +1,7 @@
 ---
 title: Getting page tags to show on your Wordpress pages
 date: '2010-03-24'
-summary: "A number of users of [Page Tagger](no-longer-valid) have emailed in asking how to get their page tags showing on their pages. So I thought I'd put up a short blog post on how to do this.\r\n\r\nOnce you've happily tagged your pages using Page Tagger you need to edit your theme's `page.php` template. This is the [template which gets used by Wordpress](no-longer-valid) whenever you view a static page (as opposed to a blog post) on your site.\r\n"
+summary: "A number of users of Page Tagger have emailed in asking how to get their page tags showing on their pages. So I thought I'd put up a short blog post on how to do this.\r\n\r\nOnce you've happily tagged your pages using Page Tagger you need to edit your theme's `page.php` template. This is the template which gets used by Wordpress whenever you view a static page (as opposed to a blog post) on your site.\r\n"
 tags:
   - Wordpress
   - Page Tagger

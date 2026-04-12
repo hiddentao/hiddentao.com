@@ -1,7 +1,7 @@
 ---
 title: EtherPing - get notified when you receive Ethereum payments
 date: '2016-05-14'
-summary: "My friend [Jeff Lau](http:&#47;&#47;jefflau.net) and I this week finished work on [EtherPing](https://web.archive.org/web/20240613234520/http://etherping.com/), a simple web service which notifies you by email when your [Ethereum](https:&#47;&#47;ethereum.org&#47;) address receives a payment. EtherPing monitors the global Ethereum network for transactions sent to your specified address and emails you according to the notification rules you have setup. You can get notified as soon as a transaction appears on the network and then again after a certain no. of \"confirmation\" (i.e. blocks in the blockchain) have passed since your transaction first appeared. Best part is, you don't need to sign-up and it's totally free!\r\n"
+summary: "My friend Jeff Lau and I this week finished work on EtherPing, a simple web service which notifies you by email when your Ethereum address receives a payment. EtherPing monitors the global Ethereum network for transactions sent to your specified address and emails you according to the notification rules you have setup. You can get notified as soon as a transaction appears on the network and then again after a certain no. of \"confirmation\" (i.e. blocks in the blockchain) have passed since your transaction first appeared. Best part is, you don't need to sign-up and it's totally free!\r\n"
 tags:
   - node.js
   - Ethereum

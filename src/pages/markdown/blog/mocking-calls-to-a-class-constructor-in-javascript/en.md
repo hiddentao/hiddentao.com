@@ -1,7 +1,7 @@
 ---
 title: Mocking calls to a class constructor in Javascript
 date: '2013-06-10'
-summary: "The other day, whilst writing tests with [SinonJS](http:&#47;&#47;sinonjs.org&#47;) I realised that there was no obvious way of mocking calls to class constructors in Javascript. A quick search for _\"mocking Javascript class constructor\"_ [did](no-longer-valid) [lead](https://web.archive.org/web/20221001015506/https://stackoverflow.com/questions/9347631/spying-on-a-constructor-using-jasmine) [me](no-longer-valid) to some helpful answers. \r\n"
+summary: "The other day, whilst writing tests with SinonJS I realised that there was no obvious way of mocking calls to class constructors in Javascript. A quick search for _\"mocking Javascript class constructor\"_ did lead me to some helpful answers. \r\n"
 tags:
   - Javascript
   - node.js

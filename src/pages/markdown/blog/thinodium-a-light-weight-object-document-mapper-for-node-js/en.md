@@ -1,7 +1,7 @@
 ---
 title: Thinodium - a light-weight Object Document Mapper for Node.js
 date: '2016-05-08'
-summary: "I've just released [Thinodium](https:&#47;&#47;github.com&#47;hiddentao&#47;thinodium), a flexible yet light-weight Object Document Mapper (ODM) for Node.js. In this post I'm going to talk about what it is, why it's useful, and my motivations for building it the way I did.\r\n"
+summary: "I've just released Thinodium, a flexible yet light-weight Object Document Mapper (ODM) for Node.js. In this post I'm going to talk about what it is, why it's useful, and my motivations for building it the way I did.\r\n"
 tags:
   - node.js
   - Database

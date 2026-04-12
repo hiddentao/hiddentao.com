@@ -1,7 +1,7 @@
 ---
 title: Do online music stores share the same back-end database?
 date: '2009-08-07'
-summary: "A couple of days ago I bought the classic track **Amen UK - Passion (Paul Masterson Radio Edit)** from <a href=\"http:&#47;&#47;www.tescodigital.com&#47;Store&#47;Pages&#47;SearchResults2.aspx?searchexpression=Amen+UK&searchtype=AllProducts\">TescoDigital<&#47;a> - Tesco's online music store. I purchased it, downloaded it and then loaded it into Winamp. What came out of my speakers sounded totally different to <a href=\"no-longer-valid)\">what I was expecting<&#47;a>. So I went back to Tesco's webpage and previewed the track, thinking that it might just have been a downloading error in their system. Turns out the preview track sounds exactly the same as what I had been given in the download, and therefore also wrong. I immediately fired off an email to their customer support team regarding the matter and am still awaiting a reply.\r\n"
+summary: "A couple of days ago I bought the classic track **Amen UK - Passion (Paul Masterson Radio Edit)** from TescoDigital - Tesco's online music store. I purchased it, downloaded it and then loaded it into Winamp. What came out of my speakers sounded totally different to what I was expecting. So I went back to Tesco's webpage and previewed the track, thinking that it might just have been a downloading error in their system. Turns out the preview track sounds exactly the same as what I had been given in the download, and therefore also wrong. I immediately fired off an email to their customer support team regarding the matter and am still awaiting a reply.\r\n"
 tags:
   - Music
   - Mp3
