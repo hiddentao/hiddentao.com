@@ -120,10 +120,12 @@ const ServicesPage = () => {
                 <div className="mono mb-4">{e.tag}</div>
                 <h3>{e.name}</h3>
                 <p>{e.description}</p>
+                <div className="mt-8">
+                  <BookCallButton label="BOOK_CALL()" />
+                </div>
               </div>
             ))}
           </div>
-          <BookCallButton label="BOOK_CALL()" />
         </CyberSection>
 
         <CyberSection tag="OFFERINGS">

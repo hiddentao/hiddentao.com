@@ -362,12 +362,18 @@
   }
 
   .glass-card {
+    display: flex;
+    flex-direction: column;
     background: color-mix(in srgb, var(--color-surface) 80%, transparent);
     border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 4px;
     transition: all 0.3s;
+  }
+
+  .glass-card > :last-child {
+    margin-top: auto;
   }
 
   a.glass-card {
