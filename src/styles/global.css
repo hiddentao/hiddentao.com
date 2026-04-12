@@ -161,16 +161,6 @@
     font-family: var(--font-mono);
   }
 
-  .cyber-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-    padding-top: 1rem;
-    color: var(--color-caribbean-green);
-    font-size: 1.1rem;
-  }
-
   a.brand {
     font-size: 1.25rem;
     font-weight: bold;
@@ -181,20 +171,6 @@
   a.brand:hover {
     color: var(--color-caribbean-green);
     background-color: transparent;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .nav-links a {
-    color: var(--color-caribbean-green);
-    text-decoration: none;
-  }
-
-  .nav-links a:hover {
-    color: var(--color-white);
   }
 
   .terminal-top {
@@ -392,6 +368,12 @@
     padding: 2rem;
     border-radius: 4px;
     transition: all 0.3s;
+  }
+
+  a.glass-card {
+    text-decoration: none;
+    display: block;
+    color: inherit;
   }
 
   a.glass-card:hover {

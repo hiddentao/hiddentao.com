@@ -5,6 +5,7 @@ import { graphql, Link } from "gatsby"
 import { DiscussionEmbed } from "disqus-react"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
+import CyberContainer from "../components/cyberContainer"
 import Layout from "../components/layout"
 import PageLastUpdatedDate from "../components/pageLastUpdatedDate"
 import SEO from "../components/seo"
@@ -64,7 +65,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
   return (
     <Layout>
       <SEO title={fields.title} description={summary} ogi={fields.ogi} />
-      <div className="cyber-container mt-12 mb-8">
+      <CyberContainer className="mb-8">
         {type === 'blog' ? (
           <h1 className="cyber-h1 text-[3rem] mb-4">{fields.title}</h1>
         ) : (
@@ -97,7 +98,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
             </Location>
           </div>
         ) : null}
-      </div>
+      </CyberContainer>
     </Layout>
   )
 }

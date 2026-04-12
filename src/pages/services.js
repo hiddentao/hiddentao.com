@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import BookCallButton from "../components/bookCallButton"
+import CyberContainer from "../components/cyberContainer"
 
 const services = [
   {
@@ -29,7 +30,7 @@ const ServicesPage = () => {
     <Layout>
       <SEO title="Services" description="Software consulting services, architecture sprints, build phases, and fractional CTO." />
 
-      <div className="cyber-container mt-12 mb-32">
+      <CyberContainer className="mb-32">
         <div className="mb-16">
           <h1 className="cyber-h1 mono">/services</h1>
         </div>
@@ -46,8 +47,14 @@ const ServicesPage = () => {
 
         <div className="btn-container justify-center mt-24">
           <BookCallButton label="BOOK_CALL()" />
+          <a
+            href="https://linkedin.com/in/hiddentao"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mono"
+          >VIEW_PAST_WORK()</a>
         </div>
-      </div>
+      </CyberContainer>
     </Layout>
   )
 }

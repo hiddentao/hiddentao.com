@@ -2,24 +2,25 @@ import { graphql } from "gatsby"
 import { emojify } from "node-emoji"
 import React from "react"
 import Layout from "../components/layout"
+import CyberContainer from "../components/cyberContainer"
 import CyberLink from "../components/cyberLink"
+import CyberSection from "../components/cyberSection"
 import SEO from "../components/seo"
 
-const ProjectsPage = ({ data }) => {
+const CodePage = ({ data }) => {
   const repos = data.allGithubRepo.nodes
   const projects = data.allExternalProject.nodes
 
   return (
     <Layout>
-      <SEO title="Projects" description="Open source libraries and products by Ram" />
+      <SEO title="Code" description="Open source libraries and products by Ram" />
 
-      <div className="cyber-container mt-12 mb-32">
+      <CyberContainer className="mb-32">
         <div className="mb-12">
-          <h1 className="cyber-h1 mono">/projects</h1>
+          <h1 className="cyber-h1 mono">/code</h1>
         </div>
 
-        <section className="cyber-section">
-          <div className="section-tag mono"># OPEN_SOURCE</div>
+        <CyberSection tag="OPEN_SOURCE">
           <div className="grid-3">
             {repos.map(repo => (
               <a
@@ -27,7 +28,7 @@ const ProjectsPage = ({ data }) => {
                 href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card no-underline block text-inherit"
+                className="glass-card"
                 data-tooltip-id="app-tooltip"
                 data-tooltip-content={emojify(`View ${repo.name} on GitHub — ${repo.stars.toLocaleString()} stars`)}
               >
@@ -40,10 +41,9 @@ const ProjectsPage = ({ data }) => {
             ))}
           </div>
           <CyberLink href="https://github.com/hiddentao" tooltip="See all repos on GitHub">cd /github && ls -a &rarr;</CyberLink>
-        </section>
+        </CyberSection>
 
-        <section className="cyber-section">
-          <div className="section-tag mono"># PROJECTS</div>
+        <CyberSection tag="PROJECTS">
           <div className="grid-3">
             {projects.map(project => (
               <a
@@ -51,7 +51,7 @@ const ProjectsPage = ({ data }) => {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card no-underline block text-inherit"
+                className="glass-card"
                 data-tooltip-id="app-tooltip"
                 data-tooltip-content={`Visit ${project.name}`}
               >
@@ -60,8 +60,8 @@ const ProjectsPage = ({ data }) => {
               </a>
             ))}
           </div>
-        </section>
-      </div>
+        </CyberSection>
+      </CyberContainer>
     </Layout>
   )
 }
@@ -89,4 +89,4 @@ export const query = graphql`
   }
 `
 
-export default ProjectsPage
+export default CodePage

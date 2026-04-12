@@ -44,9 +44,9 @@ const Layout = ({ children, noHeader, noFooter }) => {
       path: '/talks'
     },
     {
-      regexTest: /projects/,
-      label: 'Projects',
-      path: '/projects'
+      regexTest: /code/,
+      label: 'Code',
+      path: '/code'
     },
   ], [])
 

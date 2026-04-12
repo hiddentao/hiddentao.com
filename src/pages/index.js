@@ -2,9 +2,11 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 import React from "react"
 import Helmet from "react-helmet"
 
+import CyberContainer from "../components/cyberContainer"
 import Layout from "../components/layout"
 import BookCallButton from "../components/bookCallButton"
 import CyberLink from "../components/cyberLink"
+import CyberSection from "../components/cyberSection"
 import { getResolvedVersionForLanguage } from "../utils/node"
 import { formatDate } from "../utils/date"
 
@@ -47,7 +49,7 @@ const IndexPage = () => {
       </Helmet>
 
       <div>
-        <div className="cyber-container">
+        <CyberContainer className="mt-0">
 
           <div className="terminal-top">
             <div className="dot dot-r"></div>
@@ -80,8 +82,7 @@ const IndexPage = () => {
             <a href="https://www.nbcuniversal.com" target="_blank" rel="noopener noreferrer">NBC Universal</a>
           </div>
 
-          <section className="cyber-section" id="work">
-            <div className="section-tag mono"># HOW_I_WORK</div>
+          <CyberSection tag="HOW_I_WORK" id="work">
             <div className="grid-3">
               <div className="glass-card">
                 <div className="mono mb-4">[1-2_WEEKS]</div>
@@ -99,10 +100,9 @@ const IndexPage = () => {
                 <p>Part-time technical leadership. I set tech strategy, mentor developers, make decisions, and act as the technical voice in the room.</p>
               </div>
             </div>
-          </section>
+          </CyberSection>
 
-          <section className="cyber-section">
-            <div className="section-tag mono"># VERIFICATION</div>
+          <CyberSection tag="VERIFICATION">
             <div className="testimonial-box">
               <p>"Ram is self-motivated and takes personal pride... He was able to guide us through evolving best practices while consistently delivering ahead of schedule."</p>
               <div className="testimonial-author mono">-- Theodore_Georgas @ OnRe</div>
@@ -117,10 +117,9 @@ const IndexPage = () => {
               data-tooltip-id="app-tooltip"
               data-tooltip-content="Read 14 more recommendations on LinkedIn"
             >+ more_on_LinkedIn()</a>
-          </section>
+          </CyberSection>
 
-          <section className="cyber-section">
-            <div className="section-tag mono"># SYSTEM_STATS</div>
+          <CyberSection tag="SYSTEM_STATS">
             <div className="metrics">
               <div className="metric-item"><div className="metric-value mono">20+</div><div className="metric-label mono">YRS SHIPPING</div></div>
               <div className="metric-item"><div className="metric-value mono">20+</div><div className="metric-label mono">INVESTMENTS</div></div>
@@ -128,9 +127,9 @@ const IndexPage = () => {
               <div className="metric-item"><div className="metric-value mono">16</div><div className="metric-label mono">LINKEDIN_RECS</div></div>
               <div className="metric-item"><div className="metric-value mono">100+</div><div className="metric-label mono">TECH_POSTS</div></div>
             </div>
-          </section>
+          </CyberSection>
 
-          <section className="cyber-section grid-2">
+          <CyberSection className="grid-2">
             <div>
               <div className="section-tag mono"># OPEN_SOURCE</div>
               {repos.map(repo => (
@@ -147,7 +146,7 @@ const IndexPage = () => {
                   <p>{repo.description}</p>
                 </a>
               ))}
-              <CyberLink to="/projects" tooltip="See all projects">cd /projects && ls -a &rarr;</CyberLink>
+              <CyberLink to="/code" tooltip="See all code">cd /code && ls -a &rarr;</CyberLink>
             </div>
             <div>
               <div className="section-tag mono"># BLOG</div>
@@ -163,8 +162,8 @@ const IndexPage = () => {
               </ul>
               <CyberLink to="/blog" tooltip="Browse all blog posts">cd /blog && ls -a &rarr;</CyberLink>
             </div>
-          </section>
-        </div>
+          </CyberSection>
+        </CyberContainer>
       </div>
     </Layout>
   )

@@ -1,9 +1,10 @@
 import React from "react"
 import BookCallButton from "./bookCallButton"
+import CyberContainer from "./cyberContainer"
 
 const Footer = () => (
   <div className="cyber-footer">
-    <div className="cyber-container">
+    <CyberContainer className="mt-0">
       <div className="text-center">
         <h2 className="text-white text-[2.5rem] mb-4">Let's connect().</h2>
         <p className="text-mid-grey text-[1.2rem] mb-6">Book a free call to see how I can help you.</p>
@@ -43,7 +44,7 @@ const Footer = () => (
           >EMAIL</a>
         </div>
       </div>
-    </div>
+    </CyberContainer>
   </div>
 )
 

@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
 import { parseDate } from "../utils/date"
+import CyberContainer from "../components/cyberContainer"
 import Layout from "../components/layout"
 import PostList from "../components/postList"
 import SEO from "../components/seo"
@@ -45,7 +46,7 @@ const Page = ({ lang, data }) => {
   return (
     <Layout>
       <SEO title='Blog archive' />
-      <div className="cyber-container mt-12 mb-8">
+      <CyberContainer className="mb-8">
         <h1 className="cyber-h1 mono mb-12">/blog</h1>
         {postsByYear.map(( { year, posts }) => (
           <div key={year} className="[&_h3]:pb-[0.7rem] [&_h3]:border-b [&_h3]:border-dark-grey [&_h3]:mt-12 [&_h3]:mb-4">
@@ -53,7 +54,7 @@ const Page = ({ lang, data }) => {
             <PostList posts={posts} />
           </div>
         ))}
-      </div>
+      </CyberContainer>
     </Layout>
   )
 }

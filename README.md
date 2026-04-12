@@ -6,6 +6,10 @@ Live: https://hiddentao.com
 
 _Note: pre-builds for `node-canvas` aren't available for arm64 MacOS, so you'll need to [build it yourself](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Mac-OS-X)_
 
+Requirements:
+
+* Node.js 24+
+
 To start dev server:
 
 ```shell
@@ -16,6 +20,7 @@ npm start
 To just build:
 
 ```shell
+export DATOCMS_API_TOKEN=...
 npm run build
 ```
 

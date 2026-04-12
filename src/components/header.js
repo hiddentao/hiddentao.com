@@ -13,7 +13,7 @@ const mobileLinkClass = "text-white no-underline hover:text-white hover:bg-carib
 const NAV_ITEMS = [
   { to: '/services', label: '/services', regex: /services/ },
   { to: '/blog', label: '/blog', regex: /blog/ },
-  { to: '/projects', label: '/projects', regex: /projects/ },
+  { to: '/code', label: '/code', regex: /code/ },
   { to: '/talks', label: '/talks', regex: /talks/ },
 ]
 
