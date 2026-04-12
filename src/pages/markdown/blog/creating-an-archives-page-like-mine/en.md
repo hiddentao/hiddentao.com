@@ -1,11 +1,11 @@
 ---
 title: Creating an archives page like mine
 date: '2009-09-22'
-summary: "A plugin user recently wrote in asking me how to create an [archives page like mine](&#47;archives&#47;). So I thought I'd give everyone the lowdown on how to do this in this post.\r\n"
+summary: "A plugin user recently wrote in asking me how to create an [archives page like mine](no-longer-valid). So I thought I'd give everyone the lowdown on how to do this in this post.\r\n"
 tags:
   - Wordpress
 ---
-A plugin user recently wrote in asking me how to create an [archives page like mine](/archives/). So I thought I'd give everyone the lowdown on how to do this in this post.
+A plugin user recently wrote in asking me how to create an [archives page like mine](no-longer-valid). So I thought I'd give everyone the lowdown on how to do this in this post.
 
 First of all, there is no search box on my site just now because 1) I didn't think I had enough content to warrant this, and 2) I tag all the content I create quite extensively. So my archives view doesn't handle search results. Nor does it handle querying for specific dates, categories or authors. But I do handle querying for tags. Secondly, all the relevant template files from my theme for making this work can be found at the [bottom](#files).
 
@@ -47,7 +47,7 @@ require_once('archive_show_posts_by_month.inc.php');
 
 The **archive_show_posts_by_month.inc.php** script does exactly what it says on the tin. It takes the ``$list_of_posts`` array and outputs the posts, grouped by month. Now you might wonder why I'm calling ``query_posts`` and performing a database fetch. It's because by default Wordpress has only fetched the contents of the static page located at */archives* since that's what it thinks is being displayed to the user. So in this code I fetch all the blog posts from the database (if you have more than 10,000 blog posts then by all means use a larger number in the query).
 
-So that's the display of the [initial archives page](/archives/) done. Now for the tag-specific archives ([example](/archives/tag/code/))...
+So that's the display of the [initial archives page](no-longer-valid) done. Now for the tag-specific archives ([example](no-longer-valid))...
 
 ## Archives for a given tag
 
@@ -123,5 +123,5 @@ This code splits the list of entries (already loaded by Wordpress since you're v
 
 ## Files
 
-Template files from my theme: [ZIP file](/downloads/hiddentao_archives.zip).
+Template files from my theme: [ZIP file](no-longer-valid).
 

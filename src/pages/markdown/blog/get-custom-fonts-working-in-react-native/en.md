@@ -195,4 +195,4 @@ fontMaker({ family: 'Tahoma' })
 
 And that's it, all done 😃.
 
-_Massive thanks to [https://blog.bam.tech/developper-news/add-a-custom-font-to-your-react-native-app](https://blog.bam.tech/developper-news/add-a-custom-font-to-your-react-native-app) for helping me get this working._
+_Massive thanks to [https://blog.bam.tech/developper-news/add-a-custom-font-to-your-react-native-app](https://web.archive.org/web/20190920180114/https://blog.bam.tech/developper-news/add-a-custom-font-to-your-react-native-app) for helping me get this working._

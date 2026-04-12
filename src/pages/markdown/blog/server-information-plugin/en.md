@@ -10,7 +10,7 @@ I do all the development work for this site on my local machine, using a mirror 
 <a id="more"></a><a id="more-318"></a>
 The problem is, when viewing the local copy of the site it looks exactly the same as the live website, especially since I'm using the same database data. And I've always got lots of browser windows open, as I test and compare changes between the live website and the local copy. Very recently I caught myself making some big changes in the live website administration pages, thinking I was accessing the local copy. I decided that I needed an easily visible way of knowing which server the website I'm accessing is running on.
 
-And behold - the [Server-Info](/code/wordpress-server-info-plugin/ "Server-Info plugin") plugin. Once enabled it will display a floating box at the top-left-hand corner of the webpage, containing the hostname and IP address of the webserver. The box will remain in that position, even when you scroll the page:
+And behold - the [Server-Info](no-longer-valid "Server-Info plugin") plugin. Once enabled it will display a floating box at the top-left-hand corner of the webpage, containing the hostname and IP address of the webserver. The box will remain in that position, even when you scroll the page:
 
 ![Server-Info box](http://farm4.static.flickr.com/3615/3401500736_8312c67db6_o.png)
 

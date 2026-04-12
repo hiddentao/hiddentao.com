@@ -114,7 +114,7 @@ app.use(function *(){
 app.listen(3000);
 ```
 
-_Note: For simplicity sake I wrap the React output in a HTML string in the above code. In a practical implementation I would use a template engine like [Jade](http://jade-lang.com/) instead_.
+_Note: For simplicity sake I wrap the React output in a HTML string in the above code. In a practical implementation I would use a template engine like [Jade](no-longer-valid) instead_.
 
 ## Final thoughts
 

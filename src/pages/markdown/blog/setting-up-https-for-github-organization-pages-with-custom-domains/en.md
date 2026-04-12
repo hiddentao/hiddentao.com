@@ -31,17 +31,17 @@ Go into the settings for the repository and set the _Custom Domain_ to `myorg.co
 
 Sign up for a Cloudflare account and setup your DNS **A** records such that `myorg.com` point to Github's IP addresses: `192.30.252.153`, `192.30.252.154`:
 
-[![](https://c2.staticflickr.com/8/7416/27796197220_1bc14135b4.jpg)](https://www.flickr.com/photos/91055277@N00/27796197220/)
+[![](https://c2.staticflickr.com/8/7416/27796197220_1bc14135b4.jpg)](no-longer-valid)
 
 If you like you can also setup records for the `www` subdomain pointing to the same IP addresses.
 
 Go into the Crypto tab and ensure **Flexible** is selected as the SSL setting.
 
-[](https://www.flickr.com/photos/91055277@N00/27796197220/)[![](https://c2.staticflickr.com/8/7302/27796197160_d4c0b62c89_z.jpg)](https://www.flickr.com/photos/91055277@N00/27796197160/)
+[](no-longer-valid)[![](https://c2.staticflickr.com/8/7302/27796197160_d4c0b62c89_z.jpg)](no-longer-valid)
 
 Finally, let's setup page rules to ensure all HTTP traffic is auto-redirected to HTTP.
 
-[](https://www.flickr.com/photos/91055277@N00/27796197160/)[![](https://c2.staticflickr.com/8/7403/27463332504_52bcfb0f37_z.jpg)](https://www.flickr.com/photos/91055277@N00/27463332504/)
+[](no-longer-valid)[![](https://c2.staticflickr.com/8/7403/27463332504_52bcfb0f37_z.jpg)](no-longer-valid)
 
 Create another rule like the above, except set the URL to `http://*myorg.com`. This will ensure all calls to the base domain (i.e. without a URL path) are also auto-redirected to HTTPS.
 

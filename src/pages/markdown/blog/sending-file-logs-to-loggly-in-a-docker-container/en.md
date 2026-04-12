@@ -13,7 +13,7 @@ I'm going to assume that you are building your docker container using a [Dockerf
 
 **Syslog-ng config**
 
-We're going to use [syslog-ng](https://www.balabit.com/network-security/syslog-ng) - an open source implementation of the syslog protocol - to actually watch the log files for changes and send them to Loggly. We need to configure syslog-ng and tell it what to do. We want to send the actual `syslog` as well as the log files for our app, which will be running as a server with the container. The below configuration is based on the [Loggly docs for syslog-ng](http://www.loggly.com/docs/syslog-ng-manual-configuration/):
+We're going to use [syslog-ng](https://www.balabit.com/network-security/syslog-ng) - an open source implementation of the syslog protocol - to actually watch the log files for changes and send them to Loggly. We need to configure syslog-ng and tell it what to do. We want to send the actual `syslog` as well as the log files for our app, which will be running as a server with the container. The below configuration is based on the [Loggly docs for syslog-ng](no-longer-valid):
 
 ```  
 ##############################
@@ -59,7 +59,7 @@ log {
 
 In the above configuration I'm watching both `/var/log/syslog` and two app log files for changes and then sending them to Loggly with the tags `syslog` and `app` respectively.
 
-The tagging allows me to easily filter the logs within the Loggly dashboard. The `<loggly_token>` above should replaced by your own [customer authentication token](https://www.loggly.com/docs/customer-token-authentication-token/) provided by Loggly.</loggly_token>
+The tagging allows me to easily filter the logs within the Loggly dashboard. The `<loggly_token>` above should replaced by your own [customer authentication token](no-longer-valid) provided by Loggly.</loggly_token>
 
 **DOCKERFILE**
 

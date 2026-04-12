@@ -58,6 +58,11 @@
   background-color: rgba(255, 209, 102, 0.5);
 }
 
+.markdown-body abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
 .markdown-body .md-paragraph {
   margin: 1em 0;
 }

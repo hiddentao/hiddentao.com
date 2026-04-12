@@ -12,7 +12,7 @@ Fast forward many hours of coding and we have a simple demo:
 
 ![](http://farm3.static.flickr.com/2770/4289736971_b0f35bc880.jpg)
 
-[Try it in your browser!](/code/3d-graphics/)
+[Try it in your browser!](no-longer-valid)
 
 *The demo consists of 3 separate scenes. You can switch between by simply clicking in the window. Further mouse and keyboard controls are listed in the demo window itself. Debug output from the demo is viewable in the Java applet console*
 
@@ -22,7 +22,7 @@ I've tried to use good object-oriented programming as much as possible throughou
 
 At the moment the only available renderer is software-based. But the architecture allows for OpenGL or DirectX-based rendering to be added in future. I use the ``Graphics2D.drawLine()`` API call in Java to render the pixels. Everything else (e.g. z-buffer) is manually implemented. The engine supports wireframe-mode rendering and backface culling. There is a single source light in the scene whose direction can be modified (in the demo it's always pointing forwards from the camera). The rasterizer currently uses flat shading - next would be to add [Gouraud and Phong](http://en.wikipedia.org/wiki/Gouraud_shading), not to mention texturing.
 
-3D rotation on world objects are performed using matrix multiplication. The camera is rotated using Quaternions since this made it simpler to use the [UVN](http://www.devmaster.net/articles/viewing-systems/) camera model. The third scene in the demo above is animated; this is accomplished using a simple timer thread using which any number of events can be scheduled for execution at given time intervals.
+3D rotation on world objects are performed using matrix multiplication. The camera is rotated using Quaternions since this made it simpler to use the [UVN](no-longer-valid) camera model. The third scene in the demo above is animated; this is accomplished using a simple timer thread using which any number of events can be scheduled for execution at given time intervals.
 
 **Performance**
 
@@ -32,4 +32,4 @@ However, when I finally started rendering things I found that the performance bo
 
 **Download**
 
-The engine code is licensed under the LGPL and is available [here](/code/3d-graphics/).
+The engine code is licensed under the LGPL and is available [here](no-longer-valid).

@@ -32,6 +32,17 @@ const RenderImage = ({ src, alt, title }) => {
 }
 
 const RenderAnchor = ({ href, title, children }) => {
+  if (href === 'no-longer-valid') {
+    return (
+      <span
+        data-tooltip-id="app-tooltip"
+        data-tooltip-content="Sorry, this URL is no longer accessible"
+        className="invalid-url"
+      >
+        {children}
+      </span>
+    )
+  }
   if (!href || href.startsWith('http')) {
     return <a href={href} title={title}>{children}</a>
   }

@@ -67,4 +67,4 @@ So here's an improved version of `angular.module()` which wraps the original met
 })(angular);
 ```
 
-Also available as a GIST: [https://gist.github.com/hiddentao/7300694](https://gist.github.com/hiddentao/7300694)
+Also available as a GIST: [https://gist.github.com/hiddentao/7300694](no-longer-valid)

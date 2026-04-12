@@ -1,13 +1,13 @@
 ---
 title: Javascript array and object lookup speeds
 date: '2011-07-20'
-summary: "I'm currently working on an an implementation of the [LZW algorithm](http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Lempel%E2%80%93Ziv%E2%80%93Welch) in Javascript and one of the things I need to decide to test out is whether using an `Array` is faster than using an `Object` for storage and retrieval of items which are indexed numerically. I decided to write a little Javascript test to see which was faster and find out how if the choice of browser made a difference to the relative results.\r\n"
+summary: "I'm currently working on an an implementation of the [LZW algorithm](no-longer-valid) in Javascript and one of the things I need to decide to test out is whether using an `Array` is faster than using an `Object` for storage and retrieval of items which are indexed numerically. I decided to write a little Javascript test to see which was faster and find out how if the choice of browser made a difference to the relative results.\r\n"
 tags:
   - Javascript
   - Algorithms
   - Performance
 ---
-I'm currently working on an an implementation of the [LZW algorithm](http://en.wikipedia.org/wiki/Lempel–Ziv–Welch) in Javascript and one of the things I need to decide to test out is whether using an `Array` is faster than using an `Object` for storage and retrieval of items which are indexed numerically. I decided to write a little Javascript test to see which was faster and find out how if the choice of browser made a difference to the relative results.
+I'm currently working on an an implementation of the [LZW algorithm](no-longer-valid) in Javascript and one of the things I need to decide to test out is whether using an `Array` is faster than using an `Object` for storage and retrieval of items which are indexed numerically. I decided to write a little Javascript test to see which was faster and find out how if the choice of browser made a difference to the relative results.
 
 As you may already know Javascript arrays are pretty much the same as objects and with some subtle differences (see [ECMA spec](http://bclary.com/2004/11/07/#a-15.4)). Most notably, the `length` properly of an array really does give you the number of items in the array whereas in an object it simply returns the largest index 1\. So technically speaking it shouldn't make a difference whether you use an array or an object to store your values.
 

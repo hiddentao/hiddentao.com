@@ -46,7 +46,7 @@ Now everything combined take up only 16 bits of space in RAM, meaning 64 bits in
 raw memory. This is a much more memory efficient scheme. The only thing we
 need to be able to do is read individual bits within the integer. We
 can use _bitwise_ operators to do this. Note that bits are counted from
-[right to left]((https://www.techopedia.com/definition/8030/least-significant-bit-lsb)):
+[right to left]((no-longer-valid):
 
 ```solidity
 uint16 a = 397; // equals 0110001101 in binary
@@ -68,7 +68,7 @@ a = a | (1 << 4)
 
 **Battleship**
 
-In my [Ethereum-based implementation of Battleship](https://github.com/eth-battleship/eth-battleship.github.io),
+In my [Ethereum-based implementation of Battleship](no-longer-valid),
 I use bitmaps to both store each player's game board as well as their list of
 moves against their opponent's board.
 
@@ -185,7 +185,7 @@ values to represent each player's moves.
 
 **Kickback**
 
-Kickback is an [event attendee management platform](https://github.com/wearekickback/contracts)
+Kickback is an [event attendee management platform](no-longer-valid)
 I'm currently working on. In Kickback we want to tell the smart contract who
 showed up to an event and who didn't. This is an effect a real world
 implementation of the example I presented earlier in this post.
@@ -222,7 +222,7 @@ function finalize(uint256[] _maps) external onlyAdmin onlyActive {
 
 Note that we first check to see that the current no. of `uint256` numbers have
 been provided. We then save the "attendance bitmaps" for use later on, and use the
-[Brian Kerninghan method](https://stackoverflow.com/questions/12380478/bits-counting-algorithm-brian-kernighan-in-an-integer-time-complexity) for counting the no. of set bits. This algorithm goes through
+[Brian Kerninghan method](no-longer-valid) for counting the no. of set bits. This algorithm goes through
 as many iterations as there are set bits, meaning that if only 2 people
 attended then only 2 iterations of the loop would be needed to get the final count.
 

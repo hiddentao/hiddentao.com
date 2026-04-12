@@ -37,11 +37,11 @@ The output looks something like this:
 
 ![screenshot](mocha-ci-slack-reporter-screenshot.png)
 
-_**Note:** One issue with getting this reporter working in a CI environment was that the HTTP call to notify Slack was often not completing before the test process finished running, due to Mocha not expecting reporters to be asynchronous. To get around this I had to use the [sync-request](https://www.npmjs.com/package/sync-request) package, which effectively allows you to do synchronous HTTP request. This package shouldn't be used in production code but it's perfect for the use-case of running tests in a CI environment!_
+_**Note:** One issue with getting this reporter working in a CI environment was that the HTTP call to notify Slack was often not completing before the test process finished running, due to Mocha not expecting reporters to be asynchronous. To get around this I had to use the [sync-request](no-longer-valid) package, which effectively allows you to do synchronous HTTP request. This package shouldn't be used in production code but it's perfect for the use-case of running tests in a CI environment!_
 
 In addition to getting these nice-looking notifications in Slack, we still wanted to see the test failures and other details visible within the build console logs.
 
-Since Mocha only allows for the use of one reporter at a time the trick is to use the [mocha-multi-reporters](https://www.npmjs.com/package/mocha-multi-reporters) package to act as a _proxy_ reporter for multiple reporters.
+Since Mocha only allows for the use of one reporter at a time the trick is to use the [mocha-multi-reporters](no-longer-valid) package to act as a _proxy_ reporter for multiple reporters.
 
 This is how we setup our Gulp script to make use of this to enable both the `spec` and the above Slack reporter simultaneously:
 

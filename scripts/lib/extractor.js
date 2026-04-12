@@ -22,8 +22,11 @@ function classifyUrl(url) {
 
   const trimmed = url.trim()
 
-  // Skip non-HTTP schemes and anchors
+  // Skip non-HTTP schemes, anchors, and already-archived URLs
   if (/^(mailto:|tel:|javascript:|data:|#)/i.test(trimmed)) {
+    return { kind: 'skip', normalized: trimmed }
+  }
+  if (/^https?:\/\/web\.archive\.org\//i.test(trimmed) || trimmed === 'no-longer-valid') {
     return { kind: 'skip', normalized: trimmed }
   }
 

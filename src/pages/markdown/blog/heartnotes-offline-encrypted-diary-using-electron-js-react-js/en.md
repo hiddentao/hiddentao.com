@@ -1,7 +1,7 @@
 ---
 title: 'Heartnotes - offline, encrypted diary using Electron.js + React.js'
 date: '2015-08-19'
-summary: "I am proud to announce the release of [Heartnotes](http:&#47;&#47;heartnotes.me), an offline, encrypted personal diary app for desktop, built using [Electron](http:&#47;&#47;electron.atom.io) and [React](https:&#47;&#47;facebook.github.io&#47;react). Heartnotes has been a labour of love for a couple of months now, in between various other projects, and it's my first desktop app for any platform.\r\n\r\nWhat does it do exactly? It allows you to keep a personal diary - one you can write to even when offline. All your data is encrypted (AES-256) by a password your provide and stored within a file which you can then backup any you wish (e.g. using Dropbox).\r\n"
+summary: "I am proud to announce the release of [Heartnotes](https://web.archive.org/web/20180902070722/http://heartnotes.me:80/), an offline, encrypted personal diary app for desktop, built using [Electron](http:&#47;&#47;electron.atom.io) and [React](https:&#47;&#47;facebook.github.io&#47;react). Heartnotes has been a labour of love for a couple of months now, in between various other projects, and it's my first desktop app for any platform.\r\n\r\nWhat does it do exactly? It allows you to keep a personal diary - one you can write to even when offline. All your data is encrypted (AES-256) by a password your provide and stored within a file which you can then backup any you wish (e.g. using Dropbox).\r\n"
 tags:
   - Javascript
   - React.js
@@ -9,7 +9,7 @@ tags:
   - Desktop
   - Encryption
 ---
-I am proud to announce the release of [Heartnotes](http://heartnotes.me), an offline, encrypted personal diary app for desktop, built using [Electron](http://electron.atom.io) and [React](https://facebook.github.io/react). Heartnotes has been a labour of love for a couple of months now, in between various other projects, and it's my first desktop app for any platform.
+I am proud to announce the release of [Heartnotes](https://web.archive.org/web/20180902070722/http://heartnotes.me:80/), an offline, encrypted personal diary app for desktop, built using [Electron](http://electron.atom.io) and [React](https://facebook.github.io/react). Heartnotes has been a labour of love for a couple of months now, in between various other projects, and it's my first desktop app for any platform.
 
 What does it do exactly? It allows you to keep a personal diary - one you can write to even when offline. All your data is encrypted (AES-256) by a password your provide and stored within a file which you can then backup any you wish (e.g. using Dropbox).  
 
@@ -40,5 +40,5 @@ I used [ckEditor](http://ckeditor.com/) to provide editing functionality. I trie
 
 **Links**
 
-* [http://heartnotes.me](http://heartnotes.me) - screenshots and downloads.  
+* [http://heartnotes.me](https://web.archive.org/web/20180902070722/http://heartnotes.me:80/) - screenshots and downloads.  
 * [https://github.com/hiddentao/heartnotes](https://github.com/hiddentao/heartnotes) - source code.

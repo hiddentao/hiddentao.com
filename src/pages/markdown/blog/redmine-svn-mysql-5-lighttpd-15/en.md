@@ -316,9 +316,9 @@ end
 
 References:
 
-* [http://www.redmine.org/wiki/redmine/RedmineInstall](http://www.redmine.org/wiki/redmine/RedmineInstall) 
-* [http://howto.landure.fr/gnu-linux/debian-4-0-etch-en/install-the-redmine-project-management-application-on-debian-4-0-etch](http://howto.landure.fr/gnu-linux/debian-4-0-etch-en/install-the-redmine-project-management-application-on-debian-4-0-etch)
-* [http://forum.lighttpd.net/topic/5539](http://forum.lighttpd.net/topic/5539)
+* [http://www.redmine.org/wiki/redmine/RedmineInstall](https://web.archive.org/web/20100819230211/http://www.redmine.org:80/wiki/Redmine/RedmineInstall) 
+* [http://howto.landure.fr/gnu-linux/debian-4-0-etch-en/install-the-redmine-project-management-application-on-debian-4-0-etch](no-longer-valid)
+* [http://forum.lighttpd.net/topic/5539](no-longer-valid)
 
 ## 2. Subversion repository authentication and browsing ## {#step2}
 
@@ -415,10 +415,10 @@ Now if you restart both Lighttpd and Apache you should be able to access your Su
 
 References:
 
-* [http://forum.lighttpd.net/topic/5539](http://forum.lighttpd.net/topic/5539)
-* [http://www.redmine.org/wiki/redmine/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl](http://www.redmine.org/wiki/redmine/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl)
-* [http://www.redmine.org/boards/2/topics/show/723](http://www.redmine.org/boards/2/topics/show/723)
-* [http://www.redmine.org/boards/2/topics/show/1325](http://www.redmine.org/boards/2/topics/show/1325)
+* [http://forum.lighttpd.net/topic/5539](no-longer-valid)
+* [http://www.redmine.org/wiki/redmine/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl](no-longer-valid)
+* [http://www.redmine.org/boards/2/topics/show/723](https://web.archive.org/web/20111229041702/http://www.redmine.org:80/boards/2/topics/show/723)
+* [http://www.redmine.org/boards/2/topics/show/1325](no-longer-valid)
 
 ## 3. Email notification setup ## {#step3}
 
@@ -489,6 +489,6 @@ After restarting Lighttpd (and thus, Redmine) you should now be able to send a t
 
 References:
 
-* [http://www.redmine.org/issues/show/1598](http://www.redmine.org/issues/show/1598)
+* [http://www.redmine.org/issues/show/1598](https://web.archive.org/web/20120102133513/http://www.redmine.org:80/issues/show/1598)
 * [http://github.com/collectiveidea/action_mailer_optional_tls/tree/master](http://github.com/collectiveidea/action_mailer_optional_tls/tree/master)
-* [http://www.redmine.org/boards/2/topics/show/662](http://www.redmine.org/boards/2/topics/show/662)
+* [http://www.redmine.org/boards/2/topics/show/662](https://web.archive.org/web/20111211014649/http://www.redmine.org:80/boards/2/topics/show/662)

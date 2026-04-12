@@ -132,7 +132,7 @@ public class MyAppActivity extends CordovaActivity
 }
 ```
 
-_Note: the `sendJavascript` method has recently been deprecated in `CordovaActivity`. Check out [how the Ionic framework does it](https://github.com/mysegfault/ionic-plugins-keyboard/blob/master/src/android/IonicKeyboard.java#L94)._
+_Note: the `sendJavascript` method has recently been deprecated in `CordovaActivity`. Check out [how the Ionic framework does it](no-longer-valid)._
 
 Now we just need to update `AndroidManifest.xml` to hook everything up:
 
@@ -215,7 +215,7 @@ Follow the instructions in the [QuickStart guide](https://parse.com/apps/quickst
 }
 ```
 
-Instead of adding this, add the one recommended by the [official iOS docs](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/#//apple_ref/occ/intfm/UIApplicationDelegate/application:didReceiveRemoteNotification:):
+Instead of adding this, add the one recommended by the [official iOS docs](no-longer-valid):
 
 ```cpp  
 - (void)application:(UIApplication *)application

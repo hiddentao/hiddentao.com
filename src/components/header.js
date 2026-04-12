@@ -6,8 +6,8 @@ import Icon from './icon'
 
 const _isViewingUrl = (location, regex) => !!location.pathname.match(regex)
 
-const linkClass = "text-white no-underline hover:text-[var(--color-caribbean-green)] data-[selected=true]:text-[var(--color-caribbean-green)]"
-const mobileLinkClass = "text-white no-underline hover:text-white hover:bg-[var(--color-caribbean-green)] data-[selected=true]:text-[var(--color-caribbean-green)]"
+const linkClass = "text-white no-underline hover:!text-white px-2 py-0.5 data-[selected=true]:text-white data-[selected=true]:outline data-[selected=true]:outline-1 data-[selected=true]:outline-white data-[selected=true]:outline-offset-2 data-[selected=true]:rounded"
+const mobileLinkClass = "text-white no-underline hover:text-white hover:bg-[var(--color-caribbean-green)] data-[selected=true]:text-white data-[selected=true]:outline data-[selected=true]:outline-1 data-[selected=true]:outline-white data-[selected=true]:px-2 data-[selected=true]:py-0.5 data-[selected=true]:rounded"
 
 const NAV_ITEMS = [
   { to: '/services', label: '/services', regex: /services/ },

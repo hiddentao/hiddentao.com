@@ -8,7 +8,7 @@ tags:
   - node.js
   - Squel
 ---
-[Squel](https://squeljs.org) version 1.0.6 is now out. You can now tell Squel to [automatically quote table and field names](http://hiddentao.github.com/squel/#autoquotes). In addition the query builder options code was refactored and simplified.
+[Squel](no-longer-valid) version 1.0.6 is now out. You can now tell Squel to [automatically quote table and field names](no-longer-valid). In addition the query builder options code was refactored and simplified.
 
 **How to use**
 
@@ -54,6 +54,6 @@ Install squel using npm:
 $ npm install squel
 ```
 
-Homepage: [squeljs.org](http://squeljs.org)
+Homepage: [squeljs.org](no-longer-valid)
 
 Github: [github.com/hiddentao/squel](https://github.com/hiddentao/squel)

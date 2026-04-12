@@ -12,7 +12,7 @@ Remember [My Three Words](/archives/2010/03/31/my-three-words/)? Over the last m
 
 You can now get it on Facebook at [http://apps.facebook.com/mythreewords/](http://apps.facebook.com/mythreewords/). And you can share your favourite stories on Facebook itself and invite your friends to play with you.
 
-But the coolest new thing is the little widget (see below) which can be embedded on your website. So your visitors will get to see what crazy story is being concocted right now on [My Three Words](http://mythreewords.com/). To embed the widget onto a webpage simply insert the following line of code where you want the widget to show up:
+But the coolest new thing is the little widget (see below) which can be embedded on your website. So your visitors will get to see what crazy story is being concocted right now on [My Three Words](no-longer-valid). To embed the widget onto a webpage simply insert the following line of code where you want the widget to show up:
 
 ```html
 <script type="text/javascript" src="http://mythreewords.com/widget"></script>

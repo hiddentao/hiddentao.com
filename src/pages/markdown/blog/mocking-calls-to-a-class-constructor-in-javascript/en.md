@@ -1,13 +1,13 @@
 ---
 title: Mocking calls to a class constructor in Javascript
 date: '2013-06-10'
-summary: "The other day, whilst writing tests with [SinonJS](http:&#47;&#47;sinonjs.org&#47;) I realised that there was no obvious way of mocking calls to class constructors in Javascript. A quick search for _\"mocking Javascript class constructor\"_ [did](http:&#47;&#47;stackoverflow.com&#47;questions&#47;7548974&#47;mock-stub-constructor) [lead](http:&#47;&#47;stackoverflow.com&#47;questions&#47;9347631&#47;spying-on-a-constructor-using-jasmine) [me](http:&#47;&#47;stackoverflow.com&#47;questions&#47;14569499&#47;javascript-mocking-constructor-using-sinon) to some helpful answers. \r\n"
+summary: "The other day, whilst writing tests with [SinonJS](http:&#47;&#47;sinonjs.org&#47;) I realised that there was no obvious way of mocking calls to class constructors in Javascript. A quick search for _\"mocking Javascript class constructor\"_ [did](no-longer-valid) [lead](https://web.archive.org/web/20221001015506/https://stackoverflow.com/questions/9347631/spying-on-a-constructor-using-jasmine) [me](no-longer-valid) to some helpful answers. \r\n"
 tags:
   - Javascript
   - node.js
   - Mocking
 ---
-The other day, whilst writing tests with [SinonJS](http://sinonjs.org/) I realised that there was no obvious way of mocking calls to class constructors in Javascript. A quick search for _"mocking Javascript class constructor"_ [did](http://stackoverflow.com/questions/7548974/mock-stub-constructor) [lead](http://stackoverflow.com/questions/9347631/spying-on-a-constructor-using-jasmine) [me](http://stackoverflow.com/questions/14569499/javascript-mocking-constructor-using-sinon) to some helpful answers.
+The other day, whilst writing tests with [SinonJS](http://sinonjs.org/) I realised that there was no obvious way of mocking calls to class constructors in Javascript. A quick search for _"mocking Javascript class constructor"_ [did](no-longer-valid) [lead](https://web.archive.org/web/20221001015506/https://stackoverflow.com/questions/9347631/spying-on-a-constructor-using-jasmine) [me](no-longer-valid) to some helpful answers.
 <a id="more"></a><a id="more-1551"></a>
 
 Generally speaking, you can only mock a method which exists against an object. So in order to mock the `MyClass` constructor you have to mock the `MyClass` method on its container object:

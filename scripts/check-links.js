@@ -7,7 +7,6 @@ const { extractUrls, classifyUrl, decodeHtmlEntities } = require('./lib/extracto
 const { resolveLocalPath, resolveInternalUrl } = require('./lib/localResolver')
 const { checkUrl, isSuspiciousContent } = require('./lib/validator')
 const { findArchive } = require('./lib/archiver')
-const { LinkCache } = require('./lib/cache')
 const { rewriteFile } = require('./lib/rewriter')
 
 // ANSI color helpers
@@ -48,16 +47,12 @@ function parseArgs() {
   const args = process.argv.slice(2)
   const opts = {
     noWrite: false,
-    noCache: false,
-    refreshAll: false,
     glob: null,
     limit: Infinity,
     concurrency: 8,
   }
   for (const arg of args) {
     if (arg === '--no-write') opts.noWrite = true
-    else if (arg === '--no-cache') opts.noCache = true
-    else if (arg === '--refresh-all') { opts.refreshAll = true; opts.noCache = true }
     else if (arg.startsWith('--glob=')) opts.glob = arg.split('=')[1]
     else if (arg.startsWith('--limit=')) opts.limit = parseInt(arg.split('=')[1], 10)
     else if (arg.startsWith('--concurrency=')) opts.concurrency = parseInt(arg.split('=')[1], 10)
@@ -67,8 +62,6 @@ Usage: node scripts/check-links.js [options]
 
 Options:
   --no-write       Dry run: report only, don't modify files
-  --no-cache       Ignore cached results
-  --refresh-all    Re-check all URLs (implies --no-cache)
   --glob=PATTERN   Only process files whose path contains PATTERN
   --limit=N        Only check the first N unique URLs
   --concurrency=N  Max parallel HTTP requests (default: 8)
@@ -85,11 +78,8 @@ Options:
 // ---------------------------------------------------------------------------
 async function main() {
   const opts = parseArgs()
-  const cache = new LinkCache({ disabled: opts.noCache })
-
   console.log(`${C.bold}Link Checker for hiddentao.com${C.reset}`)
   console.log(`  Mode: ${opts.noWrite ? 'report only (--no-write)' : 'in-place rewrite'}`)
-  console.log(`  Cache: ${opts.noCache ? 'disabled' : 'enabled'}`)
   if (opts.glob) console.log(`  Filter: ${opts.glob}`)
   if (opts.limit < Infinity) console.log(`  Limit: ${opts.limit} URLs`)
   console.log()
@@ -151,13 +141,6 @@ async function main() {
 
     const { classification } = info
 
-    // Check cache first
-    const cached = cache.get(url)
-    if (cached) {
-      results.set(url, cached)
-      continue
-    }
-
     const promise = (async () => {
       let result
 
@@ -194,13 +177,12 @@ async function main() {
 
         result = { ...checkResult }
 
-        // Title overlap heuristic for suspicious detection
+        // Title overlap heuristic — treat suspicious as invalid
         if (result.status === 'ok' && result.title) {
-          // Gather all link texts for this URL
           const linkTexts = info.entries.map(e => e.text).filter(Boolean)
           for (const text of linkTexts) {
             if (isSuspiciousContent(text, result.title)) {
-              result.status = 'suspicious'
+              result.status = 'invalid'
               result.reason = `title mismatch (link: "${text}", page: "${result.title}")`
               break
             }
@@ -215,7 +197,6 @@ async function main() {
         }
       }
 
-      cache.set(url, result)
       results.set(url, result)
       checkedCount++
 
@@ -229,15 +210,13 @@ async function main() {
   }
 
   await Promise.all(promises)
-  cache.flush()
-
   if (checkedCount > 0) {
-    process.stdout.write(`\r  Checked ${checkedCount} URLs (+ ${results.size - checkedCount} cached)\n\n`)
+    process.stdout.write(`\r  Checked ${checkedCount} URLs\n\n`)
   }
 
   // 3. Build report and apply rewrites
   const report = {
-    summary: { files: 0, urls: 0, ok: 0, invalid: 0, rewritten: 0, suspicious: 0, unrecoverable: 0, localOk: 0, localBroken: 0 },
+    summary: { files: 0, urls: 0, ok: 0, invalid: 0, rewritten: 0, delinked: 0, localOk: 0, localBroken: 0 },
     files: {},
   }
 
@@ -272,27 +251,25 @@ async function main() {
           report.summary.localOk++
         } else if (result.status === 'ok') {
           report.summary.ok++
-        } else if (result.status === 'suspicious') {
-          report.summary.suspicious++
         } else if (result.status === 'invalid') {
-          if (result.archiveUrl) {
-            report.summary.rewritten++
-          } else {
-            report.summary.unrecoverable++
-          }
           report.summary.invalid++
+          report.summary.rewritten++
+          if (!result.archiveUrl) {
+            report.summary.delinked++
+          }
         }
       }
 
       // Queue ALL occurrences for rewriting (even duplicates need replacement)
-      if (result.status === 'invalid' && result.archiveUrl) {
+      if (result.status === 'invalid') {
+        const newUrl = result.archiveUrl || 'no-longer-valid'
         if (!allReplacements.has(filePath)) {
           allReplacements.set(filePath, [])
         }
         allReplacements.get(filePath).push({
           rawOffset: entry.rawOffset,
           rawLength: entry.rawLength,
-          newUrl: result.archiveUrl,
+          newUrl,
           oldUrl: entry.rawUrl || url,
         })
       }
@@ -322,17 +299,13 @@ async function main() {
         case 'ok':
           console.log(`  ${C.green}OK${C.reset}       ${C.dim}${urlDisplay}${C.reset}`)
           break
-        case 'suspicious':
-          console.log(`  ${C.yellow}SUSPECT${C.reset}  ${urlDisplay}`)
-          console.log(`  ${C.dim}         ${entry.reason}${C.reset}`)
-          break
         case 'invalid':
           if (entry.archiveUrl) {
             console.log(`  ${C.cyan}REWROTE${C.reset}  ${urlDisplay}`)
             console.log(`  ${C.dim}         → ${entry.archiveUrl}${C.reset}`)
           } else {
-            console.log(`  ${C.red}BROKEN${C.reset}   ${urlDisplay}`)
-            console.log(`  ${C.dim}         ${entry.reason}${C.reset}`)
+            console.log(`  ${C.cyan}DELINKED${C.reset} ${urlDisplay}`)
+            console.log(`  ${C.dim}         → no-longer-valid${C.reset}`)
           }
           break
       }
@@ -340,18 +313,10 @@ async function main() {
     console.log()
   }
 
-  // Summary line
-  const s = report.summary
-  console.log(`${C.bold}Summary:${C.reset} ${s.files} files, ${s.urls} URLs`)
-  console.log(`  ${C.green}OK:${C.reset}            ${s.ok + s.localOk} (${s.localOk} local)`)
-  console.log(`  ${C.red}Invalid:${C.reset}       ${s.invalid}`)
-  console.log(`  ${C.cyan}Rewritten:${C.reset}     ${s.rewritten}`)
-  console.log(`  ${C.yellow}Suspicious:${C.reset}    ${s.suspicious}`)
-  console.log(`  ${C.red}Unrecoverable:${C.reset} ${s.unrecoverable}`)
-
   // 5. Apply rewrites (unless --no-write)
+  const s = report.summary
   if (!opts.noWrite && allReplacements.size > 0) {
-    console.log(`\n${C.bold}Applying ${s.rewritten} replacements across ${allReplacements.size} files...${C.reset}`)
+    console.log(`${C.bold}Applying ${s.rewritten} replacements across ${allReplacements.size} files...${C.reset}`)
     for (const [filePath, replacements] of allReplacements) {
       const raw = fs.readFileSync(filePath, 'utf-8')
       const ok = rewriteFile(filePath, raw, replacements)
@@ -360,19 +325,22 @@ async function main() {
         console.log(`  ${C.green}✓${C.reset} ${relPath} (${replacements.length} URLs)`)
       }
     }
+    console.log()
   } else if (opts.noWrite && s.rewritten > 0) {
-    console.log(`\n${C.dim}(dry run — run without --no-write to apply ${s.rewritten} replacements)${C.reset}`)
+    console.log(`${C.dim}(dry run — run without --no-write to apply ${s.rewritten} replacements)${C.reset}\n`)
   }
 
   // 6. Write JSON report
   const reportPath = path.resolve(__dirname, '../link-check-report.json')
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2))
-  console.log(`\n${C.dim}Full report written to link-check-report.json${C.reset}`)
+  console.log(`${C.dim}Full report written to link-check-report.json${C.reset}\n`)
 
-  // Exit with non-zero if there are unrecoverable broken links
-  if (s.unrecoverable > 0) {
-    process.exit(1)
-  }
+  // Final stats
+  console.log(`${C.bold}Summary:${C.reset} ${s.files} files, ${s.urls} URLs`)
+  console.log(`  ${C.green}OK:${C.reset}            ${s.ok + s.localOk} (${s.localOk} local)`)
+  console.log(`  ${C.red}Invalid:${C.reset}       ${s.invalid}`)
+  console.log(`  ${C.cyan}Rewritten:${C.reset}     ${s.rewritten - s.delinked} (archived)`)
+  console.log(`  ${C.cyan}Delinked:${C.reset}      ${s.delinked} (no archive)`)
 }
 
 main().catch(err => {

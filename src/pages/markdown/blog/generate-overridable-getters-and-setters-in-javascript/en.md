@@ -221,4 +221,4 @@ console.log(b.name); // mark oliver
 
 It seems a bit inelegant to have to know the method name of the getter and/or setter in order to override it. We could add more utility methods - e.g. `overrideGetter` and `overrideSetter` - to take care of the gory details if we wanted to.
 
-Meanwhile you can also see the above utility method as a Gist: [https://gist.github.com/hiddentao/5946053](https://gist.github.com/hiddentao/5946053).
+Meanwhile you can also see the above utility method as a Gist: [https://gist.github.com/hiddentao/5946053](https://web.archive.org/web/20260210011535/https://gist.github.com/hiddentao/5946053).

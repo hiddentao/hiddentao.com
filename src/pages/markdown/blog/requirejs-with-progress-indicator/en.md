@@ -34,7 +34,7 @@ function require_load(_list, _callback) {
 
 From here on in we would call our custom `require_load` method rather than `require` itself. The problem is that the RequireJS build tool scans for calls to `require` in our code in order to order to work out which scripts to combine together as part of its optimization step. Our proxy method has now hidden this information from the build tool.
 
-So we need to call our proxy function by the same name, i.e. `require`. But then, how can we refer to the original `require` function without causing recursion? The solution, as nicely explained in [a StackOverflow answer](http://stackoverflow.com/questions/296667/overriding-a-javascript-function-while-referencing-the-original), is to use an anonymous function as follows **(This implementation was found to be incorrect, please see further below)**:
+So we need to call our proxy function by the same name, i.e. `require`. But then, how can we refer to the original `require` function without causing recursion? The solution, as nicely explained in [a StackOverflow answer](https://web.archive.org/web/20241005015650/https://stackoverflow.com/questions/296667/overriding-a-javascript-function-while-referencing-the-original), is to use an anonymous function as follows **(This implementation was found to be incorrect, please see further below)**:
 
 ```js
 var progress = $("#progress");

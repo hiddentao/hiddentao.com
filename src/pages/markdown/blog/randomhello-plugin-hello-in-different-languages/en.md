@@ -6,7 +6,7 @@ tags:
   - Wordpress
   - RandomHello
 ---
-I've always thought it was cool that Flickr would say "Hello" to you in a different language each time you logged in. So a couple of days ago I decided to code up a simple Wordpress plugin which would allow me (and hopefully others!) to do the same on any page or post. And the result is the [RandomHello](/code/wordpress-randomhello-plugin/ "RandomHello plugin page") plugin. The plugin is currently active on this site and you can see it in action on the [homepage](/).
+I've always thought it was cool that Flickr would say "Hello" to you in a different language each time you logged in. So a couple of days ago I decided to code up a simple Wordpress plugin which would allow me (and hopefully others!) to do the same on any page or post. And the result is the [RandomHello](no-longer-valid "RandomHello plugin page") plugin. The plugin is currently active on this site and you can see it in action on the [homepage](/).
 
 I invoke the plugin in a fail-safe manner, i.e. if the plugin isn't active in my Wordpress installation then the homepage will just use the plain English "Hello". The code I used for this is:
 
@@ -21,7 +21,7 @@ else
 }  
 ```
 
-All the 'hello' words in the plugin are grabbed from [http://www.wikihow.com/Say-Hello-in-Different-Languages](http://www.wikihow.com/Say-Hello-in-Different-Languages). The list of languages in the plugin isn't comprehensive. You can add more yourself to the array in the plugin code:
+All the 'hello' words in the plugin are grabbed from [http://www.wikihow.com/Say-Hello-in-Different-Languages](no-longer-valid). The list of languages in the plugin isn't comprehensive. You can add more yourself to the array in the plugin code:
 
 ```php
 class RandomHello  

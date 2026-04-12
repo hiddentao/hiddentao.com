@@ -1,7 +1,7 @@
 ---
 title: Cloud Primecoin mining on Ubuntu 12.04 with auto restart
 date: '2013-11-24'
-summary: "Following [some helpful instructions](http:&#47;&#47;www.peercointalk.org&#47;index.php?topic=937.0), I got myself a [new cloud server at Digital Ocean](https:&#47;&#47;www.digitalocean.com&#47;?refcode=98d0e3d7eb67) to start mining [Primecoins](http:&#47;&#47;primecoin.org) with. I wanted to have the miner running automatically and continuously, and being restarted even if the server itself got rebooted for whatever reason. Here is how I got things setup.\r\n"
+summary: "Following [some helpful instructions](https://web.archive.org/web/20160319123120/https://www.peercointalk.org/index.php?topic=937.0), I got myself a [new cloud server at Digital Ocean](no-longer-valid) to start mining [Primecoins](no-longer-valid) with. I wanted to have the miner running automatically and continuously, and being restarted even if the server itself got rebooted for whatever reason. Here is how I got things setup.\r\n"
 tags:
   - Ubuntu
   - Cloud
@@ -9,11 +9,11 @@ tags:
   - Mining
   - Supervisor
 ---
-Following [some helpful instructions](http://www.peercointalk.org/index.php?topic=937.0), I got myself a [new cloud server at Digital Ocean](https://www.digitalocean.com/?refcode=98d0e3d7eb67) to start mining [Primecoins](http://primecoin.org) with. I wanted to have the miner running automatically and continuously, and being restarted even if the server itself got rebooted for whatever reason. Here is how I got things setup.  
+Following [some helpful instructions](https://web.archive.org/web/20160319123120/https://www.peercointalk.org/index.php?topic=937.0), I got myself a [new cloud server at Digital Ocean](no-longer-valid) to start mining [Primecoins](no-longer-valid) with. I wanted to have the miner running automatically and continuously, and being restarted even if the server itself got rebooted for whatever reason. Here is how I got things setup.  
 
 ## Install Primecoin miner
 
-I followed the instructions in the [original forum post]((http://www.peercointalk.org/index.php?topic=937.0)), but had to install Boost v1.48 specifically in order to get compilation working:
+I followed the instructions in the [original forum post]((no-longer-valid), but had to install Boost v1.48 specifically in order to get compilation working:
 
 ```bash  
 $ apt-get update  

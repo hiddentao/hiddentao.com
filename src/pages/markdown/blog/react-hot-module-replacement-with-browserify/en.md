@@ -11,9 +11,9 @@ tags:
 
 For my latest project I decided to try and get Hot-Module-Replacement (HMR) working with React.js, but using Browserify. 
 
-Most [React HMR setups](https://github.com/facebookincubator/create-react-app) use [Webpack](https://github.com/webpack/webpack) because that's what the community seems to have standardized around but I prefer [Browserify](http://browserify.org/) and how it operates, especially since I find it's integration into gulp scripts more intuitive than that of Webpack's. Your mileage may vary.
+Most [React HMR setups](https://web.archive.org/web/20180105121757/https://github.com/facebookincubator/create-react-app) use [Webpack](https://github.com/webpack/webpack) because that's what the community seems to have standardized around but I prefer [Browserify](http://browserify.org/) and how it operates, especially since I find it's integration into gulp scripts more intuitive than that of Webpack's. Your mileage may vary.
 
-In order to get things working with Browserify the key component is the [livereactload](https://github.com/milankinen/livereactload) plugin for Browserify by [@milankinen](https://twitter.com/milankinen). The instructions on the livereactload homepage worked for me. In this post I'll outline additional steps (such as the gulp script) I took to get the whole setup going.
+In order to get things working with Browserify the key component is the [livereactload](https://web.archive.org/web/20260213184717/https://github.com/milankinen/livereactload) plugin for Browserify by [@milankinen](https://twitter.com/milankinen). The instructions on the livereactload homepage worked for me. In this post I'll outline additional steps (such as the gulp script) I took to get the whole setup going.
 
 ## 1. Babel setup 
 
@@ -50,7 +50,7 @@ Now configure `.babelrc`:
 
 ## 2. Gulp + Browserify + Watchify
 
-*Note: I'm going to run Browserify from within a gulp script. If you're not using gulp then the [instructions on the livereactload homepage](https://github.com/milankinen/livereactload) will show you how to run things straight from the command-line.*
+*Note: I'm going to run Browserify from within a gulp script. If you're not using gulp then the [instructions on the livereactload homepage](https://web.archive.org/web/20260213184717/https://github.com/milankinen/livereactload) will show you how to run things straight from the command-line.*
 
 Let's install the dependencies:
 
@@ -142,7 +142,7 @@ Here is how it might look:
 </body>
 ```
 
-We can use [gulp-server-livereload](https://github/hiddentao/gulp-server-livereload) plugin to serve up the `build/` folder to the browser. Let's install it:
+We can use [gulp-server-livereload](no-longer-valid) plugin to serve up the `build/` folder to the browser. Let's install it:
 
 ```shell
 $ npm i --save-dev gulp-server-livereload

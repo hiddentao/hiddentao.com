@@ -1,13 +1,9 @@
 ---
 title: A simple pager script for Drupal
 date: '2010-08-24'
-summary: "Today I found myself needing to render pager links in [Drupal 6](http:&#47;&#47;drupal.org&#47;) for a list of items. By _pager_ I mean the links you usually see at the bottom of the page which indicate what page you're currently on, what pages comes before and after and where you are in the grand context of the total number of pages available (example: [http:&#47;&#47;drupal.org&#47;search&#47;apachesolr_search&#47;e](http:&#47;&#47;drupal.org&#47;search&#47;apachesolr_search&#47;e)). \r\n"
-tags:
-  - Drupal
-  - PHP
-  - Pager
+summary: "Today I found myself needing to render pager links in [Drupal 6](no-longer-valid) for a list of items. By _pager_ I mean the links you usually see at the bottom of the page which indicate what page you're currently on, what pages comes before and after and where you are in the grand context of the total number of pages available (example: [no-longer-valid
 ---
-Today I found myself needing to render pager links in [Drupal 6](http://drupal.org/) for a list of items. By _pager_ I mean the links you usually see at the bottom of the page which indicate what page you're currently on, what pages comes before and after and where you are in the grand context of the total number of pages available (example: [http://drupal.org/search/apachesolr_search/e](http://drupal.org/search/apachesolr_search/e)).
+Today I found myself needing to render pager links in [Drupal 6](no-longer-valid) for a list of items. By _pager_ I mean the links you usually see at the bottom of the page which indicate what page you're currently on, what pages comes before and after and where you are in the grand context of the total number of pages available (example: [http://drupal.org/search/apachesolr_search/e](no-longer-valid)).
 
 Drupal has built-in pager generation methods ([theme_pager](http://api.drupal.org/api/function/theme_pager/6)) but these either require you to have loaded the data to be paged from the local Drupal database or require you to shoe-horn the data you wish to page into Drupal's pager global variables. I needed something simpler which would work with any data but which would still generate output similar to what Drupal's pager functions generate.
 

@@ -1,7 +1,7 @@
 ---
 title: Zhongwen.co.uk - a simple jQuery Mobile web app
 date: '2012-03-14'
-summary: "I started attending Mandarin language classes recently at the [Meridian Chinese School](http:&#47;&#47;www.meridiandao.co.uk&#47;) in London. Studying involves a 2 hour lesson once a week and a few hours spent at home revising what I've learnt. And one of the best ways to study is to practise writing the characters (fun too!) and translating sentences. So I decided to build a web app which would allow me to practise whilst on the go. My aim was to enable character recognition using HTML 5 canvas and get it working on mobiles.\r\n"
+summary: "I started attending Mandarin language classes recently at the [Meridian Chinese School](no-longer-valid) in London. Studying involves a 2 hour lesson once a week and a few hours spent at home revising what I've learnt. And one of the best ways to study is to practise writing the characters (fun too!) and translating sentences. So I decided to build a web app which would allow me to practise whilst on the go. My aim was to enable character recognition using HTML 5 canvas and get it working on mobiles.\r\n"
 tags:
   - Mobile
   - jQuery
@@ -9,15 +9,15 @@ tags:
   - Mandarin
   - OCR
 ---
-I started attending Mandarin language classes recently at the [Meridian Chinese School](http://www.meridiandao.co.uk/) in London. Studying involves a 2 hour lesson once a week and a few hours spent at home revising what I've learnt. And one of the best ways to study is to practise writing the characters (fun too!) and translating sentences. So I decided to build a web app which would allow me to practise whilst on the go. My aim was to enable character recognition using HTML 5 canvas and get it working on mobiles.
+I started attending Mandarin language classes recently at the [Meridian Chinese School](no-longer-valid) in London. Studying involves a 2 hour lesson once a week and a few hours spent at home revising what I've learnt. And one of the best ways to study is to practise writing the characters (fun too!) and translating sentences. So I decided to build a web app which would allow me to practise whilst on the go. My aim was to enable character recognition using HTML 5 canvas and get it working on mobiles.
 
-**You can see the result at: [zhongwen.co.uk](http://zhongwen.co.uk).** The source is code on [github](http://github.com/hiddentao/zhongwen). It's built using [Spine](http://github.com/hiddentao/spine), [jQuery Mobile](http://jquerymobile.com/), [Coffeescript](http://coffeescript.org) and [Weber](http://github.com/hiddentao/weber).
+**You can see the result at: [zhongwen.co.uk](https://web.archive.org/web/20220817044732/https://zhongwen.co.uk/).** The source is code on [github](http://github.com/hiddentao/zhongwen). It's built using [Spine](http://github.com/hiddentao/spine), [jQuery Mobile](http://jquerymobile.com/), [Coffeescript](http://coffeescript.org) and [Weber](http://github.com/hiddentao/weber).
 
 Here are some notes on the technical aspects:
 
 ## Stroke input recognition
 
-For the character recognition I was able to find an existing Javascript demo of [stroke input](http://www.lab4games.net/zz85/blog/2010/02/17/js-中文笔画输入法-javascript-chinese-stroke-input/). I grabbed this code, cleaned it up and optimized and got it working in a canvas on my mobile, only to find that the character recognition algorithm was particularly weak. It calculates the angle and length of every stroke you make in proportion to the overall character size and then matches this information to a database of character strokes. The problem is that if there is even a slight different in stroke order the matching will fail to find the right character. It uses the [Shortstraw](http://www.lab4games.net/zz85/blog/2010/01/21/geeknotes-shortstrawjs-fast-and-simple-corner-detection/) algorithm for finding corners - this algorithm doesn't tend to do too well for curved lines.
+For the character recognition I was able to find an existing Javascript demo of [stroke input](no-longer-valid). I grabbed this code, cleaned it up and optimized and got it working in a canvas on my mobile, only to find that the character recognition algorithm was particularly weak. It calculates the angle and length of every stroke you make in proportion to the overall character size and then matches this information to a database of character strokes. The problem is that if there is even a slight different in stroke order the matching will fail to find the right character. It uses the [Shortstraw](https://web.archive.org/web/20170506004119/http://www.lab4games.net:80/zz85/blog/2010/01/21/geeknotes-shortstrawjs-fast-and-simple-corner-detection/) algorithm for finding corners - this algorithm doesn't tend to do too well for curved lines.
 
 After much testing I decided to disable canvas stroke input for now and instead provide Pinyin input as well as the ability to input characters directly (in case you have a Chinese keyboard input method available for your device, which I do :).
 
@@ -25,11 +25,11 @@ After much testing I decided to disable canvas stroke input for now and instead 
 
 ## Data strings
 
-For now I've hard-coded a whole bunch of sentences and their English translations in the [`data` module](https://github.com/hiddentao/zhongwen/blob/master/js/data.coffee), categorizing them by study unit. In future it would be good to implement true sentence builders, i.e. algorithms which pick a subject, object, action, etc. and construct an appropriate sentence. Such randomization will be a better test for the user.
+For now I've hard-coded a whole bunch of sentences and their English translations in the [`data` module](no-longer-valid), categorizing them by study unit. In future it would be good to implement true sentence builders, i.e. algorithms which pick a subject, object, action, etc. and construct an appropriate sentence. Such randomization will be a better test for the user.
 
 ## The dictionary module
 
-A core part of the system is the [`dict` module](https://github.com/hiddentao/zhongwen/blob/master/js/dict.coffee). This contains a list of characters along with their matching pinyin representations (one character may have multiple pinyin representations) and also contains methods for looking up character by pinyin.
+A core part of the system is the [`dict` module](no-longer-valid). This contains a list of characters along with their matching pinyin representations (one character may have multiple pinyin representations) and also contains methods for looking up character by pinyin.
 
 There is also a `Sentence` object. This takes as input a string of characters and then allows you to see whether they match another string of characters to. The matching algorithm is careful enough to avoid punctuation marks (because different users may input them differently) and also returns a list of mismatched characters. To understandl exactly how it works you can look at the [nodeunit test](https://github.com/hiddentao/zhongwen/blob/master/test/dict.coffee) for this module.
 

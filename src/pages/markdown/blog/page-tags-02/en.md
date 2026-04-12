@@ -6,9 +6,9 @@ tags:
   - Wordpress
   - Page Tagger
 ---
-A [recently noticed](/archives/2009/01/18/tag-your-wordpress-27-pages/#comment-435) issue with the [Page-Tags](/code/wordpress-page-tags-plugin/) plugin was that if you added a new tag when editing a page the tag didn't show up in the tag cloud sidebar widget. Only tags which were also associated with one or more blog posts were showing up in the tag cloud. I was seeing the same problem on my [archives](/archives/) page.
+A [recently noticed](no-longer-valid) issue with the [Page-Tags](no-longer-valid) plugin was that if you added a new tag when editing a page the tag didn't show up in the tag cloud sidebar widget. Only tags which were also associated with one or more blog posts were showing up in the tag cloud. I was seeing the same problem on my [archives](no-longer-valid) page.
 
-This issue has now been fixed in the [latest version](/code/wordpress-page-tags-plugin/). **To get the tags you've already added showing, install the updated plugin, and then edit and save the corresponding pages without making any changes**.
+This issue has now been fixed in the [latest version](no-longer-valid). **To get the tags you've already added showing, install the updated plugin, and then edit and save the corresponding pages without making any changes**.
 
 For the developers among you, the cause of this bug is situated the callback function used to calculate how many posts are linked to a given tag:
 

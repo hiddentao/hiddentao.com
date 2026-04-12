@@ -1,7 +1,7 @@
 ---
 title: Adding model validation to the Sequelize ORM library for node.js
 date: '2011-11-12'
-summary: "I've been using the [Sequelize ORM](http:&#47;&#47;sequelizejs.com&#47;) library for node.js lately and it's a really nicely done piece of work by Sascha Depold. It's still got some way to go before one can consider it to be mature framework. One thing I miss having is a nice easy way of specifying how to validate field values (e.g. [Kohana's validation](http:&#47;&#47;docs.kohanaphp.com&#47;libraries&#47;validation)). Luckily there is already the excellent [node-validator](https:&#47;&#47;github.com&#47;chriso&#47;node-validator) library and yesterday I was able to integrate it into Sequelize to provide declarative validation for fields.\r\n"
+summary: "I've been using the [Sequelize ORM](no-longer-valid) library for node.js lately and it's a really nicely done piece of work by Sascha Depold. It's still got some way to go before one can consider it to be mature framework. One thing I miss having is a nice easy way of specifying how to validate field values (e.g. [Kohana's validation](no-longer-valid)). Luckily there is already the excellent [node-validator](https:&#47;&#47;github.com&#47;chriso&#47;node-validator) library and yesterday I was able to integrate it into Sequelize to provide declarative validation for fields.\r\n"
 tags:
   - Javascript
   - node.js
@@ -9,9 +9,9 @@ tags:
   - Sequelize
   - Validation
 ---
-I've been using the [Sequelize ORM](http://sequelizejs.com/) library for node.js lately and it's a really nicely done piece of work by Sascha Depold. It's still got some way to go before one can consider it to be mature framework. One thing I miss having is a nice easy way of specifying how to validate field values (e.g. [Kohana's validation](http://docs.kohanaphp.com/libraries/validation)). Luckily there is already the excellent [node-validator](https://github.com/chriso/node-validator) library and yesterday I was able to integrate it into Sequelize to provide declarative validation for fields.
+I've been using the [Sequelize ORM](no-longer-valid) library for node.js lately and it's a really nicely done piece of work by Sascha Depold. It's still got some way to go before one can consider it to be mature framework. One thing I miss having is a nice easy way of specifying how to validate field values (e.g. [Kohana's validation](no-longer-valid)). Luckily there is already the excellent [node-validator](https://github.com/chriso/node-validator) library and yesterday I was able to integrate it into Sequelize to provide declarative validation for fields.
 
-~~I've raised a [pull request](https://github.com/sdepold/sequelize/pull/108) for my work~~ **These changes are now in Sequelize trunk**. But I'll explain the changes here. To validate your models first define the validation for each field. For example:
+~~I've raised a [pull request](no-longer-valid) for my work~~ **These changes are now in Sequelize trunk**. But I'll explain the changes here. To validate your models first define the validation for each field. For example:
 
 ```js
 var User = sequelize.define 'User',

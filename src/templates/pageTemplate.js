@@ -87,7 +87,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
             borderRadius: '4px'
           }}>
             <h3 style={{ marginTop: 0, fontFamily: "'Fira Code', monospace" }}>Need help shipping your product?</h3>
-            <p style={{ marginBottom: '1.5rem', lineHeight: 1.6 }}>I'm an independent software consultant with 20+ years of experience building full-stack apps and smart contracts for startups. Let's talk about your project.</p>
+            <p style={{ marginBottom: '1.5rem', lineHeight: 1.6 }}>Let's talk about your project and see <a href="/services" style={{ color: '#0af', textDecoration: 'underline' }}>how I can help</a>.</p>
             <BookCallButton label="BOOK_CALL()" className="cyber-btn" />
           </div>
         ) : null}

@@ -1,15 +1,15 @@
 ---
 title: 'Weber - compile scripts, stylesheets and templates on-the-fly'
 date: '2012-03-15'
-summary: "I'd like to introduce [Weber](https:&#47;&#47;github.com&#47;hiddentao&#47;weber), a slick command-line tool for compiling, concatenating and minifying scripts, stylesheets and templates **on-the-fly**. Weber is a fork of the excellent [Hem](https:&#47;&#47;github.com&#47;maccaw&#47;hem) tool by [Alex Maccaw](http:&#47;&#47;alexmaccaw.com&#47;) which improves on the original by providing more flexibility.\r\n"
+summary: "I'd like to introduce [Weber](https:&#47;&#47;github.com&#47;hiddentao&#47;weber), a slick command-line tool for compiling, concatenating and minifying scripts, stylesheets and templates **on-the-fly**. Weber is a fork of the excellent [Hem](no-longer-valid) tool by [Alex Maccaw](http:&#47;&#47;alexmaccaw.com&#47;) which improves on the original by providing more flexibility.\r\n"
 tags:
   - Javascript
   - CoffeeScript
   - Utils
 ---
-I'd like to introduce [Weber](https://github.com/hiddentao/weber), a slick command-line tool for compiling, concatenating and minifying scripts, stylesheets and templates **on-the-fly**. Weber is a fork of the excellent [Hem](https://github.com/maccaw/hem) tool by [Alex Maccaw](http://alexmaccaw.com/) which improves on the original by providing more flexibility.
+I'd like to introduce [Weber](https://github.com/hiddentao/weber), a slick command-line tool for compiling, concatenating and minifying scripts, stylesheets and templates **on-the-fly**. Weber is a fork of the excellent [Hem](no-longer-valid) tool by [Alex Maccaw](http://alexmaccaw.com/) which improves on the original by providing more flexibility.
 
-To get started with Weber install it using [npm](http://npmjs.org "Node Package Manager"):
+To get started with Weber install it using [npm](no-longer-valid "Node Package Manager"):
 
 ```bash
 $ npm install -g weber

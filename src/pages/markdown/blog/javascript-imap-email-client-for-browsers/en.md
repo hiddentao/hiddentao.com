@@ -13,7 +13,7 @@ tags:
   - IMAP
   - TLS
 ---
-I've just released a [proof-of-concept IMAP email client](https://github.com/hiddentao/browsermail) written in Javascript, running in the Chrome browser. It combines an [existing node.js IMAP client](https://github.com/mscdex/node-imap) and browser-side [TLS library](https://github.com/digitalbazaar/forge) with Chrome's [socket API](http://developer.chrome.com/apps/socket.html). The client currently only fetches the latest email in your Inbox (replying not supported in the GUI, though the internal functionality exists).
+I've just released a [proof-of-concept IMAP email client](https://github.com/hiddentao/browsermail) written in Javascript, running in the Chrome browser. It combines an [existing node.js IMAP client](https://github.com/mscdex/node-imap) and browser-side [TLS library](https://github.com/digitalbazaar/forge) with Chrome's [socket API](https://web.archive.org/web/20140213124135/http://developer.chrome.com/apps/socket.html). The client currently only fetches the latest email in your Inbox (replying not supported in the GUI, though the internal functionality exists).
 
 ## How to use it
 

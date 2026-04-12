@@ -1,4 +1,5 @@
 import { graphql } from "gatsby"
+import { emojify } from "node-emoji"
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -33,13 +34,13 @@ const ProjectsPage = ({ data }) => {
                 className="glass-card"
                 style={cardStyle}
                 data-tooltip-id="app-tooltip"
-                data-tooltip-content={`View ${repo.name} on GitHub — ${repo.stars.toLocaleString()} stars`}
+                data-tooltip-content={emojify(`View ${repo.name} on GitHub — ${repo.stars.toLocaleString()} stars`)}
               >
                 <h3 className="mono" style={titleStyle}>
                   {repo.name}
                   <span className="mono" style={starStyle}>{repo.stars.toLocaleString()}_★</span>
                 </h3>
-                <p>{repo.description}</p>
+                <p>{emojify(repo.description)}</p>
               </a>
             ))}
           </div>
@@ -69,7 +70,7 @@ const ProjectsPage = ({ data }) => {
                 data-tooltip-content={`Visit ${project.name}`}
               >
                 <h3 className="mono" style={titleStyle}>{project.name}</h3>
-                <p>{project.description}</p>
+                <p>{emojify(project.description)}</p>
               </a>
             ))}
           </div>

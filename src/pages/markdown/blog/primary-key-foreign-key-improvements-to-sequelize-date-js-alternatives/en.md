@@ -1,13 +1,13 @@
 ---
 title: 'Primary key, foreign key improvements to Sequelize + Date.js alternatives'
 date: '2011-11-18'
-summary: "I've created a [patch][&#47;patch](https:&#47;&#47;github.com&#47;sdepold&#47;sequelize&#47;pull&#47;110) for [Sequelize](http:&#47;&#47;sequelizejs.com&#47;) which enables one to use primary key fields as foreign keys too, something I find myself doing often with my relational schemas as I don't like using the standard `id` primary key field unless it's the most sensible primary key to have. In practice the changes mean you can do the following (not currently possible in vanilla Sequelize):\r\n"
+summary: "I've created a [patch][&#47;patch](no-longer-valid) for [Sequelize](no-longer-valid) which enables one to use primary key fields as foreign keys too, something I find myself doing often with my relational schemas as I don't like using the standard `id` primary key field unless it's the most sensible primary key to have. In practice the changes mean you can do the following (not currently possible in vanilla Sequelize):\r\n"
 tags:
   - Javascript
   - node.js
   - ORM
 ---
-I've created a [patch](https://github.com/sdepold/sequelize/pull/110) for [Sequelize](http://sequelizejs.com/) which enables one to use primary key fields as foreign keys too, something I find myself doing often with my relational schemas as I don't like using the standard `id` primary key field unless it's the most sensible primary key to have. In practice the changes mean you can do the following (not currently possible in vanilla Sequelize):
+I've created a [patch](no-longer-valid) for [Sequelize](no-longer-valid) which enables one to use primary key fields as foreign keys too, something I find myself doing often with my relational schemas as I don't like using the standard `id` primary key field unless it's the most sensible primary key to have. In practice the changes mean you can do the following (not currently possible in vanilla Sequelize):
 
 ```js
 var User = sequelize.define('user', {

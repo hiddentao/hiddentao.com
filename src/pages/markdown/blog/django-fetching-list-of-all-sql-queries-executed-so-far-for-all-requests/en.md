@@ -16,7 +16,7 @@ My snippet below does just this. It uses request-response middleware which kicks
 
 Further improvements to this may include establishing a persistent socket connection to the server through which SQL query strings are received as and when they get executed. And instead of displaying the list of queries on their own page we could inject them into the Debug toolbar, if it's enabled. In fact, enhancing the Debug toolbar itself to pick up queries executed as part of AJAX requests would be the best implementation yet.
 
-The snippet (see [http://djangosnippets.org/snippets/2632/](http://djangosnippets.org/snippets/2632/)):
+The snippet (see [http://djangosnippets.org/snippets/2632/](https://web.archive.org/web/20250212064019/https://www.djangosnippets.org/snippets/2632/)):
 
 ```python
 # file: settings.py

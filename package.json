@@ -33,6 +33,7 @@
     "lodash.get": "^4.4.2",
     "lodash.truncate": "^4.4.2",
     "mkdirp": "^3.0.1",
+    "node-emoji": "^2.2.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "prop-types": "^15.7.2",

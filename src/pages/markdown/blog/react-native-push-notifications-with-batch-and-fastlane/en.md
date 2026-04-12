@@ -34,7 +34,7 @@ servers?_
 
 Batch and other push notification services like it abstract away the differences
 in dealing with Apple's and Google's services. Batch in particular provides a
-transactional API which allows you to [push a message to upto 10000 devices](https://batch.com/doc/api/transactional.html)
+transactional API which allows you to [push a message to upto 10000 devices](no-longer-valid)
 at a time, all through a simple REST API.
 
 Another advantage is that it provides an online interface through which you can
@@ -128,7 +128,7 @@ For the Android app you need to enter your FCM settings you obtained earlier:
 _Note: Default priority is set to high to ensure rapid message delivery._
 
 For iOS app you first need to export your _Production_ push certificate as a `.p12`
-file ([see instructions](https://batch.com/doc/ios/prerequisites.html#_generating-the-p12-file))
+file ([see instructions](no-longer-valid))
 and then upload it into Batch:
 
 ![screenshot](batch-ios-settings.png)
@@ -144,8 +144,8 @@ If you integrate the Batch SDK in the default recommended way you end up with a
 situation where the user is asked for push notifications permission as soon as
 the app starts.
 
-To avoid this it's better to opt for [manual integration](https://batch.com/doc/ios/advanced/manual-integration.html) and then
-use React Native's [built-in push API](http://facebook.github.io/react-native/releases/0.42/docs/pushnotificationios.html#pushnotificationios) to ask for permissions.
+To avoid this it's better to opt for [manual integration](no-longer-valid) and then
+use React Native's [built-in push API](https://web.archive.org/web/20171111161256/http://facebook.github.io:80/react-native/releases/0.42/docs/pushnotificationios.html) to ask for permissions.
 
 Once you've added the Batch SDK to your project, modify your `AppDelegate` as such:
 
@@ -1029,7 +1029,7 @@ Linking.openURL('app-settings:').catch(console.warn)
 
 If you do this then you'll also want to recheck permissions once the user returns
 to your app. This can be accomplished by listening in for app state changes
-using the built-in [AppState](http://facebook.github.io/react-native/releases/0.42/docs/appstate.html#appstate) API.
+using the built-in [AppState](https://web.archive.org/web/20171130182615/http://facebook.github.io:80/react-native/releases/0.42/docs/appstate.html) API.
 
 ## Triggering push notifications from your server
 
@@ -1047,7 +1047,7 @@ _onRegisterToken = (token) => {
 
 In the final part of this method you would send the push token to your server.
 Once the server has the token, triggering a push notification to be sent to
-the device is just a matter of using [the Batch API](https://batch.com/doc/api/transactional.html).
+the device is just a matter of using [the Batch API](no-longer-valid).
 
 Note the `sandbox` parameter:
 
