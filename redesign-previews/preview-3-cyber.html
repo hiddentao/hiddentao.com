@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiddentao Labs | Cyber Web3</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paradise-pink: #ef476f;
+    --crayola: #ffd166;
+    --caribbean-green: #06d6a0;
+    --blue-ncs: #118ab2;
+    --midnight: #073b4c;
+    --violet: #6a4c93;
+    --base: #02080a;
+    --surface: #0a1922;
+  }
+  
+  body {
+    background-color: var(--base);
+    color: #e0e0e0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: 
+      linear-gradient(rgba(17, 138, 178, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 138, 178, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+  }
+
+  .scanline {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+    background-size: 100% 4px;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+  .mono { font-family: 'Fira Code', monospace; }
+
+  nav {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; padding-top: 1rem;
+    color: var(--caribbean-green); font-size: 1.1rem;
+  }
+  .brand { font-size: 1.25rem; font-weight: bold; color: #fff; text-decoration: none;}
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--caribbean-green); text-decoration: none; }
+  .nav-links a:hover { color: #fff; }
+
+  .terminal-top {
+    background: #000; border: 1px solid var(--blue-ncs); border-bottom: none;
+    padding: 0.5rem 1rem; display: flex; gap: 0.5rem; border-radius: 8px 8px 0 0;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-r { background: var(--paradise-pink); }
+  .dot-y { background: var(--crayola); }
+  .dot-g { background: var(--caribbean-green); }
+
+  .hero {
+    background: var(--surface); border: 1px solid var(--blue-ncs); border-radius: 0 0 8px 8px;
+    padding: 3rem; box-shadow: 0 0 40px rgba(17, 138, 178, 0.15);
+    position: relative; overflow: hidden; display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;
+  }
+  .hero-content { flex: 1; min-width: 300px; }
+  .hero-img {
+    width: 250px; height: 250px; border-radius: 50%; background: #000; border: 2px solid var(--caribbean-green);
+    display: flex; align-items: center; justify-content: center; color: var(--caribbean-green); font-size: 3rem;
+  }
+
+  h1 { font-size: 3.5rem; margin: 0; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); line-height: 1.1; }
+  .subtitle { font-size: 1.2rem; color: var(--crayola); margin: 1rem 0 2rem 0; }
+  .btn-container { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+  .btn { padding: 1rem 1.5rem; font-family: 'Fira Code', monospace; font-size: 1rem; text-decoration: none; text-transform: uppercase; transition: all 0.2s; }
+  .btn-primary { background: transparent; color: var(--caribbean-green); border: 1px solid var(--caribbean-green); box-shadow: 0 0 15px rgba(6, 214, 160, 0.2); }
+  .btn-primary:hover { background: var(--caribbean-green); color: var(--base); box-shadow: 0 0 25px rgba(6, 214, 160, 0.6); }
+  .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+  .btn-secondary:hover { border-color: var(--crayola); color: var(--crayola); box-shadow: 0 0 15px rgba(255, 209, 102, 0.3); }
+
+  .logo-bar {
+    display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: center;
+    padding: 3rem 0; border-bottom: 1px dashed var(--blue-ncs); margin-bottom: 4rem; color: var(--blue-ncs); font-size: 1.25rem;
+  }
+
+  section { margin-top: 6rem; }
+  .section-tag { color: var(--caribbean-green); font-size: 1.2rem; margin-bottom: 2rem; display: inline-block; }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .glass-card { background: rgba(10, 25, 34, 0.8); border: 1px solid rgba(17, 138, 178, 0.3); backdrop-filter: blur(10px); padding: 2rem; border-radius: 4px; transition: all 0.3s; }
+  .glass-card:hover { border-color: var(--caribbean-green); box-shadow: 0 10px 30px rgba(6, 214, 160, 0.1); }
+  .glass-card h3 { color: #fff; font-size: 1.4rem; margin: 0; }
+  .glass-card p { color: #aaa; line-height: 1.6; font-size: 1rem;}
+
+  .metrics {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem;
+    background: var(--surface); border: 1px solid var(--violet); padding: 2rem; border-radius: 4px;
+  }
+  .metric-item { text-align: center;}
+  .metric-value { font-size: 2.5rem; color: var(--paradise-pink); font-weight: 700; }
+  .metric-label { margin-top: 0.5rem; color: #888; font-size: 0.85rem; }
+
+  .testimonial-box { border-left: 4px solid var(--crayola); padding: 2rem; background: linear-gradient(90deg, rgba(255, 209, 102, 0.05) 0%, transparent 100%); margin-bottom: 2rem; }
+  .testimonial-box p { font-size: 1.2rem; font-style: italic; color: #e0e0e0; }
+  .testimonial-author { color: var(--crayola); margin-top: 1rem; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 4rem; }
+  @media(min-width:768px){ .grid-2{grid-template-columns: 1fr 1fr;} }
+
+  .repo-card { border: 1px solid var(--blue-ncs); padding: 1.5rem; margin-bottom: 1rem; background: #000; text-decoration: none; display: block; transition: all 0.2s;}
+  .repo-card:hover { border-color: var(--caribbean-green); transform: translateX(5px);}
+  .repo-card h4 { margin: 0 0 0.5rem 0; font-size: 1.2rem; color: #fff; display: flex; justify-content: space-between;}
+  .repo-card p { margin: 0; color: #888; font-size: 0.95rem; font-family: 'Bricolage Grotesque', sans-serif;}
+
+  .writing-list { list-style: none; padding: 0; margin: 0;}
+  .writing-list a { display: block; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0; text-decoration: none; color: #e0e0e0; transition: color 0.2s;}
+  .writing-list a:hover { color: var(--paradise-pink); }
+  .writing-list .meta { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; color: #888;}
+  .writing-list .tag { background: rgba(239, 71, 111, 0.1); color: var(--paradise-pink); padding: 2px 8px; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.8rem;}
+
+  .angel-section {
+    border: 1px solid var(--crayola); padding: 4rem; text-align: center; margin-top: 6rem;
+    background: radial-gradient(circle, rgba(255,209,102,0.1) 0%, transparent 60%);
+  }
+
+  .footer { border-top: 1px solid var(--blue-ncs); padding: 4rem 0; margin-top: 6rem;}
+  .subfooter { display: flex; justify-content: space-between; align-items: center; margin-top: 4rem; flex-wrap: wrap; gap: 2rem;}
+  .subfooter a { color: var(--blue-ncs); text-decoration: none; margin-left: 1.5rem;}
+  .subfooter a:hover { color: #fff; }
+
+</style>
+</head>
+<body>
+  <div class="scanline"></div>
+
+  <div class="container">
+    <nav class="mono">
+      <a href="/" class="brand">HIDDENTAO_LABS</a>
+      <div class="nav-links">
+        <a href="/consulting">/services</a>
+        <a href="/blog">/blog</a>
+        <a href="/projects">/projects</a>
+        <a href="/talks">/talks</a>
+      </div>
+    </nav>
+
+    <div class="terminal-top">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <h1>I help startups ship faster and better.</h1>
+        <div class="subtitle mono">>> Software Consultant · Singapore</div>
+        <p class="desc" style="font-size: 1.2rem; max-width: 600px; line-height:1.6;"><strong>20+ years</strong> building full-stack apps, smart contracts, and technical teams. From Ethereum to production SaaS.</p>
+        
+        <div class="btn-container">
+          <a href="#book" class="btn btn-primary">./book_call.sh</a>
+          <a href="#work" class="btn btn-secondary">ls -la ./work</a>
+        </div>
+      </div>
+      <div class="hero-img mono">RN</div>
+    </div>
+
+    <div class="logo-bar mono">
+      <span>Ethereum</span>
+      <span>ENS Labs</span>
+      <span>Nayms</span>
+      <span>Kaleidoco</span>
+      <span>Tribally</span>
+      <span>Kickback</span>
+    </div>
+
+    <section id="work">
+      <div class="section-tag mono"># HOW_I_WORK</div>
+      <div class="grid-3">
+        <div class="glass-card">
+          <div class="mono" style="color: var(--blue-ncs); margin-bottom:1rem;">[1-2_WEEKS]</div>
+          <h3>Architecture Sprint</h3>
+          <p>Product idea or existing codebase needs a senior engineer's eyes. I review architecture, identify risks, and give a technical roadmap.</p>
+        </div>
+        <div class="glass-card">
+          <div class="mono" style="color: var(--blue-ncs); margin-bottom:1rem;">[1-3_MONTHS]</div>
+          <h3>Build Phase</h3>
+          <p>You need core features shipped. I design architecture and build it — smart contracts, APIs, web apps — or work with your existing team.</p>
+        </div>
+        <div class="glass-card">
+          <div class="mono" style="color: var(--blue-ncs); margin-bottom:1rem;">[ONGOING]</div>
+          <h3>Fractional CTO</h3>
+          <p>Part-time technical leadership. I set tech strategy, mentor developers, make decisions, and act as the technical voice in the room.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-tag mono"># VERIFICATION</div>
+      <div class="testimonial-box">
+        <p>"Ram is self-motivated and takes personal pride... He was able to guide us through evolving best practices while consistently delivering ahead of schedule."</p>
+        <div class="testimonial-author mono">-- Theodore_Georgas @ Nayms</div>
+      </div>
+      <div class="testimonial-box" style="border-color: var(--caribbean-green); background: linear-gradient(90deg, rgba(6, 214, 160, 0.05) 0%, transparent 100%);">
+        <p>"Ram brings a wide depth of knowledge across the tech stack, clean and readable code, and is always a good candidate to bounce new ideas off."</p>
+        <div class="testimonial-author mono" style="color: var(--caribbean-green)">-- Colleague @ Nayms</div>
+      </div>
+      <a href="https://linkedin.com/in/hiddentao" class="mono" style="color:var(--crayola); text-decoration:none; display:inline-block; margin-top:1rem;">+ 14_more_on_LinkedIn()</a>
+    </section>
+    
+    <section>
+      <div class="section-tag mono"># SYSTEM_STATS</div>
+      <div class="metrics">
+        <div class="metric-item"><div class="metric-value mono">20+</div><div class="metric-label mono">YRS SHIPPING</div></div>
+        <div class="metric-item"><div class="metric-value mono">20+</div><div class="metric-label mono">INVESTMENTS</div></div>
+        <div class="metric-item"><div class="metric-value mono">2.2k+</div><div class="metric-label mono">GH STARS</div></div>
+        <div class="metric-item"><div class="metric-value mono">16</div><div class="metric-label mono">LINKEDIN_RECS</div></div>
+        <div class="metric-item"><div class="metric-value mono">100+</div><div class="metric-label mono">TECH_POSTS</div></div>
+        <div class="metric-item"><div class="metric-value mono" style="font-size:2rem;">MEng</div><div class="metric-label mono">IMPERIAL COL.</div></div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div>
+        <div class="section-tag mono"># OPEN_SOURCE</div>
+        <a href="https://github.com/hiddentao/squel" class="repo-card">
+          <h4 class="mono">squel <span style="color:var(--paradise-pink)">1600_★</span></h4>
+          <p>SQL builder for JavaScript</p>
+        </a>
+        <a href="https://github.com/hiddentao/fast-levenshtein" class="repo-card">
+          <h4 class="mono">fast-levenshtein <span style="color:var(--paradise-pink)">577_★</span></h4>
+          <p>Levenshtein algorithm impl.</p>
+        </a>
+        <a href="https://github.com/hiddentao/chatfall" class="repo-card">
+          <h4 class="mono">Chatfall <span style="color:var(--caribbean-green)">FULL_STACK</span></h4>
+          <p>Web app compiled to executable</p>
+        </a>
+        <a href="https://hiddentao.vc" class="repo-card">
+          <h4 class="mono" style="color:var(--crayola);">Hiddentao.vc <span style="color:var(--caribbean-green)">ANGEL_INV</span></h4>
+          <p>Angel investment portfolio — 20+ startups</p>
+        </a>
+      </div>
+      <div>
+        <div class="section-tag mono"># TX_LOG (READ)</div>
+        <ul class="writing-list">
+          <li><a href="/archives/2024/11/16/bundling-your-nodejs-web-app-into-a-single-executable-using-bun" style="font-size:1.2rem;">Bundling your Node.js web app into a single executable...<div class="meta"><span class="tag">Full-Stack</span> Nov 2024</div></a></li>
+          <li><a href="/archives/2020/05/28/upgradeable-smart-contracts-using-diamond-standard" style="font-size:1.2rem;">Upgradeable smart contracts using the Diamond Standard<div class="meta"><span class="tag">Blockchain</span> May 2020</div></a></li>
+          <li><a href="/archives/2020/06/17/building-your-nextjs-web-app-using-graphql" style="font-size:1.2rem;">Building your Next.js web app using GraphQL<div class="meta"><span class="tag">Full-Stack</span> Jun 2020</div></a></li>
+          <li><a href="/archives/2019/03/26/architecting-microservices-for-effective-development-and-deployment" style="font-size:1.2rem;">Architecting microservices for effective development...<div class="meta"><span class="tag">Architecture</span> Mar 2019</div></a></li>
+          <li><a href="/archives/2020/03/21/advanced-role-based-access-control-in-solidity" style="font-size:1.2rem;">Advanced role-based access control in Solidity<div class="meta"><span class="tag">Blockchain</span> Mar 2020</div></a></li>
+        </ul>
+        <a href="/blog" class="mono" style="color:var(--caribbean-green); text-decoration:none; display:inline-block; margin-top:1.5rem;">cd /blog && ls -a &rarr;</a>
+      </div>
+    </section>
+
+    <div class="footer" id="book">
+      <div style="text-align: center;">
+        <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 0.5rem;">Let's initialize.</h2>
+        <p style="color: #888; font-size: 1.2rem; margin-bottom: 3rem;">Based in Singapore. Available for new engagements.</p>
+        <div class="btn-container" style="justify-content: center;">
+          <a href="#" class="btn btn-primary">BOOK_CALL()</a>
+        </div>
+      </div>
+      
+      <div class="subfooter mono">
+        <div style="color:#888;">&copy; HIDDENTAO_LABS</div>
+        <div>
+          <a href="https://linkedin.com/in/hiddentao">LINKEDIN</a>
+          <a href="https://github.com/hiddentao">GITHUB</a>
+          <a href="https://x.com/TaoOfDev">X_TWITTER</a>
+          <a href="mailto:ram@hiddentao.com">EMAIL</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

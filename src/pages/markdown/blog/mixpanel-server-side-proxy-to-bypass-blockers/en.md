@@ -9,7 +9,7 @@ tags:
   - Adblock
 ---
 
-For my new startup - [Kickback](https://kickback.events?utm_source=hiddentao_blog&utm_medium=post) - we decided to launch a static landing page as a precursor to the full product
+For my new startup - [Kickback](no-longer-valid) - we decided to launch a static landing page as a precursor to the full product
 (which will be ready in a few weeks). On our landing page we have a
 call-to-action button near the bottom for users who wish to register their
 interest in our service:
@@ -22,7 +22,7 @@ other ad blockers block the Mixpanel library from even loading. Looking at
 [Mixpanel's own documentation](https://help.mixpanel.com/hc/en-us/articles/115004499463-Ad-Blockers-Affect-Mixpanel) on this issue, it seemed clear to me that a server-side proxy was the only solution
 to this problem.
 
-Thus I went ahead and coded [https://github.com/noblocknoparty/analytics-server](https://github.com/noblocknoparty/analytics-server).
+Thus I went ahead and coded [https://github.com/noblocknoparty/analytics-server](no-longer-valid).
 
 It's written using [Koa](https://koajs.com), my goto Node.js framework.
 

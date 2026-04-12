@@ -79,7 +79,7 @@ warnings.warn("Using settings.DEBUG leads to a memory leak, never "
 [2012-01-27 12:29:01,411: WARNING/MainProcess] celery@RamLaptop2 has started.
 ```
 
-At this point if you're not familiar with writing Celery tasks then check out their tutorial on [how to write Celery tasks](http://docs.celeryproject.org/en/latest/tutorials/clickcounter.html) for use by Celery daemon workers started above.
+At this point if you're not familiar with writing Celery tasks then check out their tutorial on [how to write Celery tasks](https://web.archive.org/web/20120611024816/http://docs.celeryproject.org:80/en/latest/tutorials/clickcounter.html) for use by Celery daemon workers started above.
 
 ## Deploying to production using Supervisord
 

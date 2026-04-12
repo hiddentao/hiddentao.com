@@ -1,7 +1,7 @@
 ---
 title: wuPlay - real-time multiplayer web gaming on your mobile
 date: '2011-07-15'
-summary: "Introducing [wuPlay.com](wuPlay.com), an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent [Connect6](http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Connect6) game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).\r\n"
+summary: "Introducing wuPlay.com, an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent Connect6 game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).\r\n"
 tags:
   - Mobile
   - AJAX
@@ -14,7 +14,7 @@ tags:
   - Websockets
   - Gaming
 ---
-Introducing [wuPlay.com](https://wuPlay.com), an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent [Connect6](http://en.wikipedia.org/wiki/Connect6) game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).
+Introducing [wuPlay.com](no-longer-valid), an experiment in real-time multiplayer gaming on a mobile-friendly website. wuPlay is a web-based multiplayer implementation of the excellent [Connect6](http://en.wikipedia.org/wiki/Connect6) game that works well on desktops, tablets as well as on most good mobile devices (so far I've tested on Android 2.3 and iOS 4.2 devices).
 
 I started working on wuPlay mainly as a way of learning [Tornado](http://www.tornadoweb.org/). Tornado was still quite new then and I was very interested in the idea of a non-blocking event-driven server and what it could do. I was also learning about Websockets and AJAX long-polling and other techniques of simulating a "push" from server to client. At the same time I was also wanting to make a multiplayer game from my droid device and figured that it would be better to build it as a web app so that it straight away ran on all devices. Finally, I wanted to improve my Javascript skills so all the client-side code is written in an object-oriented fashion.
 
@@ -22,7 +22,7 @@ For the rest of this post I'm going to talk about the implementation behind wuPl
 
 ## Overall architecture
 
-wuPlay is served via a single Tornado instance sat behind nginx. I put nginx in front so that I could load balance in future if necessary. One of my main aims was to make wuPlay load very quickly and minimize both the size and number of assets which need to be downloaded for it. So all the Javascript and CSS assets are minified using [Juicer](http://cjohansen.no/en/ruby/juicer_a_css_and_javascript_packaging_tool) and compressed at build time, and then served using the [HttpGzipStaticModule](http://wiki.nginx.org/HttpGzipStaticModule) module. So Tornado only serves the HTML.
+wuPlay is served via a single Tornado instance sat behind nginx. I put nginx in front so that I could load balance in future if necessary. One of my main aims was to make wuPlay load very quickly and minimize both the size and number of assets which need to be downloaded for it. So all the Javascript and CSS assets are minified using [Juicer](no-longer-valid) and compressed at build time, and then served using the [HttpGzipStaticModule](http://wiki.nginx.org/HttpGzipStaticModule) module. So Tornado only serves the HTML.
 
 I wanted it to be as fast as possible on mobile devices, even ones with a 2G connection. Browsing a site normally on a mobile is slow so I opted for a completely Javascript-driven client-side UI. The [jQuery Mobile](http://jquerymobile.com/) project was in development at the time but I found it to be too slow and heavyweight so I rolled my own Javascript UI kit (more on that below).
 
@@ -49,11 +49,11 @@ If the internet connection drops then the client will go back to step 1 and star
 
 The event notification process described above is also used for when a client is in a game. In fact, it's architected in such a way as to make it re-usable for any type of event we may want to do in future, e.g. instant messaging.
 
-As outlined above, every client maintains a long-polling connection to the server in order to receive event updates. Thankfully, browsers allow for upto [2 simultaneous connections](http://stackoverflow.com/questions/2069562/2-connections-per-server) to a given domain name so the client can still send messages to the server.
+As outlined above, every client maintains a long-polling connection to the server in order to receive event updates. Thankfully, browsers allow for upto [2 simultaneous connections](no-longer-valid) to a given domain name so the client can still send messages to the server.
 
 ## Javascript-driven UI
 
-The client UI is completely Javascript-driven. All the popup dialogs and message boxes are also re-usable Javascript "classes" which get used throughout. Once you load the initial [wuPlay.com](https://wuPlay.com) site from there on in all subsequent page changes are driven through Javascript. You'll notice this by virtue of the loading graphic which shows for a moment or two whenever you click on a link. If something takes longer than a second or so to load you'll see a "Waiting for server" message in the top right part of the page. All these notifications are coded in a re-usable fashion such that every AJAX request can be made with such progress notification if necessary.
+The client UI is completely Javascript-driven. All the popup dialogs and message boxes are also re-usable Javascript "classes" which get used throughout. Once you load the initial [wuPlay.com](no-longer-valid) site from there on in all subsequent page changes are driven through Javascript. You'll notice this by virtue of the loading graphic which shows for a moment or two whenever you click on a link. If something takes longer than a second or so to load you'll see a "Waiting for server" message in the top right part of the page. All these notifications are coded in a re-usable fashion such that every AJAX request can be made with such progress notification if necessary.
 
 There is a page loader which is responsible for loading a given page from the server. It passes the name of a page to the server and is given back a JSON object similar to the following representing *meta data* about the page:
 
@@ -72,7 +72,7 @@ For example, the lobby page as an associated `LobbyModule` which ensures that th
 
 ## Device detection
 
-wuPlay uses the excellent [WURFL](http://wurfl.sourceforge.net/) database to detect the user's device type at the server level. So no need to mobile-specific URLs. Users type in the same URL ([http://wuplay.com/](http://wuplay.com/)) on whatever device they're on and the wuPlay back-end works out which stylesheets to use based on their device type. The device type detection takes a little bit of time because the code has to search through the WURFL database which, even when optimised for Python using [pywurfl](http://celljam.net/), takes up megabtyes. So once detected the device type gets saved in the session.
+wuPlay uses the excellent [WURFL](http://wurfl.sourceforge.net/) database to detect the user's device type at the server level. So no need to mobile-specific URLs. Users type in the same URL ([http://wuplay.com/](https://web.archive.org/web/20250714175725/http://wuplay.com/)) on whatever device they're on and the wuPlay back-end works out which stylesheets to use based on their device type. The device type detection takes a little bit of time because the code has to search through the WURFL database which, even when optimised for Python using [pywurfl](https://web.archive.org/web/20201019223434/http://celljam.net/), takes up megabtyes. So once detected the device type gets saved in the session.
 
 In addition to selecting the right stylesheet the device type is used in the Javascript game logic to determine how the game UI should work. When you hover over a square in the game grid you see a popup near the mouse cursor showing a magnified view of what's underneath it. On the desktop version of the game the user cannot interact with this popup. However, they can on the mobile version - this stops users who have fat fingers from selecting the wrong squares!
 
@@ -90,7 +90,7 @@ As my first foray into mobile-friendly multiplayer web games I think wuPlay is o
 
 Now that I've had some time to think about it and develop my skills further here are the things I would change and add:
 
-1. Refactor all the Javascript code to make better use of clojures. Perhaps use [CoffeeScript](http://jashkenas.github.com/coffee-script/) to simplify coding? Also use [RequireJS](http://requirejs.org/) rather than Juicer as I think it forces you to think in modular terms better.
+1. Refactor all the Javascript code to make better use of clojures. Perhaps use [CoffeeScript](no-longer-valid) to simplify coding? Also use [RequireJS](http://requirejs.org/) rather than Juicer as I think it forces you to think in modular terms better.
 2. Swap out Tornado for [node](http://nodejs.org/), thus making it easy to share code (particularly game logic) between front and back-ends.
 3. Re-arcitect the back-end so that it's is easy to add more games. Ideally wuPlay should be a platform providing users, lobbies and reward system with an API anyone can write games to.
 4. Implement games using Websockets. iOS 4 devices already support this.

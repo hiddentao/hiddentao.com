@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiddentao Labs | Brutalist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paradise-pink: #ef476f;
+    --crayola: #ffd166;
+    --caribbean-green: #06d6a0;
+    --blue-ncs: #118ab2;
+    --midnight: #073b4c;
+    --violet: #6a4c93;
+    --black: #000000;
+    --white: #ffffff;
+  }
+  
+  body {
+    background-color: var(--midnight);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    overflow-x: hidden;
+  }
+
+  .pattern-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: radial-gradient(var(--blue-ncs) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.2;
+    z-index: -1;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0 4rem 0;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .brand {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: var(--crayola);
+    color: var(--black);
+    padding: 0.5rem 1rem;
+    box-shadow: 4px 4px 0px var(--paradise-pink);
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 4px solid transparent;
+    transition: all 0.2s;
+  }
+  
+  .nav-links a:hover {
+    border-bottom: 4px solid var(--caribbean-green);
+    color: var(--crayola);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+  }
+  
+  @media (min-width: 768px) {
+    .hero {
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+    }
+  }
+
+  h1 {
+    font-size: min(10vw, 100px);
+    font-weight: 800;
+    margin: 0;
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+  }
+
+  .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--caribbean-green);
+    font-weight: bold;
+    margin: 1rem 0 2rem 0;
+    display: block;
+  }
+
+  .hero-desc {
+    font-size: 2rem;
+    max-width: 800px;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .headshot {
+    background: var(--crayola);
+    border: 8px solid var(--black);
+    box-shadow: 16px 16px 0px var(--paradise-pink);
+    border-radius: 50%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+    font-weight: 800;
+    font-size: 5rem;
+    transform: rotate(2deg);
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    background: var(--white);
+    color: var(--black);
+    text-decoration: none;
+    font-weight: bold;
+    border: 4px solid var(--black);
+    box-shadow: 6px 6px 0px var(--blue-ncs);
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-transform: uppercase;
+  }
+
+  .btn:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0px var(--blue-ncs);
+  }
+
+  .btn.primary {
+    background: var(--paradise-pink);
+    box-shadow: 6px 6px 0px var(--white);
+  }
+  .btn.primary:hover {
+    box-shadow: 3px 3px 0px var(--white);
+  }
+
+  .logo-bar {
+    background: var(--black);
+    padding: 2rem;
+    border-top: 4px solid var(--crayola);
+    border-bottom: 4px solid var(--crayola);
+    overflow: hidden;
+    margin: 0 -100vw 6rem -100vw;
+  }
+
+  .logo-track {
+    display: flex;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--white);
+    text-transform: uppercase;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+  }
+
+  .section-title {
+    font-size: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-bottom: 8px solid var(--violet);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 6rem;
+  }
+
+  .card {
+    background: var(--black);
+    border: 4px solid var(--white);
+    padding: 2rem;
+    position: relative;
+    box-shadow: 12px 12px 0px var(--caribbean-green);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover { transform: translateY(-5px); }
+
+  .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--paradise-pink);
+    color: var(--white);
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border: 2px solid var(--white);
+  }
+
+  .card h3 { font-size: 2rem; margin-top: 0; color: var(--crayola); }
+  .card p { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; line-height: 1.6; }
+
+  .testimonials {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 8rem;
+  }
+
+  @media (min-width: 768px) { .testimonials { grid-template-columns: 1fr 1fr; } }
+
+  .testimonial {
+    border: 6px solid var(--black);
+    padding: 3rem;
+    background: var(--crayola);
+    color: var(--black);
+    box-shadow: 12px 12px 0px var(--violet);
+  }
+
+  .testimonial p { font-size: 1.4rem; font-weight: 800; line-height: 1.4; }
+  .testimonial .author { font-family: 'JetBrains Mono', monospace; margin-top: 2rem; font-weight: bold; font-size: 1.1rem; text-transform: uppercase; }
+  .more-recs { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; display: block; margin-top: 2rem; color: var(--paradise-pink); font-weight: bold; text-decoration: none;}
+  .more-recs:hover { text-decoration: underline; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 8rem;
+  }
+
+  @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .stat-card {
+    background: var(--blue-ncs);
+    border: 4px solid var(--black);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 8px 8px 0px var(--crayola);
+  }
+  .stat-card:nth-child(even) { background: var(--paradise-pink); }
+  .stat-card:nth-child(3n) { background: var(--caribbean-green); }
+  .stat-card:nth-child(4n) { background: var(--violet); }
+
+  .stat-card .num { font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 1rem; }
+  .stat-card .desc { font-family: 'JetBrains Mono', monospace; font-weight: bold; color: var(--black); font-size: 1.1rem; }
+
+  .lists-section { display: grid; grid-template-columns: 1fr; gap: 4rem; margin-bottom: 8rem; }
+  @media (min-width: 900px) { .lists-section { grid-template-columns: 1fr 1fr; } }
+
+  .project-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 600px) { .project-list { grid-template-columns: 1fr; } }
+
+  .project-list a {
+    display: block; background: var(--white); color: var(--black); border: 4px solid var(--black); padding: 1.5rem; text-decoration: none; box-shadow: 6px 6px 0px var(--paradise-pink); transition: transform 0.2s;
+  }
+  
+  .project-list a:hover { transform: translateY(-5px); box-shadow: 6px 11px 0px var(--paradise-pink); }
+
+  .project-list h4 { margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: 800; }
+  .project-list p { font-family: 'JetBrains Mono', monospace; margin: 0 0 1rem 0; font-size: 0.9rem; }
+  .project-list span { color: var(--blue-ncs); font-family: 'JetBrains Mono', monospace; font-weight: bold; }
+
+  .writing-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5rem; }
+  .writing-list li a { display: block; background: var(--black); color: var(--white); border: 4px solid var(--crayola); padding: 1.5rem; text-decoration: none; transition: transform 0.2s; }
+  .writing-list li a:hover { transform: translateX(10px); }
+
+  .writing-list h4 { margin: 0 0 0.5rem 0; font-size: 1.4rem; line-height: 1.3; }
+  .writing-list .meta { font-family: 'JetBrains Mono', monospace; color: var(--white); font-size: 0.9rem; }
+  .writing-list .meta span { background: var(--paradise-pink); color: var(--white); padding: 2px 6px; margin-right: 10px; font-weight: bold;}
+
+  footer {
+    padding: 6rem 2rem 4rem 2rem;
+    text-align: center;
+    border-top: 8px solid var(--white);
+    background: var(--black);
+    margin: 0 -100vw;
+  }
+  
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .huge-cta-text { font-size: 3rem; font-weight: 800; color: var(--white); margin-bottom: 3rem; text-transform: uppercase; }
+  .footer-ctas { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 6rem;}
+
+  .subfooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    border-top: 2px solid var(--blue-ncs);
+    padding-top: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .subfooter a { color: var(--crayola); text-decoration: none; margin-left: 1.5rem; text-transform: uppercase;}
+  .subfooter a:hover { color: var(--white); }
+
+</style>
+</head>
+<body>
+  <div class="pattern-bg"></div>
+  <div class="container">
+    <nav>
+      <a href="/" class="brand">Hiddentao Labs</a>
+      <div class="nav-links">
+        <a href="/consulting">Services</a>
+        <a href="/blog">Blog</a>
+        <a href="/projects">Projects</a>
+        <a href="/talks">Talks</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1>I help startups ship faster and better.</h1>
+        <span class="role">Software Consultant · Singapore</span>
+        <p class="hero-desc"><strong>20+ years</strong> building full-stack apps, smart contracts, and technical teams. From Ethereum to production SaaS.</p>
+        
+        <div class="cta-group">
+          <a href="#" class="btn primary">BOOK A FREE CALL</a>
+          <a href="#work" class="btn">SEE MY WORK ↓</a>
+        </div>
+      </div>
+      <div class="headshot">RN</div>
+    </div>
+
+    <div class="logo-bar">
+      <div class="logo-track">
+        <span>Ethereum</span>
+        <span>ENS Labs</span>
+        <span>Nayms</span>
+        <span>Kaleidoco</span>
+        <span>Tribally</span>
+        <span>Kickback</span>
+      </div>
+    </div>
+
+    <section id="work">
+      <h2 class="section-title">How I Work</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-label">1–2 WEEKS</div>
+          <h3>Architecture Sprint</h3>
+          <p>You have a product idea or codebase and need a senior engineer's perspective. I'll review your architecture, identify risks, and deliver a concrete roadmap you can execute on.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">1–3 MONTHS</div>
+          <h3>Build Phase</h3>
+          <p>You need core features shipped. I'll design the architecture and build it — smart contracts, APIs, web apps — or embed with your existing team to accelerate delivery.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">ONGOING</div>
+          <h3>Fractional CTO</h3>
+          <p>Part-time technical leadership without a full-time CTO salary. I'll set your tech strategy, mentor developers, make build-vs-buy decisions, and be the technical voice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">What People Say</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>"Ram is self-motivated and takes personal pride in the software he creates. He guided us through evolving best practices while consistently delivering ahead of schedule. He exceeded our expectations..."</p>
+          <div class="author">— Theodore Georgas · Nayms</div>
+        </div>
+        <div class="testimonial" style="background: var(--caribbean-green)">
+          <p>"Ram brings a wide depth of knowledge across the tech stack, clean and readable code, and is always a good candidate to bounce new ideas off."</p>
+          <div class="author">— Colleague · Nayms</div>
+          <a href="#" class="more-recs">+ 14 more recommendations on LinkedIn &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Track Record</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="num">20+</div>
+          <div class="desc">Years shipping software</div>
+        </div>
+        <div class="stat-card">
+          <div class="num" style="color:var(--black)">20+</div>
+          <div class="desc">Angel investments</div>
+        </div>
+        <div class="stat-card">
+          <div class="num" style="color:var(--black)">2,200+</div>
+          <div class="desc">GitHub stars (open-source)</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">16</div>
+          <div class="desc">LinkedIn recommendations</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">100+</div>
+          <div class="desc">Technical posts since 2008</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">MEng</div>
+          <div class="desc">Computing, Imperial College</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lists-section">
+      <div>
+        <h2 class="section-title">Writing</h2>
+        <ul class="writing-list">
+          <li>
+            <a href="/archives/2024/11/16/bundling-your-nodejs-web-app-into-a-single-executable-using-bun">
+              <h4>Bundling your Node.js web app into a single executable using Bun</h4>
+              <div class="meta"><span>FULL-STACK</span> Nov 2024</div>
+            </a>
+          </li>
+          <li>
+            <a href="/archives/2020/05/28/upgradeable-smart-contracts-using-diamond-standard">
+              <h4>Upgradeable smart contracts using the Diamond Standard</h4>
+              <div class="meta"><span>BLOCKCHAIN</span> May 2020</div>
+            </a>
+          </li>
+          <li>
+            <a href="/archives/2020/06/17/building-your-nextjs-web-app-using-graphql">
+              <h4>Building your Next.js web app using GraphQL</h4>
+              <div class="meta"><span>FULL-STACK</span> Jun 2020</div>
+            </a>
+          </li>
+          <li>
+            <a href="/archives/2019/03/26/architecting-microservices-for-effective-development-and-deployment">
+              <h4>Architecting microservices for effective development and deployment</h4>
+              <div class="meta"><span>ARCHITECTURE</span> Mar 2019</div>
+            </a>
+          </li>
+          <li>
+            <a href="/archives/2020/03/21/advanced-role-based-access-control-in-solidity">
+              <h4>Advanced role-based access control in Solidity</h4>
+              <div class="meta"><span>BLOCKCHAIN</span> Mar 2020</div>
+            </a>
+          </li>
+        </ul>
+        <a href="/blog" class="more-recs" style="margin-top: 2rem;">VIEW ALL 100+ POSTS &rarr;</a>
+      </div>
+      
+      <div>
+        <h2 class="section-title">Open Source</h2>
+        <div class="project-list">
+          <a href="https://github.com/hiddentao/squel">
+            <h4>squel</h4>
+            <p>SQL query builder for JavaScript</p>
+            <span>★ 1,600</span>
+          </a>
+          <a href="https://github.com/hiddentao/fast-levenshtein">
+            <h4>fast-levenshtein</h4>
+            <p>Levenshtein algorithm implementation</p>
+            <span>★ 577</span>
+          </a>
+          <a href="https://github.com/hiddentao/chatfall">
+            <h4>Chatfall</h4>
+            <p>Full-stack app bundled to a single executable</p>
+            <span>Node.js · Bun</span>
+          </a>
+          <a href="https://hiddentao.vc">
+            <h4 style="color:var(--paradise-pink);">Hiddentao.vc</h4>
+            <p>Angel investment portfolio — 20+ startups</p>
+            <span>Ethereum, Varda...</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer id="book">
+      <div class="footer-inner">
+        <div class="huge-cta-text">Let's talk about your project.<br><span style="color:var(--crayola); font-size:1.8rem; display:block; margin-top:1rem;">Based in Singapore. Available for new engagements.</span></div>
+        <div class="footer-ctas">
+          <a href="#" class="btn primary">BOOK A FREE CALL</a>
+        </div>
+        
+        <div class="subfooter">
+          <div>&copy; Hiddentao Labs</div>
+          <div>
+            <a href="https://www.linkedin.com/in/hiddentao/">LinkedIn</a>
+            <a href="https://github.com/hiddentao">GitHub</a>
+            <a href="https://x.com/TaoOfDev">X</a>
+            <a href="mailto:ram@hiddentao.com">Email</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

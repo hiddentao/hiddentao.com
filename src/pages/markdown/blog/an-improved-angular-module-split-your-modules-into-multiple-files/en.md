@@ -1,7 +1,7 @@
 ---
 title: An improved angular.module() - split your modules into multiple files
 date: '2013-11-04'
-summary: "The <a href=\"http:&#47;&#47;docs.angularjs.org&#47;api&#47;angular.module\">angular.module()<&#47;a> call is unfortunately not very well designed, if you read the docs. If you call it with a single argument (the module name) it expects the module to already exist. The create the module you have to pass in an array as a second argument, telling it which modules need to be loaded before this module gets loaded - Angular will then create this module:\r\n"
+summary: "The angular.module() call is unfortunately not very well designed, if you read the docs. If you call it with a single argument (the module name) it expects the module to already exist. The create the module you have to pass in an array as a second argument, telling it which modules need to be loaded before this module gets loaded - Angular will then create this module:\r\n"
 tags:
   - Javascript
   - AngularJS
@@ -67,4 +67,4 @@ So here's an improved version of `angular.module()` which wraps the original met
 })(angular);
 ```
 
-Also available as a GIST: [https://gist.github.com/hiddentao/7300694](https://gist.github.com/hiddentao/7300694)
+Also available as a GIST: [https://gist.github.com/hiddentao/7300694](no-longer-valid)

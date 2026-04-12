@@ -5,26 +5,23 @@
   "author": "Ramesh Nair <ram@hiddentao.com>",
   "dependencies": {
     "@babel/compat-data": "^7.10.1",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.8.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-brands-svg-icons": "^5.8.1",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "color": "^3.1.0",
+    "clsx": "^2.1.1",
     "date-fns": "^1.30.1",
     "disqus-react": "^1.0.5",
-    "emotion-styled-utils": "^2.2.3",
     "gatsby": "^4.12.1",
     "gatsby-background-image": "^1.1.1",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-advanced-sitemap": "^2.1.0",
     "gatsby-plugin-client-side-redirect": "^1.1.0",
     "gatsby-plugin-disqus": "^1.2.2",
-    "gatsby-plugin-emotion": "^7.12.1",
     "gatsby-plugin-feed": "^4.12.1",
     "gatsby-plugin-manifest": "^4.12.1",
     "gatsby-plugin-offline": "^5.12.1",
+    "gatsby-plugin-postcss": "^5.25.0",
     "gatsby-plugin-react-helmet": "^5.12.1",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-robots-txt": "1.4",
@@ -37,6 +34,7 @@
     "lodash.get": "^4.4.2",
     "lodash.truncate": "^4.4.2",
     "mkdirp": "^3.0.1",
+    "node-emoji": "^2.2.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "prop-types": "^15.7.2",
@@ -46,6 +44,7 @@
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.0",
     "react-syntax-highlighter": "^10.2.1",
+    "react-tooltip": "^5.30.1",
     "reactjs-popup": "^1.3.2",
     "rehype-stringify": "8.0.0",
     "remark": "11.0.0",
@@ -55,23 +54,27 @@
     "rimraf": "^2.6.3",
     "save": "^2.4.0",
     "strip-markdown": "^3.0.3",
+    "tailwind-merge": "^3.5.0",
     "ultimate-text-to-image": "^1.0.1",
     "unified": "8.3.2"
   },
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "@tailwindcss/postcss": "^4.0.0",
+    "prettier": "^1.17.0",
+    "tailwindcss": "^4.0.0"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf ./.cache && rm -rf ./public && gatsby build",
-    "dev": "rm -rf ./.cache && gatsby develop --host 0.0.0.0",
+    "build": "rm -rf ./.cache && rm -rf ./public && mkdir -p ./.cache && gatsby build",
+    "dev": "rm -rf ./.cache && mkdir -p ./.cache && gatsby develop --host 0.0.0.0",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run dev",
     "serve": "gatsby serve",
-    "build-and-publish": "npm run build && curl http://www.google.com/ping?sitemap=https://hiddentao.com/sitemap.xml"
+    "build-and-publish": "npm run build && curl http://www.google.com/ping?sitemap=https://hiddentao.com/sitemap.xml",
+    "check-links": "node scripts/check-links.js"
   },
   "repository": {
     "type": "git",
@@ -81,7 +84,13 @@
     "url": "https://github.com/hiddentao/hiddentao.com/issues"
   },
   "engines": {
-    "node": "18"
+    "node": "24"
+  },
+  "overrides": {
+    "canvas": "^3.2.3",
+    "react-server-dom-webpack": {
+      "react": "$react"
+    }
   },
   "engineStrict": true
 }

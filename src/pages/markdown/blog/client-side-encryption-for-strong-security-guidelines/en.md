@@ -1,13 +1,13 @@
 ---
 title: Client-side encryption for strong security - guidelines
 date: '2016-01-19'
-summary: "I recently released [version 2 of Heartnotes](https:&#47;&#47;heartnotes.me) - my secure, encrypted diary app. This was a major rewrite which changed it from being a purely offline app into one which synchronized with a server back-end. \r\n\r\nThe challenge with this was to ensure that a good user experience could be maintained given these changes. Heartnotes' security comes from its implementation of _client-side encryption_. All data is encrypted on the user's computer before it gets pushed to the server. And the user's password never leaves their computer. All together this means that only the user can open and read their diary; no one else can, not even the server owner.\r\n\r\nIn this post I'm going to outline the general principles behind the encryption architecture I've implemented - these principles are applicable to any app that does client-side encryption though I'll refer to Heartnotes as an example.\r\n\r\nFirst, let's talk about the raw data...\r\n"
+summary: "I recently released version 2 of Heartnotes - my secure, encrypted diary app. This was a major rewrite which changed it from being a purely offline app into one which synchronized with a server back-end. \r\n\r\nThe challenge with this was to ensure that a good user experience could be maintained given these changes. Heartnotes' security comes from its implementation of _client-side encryption_. All data is encrypted on the user's computer before it gets pushed to the server. And the user's password never leaves their computer. All together this means that only the user can open and read their diary; no one else can, not even the server owner.\r\n\r\nIn this post I'm going to outline the general principles behind the encryption architecture I've implemented - these principles are applicable to any app that does client-side encryption though I'll refer to Heartnotes as an example.\r\n\r\nFirst, let's talk about the raw data...\r\n"
 tags:
   - Encryption
   - Heartnotes
   - Authentication
 ---
-I recently released [version 2 of Heartnotes](https://heartnotes.me) - my secure, encrypted diary app. This was a major rewrite which changed it from being a purely offline app into one which synchronized with a server back-end.
+I recently released [version 2 of Heartnotes](no-longer-valid) - my secure, encrypted diary app. This was a major rewrite which changed it from being a purely offline app into one which synchronized with a server back-end.
 
 The challenge with this was to ensure that a good user experience could be maintained given these changes. Heartnotes' security comes from its implementation of _client-side encryption_. All data is encrypted on the user's computer before it gets pushed to the server. And the user's password never leaves their computer. All together this means that only the user can open and read their diary; no one else can, not even the server owner.
 

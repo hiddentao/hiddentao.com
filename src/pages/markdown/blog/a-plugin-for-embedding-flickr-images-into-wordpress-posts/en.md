@@ -1,7 +1,7 @@
 ---
 title: A plugin for embedding Flickr images into Wordpress posts
 date: '2012-11-13'
-summary: "I'm pleased to announce the immediate availability of <a href=\"http:&#47;&#47;wordpress.org&#47;extend&#47;plugins&#47;wp-flickr-embed&#47;\">Wordpress Flickr Embed<&#47;a>, a plugin which makes it <em>really<&#47;em> easy to insert Flickr images into your Wordpress posts. \r\n\r\nThe plugin is very user-friendly. It adds a button to the editing toolbar which will pop up an interactive interface when clicked. The interface lets you search for photos using free text. Click on a photo to insert it and customise the title&#47;caption, inserted size, alignment and also the size to show in the lightbox. It also provides a mechanism (on its settings page) for you to authenticate it with your Flickr account so that you can access your private images.\r\n"
+summary: "I'm pleased to announce the immediate availability of Wordpress Flickr Embed, a plugin which makes it really easy to insert Flickr images into your Wordpress posts. \r\n\r\nThe plugin is very user-friendly. It adds a button to the editing toolbar which will pop up an interactive interface when clicked. The interface lets you search for photos using free text. Click on a photo to insert it and customise the title&#47;caption, inserted size, alignment and also the size to show in the lightbox. It also provides a mechanism (on its settings page) for you to authenticate it with your Flickr account so that you can access your private images.\r\n"
 tags:
   - Wordpress
   - Plugin

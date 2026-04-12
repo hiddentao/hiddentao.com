@@ -1,7 +1,7 @@
 ---
 title: 'Notes on using RequireJS with Backbone and&#47;or Spine'
 date: '2011-08-17'
-summary: "For a project I'm currently working on I've decided to jump on the Javascript bandwagon with full weight. I intend to code in [CoffeeScript](http:&#47;&#47;jashkenas.github.com&#47;coffee-script&#47;), use either [Spine](http:&#47;&#47;maccman.github.com&#47;spine&#47;) or [Backbone](http:&#47;&#47;documentcloud.github.com&#47;backbone&#47;) to give me a light-weight MVC architecture, and then deploy it all together in a clean, optimized way using [RequireJS](http:&#47;&#47;requirejs.org&#47;). If you're not familiar with these tools and libraries then I recommend you follow the links to find out more about them. Basically, client-side Javascript-driven web app development is getting very exciting :)\r\n\r\nI started off by getting Spine to to work with the [RequireJS CoffeeScript adapter](https:&#47;&#47;github.com&#47;jrburke&#47;require-cs). In development mode everything worked fine but when I tested using the RequireJS-optimized output some of my Spine code didn't seem to work. Here is my HTML file:\r\n"
+summary: "For a project I'm currently working on I've decided to jump on the Javascript bandwagon with full weight. I intend to code in CoffeeScript, use either Spine or Backbone to give me a light-weight MVC architecture, and then deploy it all together in a clean, optimized way using RequireJS. If you're not familiar with these tools and libraries then I recommend you follow the links to find out more about them. Basically, client-side Javascript-driven web app development is getting very exciting :)\r\n\r\nI started off by getting Spine to to work with the RequireJS CoffeeScript adapter. In development mode everything worked fine but when I tested using the RequireJS-optimized output some of my Spine code didn't seem to work. Here is my HTML file:\r\n"
 tags:
   - Javascript
   - RequireJS
@@ -9,7 +9,7 @@ tags:
   - Backbone
   - CoffeeScript
 ---
-For a project I'm currently working on I've decided to jump on the Javascript bandwagon with full weight. I intend to code in [CoffeeScript](http://jashkenas.github.com/coffee-script/), use either [Spine](http://maccman.github.com/spine/) or [Backbone](http://documentcloud.github.com/backbone/) to give me a light-weight MVC architecture, and then deploy it all together in a clean, optimized way using [RequireJS](http://requirejs.org/). If you're not familiar with these tools and libraries then I recommend you follow the links to find out more about them. Basically, client-side Javascript-driven web app development is getting very exciting :)
+For a project I'm currently working on I've decided to jump on the Javascript bandwagon with full weight. I intend to code in [CoffeeScript](no-longer-valid), use either [Spine](no-longer-valid) or [Backbone](https://web.archive.org/web/20130403040440/http://documentcloud.github.com/backbone/) to give me a light-weight MVC architecture, and then deploy it all together in a clean, optimized way using [RequireJS](http://requirejs.org/). If you're not familiar with these tools and libraries then I recommend you follow the links to find out more about them. Basically, client-side Javascript-driven web app development is getting very exciting :)
 
 I started off by getting Spine to to work with the [RequireJS CoffeeScript adapter](https://github.com/jrburke/require-cs). In development mode everything worked fine but when I tested using the RequireJS-optimized output some of my Spine code didn't seem to work. Here is my HTML file:
 
@@ -58,7 +58,7 @@ define () ->
     el: document.body
 ```
 
-_I built on top of the [RequreJS CoffeeScript demo files](https://github.com/jrburke/require-cs/tree/master/demo) to save time_.
+_I built on top of the [RequreJS CoffeeScript demo files](no-longer-valid) to save time_.
 
 On page load I should see an alert containing the text "loaded". When I click the link I should get an alert containing the text "clicked". In the RequireJS-optimized version (where all the scripts were compressed and inlined into `main.js`) I got the initial page load alert but no alert when I clicked on the link. Thinking that the use of coffeescript might have jinxed it I decided to code the Spine stuff in plain old Javascript instead, to no avail. I then replaced Spine with Backbone and coded the equivalent as such:
 

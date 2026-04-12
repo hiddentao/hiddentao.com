@@ -1,7 +1,7 @@
 ---
 title: Ubuntu 10.04 Lucid 64-bit + PHP 5.2 FastCGI + APC + nginx
 date: '2011-06-24'
-summary: "This post outlines the steps needed to get PHP 5.2 running on Ubuntu 10.04 (\"Lucid Lynx\") 64-bit under nginx and FastCGI with APC enabled. The current Lucid apt repositories contain PHP 5.3 so I needed compile 5.2 from source in order to get this setup working. I also decided to use the new-ish [FastCGI Process Manager](http:&#47;&#47;php-fpm.org&#47;) that comes with PHP in order to manage FastCGI processes. \r\n"
+summary: "This post outlines the steps needed to get PHP 5.2 running on Ubuntu 10.04 (\"Lucid Lynx\") 64-bit under nginx and FastCGI with APC enabled. The current Lucid apt repositories contain PHP 5.3 so I needed compile 5.2 from source in order to get this setup working. I also decided to use the new-ish FastCGI Process Manager that comes with PHP in order to manage FastCGI processes. \r\n"
 tags:
   - PHP
   - Ubuntu
@@ -9,14 +9,14 @@ tags:
   - nginx
   - FastCGI
 ---
-This post outlines the steps needed to get PHP 5.2 running on Ubuntu 10.04 ("Lucid Lynx") 64-bit under nginx and FastCGI with APC enabled. The current Lucid apt repositories contain PHP 5.3 so I needed compile 5.2 from source in order to get this setup working. I also decided to use the new-ish [FastCGI Process Manager](http://php-fpm.org/) that comes with PHP in order to manage FastCGI processes.
+This post outlines the steps needed to get PHP 5.2 running on Ubuntu 10.04 ("Lucid Lynx") 64-bit under nginx and FastCGI with APC enabled. The current Lucid apt repositories contain PHP 5.3 so I needed compile 5.2 from source in order to get this setup working. I also decided to use the new-ish [FastCGI Process Manager](no-longer-valid) that comes with PHP in order to manage FastCGI processes.
 <a id="more"></a><a id="more-1162"></a>
 
 Initially I tried to setup FastCGI with Apache but in the end I coudn't quite get all the PHP global variables to get set correctly when a request got passed from Apache to the FastCGI processes. I wasn't able to find a definitely solution elsewhere on the web either so I decided save myself some trouble and switch to nginx. However, if you wish to get this working with Apache yourself then check out the ["Resources"](#resources) section below.
 
 ## 1. Install PHP
 
-I'll assume you that you have a folder at `~/src`. Now we will fetch the latest PHP 5.2 source (5.2.17 as of writing. We will also merge into it the latest [PHP FPM](http://php-fpm.org/) patch (0.5.14 as of writing).
+I'll assume you that you have a folder at `~/src`. Now we will fetch the latest PHP 5.2 source (5.2.17 as of writing. We will also merge into it the latest [PHP FPM](no-longer-valid) patch (0.5.14 as of writing).
 
 ```bash
 $ sudo apt-get update
@@ -135,7 +135,7 @@ $ sudo pear install phpunit/PHPUnit
 
 ## 2\. Install APC ## {#apc}
 
-[Alternative PHP Cache](http://php.net/manual/en/book.apc.php) is a free opcode cache for PHP which caches and optimizes intermediate PHP bytecode to speed up the performance of your website. From PHP's point of view it is simply another plugin which gets enabled, though PHP 6 comes with it built-in.
+[Alternative PHP Cache](no-longer-valid) is a free opcode cache for PHP which caches and optimizes intermediate PHP bytecode to speed up the performance of your website. From PHP's point of view it is simply another plugin which gets enabled, though PHP 6 comes with it built-in.
 
 First, lets grab the APC source code (as of writing APC is at version 3.1.8). We'll again put it into the `~/src` folder:
 
@@ -374,7 +374,7 @@ Jun 24 12:42:21.331654 [NOTICE] fpm_event_loop(), line 107: libevent: entering m
 
 ## 4\. Install nginx ## {#nginx}
 
-You are now ready to setup nginx so that it passes incoming PHP requests to the FPM daemon. We are going to install nginx from the [nginx Ubuntu PPA](http://wiki.nginx.org/Install#Ubuntu_PPA).
+You are now ready to setup nginx so that it passes incoming PHP requests to the FPM daemon. We are going to install nginx from the [nginx Ubuntu PPA](no-longer-valid).
 
 ```bash
 $ sudo -s
@@ -436,6 +436,6 @@ Some resources which I found helpful when doing this:
 
 * [http://boomshadow.net/tech/php-handlers/](http://boomshadow.net/tech/php-handlers/) - Check out a beginner's guide to different PHP handlers
 * [http://voidweb.com/2010/07/the-perfect-lamp-stack-apache2-fastcgi-php-fpm-apc/](http://voidweb.com/2010/07/the-perfect-lamp-stack-apache2-fastcgi-php-fpm-apc/) - Instructions for Apache APC PHP 5.2 FPM FastCGI
-* [http://earthviaradio.wordpress.com/2011/02/04/compiling-php-5-2-for-ubuntu-10-10/](http://earthviaradio.wordpress.com/2011/02/04/compiling-php-5-2-for-ubuntu-10-10/) - General instruction on compiling PHP
-* [http://forum.nginx.org/read.php?3,119942,120735](http://forum.nginx.org/read.php?3,119942,120735) - PHP FPM using sockets
-* [http://learnix.net/fastasscgi-part2/](http://learnix.net/fastasscgi-part2/) - Another guide on Apache FPM
+* [http://earthviaradio.wordpress.com/2011/02/04/compiling-php-5-2-for-ubuntu-10-10/](no-longer-valid) - General instruction on compiling PHP
+* [http://forum.nginx.org/read.php?3,119942,120735](no-longer-valid) - PHP FPM using sockets
+* [http://learnix.net/fastasscgi-part2/](no-longer-valid) - Another guide on Apache FPM

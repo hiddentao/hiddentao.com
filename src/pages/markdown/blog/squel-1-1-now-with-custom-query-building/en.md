@@ -1,7 +1,7 @@
 ---
 title: Squel 1.1 - now with custom query building
 date: '2013-03-28'
-summary: "Squel 1.1 is now available. This release was a major rewrite of how Squel works underneath the hood and has been a long time coming. There are two main benefits introduced by this new release:\r\n\r\n* The ability to customize the query building logic\r\n* The ability to build new types of queries\r\n\r\nThe [documentation has been updated](http:&#47;&#47;hiddentao.github.com&#47;squel&#47;#custom) with info and demos of the above. I'll talk a bit about the architectural changes in this post.\r\n"
+summary: "Squel 1.1 is now available. This release was a major rewrite of how Squel works underneath the hood and has been a long time coming. There are two main benefits introduced by this new release:\r\n\r\n* The ability to customize the query building logic\r\n* The ability to build new types of queries\r\n\r\nThe documentation has been updated with info and demos of the above. I'll talk a bit about the architectural changes in this post.\r\n"
 tags:
   - Javascript
   - node.js
@@ -13,7 +13,7 @@ Squel 1.1 is now available. This release was a major rewrite of how Squel works 
 * The ability to customize the query building logic
 * The ability to build new types of queries
 
-The [documentation has been updated](http://hiddentao.github.com/squel/#custom) with info and demos of the above. I'll talk a bit about the architectural changes in this post.
+The [documentation has been updated](no-longer-valid) with info and demos of the above. I'll talk a bit about the architectural changes in this post.
 
 ## Building blocks
 
@@ -119,6 +119,6 @@ squel.update = (options) ->
   ]
 ```
 
-After running the above, calling `squel.update()` will return our customised version of the query builder. But we can do more. We can go ahead and build an entirely new type of query if we so wish to, by subclassing `QueryBuilder` and then passing in `Block` instances (either built-in blocks or our own creations). See a [live example](http://hiddentao.github.com/squel/#custom) of this in the docs.
+After running the above, calling `squel.update()` will return our customised version of the query builder. But we can do more. We can go ahead and build an entirely new type of query if we so wish to, by subclassing `QueryBuilder` and then passing in `Block` instances (either built-in blocks or our own creations). See a [live example](no-longer-valid) of this in the docs.
 
-As usual squel is available from [npm](https://npmjs.org/package/squel) and [github](https://github.com/hiddentao/squel).
+As usual squel is available from [npm](no-longer-valid) and [github](https://github.com/hiddentao/squel).

@@ -1,7 +1,7 @@
 ---
 title: Updated Google text-to-speech library and added to Bower
 date: '2013-06-10'
-summary: "Just pushed a few updates to the Google text-to-speech API library - [google-tts](https:&#47;&#47;github.com&#47;hiddentao&#47;google-tts) - I first put out a while back. Here are the higlights...\r\n"
+summary: "Just pushed a few updates to the Google text-to-speech API library - google-tts - I first put out a while back. Here are the higlights...\r\n"
 tags:
   - Google
   - Javascript
@@ -11,7 +11,7 @@ Just pushed a few updates to the Google text-to-speech API library - [google-tts
 
 **Large text gets split up**
 
-It turns out that in Google Translate if you ask it to read out more than 100 characters in one go it actually [splits up the text](https://github.com/hiddentao/google-tts/issues/9) into 100 character slices, making consecutive audio requests for each slice. Thanks to [Julien Synx](http://www.julien-syx.fr/) for pointing this out. `Google-tts` now does this too.
+It turns out that in Google Translate if you ask it to read out more than 100 characters in one go it actually [splits up the text](no-longer-valid) into 100 character slices, making consecutive audio requests for each slice. Thanks to [Julien Synx](no-longer-valid) for pointing this out. `Google-tts` now does this too.
 
 **Callback when playback is finished**
 
@@ -55,6 +55,6 @@ Two built-in playback mechanisms are provided within the library - HTML5 audio a
 
 **Testing -> Bower**
 
-We now have some basic unit tests...yay. Continuous build has also been setup - [https://travis-ci.org/hiddentao/google-tts](https://travis-ci.org/hiddentao/google-tts).
+We now have some basic unit tests...yay. Continuous build has also been setup - [https://travis-ci.org/hiddentao/google-tts](no-longer-valid).
 
 I've refrained from adding `google-tts` to NPM as it's not really usable on the back-end. But I've now added it to [Bower](https://github.com/bower/bower), so hopefully more people will become aware of its existence.

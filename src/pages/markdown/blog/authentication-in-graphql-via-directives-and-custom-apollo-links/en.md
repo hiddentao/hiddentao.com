@@ -10,7 +10,7 @@ tags:
   - JWT
 ---
 
-A requirement of [our Ethereum Dapp](https://kickback.events?utm_source=hiddentao_blog&utm_medium=post) is that we sign the user into our backend prior to allowing them to make an modification
+A requirement of [our Ethereum Dapp](no-longer-valid) is that we sign the user into our backend prior to allowing them to make an modification
 to either on-chain (smart contract) or off-chain (cloud db) data.
 
 Since we're using [GraphQL](https://graphql.org/) for our frontend to backend
@@ -33,7 +33,7 @@ the outgoing AJAX call. The easiest way to add such a header when using the
 [Apollo GraphQL client](https://www.apollographql.com/client) is through writing
 a custom [Apollo link](https://www.apollographql.com/docs/link/). A _Link_
 allows one to modify a GraphQL request and its corresponding response whilst
-in transit. By default you may use a [HTTP Link](https://github.com/apollographql/apollo-link-http) to send GraphQL requests to
+in transit. By default you may use a [HTTP Link](no-longer-valid) to send GraphQL requests to
 a server, or a [Local Link](https://github.com/apollographql/apollo-link-state) to serve requests locally within the client
 itself.
 

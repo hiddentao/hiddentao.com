@@ -9,7 +9,7 @@ tags:
   - Continous Integration
 ---
 
-For [Waigo](https://waigojs.com) I wanted the website to get rebuilt every time the [core framework](https://github.com/waigo/waigo) got updated. This is because the actual 
+For [Waigo](https://web.archive.org/web/20200929122623/https://waigojs.com/) I wanted the website to get rebuilt every time the [core framework](https://github.com/waigo/waigo) got updated. This is because the actual 
 documentation is stored in the core framework repo, and gets downloaded and 
 transformed into HTML during the documentation website's build process.
 
@@ -25,7 +25,7 @@ Follow [official Travis CI instructions](https://docs.travis-ci.com/user/trigger
 
 **Script to trigger build**
 
-Here is [the Node.js script](https://github.com/waigo/waigo/blob/master/scripts/triggerDocSiteBuild.js) I use to actually trigger a build of the docs site:
+Here is [the Node.js script](https://web.archive.org/web/20260131165936/https://github.com/waigo/waigo/blob/master/scripts/triggerDocSiteBuild.js) I use to actually trigger a build of the docs site:
 
 ```js
 #!/usr/bin/env node
@@ -79,7 +79,7 @@ got.post(`https://api.travis-ci.org/repo/waigo%2Fwaigo.github.io/requests`, {
 });
 ```
 
-This above script will trigger a build of the [waigo/waigo.github.io](https://github.com/waigo/waigo.github.io) repo, which will auto-deploy [waigojs.com](https://waigojs.com) if successful. The build title (in Travis CI) will be something along the lines *"Triggered build at waigo/waigo commit (sha1 hash)"* so that it's easy to know which commit triggered which build.
+This above script will trigger a build of the [waigo/waigo.github.io](https://github.com/waigo/waigo.github.io) repo, which will auto-deploy [waigojs.com](https://web.archive.org/web/20200929122623/https://waigojs.com/) if successful. The build title (in Travis CI) will be something along the lines *"Triggered build at waigo/waigo commit (sha1 hash)"* so that it's easy to know which commit triggered which build.
 
 **Securing the API token**
 
@@ -135,5 +135,5 @@ after_success:
 
 Now we're done. The caveat of course is that if the Node v4 build succeeds but the v5 and v6 
 builds fail then the script will still get triggered. What we really need is a way to run a 
-script [after *all* our node builds have succeeded](https://github.com/travis-ci/travis-ci/issues/929).
+script [after *all* our node builds have succeeded](no-longer-valid).
 

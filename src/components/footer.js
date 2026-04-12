@@ -1,90 +1,51 @@
-import styled from '@emotion/styled'
-import { childAnchors, flex } from 'emotion-styled-utils'
-import { Link } from "gatsby"
 import React from "react"
+import BookCallButton from "./bookCallButton"
+import CyberContainer from "./cyberContainer"
 
-import NavLink from './navLink'
-import SocialLinks from './socialLinks'
+const Footer = () => (
+  <div className="cyber-footer">
+    <CyberContainer className="mt-0">
+      <div className="text-center">
+        <h2 className="text-white text-[2.5rem] mb-4">Let's connect().</h2>
+        <p className="text-mid-grey text-[1.2rem] mb-6">Book a free call to see how I can help you.</p>
+        <div className="btn-container justify-center">
+          <BookCallButton label="BOOK_CALL()" />
+        </div>
+      </div>
 
-const Container = styled.footer`
-  background-color: ${({ theme }) => theme.footer.bgColor};
-  padding: 2rem;
-  margin-top: 3rem;
-  border-top: 1px dashed ${({ theme }) => theme.footer.borderColor};;
-  font-size: 1rem;
-
-  ${({ theme }) => childAnchors(theme.footer.anchor)};
-`
-
-const Top = styled.div`
-  ${flex({ direction: 'column', justify: 'flex-start', align: 'flex-start' })};
-  margin-bottom: 2.5rem;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    ${flex({ direction: 'row', justify: 'space-between', align: 'flex-start' })};
-  }
-`
-
-const TopLeft = styled.div`
-  ${flex({ direction: 'row', justify: 'flex-start', align: 'flex-start' })};
-  margin-bottom: 3rem;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    margin-bottom: 0;
-  }
-`
-
-const Nav = styled.ul`
-  list-style: none;
-  display: block;
-  min-width: 7rem;
-  margin-right: 2rem;
-`
-
-const NavItem = styled.li`
-  display: block;
-  margin-bottom: 0.4rem;
-`
-
-const TopNavItem = styled(NavItem)`
-  font-weight: bolder;
-`
-
-const Copyright = styled.div`
-  font-size: 60%;
-  color: ${({ theme }) => theme.footer.copyright.textColor};
-`
-
-const Social = styled.div``
-
-const StyledSocialLinks = styled(SocialLinks)`
-  li {
-    color: ${({ theme }) => theme.footer.anchor.textColor};
-    margin-bottom: 0.4rem;
-  }
-`
-
-const Footer = ({ navLinks }) => (
-  <Container>
-    <Top>
-      <TopLeft>
-        <Nav>
-          <TopNavItem><Link to='/'>Home</Link></TopNavItem>
-          {navLinks.map(navLink => (
-            <NavItem key={navLink.label}>
-              <NavLink navLink={navLink} />
-            </NavItem>
-          ))}
-        </Nav>
-        <Social>
-          <StyledSocialLinks />
-        </Social>
-      </TopLeft>
-    </Top>
-    <Copyright>
-      © Ramesh Nair
-    </Copyright>
-  </Container>
+      <div className="subfooter mono">
+        <div className="text-mid-grey">&copy; HIDDENTAO_LABS</div>
+        <div className="flex flex-wrap gap-6">
+          <a
+            href="https://linkedin.com/in/hiddentao"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tooltip-id="app-tooltip"
+            data-tooltip-content="Connect on LinkedIn"
+          >LINKEDIN</a>
+          <a
+            href="https://github.com/hiddentao"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tooltip-id="app-tooltip"
+            data-tooltip-content="View GitHub profile"
+          >GITHUB</a>
+          <a
+            href="https://x.com/TaoOfDev"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tooltip-id="app-tooltip"
+            data-tooltip-content="Follow on X (Twitter)"
+          >X_TWITTER</a>
+          <a
+            href="mailto:ram@hiddentao.com"
+            data-tooltip-id="app-tooltip"
+            data-tooltip-content="Send an email"
+          >EMAIL</a>
+        </div>
+      </div>
+    </CyberContainer>
+  </div>
 )
 
 export default Footer

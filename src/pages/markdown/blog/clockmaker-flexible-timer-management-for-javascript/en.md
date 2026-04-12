@@ -1,7 +1,7 @@
 ---
 title: 'Clockmaker, flexible timer management for Javascript'
 date: '2014-06-19'
-summary: "As part of my tests for [Ansibot]() I need to be able to shutdown and startup the server multiple times in succession. This involves stopping and starting various timers spread throughout the system. I was using `setTimeout` and `setInterval` directly (Javascript's built-in goodies) to create my timers, and this made it hard to control the timers once they were running. After a quick fruitless search around for a nice library that would make this easier I decided to build [Clockmaker](https:&#47;&#47;github.com&#47;hiddentao&#47;clockmaker), my solution to this.\r\n"
+summary: "As part of my tests for Ansibot I need to be able to shutdown and startup the server multiple times in succession. This involves stopping and starting various timers spread throughout the system. I was using `setTimeout` and `setInterval` directly (Javascript's built-in goodies) to create my timers, and this made it hard to control the timers once they were running. After a quick fruitless search around for a nice library that would make this easier I decided to build Clockmaker, my solution to this.\r\n"
 tags:
   - Javascript
   - node.js

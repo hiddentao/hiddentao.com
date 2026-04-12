@@ -10,7 +10,7 @@ For a project I'm currently working on I need to be able to generate a file in J
 
 ## Browser-specific methods ##
 
-As far as I'm aware, of all the major browsers only IE and Firefox provide pure-Javascript solutions for reading and writing files to/from the client machine's disk drives. Firefox uses the [nsILocalFile](https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsILocalFile) API to do this. IE uses [FileSystemObject](http://msdn.microsoft.com/en-us/library/2z9ffy99(v=vs.85).aspx). Both require the user to approve special privileges for either the website or the browser itself. Such a solution wouldn't go down well with non-technical users.
+As far as I'm aware, of all the major browsers only IE and Firefox provide pure-Javascript solutions for reading and writing files to/from the client machine's disk drives. Firefox uses the [nsILocalFile](https://web.archive.org/web/20120505074912/https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsILocalFile) API to do this. IE uses [FileSystemObject](http://msdn.microsoft.com/en-us/library/2z9ffy99(v=vs.85).aspx). Both require the user to approve special privileges for either the website or the browser itself. Such a solution wouldn't go down well with non-technical users.
 
 The other browsers (Safari, Opera, Chrome) require the use of plugins to provide file system access, which is what I'll come onto next.
 
@@ -32,7 +32,7 @@ Support for this method is patchy across browsers and versions of IE older than 
 
 ## FileWriter API ##
 
-This is a work in progress by the W3C to specify a [standard way of writing and saving files from Javascript](http://www.w3.org/TR/file-writer-api/) though at the moment it isn't yet supported by any browsers. Chrome is aiming to support it soon (already?) though, according to [rumours](http://stackoverflow.com/questions/4531585/can-you-write-files-in-chrome-8), written files will probably be restricted to a sandboxed folder specific to each web app.
+This is a work in progress by the W3C to specify a [standard way of writing and saving files from Javascript](no-longer-valid) though at the moment it isn't yet supported by any browsers. Chrome is aiming to support it soon (already?) though, according to [rumours](no-longer-valid), written files will probably be restricted to a sandboxed folder specific to each web app.
 
 *Note: It's cousin - the [FileReader API](http://www.html5rocks.com/en/tutorials/file/dndfiles/) - is supported in [Opera](http://www.opera.com/docs/specs/presto28/file/) [Firefox](https://developer.mozilla.org/en/DOM/FileReader) and [Chrome](http://blog.chromium.org/2010/06/google-chrome-developer-update-google.html).*
 
@@ -46,5 +46,5 @@ I've decided to go with Downloadify - the Flash Javascript solution - for now wh
 
 For use of the `FileReader` API I found some good resources:
 
-* [http://www.thebuzzmedia.com/html5-drag-and-drop-and-file-api-tutorial/](http://www.thebuzzmedia.com/html5-drag-and-drop-and-file-api-tutorial/) - up-to-date drag & drop tutorial.
-* [http://code.google.com/p/html5uploader/](http://www.thebuzzmedia.com/html5-drag-and-drop-and-file-api-tutorial/) - cross-browser file drag and drop upload library, though still won't work without a server on Safari.
+* [http://www.thebuzzmedia.com/html5-drag-and-drop-and-file-api-tutorial/](https://web.archive.org/web/20260222210003/http://www.thebuzzmedia.com/html5-drag-and-drop-and-file-api-tutorial/) - up-to-date drag & drop tutorial.
+* [http://code.google.com/p/html5uploader/](https://web.archive.org/web/20260222210003/http://www.thebuzzmedia.com/html5-drag-and-drop-and-file-api-tutorial/) - cross-browser file drag and drop upload library, though still won't work without a server on Safari.

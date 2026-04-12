@@ -1,7 +1,7 @@
 ---
 title: Getting Vagrant working on Ubuntu 10.10
 date: '2011-06-22'
-summary: "I've recently started using [Vagrant](http:&#47;&#47;vagrantup.com&#47; \"Vagrant\") to create and deploy virtualized development environments and thought I'd post the steps required to get it working on Ubuntu 10.10 (\"Maverick Meerkat\").\r\n"
+summary: "I've recently started using Vagrant to create and deploy virtualized development environments and thought I'd post the steps required to get it working on Ubuntu 10.10 (\"Maverick Meerkat\").\r\n"
 tags:
   - Vagrant
   - Ubuntu

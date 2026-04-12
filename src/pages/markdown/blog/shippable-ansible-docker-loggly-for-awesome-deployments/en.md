@@ -1,7 +1,7 @@
 ---
 title: Shippable + Ansible + Docker + Loggly for awesome deployments
 date: '2014-06-03'
-summary: "This post is about how to use Ansible and Docker for both setting up a server environment for your app and then deploying your web app to it, and preserving your logs in case of server crash. Since I wrote my post on [\"Automated deployment with Docker containers\"](http:&#47;&#47;www.hiddentao.com&#47;archives&#47;2013&#47;12&#47;26&#47;automated-deployment-with-docker-lessons-learnt&#47;), both Docker and my own understanding have improved. In this post I'm going to detail my latest deployment setup. One that is more robust than what I had previously. So without further ado, let's get stuck in.\r\n"
+summary: "This post is about how to use Ansible and Docker for both setting up a server environment for your app and then deploying your web app to it, and preserving your logs in case of server crash. Since I wrote my post on \"Automated deployment with Docker containers\", both Docker and my own understanding have improved. In this post I'm going to detail my latest deployment setup. One that is more robust than what I had previously. So without further ado, let's get stuck in.\r\n"
 tags:
   - Build
   - Docker
@@ -14,7 +14,7 @@ This post is about how to use Ansible and Docker for both setting up a server en
 
 ## Shippable
 
-[Shippable](https://shippable.com) is a recently introduced continuous integration service, similar to [Travis](https://travis-ci.com/) but with some differences. All Shippable builds take place within a Docker container, and as such consecutive builds can re-use the same container, only updating what has changed. This provides for proper but resource-efficient build isolation and good build performance. The best part is that the free version of Shippable enables you to build up to 5 private Github repositories alongside as many public repositories as you like. Perfect for my needs.
+[Shippable](no-longer-valid) is a recently introduced continuous integration service, similar to [Travis](https://travis-ci.com/) but with some differences. All Shippable builds take place within a Docker container, and as such consecutive builds can re-use the same container, only updating what has changed. This provides for proper but resource-efficient build isolation and good build performance. The best part is that the free version of Shippable enables you to build up to 5 private Github repositories alongside as many public repositories as you like. Perfect for my needs.
 
 Once you've signed up for Shippable and linked your Github account you can enable builds for a particular repository by providing a `shippable.yml` file in the root folder of your repository. Here is one of mine:
 
@@ -82,7 +82,7 @@ For my purposes I have two playbooks:
 
 This playbook will set the hostname, install Docker, Postfix and Monit - basic services which are always needed. It also adds the SSL certificate and associated private key to the server. The key needs to be unprotected so that Nginx can be restarted without requiring a decryption password for the key. However I don't want to store the key in my repository unencrypted as this would enable anyone who gets access to it to then misuse it and my certificate.
 
-Luckily Ansible provides a [vault](http://docs.ansible.com/playbooks_vault.html) feature. This is a command-line tool which allows you to AES-256 encrypt any file within your Ansible role folder tree. When you execute an Ansible playbook it will prompt for the password to this 'vault'. Note that it will only prompt you once for a vault password so ensure all your vaults are locked with the same password. In my Ansible setup I only have one vault, the file which stores the SSL certificate and private key.
+Luckily Ansible provides a [vault](no-longer-valid) feature. This is a command-line tool which allows you to AES-256 encrypt any file within your Ansible role folder tree. When you execute an Ansible playbook it will prompt for the password to this 'vault'. Note that it will only prompt you once for a vault password so ensure all your vaults are locked with the same password. In my Ansible setup I only have one vault, the file which stores the SSL certificate and private key.
 
 Here is my `setupServer` playbook:
 

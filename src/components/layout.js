@@ -1,49 +1,17 @@
-import { ThemeProvider } from '@emotion/react'
-import styled from '@emotion/styled'
-import { boxShadow, flex, loadFonts } from 'emotion-styled-utils'
 import { graphql, useStaticQuery } from 'gatsby'
-import React, { useState, useEffect, useMemo, useCallback } from "react"
+import React, { useState, useMemo, useCallback } from "react"
 import Headroom from 'react-headroom'
+import { Tooltip } from 'react-tooltip'
+import { cx } from '../utils/cx'
 
-import { setupThemes } from '../themes'
 import Footer from "./footer"
-import GlobalStyles from './globalStyles'
 import Header from "./header"
-import Image from "./image"
+
 import MaxContentWidth from "./maxContentWidth"
 
 global.process = require('process')
 
-const themes = setupThemes({
-  width: {
-    mobile: '450px',
-    desktop: '750px',
-  },
-  height: {
-    tall: '800px',
-  }
-})
-
-const Container = styled(Image)`
-  color: ${({ theme }) => theme.textColor};
-`
-
-const HeaderWrapper = styled.div`
-  transition: all 0.3s linear;
-  background: ${ ({ floating, theme }) => (floating ? theme.header.floating.wrapper.bgColor : theme.header.wrapper.bgColor) };
-  ${({ theme, floating }) => floating ? boxShadow({ color: theme.header.floating.wrapper.shadowColor }) : ''};
-  ${({ floating, noStaticHeader }) => (noStaticHeader && !floating) ? `
-    opacity: 0;
-    pointer-events: none;
-  ` : ""};
-`
-
-const Content = styled(MaxContentWidth)`
-  padding: 2rem 1rem 3rem;
-  position: relative;
-`
-
-const Layout = ({ children, noHeader }) => {
+const Layout = ({ children, noHeader, noFooter }) => {
   const [floatingHeader, setFloatingHeader] = useState(false)
 
   const onHeaderFloat = useCallback(() => {
@@ -54,37 +22,7 @@ const Layout = ({ children, noHeader }) => {
     setFloatingHeader(false)
   }, [])
 
-  const [ , forceUpdate ] = useState()
-
-  useEffect(() => {
-    loadFonts({
-      header: {
-        name: 'Raleway',
-        weights: {
-          thin: 300,
-          regular: 400,
-          bold: 700,
-        }
-      },
-      body: {
-        name: 'Roboto',
-        weights: {
-          thin: 300,
-          regular: 400,
-          bold: 700,
-        }
-      },
-      text: {
-        name: 'Crimson Text',
-        weights: {
-          regular: 400,
-          bold: 700,
-        }
-      }
-    }, window.document).then(forceUpdate, err => console.error(err))
-  }, [])
-
-  const data = useStaticQuery(graphql`
+  useStaticQuery(graphql`
     {
       site {
         siteMetadata {
@@ -106,38 +44,38 @@ const Layout = ({ children, noHeader }) => {
       path: '/talks'
     },
     {
-      regexTest: /projects/,
-      label: 'Projects',
-      path: '/projects'
+      regexTest: /code/,
+      label: 'Code',
+      path: '/code'
     },
   ], [])
 
   return (
-    <ThemeProvider theme={themes.get('default')}>
-      <GlobalStyles />
-      <Container bg={true} src='bg.png' style={{
-        backgroundPosition: 'auto',
-        backgroundColor: 'black',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'repeat',
-        backgroundSize: 'auto',
-        minHeight: '100vh',
-      }}>
+    <>
+      <Tooltip id="app-tooltip" place="top" className="app-tooltip" />
+      <div className="scanline"></div>
+      <div className="text-white bg-base [background-image:linear-gradient(color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px),linear-gradient(90deg,color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px)] [background-size:40px_40px] bg-fixed min-h-screen">
         <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
-          <HeaderWrapper floating={floatingHeader} noStaticHeader={noHeader}>
+          <div className={cx(
+            "transition-all duration-300",
+            floatingHeader ? "bg-[color-mix(in_srgb,var(--color-caribbean-green)_90%,transparent)] shadow-[0_2px_2px_color-mix(in_srgb,var(--color-black)_75%,transparent)]" : "bg-transparent shadow-none",
+            noHeader && !floatingHeader && "opacity-0 pointer-events-none"
+          )}>
             <MaxContentWidth>
               <Header navLinks={navLinks} />
             </MaxContentWidth>
-          </HeaderWrapper>
+          </div>
         </Headroom>
-        <Content>
+        <div className="w-full relative">
           {children}
-        </Content>
-        <MaxContentWidth>
-          <Footer navLinks={navLinks} />
-        </MaxContentWidth>
-      </Container>
-    </ThemeProvider>
+        </div>
+        {!noFooter && (
+          <MaxContentWidth>
+            <Footer navLinks={navLinks} />
+          </MaxContentWidth>
+        )}
+      </div>
+    </>
   )
 }
 

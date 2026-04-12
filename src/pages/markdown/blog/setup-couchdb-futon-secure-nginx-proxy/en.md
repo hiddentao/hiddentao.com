@@ -76,14 +76,14 @@ you should see something like:
 }
 ```
 
-To access [Futon](http://docs.couchdb.org/en/1.6.1/intro/futon.html) goto `https://<server ip address>:5984/_utils`. **Ensure you set an
+To access [Futon](no-longer-valid) goto `https://<server ip address>:5984/_utils`. **Ensure you set an
 admin user and password through the Futon interface to prevent future anonymous
 users from wrecking your db!**
 
 
 ## Setup SSL certificates
 
-Follow the [LetsEncrypt.com instructions for Ubuntu + Nginx](https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx) to install Certbox:
+Follow the [LetsEncrypt.com instructions for Ubuntu + Nginx](no-longer-valid) to install Certbox:
 
 ```
 $ apt update
@@ -151,7 +151,7 @@ server {
 }
 ```
 
-_Note: the above config is based on [official docs](https://cwiki.apache.org/confluence/display/COUCHDB/Nginx+as+a+proxy#Nginxasaproxy-nginxasSSLproxy)._
+_Note: the above config is based on [official docs](no-longer-valid)._
 
 Now restart Nginx:
 

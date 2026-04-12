@@ -1,7 +1,7 @@
 ---
 title: Setting up HTTPS for Github organization pages with custom domains
 date: '2016-07-04'
-summary: "_Thanks to Robin Winslow for the [original post](https:&#47;&#47;robinwinslow.uk&#47;2016&#47;02&#47;13&#47;free-https-custom-hosting&#47;)_.\r\n\r\nGithub Organization pages are awesome, but they do not support HTTPS, presumably because doing so would require Github to serve up your domain-specific SSL certificate for incoming requests - which would be a real pain for them to manage.\r\n\r\nRobin Winslow has written a great [tutorial](https:&#47;&#47;robinwinslow.uk&#47;2016&#47;02&#47;13&#47;free-https-custom-hosting&#47;) which explains how get around this limitation by also setting up Cloudflare account and using that to \"layer on\" SSL - all for free. \r\n\r\nMy requirements were slightly different to Robin's, in that I needed to set up an apex domain (i.e. `mydomain.com`) rather than a subdomain, as Robin does. Here is the process I followed...\r\n"
+summary: "_Thanks to Robin Winslow for the original post_.\r\n\r\nGithub Organization pages are awesome, but they do not support HTTPS, presumably because doing so would require Github to serve up your domain-specific SSL certificate for incoming requests - which would be a real pain for them to manage.\r\n\r\nRobin Winslow has written a great tutorial which explains how get around this limitation by also setting up Cloudflare account and using that to \"layer on\" SSL - all for free. \r\n\r\nMy requirements were slightly different to Robin's, in that I needed to set up an apex domain (i.e. `mydomain.com`) rather than a subdomain, as Robin does. Here is the process I followed...\r\n"
 tags:
   - SSL
   - Github
@@ -31,17 +31,17 @@ Go into the settings for the repository and set the _Custom Domain_ to `myorg.co
 
 Sign up for a Cloudflare account and setup your DNS **A** records such that `myorg.com` point to Github's IP addresses: `192.30.252.153`, `192.30.252.154`:
 
-[![](https://c2.staticflickr.com/8/7416/27796197220_1bc14135b4.jpg)](https://www.flickr.com/photos/91055277@N00/27796197220/)
+[![](https://c2.staticflickr.com/8/7416/27796197220_1bc14135b4.jpg)](no-longer-valid)
 
 If you like you can also setup records for the `www` subdomain pointing to the same IP addresses.
 
 Go into the Crypto tab and ensure **Flexible** is selected as the SSL setting.
 
-[](https://www.flickr.com/photos/91055277@N00/27796197220/)[![](https://c2.staticflickr.com/8/7302/27796197160_d4c0b62c89_z.jpg)](https://www.flickr.com/photos/91055277@N00/27796197160/)
+[](no-longer-valid)[![](https://c2.staticflickr.com/8/7302/27796197160_d4c0b62c89_z.jpg)](no-longer-valid)
 
 Finally, let's setup page rules to ensure all HTTP traffic is auto-redirected to HTTP.
 
-[](https://www.flickr.com/photos/91055277@N00/27796197160/)[![](https://c2.staticflickr.com/8/7403/27463332504_52bcfb0f37_z.jpg)](https://www.flickr.com/photos/91055277@N00/27463332504/)
+[](no-longer-valid)[![](https://c2.staticflickr.com/8/7403/27463332504_52bcfb0f37_z.jpg)](no-longer-valid)
 
 Create another rule like the above, except set the URL to `http://*myorg.com`. This will ensure all calls to the base domain (i.e. without a URL path) are also auto-redirected to HTTPS.
 

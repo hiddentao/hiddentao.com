@@ -1,21 +1,12 @@
-import styled from '@emotion/styled'
 import React, { useMemo } from "react"
 import { graphql } from "gatsby"
-// import { IntlContextConsumer, injectIntl } from "gatsby-plugin-intl"
 
 import { getResolvedVersionForLanguage } from '../utils/node'
 import { parseDate } from "../utils/date"
+import CyberContainer from "../components/cyberContainer"
 import Layout from "../components/layout"
 import PostList from "../components/postList"
 import SEO from "../components/seo"
-
-const YearContainer = styled.div`
-  h3 {
-    padding-bottom: 0.7rem;
-    border-bottom: 1px solid ${({ theme }) => theme.archives.year.borderColor};
-    margin: 3rem 0 1rem;
-  }
-`
 
 const Page = ({ lang, data }) => {
   // sort blog post and categorize by year
@@ -55,13 +46,15 @@ const Page = ({ lang, data }) => {
   return (
     <Layout>
       <SEO title='Blog archive' />
-      <h1>Blog</h1>
-      {postsByYear.map(( { year, posts }) => (
-        <YearContainer key={year}>
-          <h3>{year}</h3>
-          <PostList posts={posts} />
-        </YearContainer>
-      ))}
+      <CyberContainer className="mb-8">
+        <h1 className="cyber-h1 mono mb-12">/blog</h1>
+        {postsByYear.map(( { year, posts }) => (
+          <div key={year} className="[&_h3]:pb-[0.7rem] [&_h3]:border-b [&_h3]:border-dark-grey [&_h3]:mt-12 [&_h3]:mb-4">
+            <h3 className="mono text-white">{year}</h3>
+            <PostList posts={posts} />
+          </div>
+        ))}
+      </CyberContainer>
     </Layout>
   )
 }

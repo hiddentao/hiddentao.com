@@ -1,21 +1,21 @@
 ---
 title: Asynchronous implementation of LZW algorithm in Javascript
 date: '2011-08-01'
-summary: "I'm quite pleased to announce availability of my latest mini-project - an efficient Javascript implementation of the [Lempel-Ziv-Welsh (LZW) compression algorithm](http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Lempel%E2%80%93Ziv%E2%80%93Welch). It's **only 4 KB** (minified size) and available right now from [Github](https:&#47;&#47;github.com&#47;hiddentao&#47;lzw-async) where you'll also find instructions on use and the full API. This post provides details of the implementation and discusses some of the design decisions, as well as providing some performance metrics.\r\n"
+summary: "I'm quite pleased to announce availability of my latest mini-project - an efficient Javascript implementation of the Lempel-Ziv-Welsh (no-longer-validel%E2%80%93Ziv%E2%80%93Welch). It's **only 4 KB** (minified size) and available right now from [Github where you'll also find instructions on use and the full API. This post provides details of the implementation and discusses some of the design decisions, as well as providing some performance metrics.\r\n"
 tags:
   - Javascript
   - Algorithms
   - LZW
 ---
-I'm quite pleased to announce availability of my latest mini-project - an efficient Javascript implementation of the [Lempel-Ziv-Welsh (LZW) compression algorithm](http://en.wikipedia.org/wiki/Lempel–Ziv–Welch). It's **only 4 KB** (minified size) and available right now from [Github](https://github.com/hiddentao/lzw-async) where you'll also find instructions on use and the full API. This post provides details of the implementation and discusses some of the design decisions, as well as providing some performance metrics.
+I'm quite pleased to announce availability of my latest mini-project - an efficient Javascript implementation of the [Lempel-Ziv-Welsh (LZW) compression algorithm](no-longer-valid). It's **only 4 KB** (minified size) and available right now from [Github](https://github.com/hiddentao/lzw-async) where you'll also find instructions on use and the full API. This post provides details of the implementation and discusses some of the design decisions, as well as providing some performance metrics.
 <a id="more"></a><a id="more-1281"></a>
 
 I needed client-side data compression for a project I'm working on and after much searching on the web and not finding anything that was good enough for my needs I decided to implement LZW, one of the simpler compression algorithms out there. First off I'd like to thank the authors of the following very useful LZW resources:
 
-* [http://warp.povusers.org/EfficientLZW/index.html](http://warp.povusers.org/EfficientLZW/index.html)
-* [http://rosettacode.org/wiki/LZW_compression#JavaScript](http://rosettacode.org/wiki/LZW_compression#JavaScript)
-* [http://marklomas.net/ch-egg/articles/lzwjs.htm](http://marklomas.net/ch-egg/articles/lzwjs.htm)
-* [http://michael.dipperstein.com/lzw/](http://michael.dipperstein.com/lzw/)
+* [http://warp.povusers.org/EfficientLZW/index.html](https://web.archive.org/web/20250610141656/http://warp.povusers.org/EfficientLZW/index.html)
+* [http://rosettacode.org/wiki/LZW_compression#JavaScript](no-longer-valid)
+* [http://marklomas.net/ch-egg/articles/lzwjs.htm](no-longer-valid)
+* [http://michael.dipperstein.com/lzw/](no-longer-valid)
 
 The first link in particular was the most useful in that Juha Nieminen (the author) both provides *and* explains his highly memory and speed efficient C implementation of LZW. My implementation matches his quite closely except that I had take into account the performance differences between Javascript and C (in particular, memory allocation and strings) when coding my version.
 
@@ -23,7 +23,7 @@ The first link in particular was the most useful in that Juha Nieminen (the auth
 
 For those not familiar with LZW it's a lossless data compression algorithm which is very simple to implement both in terms of lines of code and the general concept behind it. In a nutshell, the algorithm goes through the source data from start to finish, slowly building up a *dictionary* of strings, whereby each string is a pattern of characters which has occurred at least once within the source data. Each string in the dictionary is represented by an integer code. If a given pattern is seen more than once then the second occurrence of the pattern in the data could be represented by the dictionary integer code representing the pattern. Thus the output of the compressor is a sequence of numbers, with each number representing a particular string pattern.
 
-The beauty of LZW is that the decompression phase does not need to know the dictionary used for the compression phase because it too can build it up as it goes along. All LZW implementation follow this same basic principle so if you want to see a step-by-step example of compression and decompression (including what the dictionary looks like at each step) then head over to [Michael Dipperstein's page](http://michael.dipperstein.com/lzw/). Michael also covers the special exception case in the decompression phase whereby an integer code is encountered which doesn't yet have a matching pattern in the dictionary.
+The beauty of LZW is that the decompression phase does not need to know the dictionary used for the compression phase because it too can build it up as it goes along. All LZW implementation follow this same basic principle so if you want to see a step-by-step example of compression and decompression (including what the dictionary looks like at each step) then head over to [Michael Dipperstein's page](no-longer-valid). Michael also covers the special exception case in the decompression phase whereby an integer code is encountered which doesn't yet have a matching pattern in the dictionary.
 
 Once you've implemented the algorithm in a simple manner there are numerous optimisations which can be done to decrease both the time taken to compress the data as well as the size of the compressed output.
 
@@ -35,7 +35,7 @@ My implementation runs in the background (using `setTimeout()`) and invokes a us
 
 ## Speeding up compression
 
-Juha uses a [binary search tree to store the strings](http://warp.povusers.org/EfficientLZW/part4.html) in his compression dictionary and I've implemented the same in mine. To save memory [he doesn't store full strings in his tree nodes](http://warp.povusers.org/EfficientLZW/part2.html) - just a character which is the suffix of the string and a pointer to another tree node as the prefix of the string. So each time he wants to get the full string he has to traverse a number of nodes. I decided not to implement this and instead went for storing the the full string in each code - so mine takes up more memory but with the benefit of increased string extraction speed. To be honest I'm planning to implement it his way at some point and see how much difference it makes because my choice might not be optimal!
+Juha uses a [binary search tree to store the strings](no-longer-valid) in his compression dictionary and I've implemented the same in mine. To save memory [he doesn't store full strings in his tree nodes](https://web.archive.org/web/20240524095706/http://warp.povusers.org/EfficientLZW/part2.html) - just a character which is the suffix of the string and a pointer to another tree node as the prefix of the string. So each time he wants to get the full string he has to traverse a number of nodes. I decided not to implement this and instead went for storing the the full string in each code - so mine takes up more memory but with the benefit of increased string extraction speed. To be honest I'm planning to implement it his way at some point and see how much difference it makes because my choice might not be optimal!
 
 ## Speeding up decompression
 

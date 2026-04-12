@@ -85,6 +85,6 @@ Performance vs. other modules (Macbook Air 2012, 2 GHz Core i7, 8GB RAM 1600MHz 
 [17:23:25] Fastest test is Matrix dot-product (100x100) - linear-algebra at 5.1x faster than Matrix dot-product (100x100) - sylvester  
 ```
 
-Over time I hope to improve the performance even further, with [SIMD](https://software.intel.com/sites/billboard/article/simd-javascript-faster-html5-apps) and other improvements.
+Over time I hope to improve the performance even further, with [SIMD](no-longer-valid) and other improvements.
 
 Github: [https://github.com/hiddentao/linear-algebra](https://github.com/hiddentao/linear-algebra)

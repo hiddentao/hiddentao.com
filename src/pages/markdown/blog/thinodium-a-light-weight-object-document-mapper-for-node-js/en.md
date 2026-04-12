@@ -1,7 +1,7 @@
 ---
 title: Thinodium - a light-weight Object Document Mapper for Node.js
 date: '2016-05-08'
-summary: "I've just released [Thinodium](https:&#47;&#47;github.com&#47;hiddentao&#47;thinodium), a flexible yet light-weight Object Document Mapper (ODM) for Node.js. In this post I'm going to talk about what it is, why it's useful, and my motivations for building it the way I did.\r\n"
+summary: "I've just released Thinodium, a flexible yet light-weight Object Document Mapper (ODM) for Node.js. In this post I'm going to talk about what it is, why it's useful, and my motivations for building it the way I did.\r\n"
 tags:
   - node.js
   - Database
@@ -162,7 +162,7 @@ yield country.save();
 ```  
 
 
-Thinodium documents can also have [virtual fields](https://hiddentao.github.io/thinodium/#customization) and [custom methods](https://hiddentao.github.io/thinodium/#customization). Model instances (i.e. the objects representing tables) can also be enhanced with [schema validation](https://hiddentao.github.io/thinodium/#schema) and [hooks](https://hiddentao.github.io/thinodium/#hooks) among other things.
+Thinodium documents can also have [virtual fields](no-longer-valid) and [custom methods](no-longer-valid). Model instances (i.e. the objects representing tables) can also be enhanced with [schema validation](no-longer-valid) and [hooks](no-longer-valid) among other things.
 
 _Note: For those who have used [Robe](https://github.com/hiddentao/robe) (my ODM for MongoDB), you will notice that Thinodium re-uses and improves upon Robe's document architecture._
 
@@ -175,18 +175,18 @@ $ npm install thinodium thinodium-rethinkdb
 ```  
 
 
-Writing your own adapter means extending the base `Thinodium.Database` and `Thinodium.Model` classes and implementing the necessary methods therein. More information on this is available in the [adapter docs](https://hiddentao.github.io/thinodium/#adapters).
+Writing your own adapter means extending the base `Thinodium.Database` and `Thinodium.Model` classes and implementing the necessary methods therein. More information on this is available in the [adapter docs](no-longer-valid).
 
 ## Future work and links
 
 Right now there is just one adapter, and that's for RethinkDB. I plan to add support for Mongo at some point, which may result in [Robe](https://github.com/hiddentao/robe) being deprecated. Also, I'm wondering whether to add first-class support for database updates observes (i.e. oplog tailing in Mongo, [changes()](https://rethinkdb.com/api/javascript/changes/) in Rethink) or leaves that to library users to do so themselves.
 
-The current list of adapters is always visible at [https://www.npmjs.com/search?q=thinodium](https://www.npmjs.com/search?q=thinodium).
+The current list of adapters is always visible at [https://www.npmjs.com/search?q=thinodium](no-longer-valid).
 
 Links:
 
 * Github - [thinodium](https://github.com/hiddentao/thinodium), [thinodium-rethinkdb](https://github.com/hiddentao/thinodium-rethinkdb)  
-* Documentation - [https://hiddentao.github.io/thinodium/](https://hiddentao.github.io/thinodium/)
+* Documentation - [https://hiddentao.github.io/thinodium/](no-longer-valid)
 
 
 

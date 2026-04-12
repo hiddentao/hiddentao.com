@@ -6,7 +6,7 @@ tags:
   - Ethereum
 ---
 
-For the [Nayms](http://nayms.io/) project we've opted to build upgradeable smart contracts so that we can do
+For the [Nayms](no-longer-valid) project we've opted to build upgradeable smart contracts so that we can do
 permissioned upgrades of our smart contract logic whilst keeping our on-chain data
 unchanged.
 
@@ -22,7 +22,7 @@ Initially I thought about storing data separately in its own contract (like
   Rocket Pool does) but decided against this as this then introduces a new
 problem to solve - that of controlling access to the data.
 
-Thus, the proxy pattern (using [delegatecall](https://blog.nucypher.com/upgradeable-smart-contracts-in-defense-of-delegatecall/)) became the preferred option. In this pattern the _proxy_ contract forwards
+Thus, the proxy pattern (using [delegatecall](https://web.archive.org/web/20230921190932/https://blog.nucypher.com/upgradeable-smart-contracts-in-defense-of-delegatecall/)) became the preferred option. In this pattern the _proxy_ contract forwards
 all incoming calls to an _logic_ contract which actually has the
 business logic. Because the forwarding is done using `delegatecall`, the _logic_ contract 
 gets run in the context of the _proxy_ contract's memory space, meaning it
@@ -266,7 +266,7 @@ contract Proxy is EternalStorage {
 }
 ```
 
-_Note: the `ECDSA` library that is referred to above is from [OpenZepellin](https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/master/contracts/cryptography/ECDSA.sol)_
+_Note: the `ECDSA` library that is referred to above is from [OpenZepellin](https://web.archive.org/web/20191122200804/https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/master/contracts/cryptography/ECDSA.sol)_
 
 The _logic_ contract (aka the _implementation_ contract) must simply implement
 the `IProxyImpl` interface, which specifies a function to return the implementation

@@ -1,13 +1,13 @@
 ---
 title: How to wrap fs.exists() within a Promise
 date: '2013-06-10'
-summary: "I have started using the [Q](https:&#47;&#47;npmjs.org&#47;package&#47;q) module - an implementation of the [Promises specification](https:&#47;&#47;github.com&#47;promises-aplus&#47;promises-spec). One nifty function it provides is [denodify](https:&#47;&#47;github.com&#47;kriskowal&#47;q&#47;wiki&#47;API-Reference#qdenodeifynodefunc-args). This makes it easy to convert a Node.js function (which takes a normal callback) into one which returns a Promise. All good until you decide you want to use [fs.exists()](http:&#47;&#47;nodejs.org&#47;api&#47;fs.html#fs_fs_exists_path_callback). \r\n"
+summary: "I have started using the Q module - an implementation of the Promises specification. One nifty function it provides is denodify. This makes it easy to convert a Node.js function (which takes a normal callback) into one which returns a Promise. All good until you decide you want to use fs.exists(). \r\n"
 tags:
   - Javascript
   - node.js
   - Promise
 ---
-I have started using the [Q](https://npmjs.org/package/q) module - an implementation of the [Promises specification](https://github.com/promises-aplus/promises-spec). One nifty function it provides is [denodify](https://github.com/kriskowal/q/wiki/API-Reference#qdenodeifynodefunc-args). This makes it easy to convert a Node.js function (which takes a normal callback) into one which returns a Promise. All good until you decide you want to use [fs.exists()](http://nodejs.org/api/fs.html#fs_fs_exists_path_callback).
+I have started using the [Q](https://web.archive.org/web/20141208161227/https://www.npmjs.org/package/q) module - an implementation of the [Promises specification](https://github.com/promises-aplus/promises-spec). One nifty function it provides is [denodify](https://github.com/kriskowal/q/wiki/API-Reference#qdenodeifynodefunc-args). This makes it easy to convert a Node.js function (which takes a normal callback) into one which returns a Promise. All good until you decide you want to use [fs.exists()](http://nodejs.org/api/fs.html#fs_fs_exists_path_callback).
 <a id="more"></a><a id="more-1561"></a>
 
 The issue is that `fs.exists()` takes a callback which is not expected to have an `err` parameter in its signature. Instead the callback will get passed a boolean value indicating whether the checked path exists or not. Here is the typical usage:

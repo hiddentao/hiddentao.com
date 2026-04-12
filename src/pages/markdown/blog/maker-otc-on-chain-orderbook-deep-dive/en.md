@@ -87,7 +87,7 @@ mapping (uint => OfferInfo) public offers;
 
 The transfer of ERC-20 tokens from one participant to another requires
 calling into ERC-20 token contracts, and there is hence a
-[risk of re-entrancy](https://medium.com/coinmonks/protect-your-solidity-smart-contracts-from-reentrancy-attacks-9972c3af7c21).
+[risk of re-entrancy](no-longer-valid).
 
 To protect against such attacks a _mutex_ is used. This is accomplished via a
 `synchronized` modifier:
@@ -525,7 +525,7 @@ The calculation shown above is arrived at as follows:
 * **(lS × hB) ≤ (hS × lB)** _(true if lower comes before higher in sorted list)_
 * **(lS × hB) > (hS × lB)** _(true if lower comes after higher in sorted list)_
 
-_Note: We [prefer multiplication to division](https://medium.com/@soliditydeveloper.com/solidity-design-patterns-multiply-before-dividing-407980646f7) due to floating-point
+_Note: We [prefer multiplication to division](https://web.archive.org/web/20250221173911/https://medium.com/@soliditydeveloper.com/solidity-design-patterns-multiply-before-dividing-407980646f7) due to floating-point
 and rounding imprecision, hence why the above calculation's final form
 involves multiplications._
 

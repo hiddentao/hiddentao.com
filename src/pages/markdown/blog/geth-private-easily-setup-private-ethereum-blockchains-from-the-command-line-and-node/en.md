@@ -3,13 +3,13 @@ title: >-
   geth-private - easily setup private Ethereum blockchains from the command-line
   and Node
 date: '2016-04-04'
-summary: "I've recently been getting into [Ethereum](https:&#47;&#47;ethereum.org&#47;) development. As part of that I want to be able to setup a local, private blockchain whenever needed so that I can easily and quickly test my contracts and dapps prior to deploying them to the live network. I found a [great tutorial by Ade Duke](http:&#47;&#47;adeduke.com&#47;2015&#47;08&#47;how-to-create-a-private-ethereum-chain&#47;) which helped me get setup with a private blockchain, but the process was a bit cumbersome, and furthermore I wondered if I could automate the process and save myself some time. As it turned out, I was able to and thus `geth-private` was born!\r\n"
+summary: "I've recently been getting into Ethereum development. As part of that I want to be able to setup a local, private blockchain whenever needed so that I can easily and quickly test my contracts and dapps prior to deploying them to the live network. I found a great tutorial by Ade Duke which helped me get setup with a private blockchain, but the process was a bit cumbersome, and furthermore I wondered if I could automate the process and save myself some time. As it turned out, I was able to and thus `geth-private` was born!\r\n"
 tags:
   - Common-Utils
   - Ethereum
   - Blockchain
 ---
-I've recently been getting into [Ethereum](https://ethereum.org/) development. As part of that I want to be able to setup a local, private blockchain whenever needed so that I can easily and quickly test my contracts and dapps prior to deploying them to the live network. I found a [great tutorial by Ade Duke](http://adeduke.com/2015/08/how-to-create-a-private-ethereum-chain/) which helped me get setup with a private blockchain, but the process was a bit cumbersome, and furthermore I wondered if I could automate the process and save myself some time. As it turned out, I was able to and thus `geth-private` was born!  
+I've recently been getting into [Ethereum](https://ethereum.org/) development. As part of that I want to be able to setup a local, private blockchain whenever needed so that I can easily and quickly test my contracts and dapps prior to deploying them to the live network. I found a [great tutorial by Ade Duke](no-longer-valid) which helped me get setup with a private blockchain, but the process was a bit cumbersome, and furthermore I wondered if I could automate the process and save myself some time. As it turned out, I was able to and thus `geth-private` was born!  
 <a id="more"></a><a id="more-1955"></a>
 
 [geth-private](https://github.com/hiddentao/geth-private) is an NPM module which provides a way to quickly setup and cleanup private blockchains, both via a programmatic API and directly from the command-line.

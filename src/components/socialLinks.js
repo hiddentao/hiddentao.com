@@ -1,29 +1,9 @@
-import styled from '@emotion/styled'
 import React from 'react'
+import { cx } from '../utils/cx'
 
 import Icon from './icon'
 
-const SocialList = styled.ul`
-  list-style: none;
-  display: block;
-`
-
-const SocialListItem = styled.li`
-  margin-bottom: 1em;
-  span {
-    margin-left: 0.2em;
-  }
-  svg {
-    min-width: 2em;
-    color: ${({ theme }) => theme.textColor};
-  }
-  a {
-    text-decoration: none;
-    span {
-      text-decoration: underline;
-    }
-  }
-`
+const itemClasses = "mb-4 [&>a]:no-underline [&>a_span]:underline [&>a_svg]:min-w-[2em] [&>a_svg]:text-white [&_span]:ml-[0.2em]"
 
 export const GithubLink = ({ children }) => (
   <a href="https://github.com/hiddentao">
@@ -85,23 +65,21 @@ export const XLink = ({ children }) => (
   </a>
 )
 
-const SocialLinks = ({ className }) => {
-  return (
-    <SocialList className={className}>
-      <SocialListItem title="X">
-        <XLink />
-      </SocialListItem>
-      <SocialListItem title="Github">
-        <GithubLink />
-      </SocialListItem>
-      <SocialListItem title="Linked-in">
-        <LinkedInLink />
-      </SocialListItem>
-      <SocialListItem title="Email">
-        <EmailLink />
-      </SocialListItem>
-    </SocialList>
-  )
-}
+const SocialLinks = ({ className }) => (
+  <ul className={cx("list-none block", className)}>
+    <li className={itemClasses} title="X">
+      <XLink />
+    </li>
+    <li className={itemClasses} title="Github">
+      <GithubLink />
+    </li>
+    <li className={itemClasses} title="Linked-in">
+      <LinkedInLink />
+    </li>
+    <li className={itemClasses} title="Email">
+      <EmailLink />
+    </li>
+  </ul>
+)
 
 export default SocialLinks

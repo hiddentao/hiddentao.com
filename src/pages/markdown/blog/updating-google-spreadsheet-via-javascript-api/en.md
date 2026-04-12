@@ -33,7 +33,7 @@ update the spreadsheet.
 
 ## Step1: Enable API access
 
-Follow the [quick start instructions](https://developers.google.com/sheets/api/quickstart/nodejs) to enable the Sheets API for your account.
+Follow the [quick start instructions](https://web.archive.org/web/20250304005655/https://developers.google.com/sheets/api/quickstart/nodejs) to enable the Sheets API for your account.
 
 You will receive a credentials JSON file that looks like:
 
@@ -55,7 +55,7 @@ Save this file to your Git repo. We save it in `.credentials/client_secret.json`
 
 ## Step 2: api.js
 
-The Sheets v4 API requires an [OAuth-authenticated access token](https://developers.google.com/sheets/api/guides/authorizing#AboutAuthorization) to be
+The Sheets v4 API requires an [OAuth-authenticated access token](https://web.archive.org/web/20220817195745/https://developers.google.com/sheets/api/guides/authorizing) to be
 used if one needs to write to a spreadsheet.
 
 But since we're running in a CI environment that's non-interactive that's not
@@ -153,7 +153,7 @@ const getNewToken = async client => {
 Note that we're saving the token in plaintext in `.credentials/token.json`. If
 this was a public Git repo and we wanted to keep the token a secret we could
 encrypt and then decrypt it on the fly during the CI build. The decryption key
-could be [provided via an environment variable](https://github.com/circleci/encrypted-files) on the CI build server.
+could be [provided via an environment variable](no-longer-valid) on the CI build server.
 
 ## Step 3: ping.js
 

@@ -1,7 +1,7 @@
 ---
 title: Abide - observable object properties in Javascript using Ember-style syntax
 date: '2013-08-24'
-summary: "I have just released [abide](https:&#47;&#47;github.com&#47;hiddentao&#47;abide) - a small library I've been working on for the last few days. Inspired by [Ember.JS observables](http:&#47;&#47;emberjs.com&#47;api&#47;classes&#47;Ember.Observable.html), it provides a mechanism for auto-updating object properties and auto-triggering object methods based on updates made to other properties within the object. The example in the docs illustrates this well:\r\n"
+summary: "I have just released abide - a small library I've been working on for the last few days. Inspired by Ember.JS observables, it provides a mechanism for auto-updating object properties and auto-triggering object methods based on updates made to other properties within the object. The example in the docs illustrates this well:\r\n"
 tags:
   - Javascript
   - Ember

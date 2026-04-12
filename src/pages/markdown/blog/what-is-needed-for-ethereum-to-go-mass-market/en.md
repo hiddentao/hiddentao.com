@@ -34,11 +34,11 @@ how to ensure they maintain a stable value over time.
 Scalability mostly refers to how many transactions can be executed per second on
 a blockchain. For Ethereum it currently hovers around ~20. The goal of Eth 2.0
 is to get this to becomes many 1000's per second. There are numerous competitors
-([Solana](https://solana.com/), [NEAR](https://nearprotocol.com/),
+([Solana](https://solana.com/), [NEAR](no-longer-valid),
 [Elrond](http://elrond.com/), etc) also working on this problem. Most of them
 (including Ethereum) plan to use sharding as a means of achieving scalability.
 And this isn't to mention so-called _Layer 2_ scaling solutions
-([zkRollups](https://keen-noyce-c29dfa.netlify.com/#0),
+([zkRollups](no-longer-valid),
 [Plasma](https://www.learnplasma.org/en/learn/mvp.html), [Lightning
 networks](https://lightning.network/), etc) which already exist and can equally
 be applied to a sharded network to further boost scalabiilty.
@@ -73,7 +73,7 @@ Let's consider each of these in turn.
 
 Many of my non-crypto/non-technical friends ask me how they can invest in crypto
 since they'd like to get in on the crypto market speculation action. I always
-point them to [Coinbase](https://www.coinbase.com/) since I think that's
+point them to [Coinbase](https://web.archive.org/web/20260410175719/https://www.coinbase.com/) since I think that's
 probably the easiest way to buy in, has a simple enough UI, and is a regulated,
 well-established entity. But even then my friends have trouble understanding
 what's going on.
@@ -137,7 +137,7 @@ to hide it.
 
 Until recently, purchasing crypto using fiat required you to first go through
 Know-Your-Client (KYC) approval processes. But thanks to companies like
-[Wyre](https://www.sendwyre.com/), this is no longer necessary for small
+[Wyre](https://web.archive.org/web/20250723160749/https://www.sendwyre.com/), this is no longer necessary for small
 quantities.
 
 Now we can onboard a non-technical user onto our Dapp by creating them a secure
@@ -237,7 +237,7 @@ regulatory agencies (hence why Libra itself has already hit roadblocks) and so
 it's upto the crypto community to engage with national and international
 agencies in working towards a central bank condoned digital currency. By all
 indications it [looks like China may get there
-first](https://smallcaps.com.au/china-plan-introduce-central-bank-digital-currency-benefit-bitcoin/).
+first](no-longer-valid).
 And if so I expect Dapps for the Chinese market to immediately jump on board
 this opportunity.
 

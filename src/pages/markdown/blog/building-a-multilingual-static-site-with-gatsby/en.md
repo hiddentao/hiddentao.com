@@ -230,7 +230,7 @@ exports.onCreateNode = ({ node, actions, getNodes }) => {
 ```
 
 _Note: To see the implementation of `_isMarkdownNode()` and other methods please
-see the [full source code](https://github.com/hiddentao/hiddentao.com/blob/master/gatsby-node.js)._
+see the [full source code](no-longer-valid)._
 
 Let's say the `about` page has the following two language versions:
 
@@ -440,7 +440,7 @@ always provide the active language. Using this the `Page` component
 can loop through the `versions` of the page and find the matching
 language version to display at the time of display.
 
-Finally, if you look at the [about](/about/) page on this site, you will see a language
+Finally, if you look at the [about](no-longer-valid) page on this site, you will see a language
 switcher ([see code](https://github.com/hiddentao/hiddentao.com/blob/master/src/components/language.js)). This utilises `gatsby-plugin-intl` to make switching between language versions
 very easy.
 

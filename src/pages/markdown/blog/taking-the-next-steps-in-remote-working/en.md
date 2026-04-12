@@ -14,6 +14,6 @@ It has taken me time to truly understand that this is the way I'd like to work g
 
 Now I want to step up my game. I've realized that whether I'm in London or Taiwan isn't really what matters to me. What matters is what I'm doing with my time. I want to start working on more projects that matter, on technology that pushes me out of my comfort zone, and with people who will inspire me.
 
-My larger strategy involves increasing my public profile as a developer. In the medium term I plan on releasing more [open source software](https://github.com/hiddentao) and building a few more of my own ideas. My long-term future goal is to work on my own businesses, and build a passive income stream that frees up my time to work on whatever whacky idea comes to mind.
+My larger strategy involves increasing my public profile as a developer. In the medium term I plan on releasing more [open source software](no-longer-valid) and building a few more of my own ideas. My long-term future goal is to work on my own businesses, and build a passive income stream that frees up my time to work on whatever whacky idea comes to mind.
 
 My philosophy is simple. Life is short. So if there's something you're passionate about and really want to do, just do it. Even if you don't believe you can do it, just get started. Take small steps, make mistakes, learn, and the self-belief will come with time.

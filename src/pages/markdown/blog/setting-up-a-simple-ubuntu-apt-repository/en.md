@@ -44,7 +44,7 @@ If you now do an `apt-get update` you should gain access to installing the packa
 
 Ideally you'd want to sign your repository so that you can trust it. I haven't been able to get this working with mine just yet but below are links to resources which I've found on it, and which may help you. If you do get signed repositories working well please let me know!
 
-* [http://mediakey.dk/~cc/howto-create-your-own-debian-or-ubuntu-package-repository/](http://mediakey.dk/~cc/howto-create-your-own-debian-or-ubuntu-package-repository/)
-* [http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/](http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/)
+* [http://mediakey.dk/~cc/howto-create-your-own-debian-or-ubuntu-package-repository/](https://web.archive.org/web/20170725172254/http://mediakey.dk:80/~cc/howto-create-your-own-debian-or-ubuntu-package-repository/)
+* [http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/](https://web.archive.org/web/20240920060507/https://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/)
 * [http://wiki.debian.org/SecureApt](http://wiki.debian.org/SecureApt)
-* [http://hyperlogos.org/Simple-recipe-custom-UbuntuDebian-repositories-with-apt-ftparchive](http://hyperlogos.org/Simple-recipe-custom-UbuntuDebian-repositories-with-apt-ftparchive)
+* [http://hyperlogos.org/Simple-recipe-custom-UbuntuDebian-repositories-with-apt-ftparchive](no-longer-valid)

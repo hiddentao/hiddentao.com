@@ -8,9 +8,9 @@ tags:
   - node.js
   - Squel
 ---
-Today I released version 1.0.5 of [Squel](https://squeljs.org), the Javascript SQL query string builder. Apart from new features such as [instance cloning](http://hiddentao.github.com/squel/#cloning) and [JOINs in DELETEs](http://hiddentao.github.com/squel/#delete) the main change is the new test suite.
+Today I released version 1.0.5 of [Squel](no-longer-valid), the Javascript SQL query string builder. Apart from new features such as [instance cloning](no-longer-valid) and [JOINs in DELETEs](no-longer-valid) the main change is the new test suite.
 
-I decided to ditch [Vows](https://github.com/cloudhead/vows) and opt for [Mocha](http://visionmedia.github.com/mocha) as it doesn't force me to write my tests in the Behaviour-Driven Development (BDD) style. Along with this I'm using [Chai](http://chaijs.com), a comprehensive assertion library, and [Sinon](http://sinonjs.org), an equally comprehensive mocking library. The new test code should be much easier to maintain and modify going forward.
+I decided to ditch [Vows](https://github.com/cloudhead/vows) and opt for [Mocha](https://web.archive.org/web/20130328220556/http://visionmedia.github.com:80/mocha/) as it doesn't force me to write my tests in the Behaviour-Driven Development (BDD) style. Along with this I'm using [Chai](http://chaijs.com), a comprehensive assertion library, and [Sinon](http://sinonjs.org), an equally comprehensive mocking library. The new test code should be much easier to maintain and modify going forward.
 
 Get it using npm:
 
@@ -18,6 +18,6 @@ Get it using npm:
 $ npm install squel
 ```
 
-Homepage: [squeljs.org](http://squeljs.org)
+Homepage: [squeljs.org](no-longer-valid)
 
 Github: [github.com/hiddentao/squel](https://github.com/hiddentao/squel)

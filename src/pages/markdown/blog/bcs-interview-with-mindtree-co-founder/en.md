@@ -1,14 +1,14 @@
 ---
 title: BCS interview with Mindtree co-founder
 date: '2008-07-05'
-summary: "Here's a cool interview with Anjan Lahiri, one of the co-founders of [Mindtree](http:&#47;&#47;www.mindtree.com&#47;):\r\n\r\n[http:&#47;&#47;www.bcs.org&#47;server.php?show=ConWebDoc.19390](http:&#47;&#47;www.bcs.org&#47;server.php?show=ConWebDoc.19390)\r\n\r\nI particularly liked his response regarding the wisdom of offshoring&#47;outsourcing:\r\n\r\n> The question is 'should enterprises look for the most efficient ways of producing and delivering their goods and services', not 'is offshoring or outsourcing a good thing?' \r\n\r\n"
+summary: "Here's a cool interview with Anjan Lahiri, one of the co-founders of Mindtree:\r\n\r\n[no-longer-validrding the wisdom of offshoring&#47;outsourcing:\r\n\r\n> The question is 'should enterprises look for the most efficient ways of producing and delivering their goods and services', not 'is offshoring or outsourcing a good thing?' \r\n\r\n"
 tags:
   - Articles
   - IT
 ---
-Here's a cool interview with Anjan Lahiri, one of the co-founders of [Mindtree](http://www.mindtree.com/):
+Here's a cool interview with Anjan Lahiri, one of the co-founders of [Mindtree](no-longer-valid):
 
-[http://www.bcs.org/server.php?show=ConWebDoc.19390](http://www.bcs.org/server.php?show=ConWebDoc.19390)
+[http://www.bcs.org/server.php?show=ConWebDoc.19390](no-longer-valid)
 
 I particularly liked his response regarding the wisdom of offshoring/outsourcing:
 

@@ -3,12 +3,11 @@ title: Generate overridable getters and setters in Javascript
 date: '2013-07-08'
 summary: >-
   Javascript has given you the ability to define _properties_ on objects for a
-  while now, utilising
-  [Object.defineProperty](https:&#47;&#47;developer.mozilla.org&#47;en-US&#47;docs&#47;Web&#47;JavaScript&#47;Reference&#47;Global_Objects&#47;Object&#47;defineProperty)
-  to control how properties are read and written. In this post I will detail how
-  to make getters and setters which can be overridden in subclasses. At the end
-  I will provide a utility method you can add to your own code which makes it
-  real easy to add overridable getters and setters to your classes. 
+  while now, utilising Object.defineProperty to control how properties are read
+  and written. In this post I will detail how to make getters and setters which
+  can be overridden in subclasses. At the end I will provide a utility method
+  you can add to your own code which makes it real easy to add overridable
+  getters and setters to your classes. 
 tags:
   - Javascript
   - OOP
@@ -221,4 +220,4 @@ console.log(b.name); // mark oliver
 
 It seems a bit inelegant to have to know the method name of the getter and/or setter in order to override it. We could add more utility methods - e.g. `overrideGetter` and `overrideSetter` - to take care of the gory details if we wanted to.
 
-Meanwhile you can also see the above utility method as a Gist: [https://gist.github.com/hiddentao/5946053](https://gist.github.com/hiddentao/5946053).
+Meanwhile you can also see the above utility method as a Gist: [https://gist.github.com/hiddentao/5946053](https://web.archive.org/web/20260210011535/https://gist.github.com/hiddentao/5946053).

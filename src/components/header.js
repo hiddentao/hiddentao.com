@@ -1,123 +1,27 @@
 import { Link } from "gatsby"
 import React, { useCallback, useState } from "react"
-import styled from '@emotion/styled'
 import { Location } from '@reach/router'
-import { childAnchors, buttonStyles, boxShadow, flex } from 'emotion-styled-utils'
+import { cx } from '../utils/cx'
 
-import Button from './button'
 import Icon from './icon'
-import NavLink from './navLink'
-
-const Container = styled.header`
-  padding: 0.5rem 1.2rem;
-  height: 4rem;
-
-  ${({ theme }) => theme.font('header')};
-
-  ${flex({ direction: 'row', justify: 'space-between', align: 'center' })};
-`
-
-const Brand = styled.div`
-  font-size: 1rem;
-  font-weight: bolder;
-
-  ${({ theme }) => childAnchors(theme.header.nav.anchor)};
-`
-
-const Nav = styled.ul`
-  display: none;
-  font-size: 1.2rem;
-  list-style: none;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    display: block;
-  }
-`
-
-const MobileNavButton = styled(Button)`
-  display: block;
-  ${({ theme }) => buttonStyles(theme.header.nav.mobileButton)};
-
-  transform: rotate(${({ open }) => open ? 90 : 0}deg);
-  transition: all 0.2s;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    display: none;
-  }
-`
-
-const NavItem = styled.li`
-  display: inline-block;
-  font-size: 1rem;
-
-  ${({ theme, selected }) => childAnchors({
-    ...theme.header.nav.anchor,
-    inHoverState: selected,
-    extraStyles: `
-      padding: 1em;
-      border-radius: 5px;
-      text-transform: lowercase;
-    `,
-  })};
-`
-
-const MobileNav = styled.ul`
-  position: absolute;
-  z-index: 2;
-  top: 4rem;
-  right: 0;
-  border-radius: 5px;
-  ${({ theme }) => boxShadow({ color: theme.header.mobileNav.shadowColor })};
-`
-
-const roundedCorners = `
-  &:first-of-type {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-
-  &:last-of-type {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-`
-
-const MobileNavItem = styled.li`
-  display: block;
-  font-size: 1rem;
-  background-color: ${({ theme, selected }) => selected ? theme.header.mobileNav.hoverBgColor : theme.header.mobileNav.bgColor};
-  border-bottom: 1px solid ${({ theme }) => theme.header.mobileNav.borderColor};
-  text-align: center;
-
-  &:last-of-type {
-    border-color: transparent;
-  }
-
-  ${roundedCorners};
-
-  ${({ theme }) => childAnchors({
-    ...theme.header.nav.anchor,
-    extraStyles: `
-      display: block;
-      padding: 1em 2em;
-      ${roundedCorners};
-    `
-  })};
-`
 
 const _isViewingUrl = (location, regex) => !!location.pathname.match(regex)
 
-const NavLinks = ({ children: links, Component }) => (
-  <Location>
-    {({ location }) => (
-      links.map(navLink => (
-        <Component key = {navLink.label} selected={_isViewingUrl(location, navLink.regexTest)}>
-          <NavLink navLink={navLink} />
-        </Component>
-      ))
-    )}
-  </Location>
-)
+const linkClass = "text-white no-underline hover:!text-white px-2 py-0.5 data-[selected=true]:text-white data-[selected=true]:outline data-[selected=true]:outline-1 data-[selected=true]:outline-white data-[selected=true]:outline-offset-2 data-[selected=true]:rounded"
+const mobileLinkClass = "text-white no-underline hover:text-white hover:bg-caribbean-green data-[selected=true]:text-white data-[selected=true]:outline data-[selected=true]:outline-1 data-[selected=true]:outline-white data-[selected=true]:px-2 data-[selected=true]:py-0.5 data-[selected=true]:rounded"
+
+const NAV_ITEMS = [
+  { to: '/services', label: '/services', regex: /services/ },
+  { to: '/blog', label: '/blog', regex: /blog/ },
+  { to: '/code', label: '/code', regex: /code/ },
+  { to: '/talks', label: '/talks', regex: /talks/ },
+]
+
+const renderLinks = (location, className = linkClass) => NAV_ITEMS.map(({ to, label, regex }) => (
+  <Link key={to} to={to} data-selected={_isViewingUrl(location, regex)} className={className}>
+    {label}
+  </Link>
+))
 
 const Header = ({ navLinks, ...props }) => {
   const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
@@ -127,24 +31,46 @@ const Header = ({ navLinks, ...props }) => {
   )
 
   return (
-    <Container {...props}>
-      <Brand>
-        <Link to="/">
-          <Icon name={['fas', 'home']} />
-        </Link>
-      </Brand>
-      <Nav>
-        <NavLinks Component={NavItem}>{navLinks}</NavLinks>
-      </Nav>
-      <MobileNavButton onClick={toggleMobileMenu} open={mobileMenuOpen}>
-        <Icon name={['fas', 'bars']} />
-      </MobileNavButton>
-      {mobileMenuOpen ? (
-        <MobileNav>
-          <NavLinks Component={MobileNavItem}>{navLinks}</NavLinks>
-        </MobileNav>
-      ) : null}
-    </Container>
+    <div {...props} className={cx("w-full py-4 px-5", mobileMenuOpen && "bg-base")}>
+      <nav className="flex justify-between items-center text-white text-[1.1rem] mono">
+        <Link to="/" className="brand">hiddentao</Link>
+        <Location>
+          {({ location }) => (
+            <div className="hidden desktop:flex gap-8">
+              {renderLinks(location)}
+            </div>
+          )}
+        </Location>
+        <button
+          onClick={toggleMobileMenu}
+          className={cx(
+            "desktop:hidden self-stretch w-10 flex items-center justify-center bg-transparent text-white cursor-pointer text-[1.2rem] border",
+            mobileMenuOpen ? "border-dark-grey border-b-0" : "border-transparent"
+          )}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          <span className={cx("transition-transform duration-200 inline-flex", mobileMenuOpen ? "rotate-90" : "rotate-0")}>
+            <Icon name={['fas', 'bars']} />
+          </span>
+        </button>
+      </nav>
+
+      {mobileMenuOpen && (
+        <Location>
+          {({ location }) => (
+            <div>
+              <div className="flex">
+                <div className="flex-1 border-t border-dark-grey"></div>
+                <div className="w-10 shrink-0"></div>
+              </div>
+              <div className="border-l border-r border-b border-dark-grey px-4 py-4 flex flex-col gap-4 mono">
+                {renderLinks(location, mobileLinkClass)}
+              </div>
+            </div>
+          )}
+        </Location>
+      )}
+    </div>
   )
 }
 

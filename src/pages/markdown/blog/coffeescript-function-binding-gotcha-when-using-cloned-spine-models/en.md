@@ -1,7 +1,7 @@
 ---
 title: CoffeeScript function binding gotcha when using cloned Spine models
 date: '2011-11-09'
-summary: "I've come across a CoffeeScript \"gotcha\" whilst cloning [Spine models](http:&#47;&#47;spinejs.com&#47;docs&#47;models). Let's say we have model as such:\r\n\r\n[code lang=\"js\"]\r\nSpine = require(\"spine\")\r\nclass MyModel extends Spine.Model\r\n    id : 1\r\n    output: () =>\r\n        console.log @id\r\n[&#47;code]\r\n"
+summary: "I've come across a CoffeeScript \"gotcha\" whilst cloning Spine models. Let's say we have model as such:\r\n\r\n[code lang=\"js\"]\r\nSpine = require(\"spine\")\r\nclass MyModel extends Spine.Model\r\n    id : 1\r\n    output: () =>\r\n        console.log @id\r\n[&#47;code]\r\n"
 tags:
   - Javascript
   - Spine

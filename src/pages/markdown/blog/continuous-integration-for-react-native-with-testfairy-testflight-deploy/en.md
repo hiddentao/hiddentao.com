@@ -59,13 +59,13 @@ After some preliminary research, including trying out dedicated mobile app build
 services such as [GreenhouseCI](https://greenhouseci.com/) we opted to for
 [CircleCI](https://circleci.com) as our service of choice. They don't try to do
 too much, and give
-you an [OS X box](https://circleci.com/docs/ios-builds-on-os-x/) on which you
+you an [OS X box](https://web.archive.org/web/20250326140022/https://circleci.com/docs/ios-builds-on-os-x/) on which you
 can install and run whatever you want, as well as do iOS builds. Their UI is
 also simple enough that other team members can login and trigger builds at will.
 
 Moreover,
 they have excellent Github integration - you can not only use repo deploy keys,
-but also [user keys](https://circleci.com/docs/github-security-ssh-keys/) if
+but also [user keys](no-longer-valid) if
 your build requires pulling in code from multiple private repos (see below).
 
 **Node modules dependency management**
@@ -86,7 +86,7 @@ automates the entire process of generating and including signing certificates an
 profiles.
 
 Fastlane also provides other useful built-in commands, such as [uploading the iOS app to
-TestFlight](https://github.com/fastlane/fastlane/tree/master/pilot), and allows
+TestFlight](no-longer-valid), and allows
 you to define and write your own commands which can
 additionally arbitrary external scripts.
 
@@ -356,7 +356,7 @@ OS X machine. The key point to note is that the iOS dependencies (XCode, etc)
 are already installed whereas the Android SDK isn't. Which means we need to
 install the Android SDK before we can do the Android build.
 
-Here is our [circle.yml](https://circleci.com/docs/configuration/) file:
+Here is our [circle.yml](no-longer-valid) file:
 
 ```yml
 machine:
@@ -448,7 +448,7 @@ The contents of our `android-licenses` folder is:
     intel-android-extra-license (contents: d975f751698a77b662f1254ddbeed3901e976f5a)
 ```
 
-_Note: these are [SHA1 hashes of the license text](http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences)
+_Note: these are [SHA1 hashes of the license text](https://web.archive.org/web/20260206065641/https://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences)
 and will only work for so long_.
 
 Certain environment variables need to be set in CircleCI's _Environment Variables_

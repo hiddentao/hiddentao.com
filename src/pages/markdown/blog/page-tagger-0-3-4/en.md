@@ -6,6 +6,6 @@ tags:
   - Wordpress
   - Page Tagger
 ---
-This is a new version of [Page Tagger](/code/wordpress-page-tagger-plugin/) that has been tested to work with Wordpress 2.9.
+This is a new version of [Page Tagger](no-longer-valid) that has been tested to work with Wordpress 2.9.
 
-Grab it now from [here](/code/wordpress-page-tagger-plugin/) or the [Wordpress plugin repository](http://wordpress.org/extend/plugins/page-tagger/).
+Grab it now from [here](no-longer-valid) or the [Wordpress plugin repository](http://wordpress.org/extend/plugins/page-tagger/).

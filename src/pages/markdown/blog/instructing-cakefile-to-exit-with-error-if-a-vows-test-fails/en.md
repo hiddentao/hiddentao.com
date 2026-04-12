@@ -1,7 +1,7 @@
 ---
 title: Instructing Cakefile to exit with error if a vows test fails
 date: '2011-12-21'
-summary: "I'm using the [vows](http:&#47;&#47;vowsjs.org&#47;) \"behaviour-driven development\" framework to test the [squel](https:&#47;&#47;github.com&#47;hiddentao&#47;squel) Javascript library. I have a Cakefile which acts as my build script and inside it there is function which runs all of my tests. I decided to hook it up to the excellent [Travis CI](http:&#47;&#47;travis-ci.org&#47;) automated build system to ensure continuous testing on commits. One of the problems I had was that `cake` script exited normally even when one of the vows tests broke.\r\n"
+summary: "I'm using the vows \"behaviour-driven development\" framework to test the squel Javascript library. I have a Cakefile which acts as my build script and inside it there is function which runs all of my tests. I decided to hook it up to the excellent Travis CI automated build system to ensure continuous testing on commits. One of the problems I had was that `cake` script exited normally even when one of the vows tests broke.\r\n"
 tags:
   - Javascript
   - CoffeeScript
