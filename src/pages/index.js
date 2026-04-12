@@ -43,9 +43,9 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Helmet title="Hiddentao Labs — Software Consultant in Singapore and UK">
+      <Helmet title="Hiddentao Labs — I help startups ship faster and better.">
         <html lang="en" />
-        <meta name="description" content="Independent software consultant helping startups ship faster. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore and UK." />
+        <meta name="description" content="Independent software consultant helping startups ship faster and better. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore and UK." />
       </Helmet>
 
       <div>
