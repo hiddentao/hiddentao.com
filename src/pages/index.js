@@ -100,6 +100,7 @@ const IndexPage = () => {
                 <p>Part-time technical leadership. I set tech strategy, mentor developers, make decisions, and act as the technical voice in the room.</p>
               </div>
             </div>
+            <CyberLink to="/services" tooltip="View all service offerings">cd /services &rarr;</CyberLink>
           </CyberSection>
 
           <CyberSection tag="VERIFICATION">
@@ -111,12 +112,10 @@ const IndexPage = () => {
               <p>"When we started developing a solution in blockchain for lending and needed a lead to guide us through, Ram was there to help out. He was diligent on time and extremely reliable."</p>
               <div className="testimonial-author mono">-- Abhishek_Agarwal @ Google</div>
             </div>
-            <a
+            <CyberLink
               href="https://linkedin.com/in/hiddentao"
-              className="mono no-underline inline-block mt-4"
-              data-tooltip-id="app-tooltip"
-              data-tooltip-content="Read 14 more recommendations on LinkedIn"
-            >+ more_on_LinkedIn()</a>
+              tooltip="Read 14 more recommendations on LinkedIn"
+            >+ more_on_LinkedIn()</CyberLink>
           </CyberSection>
 
           <CyberSection tag="SYSTEM_STATS">
