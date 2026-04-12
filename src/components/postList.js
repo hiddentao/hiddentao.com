@@ -4,15 +4,15 @@ import { formatDate } from "../utils/date"
 import { cx } from '../utils/cx'
 
 const PostList = ({ className, posts }) => (
-  <div className={cx("text-[1.3rem] desktop:text-[1.5rem]", className)}>
-    <ul className="list-none block p-0">
+  <div className={cx(className)}>
+    <ul className="list-none p-0">
       {posts.map(post => (
         <li
           key={post.path}
-          className="flex flex-row justify-start items-start mb-[0.7em] text-[1em] leading-[1.4] [&>span:first-of-type]:text-[70%] [&>span:first-of-type]:flex-none [&>span:first-of-type]:min-w-[4em] [&>span:first-of-type]:font-light [&>span:first-of-type]:text-grey [&>span:last-of-type]:flex-1"
+          className="flex items-start mb-3.5 desktop:mb-4 text-xl desktop:text-2xl leading-snug"
         >
-          <span>{formatDate(post.date, 'MMM DD')}</span>
-          <span><Link to={post.path}>{post.title}</Link></span>
+          <span className="text-sm desktop:text-base leading-snug min-w-16 desktop:min-w-20 font-light text-grey flex-none">{formatDate(post.date, 'MMM DD')}</span>
+          <span className="flex-1"><Link to={post.path}>{post.title}</Link></span>
         </li>
       ))}
     </ul>

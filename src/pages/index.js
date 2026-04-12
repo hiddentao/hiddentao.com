@@ -45,7 +45,7 @@ const IndexPage = () => {
     <Layout>
       <Helmet title="Hiddentao Labs — I help startups ship faster and better.">
         <html lang="en" />
-        <meta name="description" content="I help startups ship faster and better. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore and UK." />
+        <meta name="description" content="I help startups ship faster and better. 20+ years experience. Smart contracts, full-stack apps, fractional CTO. Based in Singapore and London." />
       </Helmet>
 
       <div>
@@ -59,8 +59,8 @@ const IndexPage = () => {
           <div className="hero">
             <div className="hero-content">
               <h1 className="cyber-h1">I help startups ship faster and better.</h1>
-              <div className="subtitle mono">{`>>`} Software Consultant <span className="block sm:inline">{`>>`} Singapore 🇸🇬 UK 🇬🇧</span></div>
-              <p className="desc text-[1.2rem] max-w-[600px] leading-[1.6]"><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
+              <div className="subtitle mono">{`>>`} Software Consultant <span className="block sm:inline">{`>>`} Singapore 🇸🇬 London 🇬🇧</span></div>
+              <p className="desc text-md max-w-[600px] leading-body"><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
 
               <div className="btn-container">
                 <BookCallButton label="./book_call.sh" />
@@ -152,7 +152,7 @@ const IndexPage = () => {
               <ul className="writing-list">
                 {posts.map(post => (
                   <li key={post.path}>
-                    <Link to={post.path} className="text-[1.2rem]">
+                    <Link to={post.path} className="text-md">
                       {post.title}
                       <div className="meta">{formatDate(new Date(post.date), 'MMM YYYY')}</div>
                     </Link>

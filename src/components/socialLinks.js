@@ -3,7 +3,7 @@ import { cx } from '../utils/cx'
 
 import Icon from './icon'
 
-const itemClasses = "mb-4 [&>a]:no-underline [&>a_span]:underline [&>a_svg]:min-w-[2em] [&>a_svg]:text-white [&_span]:ml-[0.2em]"
+const itemClasses = "mb-4 [&>a]:no-underline [&>a_span]:underline [&>a_svg]:min-w-8 [&>a_svg]:text-white [&_span]:ml-1"
 
 export const GithubLink = ({ children }) => (
   <a href="https://github.com/hiddentao">

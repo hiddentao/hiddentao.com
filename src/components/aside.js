@@ -7,7 +7,7 @@ import RamImage from './ramImage'
 const Aside = ({ className }) => (
   <aside className={className}>
     <RamImage size='75%' />
-    <div className="mt-4 mb-3 ml-4 [&>svg]:min-w-[2em]">
+    <div className="mt-4 mb-3 ml-4 [&>svg]:min-w-8">
       <Icon name={['fas', 'map-pin']} /><span>UK</span>
     </div>
     <SocialLinks className="ml-4" />

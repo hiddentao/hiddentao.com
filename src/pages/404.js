@@ -9,7 +9,7 @@ const NotFoundPage = () => (
     <SEO title="404: Not found" />
     <CyberContainer className="mb-32 text-center">
       <h1 className="cyber-h1">NOT FOUND// 404</h1>
-      <p className="mono mt-8 text-[1.2rem]">You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <p className="mono mt-8 text-md">You just hit a route that doesn&#39;t exist... the sadness.</p>
     </CyberContainer>
   </Layout>
 )

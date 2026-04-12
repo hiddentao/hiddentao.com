@@ -29,7 +29,7 @@ const PageBottomNav = ({ currentLanguage, newer, older }) => {
 
   return (
     <div className="mt-6 py-4 border-y border-dashed border-grey text-[0.8rem] leading-4">
-      <ul className="list-none flex flex-row justify-between items-start [&_li]:max-w-[40%] [&_li_a]:mx-2">
+      <ul className="list-none flex justify-between items-start [&_li]:max-w-[40%] [&_li_a]:mx-2">
         <li>
           {newer ? (
             <>
@@ -71,10 +71,10 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
         ) : (
           <>
             <h1 className="cyber-h1 mono mb-4">{path}</h1>
-            <p className="text-[1.2rem] text-light-grey">{fields.title}</p>
+            <p className="text-md text-light-grey">{fields.title}</p>
           </>
         )}
-        <PageLastUpdatedDate className="text-[1.2rem] mt-4" date={fields.date} />
+        <PageLastUpdatedDate className="text-md mt-4" date={fields.date} />
         {type === 'blog' ? (
           <p className="mt-[0.8rem] text-base italic text-light-grey">({fields.readtime} minute read)</p>
         ) : null}
@@ -82,7 +82,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
         {type === 'blog' ? (
           <div className="mt-12 px-8 pt-4 pb-8 bg-[color-mix(in_srgb,var(--color-white)_3%,transparent)] border-l-4 border-darkest-grey rounded">
             <h3 className="italic mt-0 mono text-2xl">Need help shipping your product?</h3>
-            <p className="mb-10 leading-[1.6]">Let's talk about your project and see <a href="/services" className="text-cyan-accent underline">how I can help</a>.</p>
+            <p className="mb-10 leading-body">Let's talk about your project and see <a href="/services" className="text-cyan-accent underline">how I can help</a>.</p>
             <BookCallButton label="BOOK_CALL()" className="cyber-btn" />
           </div>
         ) : null}

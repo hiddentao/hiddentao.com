@@ -10,8 +10,8 @@ const Testimonial = ({ className, name, company, text }) => {
   }, [])
 
   return (
-    <div className={cx("text-[1.5rem] bg-transparent", className)}>
-      <p className="text-[1em] leading-[1.3] font-sans italic font-thin text-grey before:content-[open-quote] after:content-[close-quote]">
+    <div className={cx("bg-transparent", className)}>
+      <p className="text-2xl leading-snug font-sans italic font-thin text-grey before:content-[open-quote] after:content-[close-quote]">
         {text.length > 200 && !expanded ? (
           <span>
             {trunc(text, { length: 200, omission: ' ' })}
@@ -24,7 +24,7 @@ const Testimonial = ({ className, name, company, text }) => {
           </span>
         ) : text}
       </p>
-      <p className="text-white text-right mt-2 text-[0.8em]">
+      <p className="text-white text-right mt-2 text-md">
         - {name} ({company})
       </p>
     </div>

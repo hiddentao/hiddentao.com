@@ -7,7 +7,7 @@ const Footer = () => (
     <CyberContainer className="mt-0">
       <div className="text-center">
         <h2 className="text-white text-[2.5rem] mb-4">Let's connect().</h2>
-        <p className="text-mid-grey text-[1.2rem] mb-6">Book a free call to see how I can help you.</p>
+        <p className="text-mid-grey text-md mb-6">Book a free call to see how I can help you.</p>
         <div className="btn-container justify-center">
           <BookCallButton label="BOOK_CALL()" />
         </div>

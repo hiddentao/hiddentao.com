@@ -16,9 +16,7 @@ const CodePage = ({ data }) => {
       <SEO title="Code" description="Open source libraries and products by Ram" />
 
       <CyberContainer className="mb-32">
-        <div className="mb-12">
-          <h1 className="cyber-h1 mono">/code</h1>
-        </div>
+        <h1 className="cyber-h1 mono">/code</h1>
 
         <CyberSection tag="OPEN_SOURCE">
           <div className="grid-3">
