@@ -59,15 +59,8 @@ const IndexPage = () => {
           <div className="hero">
             <div className="hero-content">
               <h1 className="cyber-h1">I help startups ship faster and better.</h1>
-              <div className="subtitle mono">{`>>`} Software Consultant <span className="block sm:inline">{`>>`} Singapore 🇸🇬 London 🇬🇧</span></div>
+              <div className="subtitle mono">{`>>`} Software Consultant <span className="block mt-2 text-xs sm:mt-0 sm:inline sm:text-base">{`>>`} Singapore · London</span></div>
               <p className="desc text-md max-w-[600px] leading-body"><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
-              <ul className="hero-benefits mono">
-                <li>Full-stack apps &amp; smart contracts</li>
-                <li>Fractional CTO &amp; technical leadership</li>
-                <li>Architecture reviews &amp; roadmapping</li>
-                <li>Team mentoring &amp; hiring</li>
-              </ul>
-
               <div className="btn-container">
                 <BookCallButton />
                 <a
@@ -87,9 +80,6 @@ const IndexPage = () => {
             </a>
             <a href="https://ens.domains" target="_blank" rel="noopener noreferrer" data-tooltip-id="app-tooltip" data-tooltip-content="ENS Labs">
               <img src="/logos/ens.svg" alt="ENS Labs" className="client-logo" />
-            </a>
-            <a href="https://www.onre.finance" target="_blank" rel="noopener noreferrer" data-tooltip-id="app-tooltip" data-tooltip-content="OnRe">
-              <img src="/logos/onre.svg" alt="OnRe" className="client-logo" />
             </a>
             <a href="https://www.nbcuniversal.com" target="_blank" rel="noopener noreferrer" data-tooltip-id="app-tooltip" data-tooltip-content="NBC Universal">
               <img src="/logos/nbcuniversal.svg" alt="NBC Universal" className="client-logo" />
@@ -119,17 +109,16 @@ const IndexPage = () => {
 
           <CyberSection tag="VERIFICATION">
             <div className="testimonial-box">
-              <p>"Ram is self-motivated and takes personal pride... He was able to guide us through evolving best practices while consistently delivering ahead of schedule."</p>
+              <p>"...Ram always delivered on time, on budget and on scope. He's centered, diligent and whip-smart... It's been a pleasure to work with a senior engineer with tact and integrity which brings out the best in a team."</p>
               <div className="testimonial-author mono">
-                <img src="/logos/onre.svg" alt="OnRe" className="testimonial-logo" />
-                -- Theodore_Georgas @ OnRe
+                -- James_Shamenski
               </div>
             </div>
             <div className="testimonial-box">
-              <p>"When we started developing a solution in blockchain for lending and needed a lead to guide us through, Ram was there to help out. He was diligent on time and extremely reliable."</p>
+              <p>"He is proactive and practical... he often came up with full solutions for problems I didn't even realised we had and solved outstanding issues faster and better than we could hope for."</p>
               <div className="testimonial-author mono">
-                <img src="/logos/google.svg" alt="Google" className="testimonial-logo" />
-                -- Abhishek_Agarwal @ Google
+                <img src="/logos/ens.svg" alt="ENS" className="testimonial-logo" />
+                -- Alexandre_Van_de_Sande @ ENS
               </div>
             </div>
             <CyberLink

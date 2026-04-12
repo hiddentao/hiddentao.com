@@ -31,7 +31,7 @@ const Header = ({ navLinks, ...props }) => {
   )
 
   return (
-    <div {...props} className={cx("w-full py-4 px-5", mobileMenuOpen && "bg-base")}>
+    <div {...props} className={cx("w-full py-4 px-5", mobileMenuOpen && "bg-standard")}>
       <nav className="flex justify-between items-center text-white text-[1.1rem] mono">
         <Link to="/" className="brand">hiddentao</Link>
         <Location>

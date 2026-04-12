@@ -8,7 +8,7 @@
   --color-midnight: #073b4c;
   --color-violet: #6a4c93;
 
-  --color-base: #02080a;
+  --color-standard: #02080a;
   --color-surface: #0a1922;
   --color-white: #fff;
   --color-black: #000;
@@ -334,17 +334,17 @@
 
   .cyber-btn:hover {
     background: var(--color-caribbean-green);
-    color: var(--color-base);
+    color: var(--color-standard);
     box-shadow: 0 0 25px color-mix(in srgb, var(--color-caribbean-green) 60%, transparent);
   }
 
   .cyber-btn-primary {
     background: var(--color-caribbean-green);
-    color: var(--color-base);
+    color: var(--color-standard);
     font-weight: 700;
   }
 
-  .cyber-btn-primary:hover {
+.cyber-btn-primary:hover {
     background: color-mix(in srgb, var(--color-caribbean-green) 85%, white);
     box-shadow: 0 0 30px color-mix(in srgb, var(--color-caribbean-green) 50%, transparent);
   }
@@ -611,7 +611,7 @@
 
 .react-tooltip.app-tooltip {
   background-color: var(--color-crayola) !important;
-  color: var(--color-base) !important;
+  color: var(--color-standard) !important;
   border: none;
   font-family: var(--font-mono);
   font-size: 0.8rem;

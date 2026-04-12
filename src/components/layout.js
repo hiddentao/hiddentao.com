@@ -54,7 +54,7 @@ const Layout = ({ children, noHeader, noFooter }) => {
     <>
       <Tooltip id="app-tooltip" place="top" className="app-tooltip" />
       <div className="scanline"></div>
-      <div className="text-white bg-base [background-image:linear-gradient(color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px),linear-gradient(90deg,color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px)] [background-size:40px_40px] bg-fixed min-h-screen">
+      <div className="text-white bg-standard [background-image:linear-gradient(color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px),linear-gradient(90deg,color-mix(in_srgb,var(--color-blue-ncs)_10%,transparent)_1px,transparent_1px)] [background-size:40px_40px] bg-fixed min-h-screen">
         <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
           <div className={cx(
             "transition-all duration-300",
