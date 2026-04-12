@@ -70,7 +70,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run dev",
     "serve": "gatsby serve",
-    "build-and-publish": "npm run build && curl http://www.google.com/ping?sitemap=https://hiddentao.com/sitemap.xml"
+    "build-and-publish": "npm run build && curl http://www.google.com/ping?sitemap=https://hiddentao.com/sitemap.xml",
+    "check-links": "node scripts/check-links.js"
   },
   "repository": {
     "type": "git",
