@@ -496,6 +496,10 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    min-width: 0;
   }
 
   .testimonial-logo {
