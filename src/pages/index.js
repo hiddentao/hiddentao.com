@@ -63,12 +63,7 @@ const IndexPage = () => {
               <p className="desc text-md max-w-[600px] leading-body"><strong>20+ years</strong> building full-stack apps and enabling technical teams. From blockchains to production SaaS.</p>
               <div className="btn-container">
                 <BookCallButton />
-                <a
-                  href="#work"
-                  className="cyber-btn"
-                  data-tooltip-id="app-tooltip"
-                  data-tooltip-content="View my work"
-                >./view_portfolio.sh</a>
+                <CyberLink to="/services" className="cyber-btn" tooltip="View all service offerings">./view_services.sh</CyberLink>
               </div>
             </div>
             <img className="hero-img" src="/ram.png" alt="Hiddentao Labs" />
