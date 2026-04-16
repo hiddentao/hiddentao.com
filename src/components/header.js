@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useCallback, useState } from "react"
+import React from "react"
 import { Location } from '@reach/router'
 import { cx } from '../utils/cx'
 
@@ -23,16 +23,10 @@ const renderLinks = (location, className = linkClass) => NAV_ITEMS.map(({ to, la
   </Link>
 ))
 
-const Header = ({ navLinks, ...props }) => {
-  const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
-
-  const toggleMobileMenu = useCallback(() => setMobileMenuOpen(!mobileMenuOpen),
-    [ mobileMenuOpen, setMobileMenuOpen ]
-  )
-
+const Header = ({ navLinks, mobileMenuOpen, setMobileMenuOpen, ...props }) => {
   return (
-    <div {...props} className={cx("w-full py-4 px-5", mobileMenuOpen && "bg-standard")}>
-      <nav className="flex justify-between items-center text-white text-[1.1rem] mono">
+    <div {...props} className="w-full px-5 relative">
+      <nav className="flex justify-between items-center text-white text-[1.1rem] mono py-4">
         <Link to="/" className="brand">hiddentao</Link>
         <Location>
           {({ location }) => (
@@ -42,10 +36,10 @@ const Header = ({ navLinks, ...props }) => {
           )}
         </Location>
         <button
-          onClick={toggleMobileMenu}
+          onClick={() => setMobileMenuOpen(v => !v)}
           className={cx(
-            "desktop:hidden self-stretch w-10 flex items-center justify-center bg-transparent text-white cursor-pointer text-[1.2rem] border",
-            mobileMenuOpen ? "border-dark-grey border-b-0" : "border-transparent"
+            "desktop:hidden self-stretch w-10 flex items-center justify-center text-white cursor-pointer text-[1.2rem] border",
+            mobileMenuOpen ? "bg-standard border-dark-grey border-b-0" : "bg-transparent border-transparent"
           )}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -58,14 +52,8 @@ const Header = ({ navLinks, ...props }) => {
       {mobileMenuOpen && (
         <Location>
           {({ location }) => (
-            <div>
-              <div className="flex">
-                <div className="flex-1 border-t border-dark-grey"></div>
-                <div className="w-10 shrink-0"></div>
-              </div>
-              <div className="border-l border-r border-b border-dark-grey px-4 py-4 flex flex-col gap-4 mono">
-                {renderLinks(location, mobileLinkClass)}
-              </div>
+            <div className="absolute top-full -mt-4 left-5 right-5 z-10 bg-standard border-l border-r border-b border-dark-grey px-4 py-4 flex flex-col gap-4 mono">
+              {renderLinks(location, mobileLinkClass)}
             </div>
           )}
         </Location>
