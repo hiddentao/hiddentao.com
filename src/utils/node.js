@@ -1,21 +1,20 @@
-import safeGet from 'lodash.get'
+import safeGet from "lodash.get"
 
-export const getVersionForLanguage = (versions, lang) => (
+export const getVersionForLanguage = (versions, lang) =>
   versions.find(v => v.lang === lang)
-)
 
 export const getResolvedVersionForLanguage = (versions, lang, fallbackLang) => {
   const current = getVersionForLanguage(versions, lang)
   const fallback = getVersionForLanguage(versions, fallbackLang)
 
   const fields = [
-    'lang',
-    'date',
-    'title',
-    'ogi',
-    'summary',
-    'markdown',
-    'readtime',
+    "lang",
+    "date",
+    "title",
+    "ogi",
+    "summary",
+    "markdown",
+    "readtime",
   ].reduce((m, f) => {
     m[f] = safeGet(current, f, fallback[f])
     return m

@@ -78,3 +78,6 @@ yarn-error.log
 .link-check-cache.json
 link-check-report.json
 *.md.tmp
+
+# Claude Code local config
+.claude/

@@ -6,7 +6,7 @@
  */
 
 import React from "react"
-import qs from 'query-string'
+import qs from "query-string"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
@@ -34,7 +34,9 @@ function SEO({ description, lang, meta, keywords, title, ogi }) {
         lang,
       }}
       title={title || site.siteMetadata.title}
-      titleTemplate={title ? `%s | ${site.siteMetadata.title}` : site.siteMetadata.title}
+      titleTemplate={
+        title ? `%s | ${site.siteMetadata.title}` : site.siteMetadata.title
+      }
       meta={[
         {
           name: `description`,
@@ -74,9 +76,9 @@ function SEO({ description, lang, meta, keywords, title, ogi }) {
         },
         {
           name: `keywords`,
-          content: 'hiddentao,javascript,blockchain,software,web,mobile' + (
-            keywords.length ? keywords.join(',') : ''
-          ),
+          content:
+            "hiddentao,javascript,blockchain,software,web,mobile" +
+            (keywords.length ? keywords.join(",") : ""),
         },
       ]}
     />

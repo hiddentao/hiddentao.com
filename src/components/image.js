@@ -1,21 +1,21 @@
 import { graphql, useStaticQuery } from "gatsby"
-import BgImg from 'gatsby-background-image'
+import BgImg from "gatsby-background-image"
 import Img from "gatsby-image"
-import safeGet from 'lodash.get'
+import safeGet from "lodash.get"
 import React, { useMemo } from "react"
 
-import projectCloudsGif from '../images/project-clouds.gif'
-import reactNativeTabbedNavGif from '../images/react-native-tabbed-nav.gif'
+import projectCloudsGif from "../images/project-clouds.gif"
+import reactNativeTabbedNavGif from "../images/react-native-tabbed-nav.gif"
 
 const GIFS = {
-  'react-native-tabbed-nav.gif': reactNativeTabbedNavGif,
-  'project-clouds.gif': projectCloudsGif
+  "react-native-tabbed-nav.gif": reactNativeTabbedNavGif,
+  "project-clouds.gif": projectCloudsGif,
 }
 
 const Image = ({ src, bg, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
-      allFile( filter: { internal: { mediaType: { regex: "/image/" } } } ) {
+      allFile(filter: { internal: { mediaType: { regex: "/image/" } } }) {
         nodes {
           relativePath
           childImageSharp {
@@ -29,20 +29,19 @@ const Image = ({ src, bg, ...props }) => {
     }
   `)
 
-  const match = useMemo(() => (
-    data.allFile.nodes.find(({ relativePath }) => src === relativePath)
-  ), [ data, src ])
+  const match = useMemo(
+    () => data.allFile.nodes.find(({ relativePath }) => src === relativePath),
+    [data, src]
+  )
 
-  const fluid = safeGet(match, 'childImageSharp.fluid')
+  const fluid = safeGet(match, "childImageSharp.fluid")
 
-  if (src.endsWith('gif')) {
+  if (src.endsWith("gif")) {
     return <img src={GIFS[src]} alt={props.alt} title={props.title} />
-  } if (fluid) {
+  }
+  if (fluid) {
     return bg ? (
-      <BgImg
-        fluid={fluid}
-        {...props}
-      />
+      <BgImg fluid={fluid} {...props} />
     ) : (
       <Img
         fluid={fluid}
@@ -50,12 +49,12 @@ const Image = ({ src, bg, ...props }) => {
           maxWidth: fluid.presentationWidth,
           margin: "0 auto",
         }}
-        Tag='div'
+        Tag="div"
         {...props}
       />
     )
   }
-  
+
   return null
 }
 

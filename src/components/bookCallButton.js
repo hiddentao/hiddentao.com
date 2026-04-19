@@ -1,4 +1,5 @@
 import React from "react"
+import LogRocket from "logrocket"
 
 const BOOK_CALL_URL = "https://cal.com/hiddentao/30min"
 
@@ -14,6 +15,7 @@ const BookCallButton = ({
     className={className}
     data-tooltip-id="app-tooltip"
     data-tooltip-content={tooltip}
+    onClick={() => LogRocket.track("Book Call Clicked")}
   >
     {label}
   </a>

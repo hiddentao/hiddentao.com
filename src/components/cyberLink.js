@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const CyberLink = ({ to, href, tooltip, className, children }) => {
+const CyberLink = ({ to, href, tooltip, className, children, onClick }) => {
   const cls = className || "cyber-btn cyber-btn-sm"
   const tooltipProps = tooltip
     ? { "data-tooltip-id": "app-tooltip", "data-tooltip-content": tooltip }
@@ -9,7 +9,7 @@ const CyberLink = ({ to, href, tooltip, className, children }) => {
 
   if (to) {
     return (
-      <Link to={to} className={cls} {...tooltipProps}>
+      <Link to={to} className={cls} onClick={onClick} {...tooltipProps}>
         {children}
       </Link>
     )
@@ -21,6 +21,7 @@ const CyberLink = ({ to, href, tooltip, className, children }) => {
       target="_blank"
       rel="noopener noreferrer"
       className={cls}
+      onClick={onClick}
       {...tooltipProps}
     >
       {children}

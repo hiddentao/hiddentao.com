@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 // From https://github.com/FortAwesome/react-fontawesome/issues/134#issuecomment-471940596
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -8,8 +8,8 @@ import {
   faGithub,
   faLinkedin,
   faStackOverflow,
-  faTwitter
-} from '@fortawesome/free-brands-svg-icons'
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons"
 import {
   faBars,
   faEnvelope,
@@ -19,8 +19,8 @@ import {
   faMapPin,
   faRss,
   faToriiGate,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 config.autoAddCss = false
 
@@ -35,7 +35,7 @@ library.add(
   faHome,
   faBars,
   faToriiGate,
-  faTwitter,
+  faTwitter
 )
 
 export default ({ name }) => <FontAwesomeIcon icon={name} />

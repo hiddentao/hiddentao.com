@@ -1,5 +1,5 @@
 import React from "react"
-import { cx } from '../utils/cx'
+import { cx } from "../utils/cx"
 
 const CyberSection = ({ tag, id, className, children }) => (
   <section className={cx("cyber-section", className)} id={id}>

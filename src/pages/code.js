@@ -13,7 +13,10 @@ const CodePage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Code" description="Open source libraries and products by Ram" />
+      <SEO
+        title="Code"
+        description="Open source libraries and products by Ram"
+      />
 
       <CyberContainer className="mb-32">
         <h1 className="cyber-h1 mono">/code</h1>
@@ -28,17 +31,28 @@ const CodePage = ({ data }) => {
                 rel="noopener noreferrer"
                 className="glass-card"
                 data-tooltip-id="app-tooltip"
-                data-tooltip-content={emojify(`View ${repo.name} on GitHub — ${repo.stars.toLocaleString()} stars`)}
+                data-tooltip-content={emojify(
+                  `View ${
+                    repo.name
+                  } on GitHub — ${repo.stars.toLocaleString()} stars`
+                )}
               >
                 <h3 className="mono text-caribbean-green mb-2">
                   {repo.name}
-                  <span className="mono text-mid-grey text-[0.9rem] ml-2">{repo.stars.toLocaleString()}_★</span>
+                  <span className="mono text-mid-grey text-[0.9rem] ml-2">
+                    {repo.stars.toLocaleString()}_★
+                  </span>
                 </h3>
                 <p>{emojify(repo.description)}</p>
               </a>
             ))}
           </div>
-          <CyberLink href="https://github.com/hiddentao" tooltip="See all repos on GitHub">./view_github.sh</CyberLink>
+          <CyberLink
+            href="https://github.com/hiddentao"
+            tooltip="See all repos on GitHub"
+          >
+            ./view_github.sh
+          </CyberLink>
         </CyberSection>
 
         <CyberSection tag="PROJECTS">
@@ -53,7 +67,9 @@ const CodePage = ({ data }) => {
                 data-tooltip-id="app-tooltip"
                 data-tooltip-content={`Visit ${project.name}`}
               >
-                <h3 className="mono text-caribbean-green mb-2">{project.name}</h3>
+                <h3 className="mono text-caribbean-green mb-2">
+                  {project.name}
+                </h3>
                 <p>{emojify(project.description)}</p>
               </a>
             ))}
