@@ -1,5 +1,6 @@
 import React from "react"
 import { cx } from "../utils/cx"
+import { handleEmailClick } from "../utils/email"
 
 import Icon from "./icon"
 
@@ -29,7 +30,7 @@ export const LinkedInLink = ({ children }) => (
 )
 
 export const EmailLink = ({ children }) => (
-  <a href="mailto:ram@hiddentao.com">
+  <a href="#" onClick={handleEmailClick()}>
     {children || (
       <React.Fragment>
         <Icon name={["fas", "envelope"]} />

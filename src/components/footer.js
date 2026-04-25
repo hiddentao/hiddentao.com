@@ -2,6 +2,7 @@ import React from "react"
 import LogRocket from "logrocket"
 import BookCallButton from "./bookCallButton"
 import CyberContainer from "./cyberContainer"
+import { handleEmailClick } from "../utils/email"
 
 const trackSocial = platform => () =>
   LogRocket.track("Social Link Clicked", { platform })
@@ -56,10 +57,10 @@ const Footer = () => (
             X_TWITTER
           </a>
           <a
-            href="mailto:ram@hiddentao.com"
+            href="#"
             data-tooltip-id="app-tooltip"
             data-tooltip-content="Send an email"
-            onClick={trackSocial("email")}
+            onClick={handleEmailClick(trackSocial("email"))}
           >
             EMAIL
           </a>
