@@ -1,7 +1,6 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Helmet from "react-helmet"
-import LogRocket from "logrocket"
 
 import CyberContainer from "../components/cyberContainer"
 import Layout from "../components/layout"
@@ -10,6 +9,7 @@ import CyberLink from "../components/cyberLink"
 import CyberSection from "../components/cyberSection"
 import { getResolvedVersionForLanguage } from "../utils/node"
 import { formatDate } from "../utils/date"
+import { track } from "../utils/analytics"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -80,9 +80,7 @@ const IndexPage = () => {
                   className="cyber-btn"
                   tooltip="View all service offerings"
                   onClick={() =>
-                    LogRocket.track("Services CTA Clicked", {
-                      location: "hero",
-                    })
+                    track("Services CTA Clicked", { location: "hero" })
                   }
                 >
                   ./view_services.sh
@@ -168,9 +166,7 @@ const IndexPage = () => {
               to="/services"
               tooltip="View all service offerings"
               onClick={() =>
-                LogRocket.track("Services CTA Clicked", {
-                  location: "how_i_work",
-                })
+                track("Services CTA Clicked", { location: "how_i_work" })
               }
             >
               ./view_services.sh
@@ -250,7 +246,7 @@ const IndexPage = () => {
                     repo.name
                   } on GitHub — ${repo.stars.toLocaleString()} stars`}
                   onClick={() =>
-                    LogRocket.track("Repository Clicked", { name: repo.name })
+                    track("Repository Clicked", { name: repo.name })
                   }
                 >
                   <h4 className="mono">

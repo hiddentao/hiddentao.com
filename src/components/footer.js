@@ -1,11 +1,11 @@
 import React from "react"
-import LogRocket from "logrocket"
 import BookCallButton from "./bookCallButton"
 import CyberContainer from "./cyberContainer"
 import { handleEmailClick } from "../utils/email"
+import { track } from "../utils/analytics"
 
 const trackSocial = platform => () =>
-  LogRocket.track("Social Link Clicked", { platform })
+  track("Social Link Clicked", { platform })
 
 const Footer = () => (
   <div className="cyber-footer">
