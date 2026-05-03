@@ -46,7 +46,7 @@ export const onPreRenderHTML = ({
       defer
       src="https://umami.hiddentao.com/recorder.js"
       data-website-id={UMAMI_WEBSITE_ID}
-      data-sample-rate="0.15"
+      data-sample-rate="1"
       data-mask-level="moderate"
       data-max-duration="300000"
     />,
