@@ -25,3 +25,30 @@ export const onRenderBody = ({ setHeadComponents }) => {
     />,
   ])
 }
+
+const UMAMI_WEBSITE_ID = '3b375d0b-e074-4dfc-964d-ba9761515921'
+
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
+  const headComponents = getHeadComponents()
+  replaceHeadComponents([
+    ...headComponents,
+    <script
+      key="umami-analytics"
+      defer
+      src="https://umami.hiddentao.com/script.js"
+      data-website-id={UMAMI_WEBSITE_ID}
+    />,
+    <script
+      key="umami-recorder"
+      defer
+      src="https://umami.hiddentao.com/recorder.js"
+      data-website-id={UMAMI_WEBSITE_ID}
+      data-sample-rate="0.15"
+      data-mask-level="moderate"
+      data-max-duration="300000"
+    />,
+  ])
+}
