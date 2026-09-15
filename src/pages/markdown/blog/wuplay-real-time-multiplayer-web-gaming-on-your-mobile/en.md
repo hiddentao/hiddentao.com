@@ -63,12 +63,16 @@ There is a page loader which is responsible for loading a given page from the se
 
 The `html` entry is the HTML to show for the page. The `js` entry is a list of scripts to load using the `<script>` tag. The `css` entry is a list of stylesheets to load. When the page loader wishes to display a given page it first calls the server to obtain the above meta data. It then adds the specified stylesheets to the document `head` and then loads each of the Javascript files one at a time until they're all loaded. Once these assets are loaded it replaces the webpage's main content section with the HTML returned above.
 
-A given page may have an associated `PageModule`, usually defined in one of its associated scripts. A `PageModule` is a Javascript object which exposes the following methods:</p> <p>* `preshow` - called just before the page gets shown. The module may choose to show another page instead at this point.
+A given page may have an associated `PageModule`, usually defined in one of its associated scripts. A `PageModule` is a Javascript object which exposes the following methods:
+
+* `preshow` - called just before the page gets shown. The module may choose to show another page instead at this point.
 
 * `show` - called just after the page gets shown so that the module can do any required initialisation.
 * `hide` - called just after the page gets hidden so that the module can do any required de-initialisation.
 
-For example, the lobby page as an associated `LobbyModule` which ensures that the lobby display gets reset and re-populated whenever the lobby page gets shown. Likewise, when the user leaves the lobby and switches to a different page this module ensures that any pending AJAX requests (e.g. the long-polling connection to the server) get cleanly aborted.</p> <p>The `preshow` method on the `PageModule` may seem unnecessary but is actually very useful. When a user first visits wuPlay the `HomepageModule` can check in `preshow` to see if they've already visited the site before and have a nickname. If so it can take them straight to the lobby page rather than forcing them to re-submit a nickname. This mechanism is also handy if the user ever decides to refresh the webpage in their browser, thus allowing us to take them swiftly back to the page they were on.
+For example, the lobby page as an associated `LobbyModule` which ensures that the lobby display gets reset and re-populated whenever the lobby page gets shown. Likewise, when the user leaves the lobby and switches to a different page this module ensures that any pending AJAX requests (e.g. the long-polling connection to the server) get cleanly aborted.
+
+The `preshow` method on the `PageModule` may seem unnecessary but is actually very useful. When a user first visits wuPlay the `HomepageModule` can check in `preshow` to see if they've already visited the site before and have a nickname. If so it can take them straight to the lobby page rather than forcing them to re-submit a nickname. This mechanism is also handy if the user ever decides to refresh the webpage in their browser, thus allowing us to take them swiftly back to the page they were on.
 
 ## Device detection
 

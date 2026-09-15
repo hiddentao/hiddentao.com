@@ -12,6 +12,9 @@ const { fetchExternalData } = require('./fetchExternalData')
 const PATH_TO_MD_PAGES = path.resolve(path.join(__dirname, '..', 'src', 'pages', 'markdown'))
 const { siteMetadata: { defaultLanguage } } = require('../gatsby-config')
 
+// Today in UTC. Deliberately not date-fns format(), which reads local getters.
+const TODAY = new Date().toISOString().slice(0, 10)
+
 const _calculateReadTimeInMinutes = markdown => {
   const words = remark().use(strip).processSync(markdown).contents
   const count = words.trim().split(/\s+/).length
@@ -45,6 +48,13 @@ const _isDatoCmsBlogPostNode = n => (get(n, 'internal.type') === `DatoCmsBlogPos
 const _isLocalMarkdownNode = n => (get(n, 'internal.mediaType') === `text/markdown` && !get(n, 'internal.type').includes('Dato'))
 
 const _loadMarkdownFile = n => grayMatter(fs.readFileSync(n.absolutePath, 'utf-8').toString())
+
+// A blog post dated after today still gets a page - that is the preview URL -
+// but it is kept out of every listing until its date arrives. Dates are
+// zero-padded YYYY-MM-DD, so a lexicographic compare is chronologically correct.
+const _isUnlisted = ({ pageType, date }) => (
+  'blog' === pageType && formatDate(date, 'YYYY-MM-DD') > TODAY
+)
 
 const _generatePagePath = ({ pageType, pageId, date }) => {
   if ('blog' === pageType) {
@@ -120,6 +130,7 @@ module.exports = async ({ actions, createNodeId, createContentDigest, getNodes }
     let slug
     let date
     let draft
+    let unlisted = false
     const versions = []
 
     if (_isDatoCmsBlogPostNode(node)) {
@@ -129,11 +140,14 @@ module.exports = async ({ actions, createNodeId, createContentDigest, getNodes }
         pageType = 'blog'
         title = node.entityPayload.attributes.title[lang]
         pageId = node.entityPayload.attributes.slug
-        date = formatDate(node.entityPayload.attributes.date, 'YYYY-MM-DD'),
+        date = formatDate(node.entityPayload.attributes.date, 'YYYY-MM-DD')
         draft = false
         slug = _generatePagePath({ pageType, pageId, date })
+        unlisted = _isUnlisted({ pageType, date })
 
-        _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
+        if (!unlisted && !draft) {
+          _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
+        }
 
         const markdown = node.entityPayload.attributes.body[lang]
 
@@ -180,8 +194,11 @@ module.exports = async ({ actions, createNodeId, createContentDigest, getNodes }
         ; ({ data: { title, date, draft } } = _loadMarkdownFile(node))
 
         slug = _generatePagePath({ pageType, pageId, date })
+        unlisted = _isUnlisted({ pageType, date })
 
-        _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
+        if (!unlisted && !draft) {
+          _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
+        }
 
         // generate all versions of the node (including itself)
         getNodes().forEach(n => {
@@ -191,7 +208,9 @@ module.exports = async ({ actions, createNodeId, createContentDigest, getNodes }
             if (r.pageId === pageId) {
               const gm = _loadMarkdownFile(n)
 
-              _createSitemapNode({ ...sitemapNodeCallProps, slug, lang: r.lang, pageType })
+              if (!unlisted && !draft) {
+                _createSitemapNode({ ...sitemapNodeCallProps, slug, lang: r.lang, pageType })
+              }
 
               versions.push({
                 title: gm.data.title,
@@ -217,6 +236,7 @@ module.exports = async ({ actions, createNodeId, createContentDigest, getNodes }
         lang,
         date: formatDate(date, 'YYYY-MM-DD'),
         draft: !!draft,
+        unlisted: !!unlisted,
         versions,
       }
 

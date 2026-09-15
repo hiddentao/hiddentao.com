@@ -15,7 +15,11 @@ const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownPage(
-        filter: { type: { eq: "blog" }, draft: { ne: true } }
+        filter: {
+          type: { eq: "blog" }
+          draft: { ne: true }
+          unlisted: { ne: true }
+        }
         sort: { order: DESC, fields: date }
         limit: 5
       ) {

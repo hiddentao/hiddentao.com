@@ -43,6 +43,9 @@ Results are written to `link-check-report.json`.
 
 ## Deploy to production
 
-```shell
-npm run deploy
-```
+Cloudflare Pages builds and deploys on push, and on the DatoCMS publish
+webhook. A post dated in the future builds its page straight away but stays out
+of `/blog`, the homepage, `feed.xml` and `sitemap.xml` until its date arrives -
+use its URL to preview it. The `Scheduled rebuild` workflow pings a Cloudflare
+deploy hook daily so those posts go live on the day without a manual push; it
+needs a `CLOUDFLARE_DEPLOY_HOOK_URL` repository secret.

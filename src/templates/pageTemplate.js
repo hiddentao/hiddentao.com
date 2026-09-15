@@ -58,7 +58,7 @@ const PageBottomNav = ({ currentLanguage, newer, older }) => {
 }
 
 const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
-  const { type, path, lang: fallbackLang, versions } = current
+  const { type, path, lang: fallbackLang, unlisted, versions } = current
 
   const fields = useMemo(
     () =>
@@ -74,7 +74,14 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
 
   return (
     <Layout>
-      <SEO title={fields.title} description={summary} ogi={fields.ogi} />
+      <SEO
+        title={fields.title}
+        description={summary}
+        ogi={fields.ogi}
+        meta={
+          unlisted ? [{ name: "robots", content: "noindex, nofollow" }] : []
+        }
+      />
       <CyberContainer className="mb-8">
         {type === "blog" ? (
           <h1 className="cyber-h1 text-[3rem] mb-4">{fields.title}</h1>
@@ -146,6 +153,7 @@ export const pageQuery = graphql`
     path
     type
     lang
+    unlisted
     versions {
       lang
       date
