@@ -41,13 +41,25 @@ module.exports = async ({ actions, graphql, getNode }) => {
       allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }) {
         nodes {
           id
+          unlisted
         }
       }
     }
   `)
-  _createMarkdownPages({ pages: blogPages, getNode, createPage }, index => {
-    const newerPageId = 0 < index ? blogPages[index - 1].id : null
-    const olderPageId = (blogPages.length - 1) > index ? blogPages[index + 1].id : null
+
+  // Future-dated posts keep their page so they can be previewed, but they sit
+  // outside the newer/older chain until their date arrives.
+  const listedBlogPages = blogPages.filter(({ unlisted }) => !unlisted)
+
+  _createMarkdownPages({ pages: blogPages, getNode, createPage }, (index, node) => {
+    const pos = listedBlogPages.findIndex(({ id }) => id === node.id)
+
+    if (0 > pos) {
+      return { newerPageId: null, olderPageId: null }
+    }
+
+    const newerPageId = 0 < pos ? listedBlogPages[pos - 1].id : null
+    const olderPageId = (listedBlogPages.length - 1) > pos ? listedBlogPages[pos + 1].id : null
     return { newerPageId, olderPageId }
   })
 

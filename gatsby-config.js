@@ -1,5 +1,6 @@
 const rehypeStringify = require('rehype-stringify')
 const parse = require('remark-parse')
+const rehypeRaw = require('rehype-raw')
 const remarkRehype = require('remark-rehype')
 const unified = require('unified')
 
@@ -161,7 +162,13 @@ module.exports = {
                 })
 
                 // convert markdown to html
-                const html = unified().use(parse).use(remarkRehype).use(rehypeStringify).processSync(markdown).toString()
+                const html = unified()
+                  .use(parse)
+                  .use(remarkRehype, { allowDangerousHtml: true })
+                  .use(rehypeRaw)
+                  .use(rehypeStringify, { allowDangerousHtml: true })
+                  .processSync(markdown)
+                  .toString()
 
                 return Object.assign({}, {
                   date: new Date(date).toISOString(),
@@ -174,7 +181,7 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }, limit: 1000) {
+                allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true }, unlisted: { ne: true } }, sort: { order:DESC, fields: date }, limit: 1000) {
                   nodes {
                     path
                     lang

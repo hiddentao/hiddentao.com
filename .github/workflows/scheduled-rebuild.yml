@@ -1,0 +1,23 @@
+name: Scheduled rebuild
+
+# A future-dated post only joins the listings once the site is rebuilt. The
+# DatoCMS webhook fires on publish, not on the post date, so ask Cloudflare
+# Pages for a fresh build just after midnight UTC each day.
+on:
+  schedule:
+    - cron: '5 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages build
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$DEPLOY_HOOK_URL" ]; then
+            echo "CLOUDFLARE_DEPLOY_HOOK_URL secret is not set" >&2
+            exit 1
+          fi
+          curl -fsS -X POST "$DEPLOY_HOOK_URL"

@@ -80,7 +80,7 @@ function SEO({ description, lang, meta, keywords, title, ogi }) {
             "hiddentao,javascript,blockchain,software,web,mobile" +
             (keywords.length ? keywords.join(",") : ""),
         },
-      ]}
+      ].concat(meta)}
     />
   )
 }
