@@ -68,6 +68,14 @@ const RenderCode = ({ children }) => (
   <span className="md-code-span">{children}</span>
 )
 
+// Wide tables must not blow out the page on a phone, so each one gets its own
+// horizontal scroll container rather than forcing the article to scroll.
+const RenderTable = ({ children }) => (
+  <div className="md-table-wrapper">
+    <table>{children}</table>
+  </div>
+)
+
 const generateRenderPre = bodyMarkdown => args => {
   const codeSrc = safeGet(args, "children.0.props.children.0")
 
@@ -182,6 +190,7 @@ const Markdown = ({ markdown, className }) => {
           a: RenderAnchor,
           pre: generateRenderPre(markdown),
           code: RenderCode,
+          table: RenderTable,
           script: RenderScript,
         },
       })
